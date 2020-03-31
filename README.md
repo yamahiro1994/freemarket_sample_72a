@@ -19,10 +19,10 @@
 |destination_name_kana       |string |null: false              |
 |postal_code                 |integer|null: false              |
 |prefectures                 |integer|null: false              |
-|municipality                 |integer|null: false              |
+|municipality                |integer|null: false              |
 |address                     |string |null: false              |
-|apartment_room_namber       |string|             |
-|phone_number                |integer|              |
+|apartment_room_namber       |string |                         |
+|phone_number                |integer|                         |
 
 ### Association
 - has_many   :items
