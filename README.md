@@ -21,7 +21,7 @@
 |prefectures                 |integer|null: false              |
 |municipality                 |integer|null: false              |
 |address                     |string |null: false              |
-|apartment_room_namber       |text   |             |
+|apartment_room_namber       |string|             |
 |phone_number                |integer|              |
 
 ### Association
@@ -29,8 +29,8 @@
 - has_many   :cards
 - has_many   :bookmarks
 - has_many   :comments
-- has_many  :bookmarked_items,  through: :bookmarks,  source:  :item
-- has_many  :commented_items,  through: :comments,  source:  :item
+- has_many  :bookmarked_items, through: :bookmarks, source: :item
+- has_many  :commented_items, through: :comments, source: :item
 
 ## cardsテーブル
 |Column         |Type   |Options                       |
@@ -57,18 +57,17 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|title          |text   |null: false|
-|text           |text   |           |
-|size           |integer|null: false|
+|title          |string   |null: false|
+|body           |text   |           |
 |status         |integer|null: false|
 |delivery_charge|integer|null: false|
 |delivery_method|string |null: false|
-|delivery_origin|text   |null: false|
+|delivery_origin|string   |null: false|
 |delivery_days  |integer|null: false|
 |price          |integer|null: false|
 |seller_id  |integer  |null: false, foreign_key: true|
 |buyer_id   |integer  |null: false, foreign_key: true|
-|category_id|integer  |foreign_key: true             |
+|category_id|integer  |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -76,7 +75,7 @@
 - has_many :bookmarks
 - has_many :comments
 - has_many :images
-- has_many :bookmarked_users, through: :bookmarks,  source: :user
+- has_many :bookmarked_users, through: :bookmarks, source: :user
 - has_many :commented_users, through: :comments, source: :user
 
 
