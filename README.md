@@ -31,3 +31,23 @@
 - belongs_to :item, through: :bookmarks
 - has_many   :commentss
 - belongs_to :item, through: :comments
+
+## cardsテーブル
+|Column         |Type   |Options                       |
+|---------------|-------|------------------------------|
+|number         |integer|null: false, unique: true     |
+|name           |string |null: false                   |
+|expiration_date|integer|null: false                   |
+|security_code  |integer|null: false                   |
+|user_id        |integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+
+## categoriesテーブル
+|Column|Type--|Options    |
+|------|------|-----------|
+|name--|string|null: false|
+
+### Association
+- has_many :items
