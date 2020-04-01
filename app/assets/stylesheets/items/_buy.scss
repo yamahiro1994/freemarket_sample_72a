@@ -35,6 +35,9 @@
         &__detail {
           margin-left: 16px;
           font-size: 14px;
+          &__name {
+            text-align: left;
+          }
           &__price {
             font-weight: bold;
           }
