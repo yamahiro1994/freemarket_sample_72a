@@ -1,0 +1,33 @@
+.logo-box
+  = link_to image_tag("logo.png", width:'130', alt:'ロゴ')
+.back
+  .back__image-box
+    .back__image-box__flex
+      .back__image-box__flex__text
+        出品画像
+      .back__image-box__flex__label
+        必須
+    .back__image-box__limit
+      最大10枚までアップロードできます
+    .back__image-box__new-image
+      .back__image-box__new-image__input
+        =form_with()
+        .back__image-box__new-image__input__icon
+          = link_to image_tag("icon_category.png", width: '20')
+        .back__image-box__new-image__input__p
+          ドラッグアンドドロッップ
+          .br
+          またはクリックしてファイルをダウンロード
+    .back__image-box__errer
+      -# 画像がありません
+
+  .back__product-name
+    .back__product-name__flex
+      .back__product-name__flex__text
+        商品名
+      .back__product-name__flex__label
+  .back__category-box
+  .back__delivery-box
+  .back__price-box
+  .back__post-box
+.footer
