@@ -1,23 +1,142 @@
--# 新規投稿画面
-%h2 Sign uppppppppp
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email 
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+-# 新規登録画面
 
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+-# ヘッダー
+.user_registration_header
+  .header_logo
+    =link_to '', 'http://www.google.co.jp/'
+    =image_tag 'logo.png', :width => '138', :height => '37'
+  .header__signup-bar
+    《会員情報》ーー電話番号認証ーー完了
+
+
+-# 入力フォーム、注意書き
+.user_registration_main
+  会員情報入力
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+
+    -# ニックネーム
+    .field
+      = f.label "ニックネーム"
+      必須
+      %br/
+      = f.text_field :email, placeholder: "例) フリマ太郎"
+    -# ※text_field :emailと記述、それ以外で指定するとエラーが出る
+    -# メールアドレス
+    .field
+      = f.label "メールアドレス"
+      必須
+      %br/
+      = f.email_field :email, placeholder: "メールアドレス", autocomplete: "email"
+
+    -# パスワード（１回目）
+    .field
+      = f.label "パスワード"
+      必須
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length}文字以上の半角英数)
+      %br/
+      = f.email_field :email, placeholder: "メールアドレス", autocomplete: "email"
+      
+      -# パスワード（2回目）
+    .field
+      = f.label "パスワード再入力"
+      必須
+      %br/
+      = f.password_field :password_confirmation , placeholder: "メールアドレス再入力", autocomplete: "new-password"
+
+    .coution_password
+      ※ 英字と数字の両方を含めて設定してください
+
+    -# パスワードを表示させるチェックボックス
+    .field
+      = f.check_box :remember_me
+      = f.label "パスワードを表示する"
+
+    .attension_safety
+      .head
+        本人確認
+      .text
+        安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        
+    -# 名前入力全角
+    .field
+      = f.label "お名前(全角)"
+      必須
+      %br/
+      = f.text_field :email, placeholder: "例) 山田"
+      = f.text_field :email, placeholder: "例) 彩"
+
+    -# 名前（カタカナ）入力全角
+    .field
+      = f.label "お名前カナ(全角)"
+      必須
+      %br/
+      = f.text_field :email, placeholder: "例) ヤマダ"
+      = f.text_field :email, placeholder: "例) アヤ"
+
+    -# 生年月日
+    .field
+      = f.label "生年月日"
+      必須
+      %br/
+      ーー年　ーー月　ーー日
+      -# = f.date_select :email, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)    
+      -#   = f.time_select :time, {include_blank: true, start_hour: 10, end_hour: 20, minute_step: 15}, {class: 'time-box'}
+      -# むずすぎるので現段階では未実装   
+
+    .coution_personal_info
+      ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+
+    
+    .warning_terms
+      「次へ進む」のボタンを押すことにより、
+      =link_to 'りようきやく', 'http://www.google.co.jp/'
+      に同意したものとみなします
+
+    .next_btn
+      =link_to '次へ進む', 'http://www.google.co.jp/'
+
+    .furima_guide
+      =link_to '本人情報の登録について', 'http://www.google.co.jp/'
+
+    .recaptcha
+      This site is protected by reCAPTCHA and the Google
+      =link_to 'Privacy Policy', 'http://www.google.co.jp/'
+      and
+      =link_to 'Terms of Service', 'http://www.google.co.jp/'
+      apply.
+
+
+
+
+    .birthday_selector
+      = f.label "生年月日"
+      = f.select :name, [["国語", "国語"]  
+
+
+
+
+
+
+
+
+-# フッター
+.user_registration_footer
+  .footer_nav_bar
+    =link_to 'プライバシーポリシー', 'http://www.google.co.jp/'
+    =link_to 'メルカリ利用規約', 'http://www.google.co.jp/'
+    =link_to '特定商取引に関する表記', 'http://www.google.co.jp/'
+
+  .footer_logo
+    =link_to '', 'http://www.google.co.jp/'
+    =image_tag 'logo.png', :width => '138', :height => '37'
+
+
+  .furima_inc
+    ©︎Furima, Inc.
+
+    -# = f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+
+
