@@ -1,11 +1,12 @@
-
-%h2 Sign up
+-# 新規投稿画面
+%h2 Sign uppppppppp
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
-    = f.label :email
+    = f.label :email 
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
+
   .field
     = f.label :password
     - if @minimum_password_length
