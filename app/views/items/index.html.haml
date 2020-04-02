@@ -1,3 +1,48 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.haml
-= link_to '商品購入画面（確認用）', buy_items_path
+-# %h1 Items#index
+-# %p Find me in app/views/items/index.html.haml
+-# = link_to '商品購入画面（確認用）', buy_items_path
+
+.header
+  .header__main
+    .header__main__upper-box
+      = image_tag '/assets/logo.png', alt: '', height: '', width: '', class: 'logo'
+      .header__main__upper-box__search-box
+        %input{ class: "search", placeholder: 'キーワードから探す' }
+        %input{ class: "btn", type: "image",src: "/assets/icon-search1.png" }
+    .header__main__lower-box
+      .left-list
+        = link_to 'カテゴリ', "#", class:""
+        = link_to 'ブランド', "#", class:""
+      .right-list
+        = link_to 'ログイン', "#", class:""
+        = link_to '新規会員登録', "#", class:""
+
+-# 部分テンプレート
+=render"toppage"
+-# 部分テンプレート
+
+.footer
+  %ul.footer__contents
+    %li.footer__contents__content
+      = link_to 'FURIMAについて', "#", class:"footer__contents__content--head"
+      = link_to '会社概要（運営会社）', "#", class:"footer__contents__content--link"
+      = link_to 'プライバシーポリシー', "#", class:"footer__contents__content--link"
+      = link_to 'FURIMA利用規約', "#", class:"footer__contents__content--link"
+      = link_to 'ポイントに関する特約', "#", class:"footer__contents__content--link"
+    %li.footer__contents__content
+      = link_to 'FURIMAを見る', "#", class:"footer__contents__content--head"
+      = link_to 'カテゴリー一覧', "#", class:"footer__contents__content--link"
+      = link_to 'ブランド一覧', "#", class:"footer__contents__content--link"
+    %li.footer__contents__content
+      = link_to 'ヘルプ＆ガイド', "#", class:"footer__contents__content--head"
+      = link_to 'FURIMAガイド', "#", class:"footer__contents__content--link"
+      = link_to 'FURIMAロゴ利用ガイドライン', "#", class:"footer__contents__content--link"
+      = link_to 'お知らせ', "#", class:"footer__contents__content--link"
+  .footer__logo
+    = image_tag '/assets/logo-white.png'
+    %p © FURIMA
+
+= link_to "#" do
+  #display-btn
+    %p 出品する
+    = image_tag '/assets/icon_camera.png', height: '50', width: '50'
