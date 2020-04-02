@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  resources :items, only: :index
+  root 'items#index'
+  resources :items do
+    collection do
+      get 'buy'
+    end
+  end
 end

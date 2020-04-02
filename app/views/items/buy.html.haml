@@ -1,0 +1,45 @@
+.buy-header
+  = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "buy-header__logo"), '#'
+-# ヘッダーとフッターは後に部分テンプレートで共有する
+.buy-main
+  .buy-container
+    .buy-container__title
+      購入内容の確認
+    .buy-container__item
+      .buy-container__item__box
+        = image_tag 'https://image.itmedia.co.jp/nl/articles/1712/12/l_kutsu_171212cardboard02.jpg', class:'buy-container__item__box__img', size: "60x80", alt: "test"
+        .buy-container__item__box__detail
+          .buy-container__item__box__detail__name
+            Amazon箱
+          .buy-container__item__box__detail__price
+            ¥5,000 (税込) 送料込み
+    .buy-container__form-box
+      = form_with(id: "buy-form") do |f|
+        .buy-container__form-box__price
+          .buy-container__form-box__price__left
+            支払い金額
+          .buy-container__form-box__price__right
+            ¥5,000
+        .buy-container__form-box__payment
+          .buy-container__form-box__payment__method
+            .buy-container__form-box__payment__method__left
+              支払い方法
+            = link_to('変更', '#', {class: 'buy-container__form-box__payment__method__right'})
+          .buy-container__form-box__payment__card-info
+            クレジットカード
+            %br ****************
+            有効期限 **/**
+            %p
+              = image_tag 'https://www.pay-route.co.jp/wp/wp-content/uploads/2019/08/visa300px-300x192.gif', alt: 'card-logo', height: '20', width: '34', class: 'card-img'
+        .buy-container__form-box__delivery
+          .buy-container__form-box__delivery__method
+            .buy-container__form-box__delivery__method__left
+              配送先
+            = link_to('変更', '#', {class: 'buy-container__form-box__delivery__method__right'})
+          .buy-container__form-box__delivery__user-info
+            〒postal-code
+            %br adress
+            user-name
+        = f.submit "購入する", class: "buy-btn"
+.buy-footer
+  = link_to image_tag('logo-white.png', width: '160', alt: 'white-Logo', class: "buy-footer__logo"), '#'

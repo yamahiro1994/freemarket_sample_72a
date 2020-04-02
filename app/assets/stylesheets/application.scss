@@ -1,2 +1,11 @@
 @import "reset";
 @import "items/index";
+@import "items/buy";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8f8f8;
+}
