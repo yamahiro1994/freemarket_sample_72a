@@ -2,15 +2,15 @@
   ヘッダーは部分テンプレート使用。現在未作成。
   %br
   右下にある出品マークについても部分テンプレート？
-%div.show-main
-  %div.show-main__content-left
-  %div.show-main__content-right
-    %div.show-main__content-top
+.show-main
+  .show-main__content-left
+  .show-main__content-right
+    .show-main__content-top
 
-      %div.show-main__content-top__item-box
+      .show-main__content-top__item-box
         %h2.show-main__content-top__item-box__name
           product2
-        %div.show-main__content-top__item-box__body
+        .show-main__content-top__item-box__body
           %ul.photo-line-ul
             %li.photo-line-li
               = image_tag '/assets/a004.png', alt: '', class: 'photo-big'
@@ -21,19 +21,19 @@
                   = image_tag '/assets/a005.png', alt: '', class: 'photo-small'
                 %li.photo-line-li-under
                   = image_tag '/assets/a006.png', alt: '', class: 'photo-small'
-        %div.show-main__content-top__item-box__pricebox
+        .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
             ¥20000
-          %div.show-main__content-top__item-box__pricebox__detail
+          .show-main__content-top__item-box__pricebox__detail
             %span
               (税込)
             %span
               送料込み
-        %div.show-main__content-top__item-box__item-detail
+        .show-main__content-top__item-box__item-detail
           親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
 
 
-        %div.show-main__content-top__item-box__table
+        .show-main__content-top__item-box__table
           %table
             %tbody
               %tr
@@ -41,7 +41,6 @@
                   出品者
                 %td
                   hoge
-                  -# リンク必要
                 %tr
                   %th
                     カテゴリー
@@ -52,45 +51,38 @@
                       ジャケット/アウター
                     =link_to "#",class:"kategori"  do
                       ノーカラージャケット
-                    -# リンク必要
                 %tr
-                  -#ブランド
                   %th
                     ブランド
                   %td
                     ユニクロ
                 %tr
-                  -#商品サイズ
                   %th
                     商品サイズ
                   %td
                     ｓ
                 %tr
-                  -#商品の状態
                   %th
                     商品の状態
                   %td
                     新品/未使用
                 %tr
-                  -#配送料の負担
                   %th
                     配送料の負担
                   %td
                     着払い（購入者負担）
                 %tr
-                  -#配送元の地域
                   %th
                     配送元の地域
                   %td
                     =link_to "#",class:"tiiki" do
                       青森
                 %tr
-                  -#配送部の目安
                   %th
                     配送日の目安
                   %td
                     1-2日で発送
-        %div.show-main__content-top__item-box__area
+        .show-main__content-top__item-box__area
           %ul
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
               %li#linke-btn.show-main__content-top__item-box__area__btn-left__link
@@ -102,7 +94,7 @@
                 %icon.fa.fa-flag              
                 不適切な商品の通報
 
-      %div.show-main__content-top__comment-box
+      .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do
           %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
@@ -130,10 +122,10 @@
           %span
             次の商品
           %icon.fa.fa-angle-right
-    %div.show-main__related-items
+    .show-main__related-items
       =link_to "#",class:"show-main__related-items__link" do
         メンズをもっと見る
-      %div.product-lists
+      .product-lists
 
 %footer.show-footer
   フッターは部分テンプレート使用。現在未作成。
