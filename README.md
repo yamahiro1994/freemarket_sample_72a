@@ -46,9 +46,10 @@
 
 
 ## categoriesテーブル
-|Column|Type--|Options|
-|------|------||
-|name  |string||
+|Column  |Type  |Options|
+|--------|------||
+|name    |string|index: true, null: false|
+|ancestry|string|index: true|
 
 ### Association
 - has_many :items
