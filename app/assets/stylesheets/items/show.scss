@@ -7,8 +7,7 @@
   padding: 40px;
   margin:0 auto;
   font-family:"Source Sane Pro",Helvetica,Arial,"遊ゴシック体","YuGothic","メイリオ","Meiryo",sans-serif;
-  &__content-left{
-  }
+
   &__content-right{
     width: 700px;
     margin: 0 auto;
@@ -160,9 +159,7 @@
       text-align: center; 
       &__coments{
         list-style: none;
-        &__form{
 
-        }
         &__input{
           font-family: inherit;
           font-size: inherit;
