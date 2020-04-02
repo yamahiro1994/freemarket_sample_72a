@@ -1,6 +1,6 @@
 .buy-header
   = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "buy-header__logo"), '#'
--# ヘッダーとフッターは後に部分テンプレートで共有する
+-# ヘッダーは後に部分テンプレートで共有する
 .buy-main
   .buy-container
     .buy-container__title
@@ -41,5 +41,5 @@
             %br adress
             user-name
         = f.submit "購入する", class: "buy-btn"
-.buy-footer
-  = link_to image_tag('logo-white.png', width: '160', alt: 'white-Logo', class: "buy-footer__logo"), '#'
+= render "footer"
+
