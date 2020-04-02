@@ -1,14 +1,13 @@
 @mixin p($number){
   font-size: $number;
-  font-weight: 600px;
   line-height: 1.4em;
 }
 
 @mixin l{
   height: 16px;
   color: #fff;
-  font-size: 12px;
   padding: 0 4px;
+  font-size: 12px;
   margin-left: 8px;
   background-color: rgb(255, 2, 17);
 }
@@ -16,8 +15,8 @@
 @mixin clearfix() {
   &:after {
     content: '';
-    display: block;
     clear: both;
+    display: block;
   }
 }
 
@@ -25,22 +24,24 @@
   box-sizing: border-box;
 }
 
+
 .logo-box{
   height: 128px;
   line-height: 128px;
   text-align: center;
 }
 
-//白の背景ページ
+
 .back{
   width: 660px;
   margin: 0 auto;
   
-   //出品画像
+
   &__image-box{
     height: 295px;
     padding: 40px;
-    background-color: ghostwhite;
+    border-bottom: 1px solid #ccc;
+    background-color: white;
     &__flex{
       display: flex;
       &__text{
@@ -61,28 +62,12 @@
       position: relative;
       &__input{
         height: 155px;
-        background-color: #fff;
-            
-        &__file{
-          height: 155px;
-          width: 100%;
-               
+        background-color: ghostwhite;
+        &__p{
+          font-size: 12px;
+          padding-top: 90px;
           text-align: center;
-          position: absolute;
-          left: 0;
-          &__camera{
-            color: black;
-            display: none;
-          }
         }
-          &__p{
-            font-size: 12px;
-            padding-top: 90px;
-            text-align: center;
-            &__icon{
-              color: black;
-            }
-          }
       }
     }
     &__errer{
@@ -92,11 +77,12 @@
     }
   }
 
-  //商品名
+
   &__product-name{
     height: 376px;
     padding: 40px;
-    background-color: whitesmoke;
+    border-bottom: 1px solid #ccc;
+    background-color: white;
     &__flex{
       display: flex;
       &__text{
@@ -110,15 +96,14 @@
     &__title{
       height: 48px;
       margin-top: 16px;
-      background-color: yellowgreen;
-      &__content{
-        input{
-          height: 48px;
-          width: 100%;
-          font-size: 15px;
-          padding: 0 16px;
-          outline: none;
-        }
+      input{
+        height: 48px;
+        width: 100%;
+        overflow: visible;
+        font-size: 15px;
+        padding: 0 16px;
+        outline: none;
+        background-color:  #fff;
       }
     }
     &__Introduction{
@@ -157,11 +142,13 @@
       }
     }
   }
-   // 商品の詳細
+
+
   &__details-box{
     height: 365px;
     padding: 40px;
-    background-color: ghostwhite;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
     &__title{
       height: 19px;
       font-size: 14px;
@@ -219,25 +206,191 @@
 
 
   &__delivery-box{
-    height: 404px;
+    height: 446px;
     padding: 40px;
-    background-color: royalblue;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    &__title{
+      height: 19px;
+      font-size: 14px;
+      font-weight: 600px;
+      line-height: 1.4em;
+    }
+    &__flex{
+      height: 19px;
+      margin-top: 32px;
+      display: flex;
+      &__text{
+        @include p(14px);
+        height: 115px;
+      }
+      &__label{
+        @include l;
+      }
+      &__frame{
+        width: 100%;
+        height: 48px;
+        margin-top: 16px;
+        &__form{
+          height: 48px;
+        }
+      }
+    }
+    select{
+      height: 48px;
+      width: 100%;
+      outline: none;
+      margin-top: 16px;
+    }
+    &__price{
+      height: 118px;
+      margin-top: 32px;
+      &__flex{
+        display: flex;
+        &__text{
+          @include p(14px);
+        }
+        &__label{
+          @include l;
+        }
+        &__frame{
+          width: 100%;
+          height: 48px;
+          margin-top: 16px;
+          &__form{
+            height: 48px;
+          }
+        }
+      }
+    }
+    &__days{
+      height: 118px;
+      &__flex{
+        display: flex;
+        &__text{
+          @include p(14px);
+        }
+        &__label{
+          @include l;
+        }
+        &__frame{
+          width: 100%;
+          height: 48px;
+          margin-top: 16px;
+          &__form{
+            height: 48px;
+          }
+        }
+      }
+    }
   }
+  
 
-  &__price-box{
-    height: 250px;
-    background-color: navy;
+  &__exhibition-box{
+    height: 560px;
+    padding: 40px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    &__price{
+      margin-bottom: 24px;
+      p{
+        @include p(14px);
+      }
+    }
+    &__profit{
+      height: 187px;
+      &__sale{
+        display: flex;
+        height: 46px;
+        position: relative;
+        align-items: center;
+        margin-bottom: 12px;
+        display: flex;
+        &__text{
+          @include p(14px);
+        }
+        i{
+          float: right;
+        }
+        &__label{
+          @include l;
+          background-color: rgb(255, 2, 17);
+        }
+        &__box{
+          position: absolute;
+          right: 0;
+          span{
+            font-size: 8px;
+          }
+          input{
+            height: 46px;
+            border-radius: 4px;
+            font-size: 10px;
+            outline: none;
+            text-align: right;
+            padding: 0 20px;
+            border: 1px solid #ccc;
+          }
+        }
+      }
+      &__commission{
+        height: 46px;
+        padding: 12px 0;
+        &__text{
+          p{
+            @include p(14px);
+          }
+        }
+      }
+      &__hr{
+        border: 1px solid #efefef;;
+      }
+      &__total{
+        height: 46px;
+        padding-top: 12px;
+        margin-bottom: 40px;
+        &__text{
+          @include p(14px);
+        }
+      }
+      &__flame{
+        height: 164px;
+        margin: 0 130px 32px;
+        input.submit-btn{
+          height: 46px;
+          width: 100%;
+          color: #fff;
+          font-size: 15px;
+          padding: 0 24px;
+          border-radius: 4px;
+          margin-bottom: 24px;
+          background-color: #ea352d;
+          border-color: transparent;
+        }
+        button.btn{
+          height: 46px;
+          width: 100%;
+          color: #fff;
+          font-size: 15px;
+          padding: 0 24px;
+          border-radius: 4px;
+          margin-bottom: 24px;
+          background-color: #ccc;
+          border-color: transparent;
+          color: #222;
+        }
+        a{
+          height: 20px;
+          color: #0095ee;
+          font-size: 12px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+      p{
+        font-size: 12px;
+        line-height: 1.4em;
+      }
+    }
   }
-
-  &__post-box{
-    height: 250px;
-    background-color: darkcyan;
-  }
-}
-
-.footer{
-   height: 150px;
-   width: 300px;
-   margin: 0 auto;
-   background-color: yellowgreen;
 }

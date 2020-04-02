@@ -1,82 +1,133 @@
 .logo-box
-  = link_to image_tag("logo.png", width:'130', alt:'ロゴ')
+  = link_to image_tag("logo.png", width:"130", alt:"logo")
 .back
   .back__image-box
     .back__image-box__flex
       .back__image-box__flex__text
-        出品画像
+        %p 出品画像
       .back__image-box__flex__label
-        必須
+        %p 必須
     .back__image-box__limit
-      最大10枚までアップロードできます
+      %p 最大10枚までアップロードできます
     .back__image-box__new-image
       .back__image-box__new-image__input
         =form_with() do |f|
-          .back__image-box__new-image__input__file
-            -# = f.file_field :image, class: "back__image-box__new-image__input__file"
-              -# = f.label :image, class: 'back__image-box__new-image__input__file__camera' do
-              = image_tag('icon_camera.png', class: 'icon', width: '30')
           .back__image-box__new-image__input__p
-            ドラッグアンドドロッップ
+            %p ドラッグアンドドロッップ
             .br
-            またはクリックしてファイルをダウンロード
+            %p またはクリックしてファイルをダウンロード
     .back__image-box__errer
       -# 画像がありません
-
+  
+  -# 商品名
   .back__product-name
     .back__product-name__flex
       .back__product-name__flex__text
-        商品名
+        %p 商品名
       .back__product-name__flex__label
-        必須
+        %p 必須
     .back__product-name__title
       =form_with() do |t|
-        .back__product-name__title__content
-          = t.text_field :content, class: 'product-name__title__content', placeholder: '40文字まで'
+        = t.text_field :content, class: 'product-name__title__content', placeholder: '40文字まで'
     .back__product-name__Introduction
       .back__product-name__Introduction__frame
         .back__product-name__Introduction__frame__text
-          商品の説明
+          %p 商品の説明
         .back__product-name__Introduction__frame__label
-          必須
+          %p 必須
       .back__product-name__Introduction__frame__content
         =form_with() do |t|
-          = t.text_field :content, class: 'product-name__Introduction__frame__content', placeholder: '商品の説明 (1000文字以内) (色、素材、重さ、定価、注意点など)'
+          = t.text_field :content, class: 'product-name__Introduction__frame__content', placeholder: '商品の説明 (1000文字以内)(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
         .back__product-name__Introduction__text-limit
           .back__product-name__Introduction__text-limit__math
-            0/1000
+            %p 0/1000
+
+  -# 商品詳細
   .back__details-box
     .back__details-box__title
-      商品詳細
+      %p 商品詳細
     .back__details-box__flex
       .back__details-box__flex__text
-        カテゴリー
+        %p カテゴリー
       .back__details-box__flex__label
-        必須   
+        %p 必須   
       .back__details-box__frame
         .back__details-box__frame__form
-    %select{name:"sample", placeholder:"選択してください"}
-      %option{:value => "0"}  --
-      %option{:value => "1"} メンズ
-      %option{:value => "2"} レディース
-      %option{:value => "3"} ベビー・キッズ
-      %option{:value => "4"} インテリア・住まい・小物
+    = form_with model: @f, local: true do |f|
+      = f.select "", [["選択してください", 1],["レディース", 1],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]] 
     .back__details-box__status
       .back__details-box__status__flex
         .back__details-box__status__flex__text
-          商品の状態
+          %p 商品の状態
         .back__details-box__status__flex__label
-          必須
+          %p 必須
         .back__details-box__status__flex__flame
           .back__details-box__status__flex__flame__form
-      %select{name:"sample", placeholder:"選択してください"}
-        %option{:value => "0"}  --
-        %option{:value => "1"} 新品
-        %option{:value => "2"} 未使用に近い
-        %option{:value => "3"} 傷物
-        %option{:value => "4"} 状態が悪い
-  .back__delivery-box
+      = form_with model: @f, local: true do |f|
+        = f.select "", [["選択してください", 1],["新品", 1],["未使用に近い", 2],["傷物",3],["状態が悪い",4]]  
     
-  .back__price-box
-  .back__post-box
-.footer
+  -# 配送
+  .back__delivery-box
+    .back__delivery-box__title
+      %p 配送について
+    .back__delivery-box__flex
+      .back__delivery-box__flex__text
+        %p 配送料の負担
+      .back__delivery-box__flex__label
+        %p 必須
+      .back__delivery-box__flame
+        .back__delivery-box__form
+    = form_with model: @f, local: true do |f|
+      = f.select "", [["選択してください", 1],["送料込み", 1],["着払い", 2]]
+    .back__delivery-box__price
+      .back__delivery-box__price__flex
+        .back__delivery-box__price__flex__text
+          %p 発送元の地域
+        .back__delivery-box__price__flex__label
+          %p 必須
+        .back__delivery-box__price__flex__flame
+          .back__delivery-box__price__flex__flame__form
+      = form_with model: @f, local: true do |f|
+        = f.select "", [["選択してください", 1],["北海道", 1],["青森", 2],["秋田",3]]
+    .back__delivery-box__days
+      .back__delivery-box__days__flex
+        .back__delivery-box__days__flex__text
+          %p 発送までの日数
+        .back__delivery-box__days__flex__label
+          %p 必須
+        .back__delivery-box__days__flex__flame
+          .back__delivery-box__days__flex__flame__form
+      = form_with model: @f, local: true do |f|
+        = f.select "", [["選択してください", 1],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
+  
+  -# 出品
+  .back__exhibition-box
+    .back__exhibition-box__price
+      %p 価格（¥300〜9,999,999）
+    .back__exhibition-box__profit
+      .back__exhibition-box__profit__sale
+        .back__exhibition-box__profit__sale__text
+          %p 販売価格
+        .back__exhibition-box__profit__sale__label
+          %p 必須
+        .back__exhibition-box__profit__sale__box
+          %span ¥
+          %input.box{type: "", placeholder: "0"}
+
+      .back__exhibition-box__profit__commission
+        .back__exhibition-box__profit__commission__text
+          %p 販売手数料（10%）
+        .back__exhibition-box__profit__commission__text__line
+        -# ハイフン右寄せ
+      .back__exhibition-box__profit__hr
+      .back__exhibition-box__profit__total
+        .back__exhibition-box__profit__total__text
+          %p 販売利益
+        .back__exhibition-box__profit__total__line
+        -# ハイフン右寄せ
+      .back__exhibition-box__profit__flame
+        = form_with model: @f,local: true do |f|
+          = f.submit '出品する', class: 'submit-btn'
+          = f.button '下書きに保存', class: 'btn'
+          %a もどる
+      %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
