@@ -1,0 +1,16 @@
+= link_to '商品購入画面確認用', buy_items_path
+-# 確認用のリンクです
+.header
+  .header__main
+    .header__main__upper-box
+      = image_tag '/assets/logo.png', alt: '', height: '', width: '', class: 'logo'
+      .header__main__upper-box__search-box
+        %input{ class: "search", placeholder: 'キーワードから探す' }
+        %input{ class: "btn", type: "image",src: "/assets/icon-search1.png" }
+    .header__main__lower-box
+      .left-list
+        = link_to 'カテゴリ', "#", class:""
+        = link_to 'ブランド', "#", class:""
+      .right-list
+        = link_to 'ログイン', "#", class:""
+        = link_to '新規会員登録', "#", class:""
