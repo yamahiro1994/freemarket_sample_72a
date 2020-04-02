@@ -11,13 +11,15 @@
       最大10枚までアップロードできます
     .back__image-box__new-image
       .back__image-box__new-image__input
-        =form_with()
-        .back__image-box__new-image__input__icon
-          = link_to image_tag("icon_category.png", width: '20')
-        .back__image-box__new-image__input__p
-          ドラッグアンドドロッップ
-          .br
-          またはクリックしてファイルをダウンロード
+        =form_with() do |f|
+          .back__image-box__new-image__input__file
+            -# = f.file_field :image, class: "back__image-box__new-image__input__file"
+              -# = f.label :image, class: 'back__image-box__new-image__input__file__camera' do
+              = image_tag('icon_camera.png', class: 'icon', width: '30')
+          .back__image-box__new-image__input__p
+            ドラッグアンドドロッップ
+            .br
+            またはクリックしてファイルをダウンロード
     .back__image-box__errer
       -# 画像がありません
 
@@ -26,6 +28,23 @@
       .back__product-name__flex__text
         商品名
       .back__product-name__flex__label
+        必須
+    .back__product-name__title
+      =form_with() do |t|
+        .back__product-name__title__content
+          = t.text_field :content, class: 'product-name__title__content', placeholder: '40文字まで'
+    .back__product-name__Introduction
+      .back__product-name__Introduction__frame
+        .back__product-name__Introduction__frame__text
+          商品の説明
+        .back__product-name__Introduction__frame__label
+          必須
+      .back__product-name__Introduction__frame__content
+        =form_with() do |t|
+          = t.text_field :content, class: 'product-name__Introduction__frame__content', placeholder: '商品の説明 (1000文字以内) (色、素材、重さ、定価、注意点など)'
+        .back__product-name__Introduction__text-limit
+          .back__product-name__Introduction__text-limit__math
+            0/1000
   .back__category-box
   .back__delivery-box
   .back__price-box

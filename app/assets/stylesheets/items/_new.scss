@@ -1,3 +1,11 @@
+@mixin clearfix {
+   &::after {
+       content: "";
+       display: block;
+       clear: both;
+   }
+}
+
 *{
    box-sizing: border-box;
 }
@@ -8,16 +16,15 @@
    text-align: center;
 }
 
-
+//白の背景ページ
 .back{
    height: 1500px;
    width: 660px;
    margin: 0 auto;
-
+  //出品画像
    &__image-box{
       height: 295px;
       padding: 40px;
-      position: relative;
       background-color: ghostwhite;
       &__flex{
          display: flex;
@@ -25,7 +32,7 @@
            height: 19px;
            font-size: 14px;
            font-weight: 600px;
-         //   line-height: 1.4em;
+           line-height: 1.4em;
         }
         &__label{
            height: 16px;
@@ -44,16 +51,30 @@
          height: 158px;
          padding: 0 4px;
          margin-top: 8px;
+         position: relative;
          &__input{
             height: 155px;
             background-color: #fff;
-            &__icon{
+            
+            &__file{
+               height: 155px;
+               width: 100%;
+               
                text-align: center;
-               padding-top: 45px;
+               position: absolute;
+               left: 0;
+               &__camera{
+                  color: black;
+                  display: none;
+               }
             }
             &__p{
                font-size: 12px;
+               padding-top: 90px;
                text-align: center;
+              &__icon{
+               color: black;
+              }
             }
          }
       }
@@ -64,13 +85,85 @@
       }
    }
 
-
-
-
+  //商品名
    &__product-name{
-      height: 250px;
-      background-color: cornflowerblue;
+      height: 376px;
+      padding: 40px;
+      background-color: whitesmoke;
+      &__flex{
+         display: flex;
+         &__text{
+            height: 19px;
+            font-size: 14px;
+            line-height: 1.4em;
+         }
+         &__label{
+           height: 16px;
+           color: #fff;
+           font-size: 12px;
+           padding: 0 4px;
+           margin-left: 8px;
+           background-color: rgb(255, 2, 17);
+         }
+      }
+     &__title{
+        height: 48px;
+        margin-top: 16px;
+        background-color: yellowgreen;
+        &__content{
+         //   height: 48px;
+         //   width: 100%;
+           input{
+              height: 48px;
+              width: 100%;
+              font-size: 15px;
+              padding: 0 16px;
+              outline: none;
+           }
+        }
+     }
+     &__Introduction{
+        height: 221px;
+        margin-top: 32px;
+        &__frame{
+           height: 19px;
+           display: flex;
+           &__text{
+              font-size: 14px;
+              line-height: 1.4em;
+           }
+           &__label{
+            height: 16px;
+            color: #fff;
+            font-size: 12px;
+            padding: 0 4px;
+            margin-left: 8px;
+           background-color: rgb(255, 2, 17);
+           }
+   
+          &__content{
+             // width: 100%;        
+             input{
+               height: 126px;
+               width: 100%;
+               font-size: 15px;
+               padding: 0 16px;
+               outline: none;
+               margin-top: 16px;
+            }
+         }
+       }
+       &__text-limit{
+          height: 16px;
+          margin-top: 16px;
+          &__math{
+             font-size: 10px;
+             float: right;
+          }
+       }
+     }
    }
+  
 
    &__category-box{
       height: 250px;
