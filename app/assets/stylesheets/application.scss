@@ -1,2 +1,14 @@
 @import "reset";
 @import "users/registrations_new";
+@import "items/index";
+@import "items/show";
+@import "items/buy";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8f8f8;
+}
