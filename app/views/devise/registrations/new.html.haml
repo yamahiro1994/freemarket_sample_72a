@@ -5,8 +5,8 @@
 
   .registration_user__header
     .head_logo
-      %a{ href: 'http://google.co.jp'}
-        = image_tag 'logo.png', width: '140', height: '40.55'
+      %a{ href: '#'}
+        = image_tag 'logo.png', width: '170', height: '50'
     .signup_bar
       《会員情報》ーー電話番号認証ーー完了
 
@@ -68,7 +68,6 @@
             本人確認
           %p
             安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。
-            %br
             他のお客さまに公開されることはありません。
             
         -# 名前入力全角
@@ -106,39 +105,39 @@
         
         .warning_terms
           「次へ進む」のボタンを押すことにより、
-          %a{ href: 'http://google.co.jp', class: '.riyou-kiyaku'}
+          %a{ href: '#', class: '.riyou-kiyaku'}
             利用規約
           に同意したものとみなします
 
         -# chatspaceのsendボタンと同じ
-        %a{ href: 'http://google.co.jp', class: "next_btn"}
+        %a{ href: '#', class: "next_btn"}
           次へ進む
 
         -# .furima_guide
-        %a{ href: 'http://google.co.jp', class: "furima_guide"}
+        %a{ href: '#', class: "furima_guide"}
           本人情報の登録について>
 
         .recaptcha
           This site is protected by reCAPTCHA and the Google
-          %a{ href: 'http://google.co.jp', class: 'google_privacy_policy' }
+          %a{ href: '#', class: 'google_privacy_policy' }
             Privacy Policy
           and
-          %a{ href: 'http://google.co.jp', class: 'google_tos'}
+          %a{ href: '#', class: 'google_tos'}
             Terms of Service
           apply.
 
   -# フッター
   .registration_user__footer
     .link_bar
-      %a{ href: 'http://google.co.jp', class: 'furima_pp'}
+      %a{ href: '#', class: 'furima_pp'}
         プライバシーポリシー
-      %a{ href: 'http://google.co.jp', class: 'furima_tos'}
+      %a{ href: '#', class: 'furima_tos'}
         フリマ利用規約
-      %a{ href: 'http://google.co.jp', class: 'furima_sctm'}
+      %a{ href: '#', class: 'furima_sctm'}
         特定商取引に関する表記
 
     .footer_logo
-      %a{ href: 'http://google.co.jp'}
+      %a{ href: '#'}
         = image_tag 'logo.png', width: '160', height: '50'
     %p
       %small

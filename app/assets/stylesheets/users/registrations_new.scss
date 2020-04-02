@@ -1,18 +1,19 @@
 @mixin label {
   display: flex;
-  font-size: 18px;
+  font-size: 15px;
+  margin-top: 20px;
 }
 
 
 @mixin info-form {
   width: 93%;
-  height: 30px;
+  height: 28px;
 }
 
 
 @mixin require {
   width: 30px;
-  height: 20px;
+  height: 18px;
   background-color: #ea352d;
   margin: 0 0 0 8px;
   padding: 2px 4px;
@@ -26,29 +27,28 @@
 
 .registration_user {
   width: 100vw;
-  
+  background-color: #f5f5f5;
   &__header{
-    height: 100px;
+    height: 80px;
     display: flex;
-    padding: 30px 290px;
+    padding: 30px 390px;
     line-height: 140px;
-    background-color: darkgrey;
-    border: solid 1px;
+    background-color: #f5f5f5;
+    justify-content: space-between;
+    font-family: 'Source Sans Pro';
 
     .head_logo{
-      line-height: 140px;
-      border: solid 1px;
-
+      line-height: 128px;
+      height: 50px
     }
     .signup_bar{
       line-height: 100px;
-      border: solid 1px;
       margin-left: 75px;
-
+      
     }
   }
   &__main{
-    background-color: slateblue;
+    background-color: #fff;
     width: 700px;
     margin: 0 auto;
 
@@ -58,13 +58,14 @@
       line-height: 100px;
       font-size: 30px;
       text-align: center;
-      border: solid 1px;
+      border-bottom : solid 3px #f5f5f5;
+
     }
   
     .form{
       width: 100%;
       padding: 20px 20px 40px 20px;
-      background-color: slateblue;
+      background-color: #fff;
       width: 450px;
       text-align: center;
       margin: 0 auto;
@@ -114,6 +115,7 @@
 
       .coution_password{
         font-size: 15px;
+        text-align: left;
       }
       .attension_safety{
         margin-top: 15px;
@@ -207,9 +209,9 @@
         // text-align: left;
 
 
-        .riyou-kiyaku{
+        a{
           text-decoration: none;
-
+          color: #0099e8;
         }
       }
       .next_btn{
@@ -231,6 +233,7 @@
         text-align: right;
         text-decoration: none;
         font-size: 14px;
+        color: #0099e8
       }
       .recaptcha{
         background-color: #f5f5f5;
@@ -240,17 +243,21 @@
         margin: 25px 0 10px 0;
 
         .google_privacy_policy{
+          color: #0099e8;
+          text-decoration: none;
 
         }
         .google_tos{
+          color: #0099e8;
+          text-decoration: none;
 
         }
       }
     }
   }
   &__footer{
-    padding: 40px 200px;
-    background-color: saddlebrown;
+    padding: 40px 200px 20px 200px;
+    background-color: #f5f5f5;
     height: 170px;
     position: relative;
 
