@@ -101,3 +101,39 @@
               %li.show-main__content-top__item-box__area__optional__btn-right__link
                 %icon.fa.fa-flag              
                 不適切な商品の通報
+
+      %div.show-main__content-top__comment-box
+        %ul.show-main__content-top__comment-box__coments
+        =form_with(class:"show-main__content-top__comment-box__coments__form") do
+          %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
+          %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
+          %textarea.show-main__content-top__comment-box__coments__textarea{reurierd:"",name:"comment"}
+          %P.show-main__content-top__comment-box__coments__p
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %br
+          %button.show-main__content-top__comment-box__coments__button{name:"button",type:"submit"}
+            %icon.fa.fa-comment
+            コメント
+      
+
+    %ul.show-main__links
+      %li
+        =link_to "#",class:"show-main__links__left-btn" do
+          %icon.fa.fa-angle-left
+          %span
+            前の商品
+      %li
+        =link_to "#",class:"show-main__links__right-btn" do
+          
+          %span
+            次の商品
+          %icon.fa.fa-angle-right
+    %div.show-main__related-items
+      =link_to "#",class:"show-main__related-items__link" do
+        メンズをもっと見る
+      %div.product-lists
+
+%footer.show-footer
+  フッターは部分テンプレート使用。現在未作成。

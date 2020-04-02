@@ -173,9 +173,78 @@
               display: inline-block;
             }
           }
+        }
+      }
+    }
+    &__comment-box{
+      padding: 24px;
+      background-color: #fff;
+      margin:10px 0;
+      text-align: center; 
+      &__coments{
+        list-style: none;
+        &__form{
 
+        }
+        &__input{
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+        &__textarea{
+          width: 100%;
+          min-height: 104px;
+          padding:10px;
+        }
+        &__p{
+          padding: 8px;
+          font-size: 14px;
+          background-color: #f8f8f8;
+          margin: 10px 0;
+          text-align:left;
+        }
+        &__button{
+          margin-top: 10px;
+          line-height: 48px;
+          background: #3CCACE;
+          border: 1px solid #3CCACE;
+          color:#fff;
+          width: 60%;
+          font-size: 18px;
+          border-radius: 100px;
         }
       }
     }
   }
+  &__links{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    &__left-btn{
+      text-decoration: none;
+      color: #3CCACE;
+    }
+    &__right-btn{
+      text-decoration: none;
+      color: #3CCACE;
+    }
+  }
+
+  &__related-items{
+    &__link{
+      display: block;
+      margin:24px 0 8px;
+      text-decoration: none;
+      font-weight:bold;
+      position:relative;
+      font-size: 22px;
+      color: #3CCACE;
+    }
+  }
+}
+
+.show-footer{
+  width: 100%;
+  height: 100px;
+  background-color: red;
 }
