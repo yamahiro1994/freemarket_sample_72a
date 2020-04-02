@@ -39,10 +39,10 @@
       = link_to 'FURIMAロゴ利用ガイドライン', "#", class:"footer__contents__content--link"
       = link_to 'お知らせ', "#", class:"footer__contents__content--link"
   .footer__logo
-    %img{ src: "/assets/logo-white.png" }
+    = image_tag '/assets/logo-white.png'
     %p © FURIMA
 
 = link_to "#" do
   #display-btn
     %p 出品する
-    %img{ src: "/assets/icon_camera.png", width:"50", height:"50"}
+    = image_tag '/assets/icon_camera.png', height: '50', width: '50'
