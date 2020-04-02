@@ -1,9 +1,41 @@
+@mixin displayflex($interval) {
+  display: flex;
+  justify-content: $interval;
+}
+
+@mixin titlebar() {
+  font-size: 26px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 10px;
+  &:after{
+    content:"";
+    width: 70px;
+    height: 4px;
+    background-color: #3CCACE;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@mixin center() {
+  margin: 50px auto;
+  width: 100%;
+  max-width: 1040px;
+}
+
+@mixin whiteshadow() {
+  color: #ffffff;
+  text-shadow:0px 0px 5px #808080;
+}
+
 .header{
   height: 100px;
   padding: 0 50px;
   &__main{
-    margin: 0 auto;
-    max-width: 1040px;
+    @include center();
     &__upper-box{
       height: 40px;
       display: flex;
@@ -14,8 +46,7 @@
         display: block;
       }
       &__search-box{
-        display: flex;
-        justify-content: space-between;
+        @include displayflex(space-between);
         margin-left: 50px;
         width: 100%;
         .search{
@@ -29,8 +60,7 @@
       }
     }
     &__lower-box{
-      display: flex;
-      justify-content: space-between;
+      @include displayflex(space-between);
       font-size: 13px;
       margin-top: 10px;
       &__left-list{}
@@ -46,9 +76,8 @@
     padding: 150px 50px;
     &__content{
       margin: 0 30px;
-      color: #ffffff;
       align-items: center;
-      text-shadow:0px 0px 5px #808080;
+      @include whiteshadow();
       &--title{
         font-size: 60px;
       }
@@ -74,27 +103,11 @@
     text-align: center;
     padding: 60px 100px;
     &--title{
-      font-size: 26px;
-      font-weight: bold;
-      position: relative;
-      padding-bottom: 10px;
-      &:after{
-        content:"";
-        width: 70px;
-        height: 4px;
-        background-color: #3CCACE;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+      @include titlebar();
     }
     &__list{ 
-      display: flex;
-      justify-content: space-between;
-      margin: 50px auto;
-      width: 100%;
-      max-width: 1040px;
+      @include displayflex(space-between);
+      @include center();
       &__box{
         width: 300px;
         display: block;
@@ -130,16 +143,14 @@
     }
   }
   &__sub-banner{
-    height: 400px;
     background-image: url(bg-topMiddleDl-pict.jpg);
     background-size: cover;
-    color: #ffffff;
-    padding-left: 100px;
+    padding: 0 0 100px 100px;
     align-items: center;
     &__contents{
       margin: 0 auto;
       padding-top: 100px;
-      text-shadow:0px 0px 5px #808080;
+      @include whiteshadow();
       &--title{
         font-size: 27px;
         font-weight: bold;
@@ -166,27 +177,11 @@
     text-align: center;
     padding: 60px 20px;
     &--title{
-      font-size: 26px;
-      font-weight: bold;
-      position: relative;
-      padding-bottom: 10px;
-      &:after{
-        content:"";
-        width: 70px;
-        height: 4px;
-        background-color: #3CCACE;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+      @include titlebar();
     }
     &__list{
-      display: flex;
-      justify-content: space-around;
-      margin: 50px auto;
-      width: 100%;
-      max-width: 1040px;
+      @include displayflex(space-around);
+      @include center();
       &__box{
         width: 300px;
         display: block;
@@ -246,7 +241,7 @@
   padding: 100px 40px;
   &__box{
     text-align: center;
-    color: #ffffff;
+    @include whiteshadow();
     &--title{
       font-size: 24px;
     }
@@ -268,8 +263,7 @@
   background-color: #000000;
   padding: 60px 0;
   &__contents{
-    display: flex;
-    justify-content: space-around;
+    @include displayflex(space-around);
     margin: 0 300px;
     &__content{
       text-align: center;
