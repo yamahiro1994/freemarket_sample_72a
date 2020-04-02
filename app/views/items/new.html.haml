@@ -45,8 +45,38 @@
         .back__product-name__Introduction__text-limit
           .back__product-name__Introduction__text-limit__math
             0/1000
-  .back__category-box
+  .back__details-box
+    .back__details-box__title
+      商品詳細
+    .back__details-box__flex
+      .back__details-box__flex__text
+        カテゴリー
+      .back__details-box__flex__label
+        必須   
+      .back__details-box__frame
+        .back__details-box__frame__form
+    %select{name:"sample", placeholder:"選択してください"}
+      %option{:value => "0"}  --
+      %option{:value => "1"} メンズ
+      %option{:value => "2"} レディース
+      %option{:value => "3"} ベビー・キッズ
+      %option{:value => "4"} インテリア・住まい・小物
+    .back__details-box__status
+      .back__details-box__status__flex
+        .back__details-box__status__flex__text
+          商品の状態
+        .back__details-box__status__flex__label
+          必須
+        .back__details-box__status__flex__flame
+          .back__details-box__status__flex__flame__form
+      %select{name:"sample", placeholder:"選択してください"}
+        %option{:value => "0"}  --
+        %option{:value => "1"} 新品
+        %option{:value => "2"} 未使用に近い
+        %option{:value => "3"} 傷物
+        %option{:value => "4"} 状態が悪い
   .back__delivery-box
+    
   .back__price-box
   .back__post-box
 .footer
