@@ -42,58 +42,59 @@
 .main{
   &__banner{
     background-image: url(bg-mainVisual-pict_pc.jpg);
-    background-size: 100% auto;
-    padding: 200px 50px;
+    background-size: cover;
+    padding: 150px 50px;
     &__content{
       margin: 0 30px;
       color: #ffffff;
       align-items: center;
       text-shadow:0px 0px 5px #808080;
-      h{
+      &--title{
         font-size: 60px;
       }
-      p{
+      &--text{
         font-size: 18px;
         margin-top: 15px;
+      }
+      .link-box{
+        display: flex;
+        margin-top: 50px;
+        &--link{
+          display: block;
+          height: 50px;
+          width: 100px;
+          margin-right: 10px;
+          border: solid 1px;
+          text-decoration: none;
+        }
       }
     }
   }
   &__introduction{
     text-align: center;
-    padding: 60px 20px;
-    &__list{ 
-      display: flex;
-      justify-content: space-around;
-      &__box{
-        width: 200px;
-        display: block;
-        &__pic{
-          position: relative;
-          img{
-            width: 100%;
-          }
-          p{
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #3CCACE;
-            color: #ffffff;
-          }
-        }
+    padding: 60px 100px;
+    &--title{
+      font-size: 26px;
+      font-weight: bold;
+      position: relative;
+      padding-bottom: 10px;
+      &:after{
+        content:"";
+        width: 70px;
+        height: 4px;
+        background-color: #3CCACE;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
-  }
-  &__sub-banner{
-    height: 400px;
-    background-image: url(bg-topMiddleDl-pict.jpg);
-    background-size: 100% auto;
-  }
-  &__feature{
-    text-align: center;
-    padding: 60px 20px;
-    &__list{
+    &__list{ 
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      margin: 50px auto;
+      width: 100%;
+      max-width: 1040px;
       &__box{
         width: 300px;
         display: block;
@@ -102,46 +103,213 @@
           img{
             width: 100%;
           }
+          &--num{
+            height: 50px;
+            width: 50px;
+            font-size: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #3CCACE;
+            color: #ffffff;
+          }
+        }
+        &--word{
+          font-size: 24px;
+          display: block;
+          margin: 20px auto;
+          font-weight: bold;
+          span{
+            color: #3CCACE;
+          }
+        }
+        &--text{
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  &__sub-banner{
+    height: 400px;
+    background-image: url(bg-topMiddleDl-pict.jpg);
+    background-size: cover;
+    color: #ffffff;
+    padding-left: 100px;
+    align-items: center;
+    &__contents{
+      margin: 0 auto;
+      padding-top: 100px;
+      text-shadow:0px 0px 5px #808080;
+      &--title{
+        font-size: 27px;
+        font-weight: bold;
+      }
+      &--text{
+        margin-top: 15px;
+        font-size: 18px;
+      }
+    }
+    .link-box{
+      display: flex;
+      margin-top: 50px;
+      &--link{
+        display: block;
+        height: 50px;
+        width: 100px;
+        margin-right: 10px;
+        border: solid 1px;
+        text-decoration: none;
+      }
+    }
+  }
+  &__feature{
+    text-align: center;
+    padding: 60px 20px;
+    &--title{
+      font-size: 26px;
+      font-weight: bold;
+      position: relative;
+      padding-bottom: 10px;
+      &:after{
+        content:"";
+        width: 70px;
+        height: 4px;
+        background-color: #3CCACE;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &__list{
+      display: flex;
+      justify-content: space-around;
+      margin: 50px auto;
+      width: 100%;
+      max-width: 1040px;
+      &__box{
+        width: 300px;
+        display: block;
+        &__pic{
+          position: relative;
+          width: 200px;
+          img{
+            width: 100%;
+          }
+        }
+        &--title{
+          font-weight: bold;
+          font-size: 18px;
+        }
+        &--text{
+          margin-top: 15px;
+          font-size: 18px;
         }
       }
     }
   }
   &__product-list{
-    height: 500px;
+    text-align: center;
+    &--head{
+      font-size: 28px;
+      font-weight: bold;
+    }
+    &--title{
+      font-size: 24px;
+      font-weight: bold;
+      color: #3CCACE;
+    }
+    &__contents{
+      display: flex;
+      margin: 50px auto;
+      width: 100%;
+      max-width: 1040px;
+      &__content{
+        width: 250px;
+        border: solid 1px;
+        margin: 28px auto;
+        img{
+          height: 150px;
+        }
+        &__body{
+          &--name{}
+          &--text{}
+        }
+      }
+    }
   }
-
 }
 
 .app-banner{
-  height: 350px;
   background-image: url(bg-appBanner-pict.jpg);
-  background-size: 100% auto;
+  background-size: cover;
+  padding: 100px 40px;
+  &__box{
+    text-align: center;
+    color: #ffffff;
+    &--title{
+      font-size: 24px;
+    }
+    &--text{
+      font-size: 35px;
+    }
+    .link-box{
+      margin-top: 50px;
+      text-align: center;
+      &--link{
+        margin-right: 10px;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .footer{
   background-color: #000000;
+  padding: 60px 0;
   &__contents{
     display: flex;
     justify-content: space-around;
+    margin: 0 300px;
     &__content{
-      color: #ffffff;
+      text-align: center;
+      &--head{
+        font-size: 18px;
+        font-weight: bold;
+        display: block;
+        text-decoration: none;
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+      &--link{
+        font-size: 12px;
+        display: block;
+        text-decoration: none;
+        color: #ffffff;
+        margin-bottom: 15px;
+      }
     }
   }
   &__logo{
     text-align: center;
     color: #ffffff;
+    width: 100%;
     img{
       height: 50px;
+    }
+    p{
+      font-size: 14px;
     }
   }
 }
 
 #display-btn{
+  text-align: center;
   position: fixed;
   bottom: 50px;
   right: 50px;
   border:1px solid #888888;
-  padding:50px;
+  padding:20px 30px;
   background-color: #3CCACE;
   color: #ffffff;
   text-decoration: none;
