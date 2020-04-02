@@ -251,7 +251,7 @@
   &__footer{
     padding: 40px 200px;
     background-color: saddlebrown;
-    height: 210px;
+    height: 170px;
     position: relative;
 
     .link_bar{
@@ -284,12 +284,16 @@
     }
     .footer_logo{
       text-align: center;
-
+      margin-top: 40px;
     }
-    %small{
-      font-size: 10px;
-      padding: 0 auto;
+    p{
       text-align: center;
+      font-size: 10px;
+
+      small{
+        font-size: 10px;
+        padding: 0 auto;
+      }
     }
   }
 }
