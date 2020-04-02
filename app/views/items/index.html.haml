@@ -5,7 +5,7 @@
 .header
   .header__main
     .header__main__upper-box
-      %img{ class: "logo", src: "/assets/logo.png" }
+      = image_tag '/assets/logo.png', alt: '', height: '', width: '', class: 'logo'
       .header__main__upper-box__search-box
         %input{ class: "search", placeholder: 'キーワードから探す' }
         %input{ class: "btn", type: "image",src: "/assets/icon-search1.png" }
