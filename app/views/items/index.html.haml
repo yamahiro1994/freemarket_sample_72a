@@ -1,0 +1,94 @@
+-# ヘッダ部分テンプレート
+=render "header"
+-# ヘッダ部分テンプレート
+.main
+  .main__banner
+    .main__banner__content
+      %h.main__banner__content--title 人生を変えるフリマアプリ
+      %p.main__banner__content--text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
+      .link-box
+        = link_to 'App link', "#", class:"link-box--link"
+        = link_to 'google link', "#", class:"link-box--link"
+  .main__introduction
+    %h.main__introduction--title FURIMAが選ばれる3つの理由
+    %ul.main__introduction__list
+      %li.main__introduction__list__box
+        .main__introduction__list__box__pic
+          %img{ src: "/assets/pict-reason-01.jpg" }
+          %p.main__introduction__list__box__pic--num 1
+        %h.main__introduction__list__box--word
+          %span 3分
+          ですぐに出品
+        %p.main__introduction__list__box--text スマホで入力するだけで<br>簡単に出品できる！
+      %li.main__introduction__list__box
+        .main__introduction__list__box__pic
+          %img{ src: "/assets/pict-reason-02.jpg" }
+          %p.main__introduction__list__box__pic--num 2
+        %h.main__introduction__list__box--word
+          %span シンプル
+          で使いやすい
+        %p.main__introduction__list__box--text めんどくさい入力は必要なく、<br>検索も購入もスムーズ！
+      %li.main__introduction__list__box
+        .main__introduction__list__box__pic
+          %img{ src: "/assets/pict-reason-03.jpg" }
+          %p.main__introduction__list__box__pic--num 3
+        %h.main__introduction__list__box--word
+          手数料
+          %span 業界最安
+        %p.main__introduction__list__box--text 最大３％でお得に出品＆購入！
+  .main__sub-banner
+    .main__sub-banner__contents
+      %h.main__sub-banner__contents--title 会員数日本一位
+      %p.main__sub-banner__contents--text FURIMAは、フリマアプリで最も人気。<br>出品・購入回数も業界最多です！<br>ほしかったあの商品に出会えるかもしれません。
+      .link-box
+        = link_to 'App link', "#", class:"link-box--link"
+        = link_to 'google link', "#", class:"link-box--link"
+  .main__feature
+    %h.main__feature--title FURIMAの特徴
+    %ul.main__feature__list
+      %li.main__feature__list__box
+        .main__feature__list__box__pic
+          %img{ src: "/assets/icon-01.png" }
+        %h.main__feature__list__box--title 簡単に売り買いできる
+        %p.main__feature__list__box--text スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      %li.main__feature__list__box
+        .main__feature__list__box__pic
+          %img{ src: "/assets/icon-03.png" }
+        %h.main__feature__list__box--title 売上金は即日振込みに対応
+        %p.main__feature__list__box--text 午前９時までに振込を以来いただければ、翌日に指定の口座に入金致します！
+      %li.main__feature__list__box
+        .main__feature__list__box__pic
+          %img{ src: "/assets/icon-04.png" }
+        %h.main__feature__list__box--title 様々な支払いに対応
+        %p.main__feature__list__box--text お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  .main__product-list
+    .main__product-list--head 商品一覧
+    .main__product-list--title 投稿商品
+    .main__product-list__contents
+      .main__product-list__contents__content
+        %img
+        .main__product-list__contents__content__body
+          %h.main__product-list__contents__content__body--name 題名
+          %p.main__product-list__contents__content__body--text 本文1<br>本文2
+      .main__product-list__contents__content
+        %img
+        .main__product-list__contents__content__body
+          %h.main__product-list__contents__content__body--name 題名
+          %p.main__product-list__contents__content__body--text 本文1<br>本文2
+      .main__product-list__contents__content
+        %img
+        .main__product-list__contents__content__body
+          %h.main__product-list__contents__content__body--name 題名
+          %p.main__product-list__contents__content__body--text 本文1<br>本文2
+
+.app-banner
+  .app-banner__box
+    %p.app-banner__box--title だれでもかんたん、人生を変えるフリマアプリ
+    %p.app-banner__box--text 今すぐ無料ダウンロード!
+    .link-box
+      = link_to 'App link', "#", class:"link-box--link"
+      = link_to 'google link', "#", class:"link-box--link"
+-# フッタ部分テンプレート
+=render "footer"
+-# 出品ボタン部分テンプレート
+=render "displayBtn"
