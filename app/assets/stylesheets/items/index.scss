@@ -71,7 +71,7 @@
 
 .main{
   &__banner{
-    background-image: url(bg-mainVisual-pict_pc.jpg);
+    background-image: image-url('bg-mainVisual-pict_pc.jpg');
     background-size: cover;
     padding: 150px 50px;
     &__content{
@@ -143,7 +143,7 @@
     }
   }
   &__sub-banner{
-    background-image: url(bg-topMiddleDl-pict.jpg);
+    background-image: image-url('bg-topMiddleDl-pict.jpg');
     background-size: cover;
     padding: 0 0 100px 100px;
     align-items: center;
@@ -236,7 +236,7 @@
 }
 
 .app-banner{
-  background-image: url(bg-appBanner-pict.jpg);
+  background-image: image-url('bg-appBanner-pict.jpg');
   background-size: cover;
   padding: 100px 40px;
   &__box{
