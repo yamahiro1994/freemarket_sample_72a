@@ -78,5 +78,6 @@ gem 'ancestry'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'pry-rails'
 gem 'font-awesome-sass'
+gem 'enum_help' 

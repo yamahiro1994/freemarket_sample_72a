@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_102145) do
+ActiveRecord::Schema.define(version: 2020_04_03_030051) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -21,4 +21,61 @@ ActiveRecord::Schema.define(version: 2020_04_02_102145) do
     t.index ["name"], name: "index_categories_on_name"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "image", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_images_on_item_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content"
+    t.integer "price", null: false
+    t.integer "status", null: false
+    t.integer "delivery_method", null: false
+    t.integer "delivery_origin", null: false
+    t.integer "delivery_days", null: false
+    t.integer "delivery_charge", null: false
+    t.bigint "category_id", null: false
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "nickname", null: false
+    t.string "family_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "user_name", null: false
+    t.string "user_name_kana", null: false
+    t.date "birthday", null: false
+    t.string "destination_family_name", null: false
+    t.string "destination_family_name_kana", null: false
+    t.string "destination_name", null: false
+    t.string "destination_name_kana", null: false
+    t.integer "postal_code", null: false
+    t.integer "prefectures", null: false
+    t.integer "municipality", null: false
+    t.string "address", null: false
+    t.string "apartment_room_namber"
+    t.integer "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "images", "items"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
 end
