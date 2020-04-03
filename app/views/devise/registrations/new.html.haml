@@ -4,11 +4,13 @@
   -# ヘッダー
 
   .registration_user__header
-    .head_logo
-      %a{ href: '#'}
-        = image_tag 'logo.png', width: '170', height: '50'
-    .signup_bar
-      《会員情報》ーー電話番号認証ーー完了
+    .items
+      .logo
+        = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "header__logo"), '#'
+        -# %a{ href: '#'}
+        -#   = image_tag 'logo.png', width: '170', height: '50'
+      .signup_bar
+        《会員情報》ーー電話番号認証ーー完了
 
       -# 入力フォーム、注意書き
   .registration_user__main

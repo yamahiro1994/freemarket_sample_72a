@@ -6,14 +6,17 @@
 
 
 @mixin info-form {
-  width: 93%;
-  height: 28px;
+  width: 99%;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ccc
+
 }
 
 
 @mixin require {
-  width: 30px;
-  height: 18px;
+  width: 35px;
+  height: 22px;
   background-color: #ea352d;
   margin: 0 0 0 8px;
   padding: 2px 4px;
@@ -27,25 +30,47 @@
 
 .registration_user {
   width: 100vw;
+  // height: 300vh;
   background-color: #f5f5f5;
-  &__header{
-    height: 80px;
-    display: flex;
-    padding: 30px 390px;
-    line-height: 140px;
-    background-color: #f5f5f5;
-    justify-content: space-between;
-    font-family: 'Source Sans Pro';
 
-    .head_logo{
-      line-height: 128px;
-      height: 50px
+  &__header{
+    height: 150px;
+    display: block;
+    text-align: center;
+    display: flex;
+    padding: 40px;
+    // margin: 0 auto;
+    .items{
+      margin: 0 auto;
+      .logo {
+        display: inline-block;
+        line-height: 50px;
+        margin-top: 10px;
+      }
+
+      .signup_bar{
+        display: inline-block;
+        // line-height: 54px;
+        margin-left: 30px;
+      }
     }
-    .signup_bar{
-      line-height: 100px;
-      margin-left: 75px;
+    // height: 180px;
+    // display: flex;
+    // padding: 30px 390px;
+    // line-height: 140px;
+    // background-color: #f5f5f5;
+    // justify-content: space-between;
+    // font-family: 'Source Sans Pro';
+
+    // .head_logo{
+    //   line-height: 128px;
+    //   height: 50px
+    // }
+    // .signup_bar{
+    //   line-height: 100px;
+    //   margin-left: 75px;
       
-    }
+    // }
   }
   &__main{
     background-color: #fff;
@@ -132,8 +157,11 @@
         }
       } 
       @mixin name-half{
-        width: 100%;
+        width: 99%;
         height: 30px;
+        border-radius: 4px;
+        border: 1px solid #ccc
+      
       }
 
       .name_kanji{
@@ -194,6 +222,8 @@
           .year,.month,.day{
             // 指定したいCSSを記述する
             width: 23%;
+            height: 35px;
+            background-color: #f5f5f5;
            }
         }
       }
@@ -258,7 +288,7 @@
   &__footer{
     padding: 40px 200px 20px 200px;
     background-color: #f5f5f5;
-    height: 170px;
+    height: 230px;
     position: relative;
 
     .link_bar{
@@ -300,6 +330,7 @@
       small{
         font-size: 10px;
         padding: 0 auto;
+        
       }
     }
   }
