@@ -1,11 +1,6 @@
 .registration_user
 
   .registration_user__header
-    = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "head_logo"), 'http://google.co.jp'
-
-    .signup_bar
-      《会員情報》ーー電話番号認証ーー完了
-  .registration_user__header
     .header_items
       = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "head_logo"), '"http://www.google.com",'
       .signup_bar
@@ -89,19 +84,8 @@
           = link_to "利用規約", "http://www.google.com", class: "riyou-kiyaku"
           に同意したものとみなします
 
-        %a{ href: 'http://google.co.jp', class: "next_btn"}
-          次へ進む
-
-        %a{ href: 'http://google.co.jp', class: "furima_guide"}
-          本人情報の登録について>
         = link_to "次へ進む", "http://www.google.com", class: "next_btn"
           
-
-        = link_to "本人情報の登録について>", "http://www.google.com", class: "furima_guide"
-          
-        = link_to "次へ進む", "http://www.google.com", class: "next_btn"
-          
-
         = link_to "本人情報の登録について>", "http://www.google.com", class: "furima_guide"
           
 
