@@ -1,9 +1,7 @@
 .registration_user
-  
   .registration_user__header
-    .items
-      .logo
-        = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "header__logo"), '#'
+    .header_items
+      = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "head_logo"), '"http://www.google.com",'
       .signup_bar
         《会員情報》ーー電話番号認証ーー完了
 
@@ -83,37 +81,28 @@
         
         .warning_terms
           「次へ進む」のボタンを押すことにより、
-          %a{ href: '#', class: '.riyou-kiyaku'}
-            利用規約
+          = link_to "利用規約", "http://www.google.com", class: "riyou-kiyaku"
           に同意したものとみなします
 
-        %a{ href: '#', class: "next_btn"}
-          次へ進む
+        = link_to "次へ進む", "http://www.google.com", class: "next_btn"
+          
 
-        %a{ href: '#', class: "furima_guide"}
-          本人情報の登録について>
+        = link_to "本人情報の登録について>", "http://www.google.com", class: "furima_guide"
+          
 
         .recaptcha
           This site is protected by reCAPTCHA and the Google
-          %a{ href: '#', class: 'google_privacy_policy' }
-            Privacy Policy
+          = link_to "Privacy Policy", "http://www.google.com", class: "google_privacy_policy"
           and
-          %a{ href: '#', class: 'google_tos'}
-            Terms of Service
+          = link_to "Terms of Service", "http://www.google.com", class: "google_tos"
           apply.
 
   .registration_user__footer
-    .link_bar
-      %a{ href: '#', class: 'furima_pp'}
-        プライバシーポリシー
-      %a{ href: '#', class: 'furima_tos'}
-        フリマ利用規約
-      %a{ href: '#', class: 'furima_sctm'}
-        特定商取引に関する表記
-
-    .footer_logo
-      %a{ href: '#'}
-        = image_tag 'logo.png', width: '160', height: '50'
-    %p
-      %small
+    .footer_items
+      .link_bar
+        = link_to "プライバシーポリシー",    "http://www.google.com", class: "furima_pp"
+        = link_to "フリマ利用規約",         "http://www.google.com", class: "furima_tos"
+        = link_to "特定商取引に関する表記",  "http://www.google.com", class: "furima_sctm"
+      = link_to image_tag('logo.png', width: '160', height: '50', class: "footer_logo"), '"http://www.google.com",'
+      %p
         ©︎Furima, Inc.
