@@ -41,8 +41,10 @@
       display: flex;
       padding-top: 10px;
       margin: 0 auto;
-      .logo{
+      img{
         display: block;
+        width: 140px;
+        height: 40.55px;
       }
       &__search-box{
         @include displayflex(space-between);

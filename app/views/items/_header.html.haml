@@ -1,9 +1,8 @@
-= link_to '商品購入画面確認用', buy_items_path
--# 確認用のリンクです
 .header
   .header__main
     .header__main__upper-box
-      = image_tag 'logo.png', alt: '',width: '140' , height:'40.55', class: 'logo'
+      = image_tag asset_path 'logo.png'
+      = asset_path 'src', type: ''
       .header__main__upper-box__search-box
         %input{ class: "search", placeholder: 'キーワードから探す' }
         %input{ class: "btn", type: "image",src: "/assets/icon-search1.png" }
