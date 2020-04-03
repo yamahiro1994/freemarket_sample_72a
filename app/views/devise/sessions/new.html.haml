@@ -1,5 +1,24 @@
 -# ログイン画面
-%h2 Log in
+
+.login_header
+
+.login_main
+  .registrate_user
+  .sns_api_login
+    .facebook
+    .google
+  .input_login
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.email_field :email, placeholder: "メールアドレス"
+      .field
+        = f.password_field :password
+        
+  .recaptcha_box
+  .login_btn
+  .password_forgot
+
+
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .field
     = f.label :email
@@ -15,4 +34,4 @@
       = f.label :remember_me
   .actions
     = f.submit "Log in"
-= render "users/shared/links"
+= render "items/footer"

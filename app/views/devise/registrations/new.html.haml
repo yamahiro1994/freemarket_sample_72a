@@ -1,16 +1,11 @@
 .registration_user
-  -# 新規登録画面
-  
-  -# ヘッダー
 
   .registration_user__header
-    .head_logo
-      %a{ href: 'http://google.co.jp'}
-        = image_tag 'logo.png', width: '140', height: '40.55'
+    = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "head_logo"), 'http://google.co.jp'
+
     .signup_bar
       《会員情報》ーー電話番号認証ーー完了
 
-      -# 入力フォーム、注意書き
   .registration_user__main
     .head
       会員情報入力
@@ -19,7 +14,6 @@
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
 
-        -# ニックネーム
         .nickname
           .label
             = f.label "ニックネーム"
@@ -27,8 +21,6 @@
               必須
           = f.text_field :nickname, placeholder: "例) フリマ太郎", class: "input-nickname"
         
-
-        -# メールアドレス
         .email
           .label
             = f.label "メールアドレス"
@@ -36,7 +28,6 @@
               必須
           = f.text_field :email, placeholder: "メールアドレス", class: "input-email"
 
-        -# パスワード（１回目）
         .password
           .label
             = f.label "パスワード"
@@ -47,21 +38,10 @@
                 (#{@minimum_password_length}文字以上の半角英数)
           = f.text_field :password, placeholder: "パスワード", class: "input-password"
           
-          -# パスワード（2回目）
-        -# .password_2
-        -#   = f.label "パスワード再入力"
-        -#   .require
-        -#     必須
-        -#   %br/
-        -#   = f.password_field :password_confirmation , placeholder: "メールアドレス再入力", autocomplete: "new-password"
 
         .coution_password
           ※ 英字と数字の両方を含めて設定してください
 
-        -# パスワードを表示させるチェックボックス
-        -# .field_reveal_password
-        -#   = f.check_box :password
-        -#   = f.label "パスワードを表示する"
 
         .attension_safety
           %h3
@@ -71,7 +51,6 @@
             %br
             他のお客さまに公開されることはありません。
             
-        -# 名前入力全角
         .name_kanji
           .label
             = f.label "お名前(全角)"
@@ -82,7 +61,6 @@
             = f.text_field :family_name, placeholder: "例) 山田",class: "input-family-name-kanji"
             = f.text_field :user_name, placeholder: "例) 彩", class: "input-user-name-kanji"
 
-        -# 名前（カタカナ）入力全角
         .name_kana
           .label
             = f.label "お名前カナ(全角)"
@@ -93,7 +71,6 @@
             = f.text_field :family_name_kana, placeholder: "例) ヤマダ", class: "input-family-name-kana"
             = f.text_field :user_name_kana, placeholder: "例) アヤ", class: "input-user-name-kana"
 
-        -# 生年月日
         .birthdate
           .label
             = f.label "生年月日"
@@ -110,11 +87,9 @@
             利用規約
           に同意したものとみなします
 
-        -# chatspaceのsendボタンと同じ
         %a{ href: 'http://google.co.jp', class: "next_btn"}
           次へ進む
 
-        -# .furima_guide
         %a{ href: 'http://google.co.jp', class: "furima_guide"}
           本人情報の登録について>
 
@@ -129,7 +104,6 @@
 
 
 
-  -# フッター
   .registration_user__footer
     .link_bar
       %a{ href: 'http://google.co.jp', class: 'furima_pp'}
