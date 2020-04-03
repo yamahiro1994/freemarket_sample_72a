@@ -1,11 +1,15 @@
 .registration_user
-<<<<<<< HEAD
 
   .registration_user__header
     = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "head_logo"), 'http://google.co.jp'
 
     .signup_bar
       《会員情報》ーー電話番号認証ーー完了
+  .registration_user__header
+    .header_items
+      = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "head_logo"), '"http://www.google.com",'
+      .signup_bar
+        《会員情報》ーー電話番号認証ーー完了
 
   .registration_user__main
     .head
@@ -43,10 +47,6 @@
         .coution_password
           ※ 英字と数字の両方を含めて設定してください
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 39f7d0cfad3759737262b365789eddc4f4c9ce94
         .attension_safety
           %h3
             本人確認
@@ -64,10 +64,6 @@
             = f.text_field :family_name, placeholder: "例) 山田",class: "input-family-name-kanji"
             = f.text_field :user_name, placeholder: "例) 彩", class: "input-user-name-kanji"
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> 39f7d0cfad3759737262b365789eddc4f4c9ce94
         .name_kana
           .label
             = f.label "お名前カナ(全角)"
@@ -93,19 +89,21 @@
           = link_to "利用規約", "http://www.google.com", class: "riyou-kiyaku"
           に同意したものとみなします
 
-<<<<<<< HEAD
         %a{ href: 'http://google.co.jp', class: "next_btn"}
           次へ進む
 
         %a{ href: 'http://google.co.jp', class: "furima_guide"}
           本人情報の登録について>
-=======
         = link_to "次へ進む", "http://www.google.com", class: "next_btn"
           
 
         = link_to "本人情報の登録について>", "http://www.google.com", class: "furima_guide"
           
->>>>>>> 39f7d0cfad3759737262b365789eddc4f4c9ce94
+        = link_to "次へ進む", "http://www.google.com", class: "next_btn"
+          
+
+        = link_to "本人情報の登録について>", "http://www.google.com", class: "furima_guide"
+          
 
         .recaptcha
           This site is protected by reCAPTCHA and the Google
@@ -114,11 +112,6 @@
           = link_to "Terms of Service", "http://www.google.com", class: "google_tos"
           apply.
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 39f7d0cfad3759737262b365789eddc4f4c9ce94
   .registration_user__footer
     .footer_items
       .link_bar
