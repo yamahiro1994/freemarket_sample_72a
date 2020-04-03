@@ -81,13 +81,8 @@
           %h.main__product-list__contents__content__body--name 題名
           %p.main__product-list__contents__content__body--text 本文1<br>本文2
 
-.app-banner
-  .app-banner__box
-    %p.app-banner__box--title だれでもかんたん、人生を変えるフリマアプリ
-    %p.app-banner__box--text 今すぐ無料ダウンロード!
-    .link-box
-      = link_to 'App link', "#", class:"link-box--link"
-      = link_to 'google link', "#", class:"link-box--link"
+-# appバナー部分テンプレート
+=render "appBanner"
 -# フッタ部分テンプレート
 =render "footer"
 -# 出品ボタン部分テンプレート

@@ -1,7 +1,6 @@
-%header.show-header
-  ヘッダーは部分テンプレート使用。現在未作成。
-  %br
-  右下にある出品マークについても部分テンプレート？
+-# ヘッダ部分テンプレート
+=render "header"
+-# ヘッダ部分テンプレート
 .show-main
   .show-main__content-left
   .show-main__content-right
@@ -126,6 +125,9 @@
       =link_to "#",class:"show-main__related-items__link" do
         メンズをもっと見る
       .product-lists
-
-%footer.show-footer
-  フッターは部分テンプレート使用。現在未作成。
+-# appバナー部分テンプレート
+=render "appBanner"
+-# フッタ部分テンプレート
+=render "footer"
+-# 出品ボタン部分テンプレート
+=render "displayBtn"
