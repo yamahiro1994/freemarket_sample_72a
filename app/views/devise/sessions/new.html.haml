@@ -18,16 +18,12 @@
       .inner
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .field
-            -# = f.label "メールアドレス"
-            -# %br/
             = f.email_field :email, autocomplete: "email", class: "input_email"
           .field
-            -# = f.label "パスワード"
-            -# %br/
             = f.password_field :password, autocomplete: "current-password", class: "input_password"
           - if devise_mapping.rememberable?
             .recaptcha_box
-              □　僕はロボットじゃないよ
+              □ 僕はロボットじゃないよ
           = link_to "ログイン", "http://www.google.com", class: "login_btn"
 
           = link_to "パスワードをお忘れの方", "http://www.google.com", class: "password_forgot"

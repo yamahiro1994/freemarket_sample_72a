@@ -23,7 +23,6 @@ $color-background: #eeeeee;
     line-height: 130px;
     padding: 20px 500px;
     .logo{
-      // padding-top: 40px;
     }
   }
   &__main{
@@ -36,7 +35,6 @@ $color-background: #eeeeee;
       .no_account{
         @include form_padding;
         border-bottom: solid 3px $color-background;
-        // margin: ;
         .guidance_registrations{
           text-align: center;
         }
