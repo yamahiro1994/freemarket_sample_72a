@@ -15,14 +15,12 @@ class Item < ApplicationRecord
   }
 
   enum delivery_method:{
-    '---':          0, #---
     large:          1, #大型配送
     normal:         2, #中型配送
     small:          3, #小型配送
   }
 
   enum delivery_origin:{
-    '---':             0,
     hokkaido:          1,
     aomori:            2,
     iwate:             3,
