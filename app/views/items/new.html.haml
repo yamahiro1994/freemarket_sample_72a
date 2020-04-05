@@ -56,7 +56,11 @@
           .main__details-box__status__flex__flame
             .main__details-box__status__flex__flame__form
         = f.select :status, [["選択してください", 1],["新品", 1],["未使用に近い", 2],["傷物",3],["状態が悪い",4]]
-        = f.select :delivery_method, [["選択してください", 1],["レディース", 1],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]] 
+        
+        = f.label "delivery_method発送方法"
+        = f.select :delivery_method, [["選択してください", 1],["レディース", 1],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]]
+        
+        = f.label "seller_id出品者id" 
         = f.select :seller_id, [["選択してください", 1],["レディース", 1],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]] 
       
     -# 配送
