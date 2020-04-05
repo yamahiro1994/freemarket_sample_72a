@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+sclass ItemsController < ApplicationController
 
   def buy
   end
@@ -12,15 +12,25 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @items = Item.all
+    @item = Item.find(1)
+    @image = Image.find(@item.id).image
+
     @item = Item.new(item_params)
     if @item.save!
       redirect_to root_path
     else
       render :new
     end
+
   end
 
   def show
+    @items = Item.all
+    @item = Item.find(params[:id])
+    @images = @item.images
+    @image = Image.find(@item.id).image
+    @seller = User.find(@item.seller_id)
   end
 
   private

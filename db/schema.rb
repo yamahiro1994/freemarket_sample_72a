@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_093326) do
     t.integer "delivery_method", null: false
     t.integer "delivery_origin", null: false
     t.integer "delivery_days", null: false
-    t.boolean "delivery_charge", null: false
+    t.integer "delivery_charge", null: false
     t.bigint "category_id", null: false
     t.bigint "seller_id", null: false
     t.bigint "buyer_id"

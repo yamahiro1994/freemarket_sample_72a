@@ -1,10 +1,5 @@
-.show-header{
-  width: 100%;
-  height: 100px;
-  background-color: red;
-}
 .show-main{
-  padding: 40px;
+  padding: 0 40px;
   margin:0 auto;
   font-family:"Source Sane Pro",Helvetica,Arial,"遊ゴシック体","YuGothic","メイリオ","Meiryo",sans-serif;
 
@@ -23,7 +18,6 @@
       }
       &__body{
         margin-top: 16px;
-        display: flex;
         .photo-line-ul{
           display: flex;
           position: relative;
@@ -75,6 +69,7 @@
         line-height: 1.5;
         font-size: 18px;
         margin-bottom: 30px;
+        text-align: center;
       }
       &__table{
         margin-bottom: 20px;
@@ -112,7 +107,6 @@
         .kategori{
           text-decoration:none;
           color: #3CCACE;
-          display: block;
         }
         .tiiki{
           text-decoration: none;
@@ -214,9 +208,4 @@
       color: #3CCACE;
     }
   }
-}
-.show-footer{
-  width: 100%;
-  height: 100px;
-  background-color: red;
 }
