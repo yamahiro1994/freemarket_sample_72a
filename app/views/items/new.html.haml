@@ -1,110 +1,110 @@
 .logo-box
   = link_to image_tag("logo.png", width:"130", alt:"logo")
-.main
+.new-main
   = form_with(model: @item, local: true) do |f|
-    .main__image-box
-      .main__image-box__flex
-        .main__image-box__flex__text
+    .new-main__image-box
+      .new-main__image-box__flex
+        .new-main__image-box__flex__text
           %p 出品画像
-        .main__image-box__flex__label
+        .new-main__image-box__flex__label
           %p 必須
-      .main__image-box__maximum
+      .new-main__image-box__maximum
         %p 最大10枚までアップロードできます
-      .main__image-box__frame
-        .main__image-box__image
-          = f.label :image, class:"main__image-box__new-image__icon"
+      .new-main__image-box__frame
+        .new-main__image-box__image
+          = f.label :image, class:"new-main__image-box__new-image__icon"
           = image_tag("icon_camera.png", width:"25")
-          = f.fields_for :images, class: "main__image-box__image" do |i|
-            = i.file_field :image, class: "main__image-box__image__input"
-            .main__image-box__imagebox__FileSelect
-      .main__image-box__errer
+          = f.fields_for :images, class: "new-main__image-box__image" do |i|
+            = i.file_field :image, class: "new-main__image-box__image__input"
+            .new-main__image-box__imagebox__FileSelect
+      .new-main__image-box__errer
         %p 画像がありません
 
-    .main__product-name
-      .main__product-name__flex
-        .main__product-name__flex__text
+    .new-main__product-name
+      .new-main__product-name__flex
+        .new-main__product-name__flex__text
           %p 商品名
-        .main__product-name__flex__label
+        .new-main__product-name__flex__label
           %p 必須
-      = f.text_field :title, class: 'main__product-name__title'
-      .main__product-name__introduction
-        .main__product-name__introduction__frame
-          .main__product-name__introduction__frame__text
+      = f.text_field :title, class: 'new-main__product-name__title'
+      .new-main__product-name__introduction
+        .new-main__product-name__introduction__frame
+          .new-main__product-name__introduction__frame__text
             %p 商品の説明
-          .main__product-name__introduction__frame__label
+          .new-main__product-name__introduction__frame__label
             %p 必須
-        = f.text_field :content, class: "main__product-name__introduction__frame__content", placeholder: '商品の説明 (1000文字以内)(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
-        .main__product-name__introduction__math
+        = f.text_area :content, class: "new-main__product-name__introduction__frame__content", placeholder: '商品の説明 (1000文字以内)(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+        .new-main__product-name__introduction__math
           %p 0/1000
 
 
-    .main__details-box
-      .main__details-box__title
+    .new-main__details-box
+      .new-main__details-box__title
         %p 商品詳細
-      .main__details-box__flex
-        .main__details-box__flex__text
+      .new-main__details-box__flex
+        .new-main__details-box__flex__text
           %p カテゴリー
-        .main__details-box__flex__label
+        .new-main__details-box__flex__label
           %p 必須   
       = f.select :category_id, [["選択してください", 0],["レディース", 2],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]] 
-      .main__details-box__status
-        .main__details-box__status__flex
-          .main__details-box__status__flex__text
+      .new-main__details-box__status
+        .new-main__details-box__status__flex
+          .new-main__details-box__status__flex__text
             %p 商品の状態
-          .main__details-box__status__flex__label
+          .new-main__details-box__status__flex__label
             %p 必須
-          .main__details-box__status__flex__flame
-            .main__details-box__status__flex__flame__form
+          .new-main__details-box__status__flex__flame
+            .new-main__details-box__status__flex__flame__form
         = f.select :status, [["選択してください", :'---'],["新品、未使用", :unused],["未使用に近い", :nearly_unused],["目立った傷や汚れなし", :not_injured],["やや傷や汚れあり", :bit_injured],["傷や汚れあり", :injured],["全体的に状態が悪い", :bad]]
         
 
-    .main__delivery-box
-      .main__delivery-box__title
+    .new-main__delivery-box
+      .new-main__delivery-box__title
         %p 配送について
-      .main__delivery-box__flex
-        .main__delivery-box__flex__text
+      .new-main__delivery-box__flex
+        .new-main__delivery-box__flex__text
           %p 配送料の負担
-        .main__delivery-box__flex__label
+        .new-main__delivery-box__flex__label
           %p 必須
       = f.select :delivery_charge, [["選択してください", 0],["送料込み", 1],["着払い", 2]]
-      .main__delivery-box__price
-        .main__delivery-box__price__flex
-          .main__delivery-box__price__flex__text
+      .new-main__delivery-box__price
+        .new-main__delivery-box__price__flex
+          .new-main__delivery-box__price__flex__text
             %p 発送元の地域
-          .main__delivery-box__price__flex__label
+          .new-main__delivery-box__price__flex__label
             %p 必須
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---", class: "main__delivery-box__price__address"
-      .main__delivery-box__days
-        .main__delivery-box__days__flex
-          .main__delivery-box__days__flex__text
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---", class: "new-main__delivery-box__price__address"
+      .new-main__delivery-box__days
+        .new-main__delivery-box__days__flex
+          .new-main__delivery-box__days__flex__text
             %p 発送までの日数
-          .main__delivery-box__days__flex__label
+          .new-main__delivery-box__days__flex__label
             %p 必須
         = f.select :delivery_days, [["選択してください", 0],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
     
 
-    .main__exhibition-box
-      .main__exhibition-box__price
+    .new-main__exhibition-box
+      .new-main__exhibition-box__price
         %p 価格（¥300〜9,999,999）
-      .main__exhibition-box__profit
-        .main__exhibition-box__profit__sale
-          .main__exhibition-box__profit__sale__text
+      .new-main__exhibition-box__profit
+        .new-main__exhibition-box__profit__sale
+          .new-main__exhibition-box__profit__sale__text
             %p 販売価格
-          .main__exhibition-box__profit__sale__label
+          .new-main__exhibition-box__profit__sale__label
             %p 必須
-          .main__exhibition-box__profit__sale__box
+          .new-main__exhibition-box__profit__sale__box
             %span ¥
             = f.number_field :price, placeholder: "0"
 
-        .main__exhibition-box__profit__commission
-          .main__exhibition-box__profit__commission__text
+        .new-main__exhibition-box__profit__commission
+          .new-main__exhibition-box__profit__commission__text
             %p 販売手数料（10%）
-        .main__exhibition-box__profit__hr
-        .main__exhibition-box__profit__total
-          .main__exhibition-box__profit__total__text
+        .new-main__exhibition-box__profit__hr
+        .new-main__exhibition-box__profit__total
+          .new-main__exhibition-box__profit__total__text
             %p 販売利益
-          .main__exhibition-box__profit__total__line
-        .main__exhibition-box__profit__flame
+          .new-main__exhibition-box__profit__total__line
+        .new-main__exhibition-box__profit__flame
           = f.submit '出品する', class: 'submit-btn'
           = f.button '下書きに保存', class: 'btn'
           %a もどる
