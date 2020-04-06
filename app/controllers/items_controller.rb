@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
   end
   
   def index
+    @items = Item.all
+    @images = Images.all
   end
   
   def new  
@@ -37,7 +39,7 @@ class ItemsController < ApplicationController
   end
 
  private
- 
+
   def set_item
     @item = Item.find(params[:id])
   end

@@ -26,5 +26,5 @@ class Item < ApplicationRecord
   enum delivery_charge:{
     donor:          1, #着払い(購入者負担)
     recipient:      2, #送料込み(出品者負担)
-
+  }
 end
