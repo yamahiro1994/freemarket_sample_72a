@@ -80,4 +80,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'pry-rails'
 gem 'font-awesome-sass'
+gem 'active_hash'
 gem 'enum_help' 
+gem 'fog-aws'
+

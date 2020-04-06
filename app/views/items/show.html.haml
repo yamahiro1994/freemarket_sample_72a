@@ -41,11 +41,13 @@
                     カテゴリー
                   %td
                     =link_to "#",class:"kategori" do
+                      #{@item.category.root.name}
+                    %span <br>＞
+                    =link_to "#",class:"kategori" do
+                      #{@item.category.parent.name}
+                    %span <br>＞
+                    =link_to "#",class:"kategori" do
                       #{@item.category.name}
-                    -# =link_to "#",class:"kategori"  do
-                    -#   ジャケット/アウター
-                    -# =link_to "#",class:"kategori"  do
-                    -#   ノーカラージャケット
                 %tr
                   %th
                     ブランド

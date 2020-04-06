@@ -7,9 +7,22 @@ class ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.all
-    @item = Item.find(1)
-    @image = Image.find(@item.id).image
+  end
+  
+  def new  
+    @item = Item.new
+    @item.images.new
+    @address = Prefecture.all
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save!
+      redirect_to root_path
+    else
+      render :new
+    end
+    
   end
 
   def show
@@ -24,7 +37,13 @@ class ItemsController < ApplicationController
   end
 
  private
+ 
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def item_params
+    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image])
+  end
+
 end
