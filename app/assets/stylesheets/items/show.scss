@@ -1,6 +1,18 @@
+@mixin showBtn($color) {
+  display: inline-block;
+  height: 50px;
+  width: 620px;
+  background-color: $color;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
 .show-main{
-  padding: 40px;
-  margin:0 auto;
+  padding: 0 40px;
+  margin: 20px auto;
   font-family:"Source Sane Pro",Helvetica,Arial,"遊ゴシック体","YuGothic","メイリオ","Meiryo",sans-serif;
 
   &__content-right{
@@ -18,7 +30,6 @@
       }
       &__body{
         margin-top: 16px;
-        display: flex;
         .photo-line-ul{
           display: flex;
           position: relative;
@@ -31,7 +42,7 @@
           margin:0 auto;
         }
         .photo-big{
-          object-fit: cover;
+          object-fit: contain;
           height: 346px;
           width: 100%;
           vertical-align: bottom;
@@ -70,6 +81,7 @@
         line-height: 1.5;
         font-size: 18px;
         margin-bottom: 30px;
+        text-align: center;
       }
       &__table{
         margin-bottom: 20px;
@@ -103,11 +115,9 @@
           border:1px solid #dedede;
           font-size:14px;
         }
-
         .kategori{
           text-decoration:none;
           color: #3CCACE;
-          display: block;
         }
         .tiiki{
           text-decoration: none;
@@ -146,6 +156,19 @@
           }
         }
       }
+    }
+    &__btn-box {
+      padding: 24px 40px;
+      background-color: #fff;
+      margin:10px 0;
+      text-align: center; 
+      .btn {
+        @include showBtn(#3CCACE)
+      }
+      .btn--gray {
+        @include showBtn(gray)
+      }
+
     }
     &__comment-box{
       padding: 24px;

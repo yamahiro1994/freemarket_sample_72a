@@ -1,14 +1,16 @@
 @mixin p($number){
   font-size: $number;
-  line-height: 1.4em;
+  line-height: 1.2em;
 }
 
 @mixin l{
   height: 16px;
   color: #fff;
   padding: 0 4px;
-  font-size: 12px;
+  font-size: 10px;
   margin-left: 8px;
+  line-height: 1.8em;
+  border-radius: 2px;
   background-color: rgb(255, 2, 17);
 }
 
@@ -26,21 +28,19 @@
 
 
 .logo-box{
-  height: 128px;
-  line-height: 128px;
+  height: 120px;
+  line-height: 140px;
   text-align: center;
 }
 
 
-.back{
+.new-main{
   width: 660px;
   margin: 0 auto;
-  
-
   &__image-box{
-    height: 295px;
+    height: 305px;
     padding: 40px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #efefef;
     background-color: white;
     &__flex{
       display: flex;
@@ -51,22 +51,48 @@
         @include l;
       }
     }
-    &__limit{
-      margin-top: 16px;
+    &__maximum{
       font-size: 14px;
+      margin: 16px 0;
     }
-    &__new-image{
-      height: 158px;
-      padding: 0 4px;
-      margin-top: 8px;
-      position: relative;
-      &__input{
-        height: 155px;
-        background-color: ghostwhite;
-        &__p{
-          font-size: 12px;
-          padding-top: 90px;
-          text-align: center;
+    &__frame{
+      height: 155px;
+      width:100%;
+      padding: 4px;
+      background-color: rgb(245, 245, 245);
+      align-content: center;
+      border-style: dashed;
+      border-radius: 3px;
+      border-width: 1px;
+      border-color: rgb(204, 204, 204);
+      &__image{
+        img{
+          flex-wrap: wrap;
+          -webkit-box-pack: center;
+          justify-content: center;
+          border-image: initial;
+          cursor: pointer;
+        }
+        &__input{
+          display: none;
+        }
+        &__FileSelect{
+          height: 155px;
+          width:100%;
+          padding: 4px;
+          background-color: rgb(245, 245, 245);
+          border-style: dashed;
+          border-radius: 3px;
+          position: relative;
+          align-content: center;
+          border-width: 1px;
+          border-color: rgb(204, 204, 204);
+          transition: margin-right 2s;
+          flex-wrap: wrap;
+          -webkit-box-pack: center;
+          justify-content: center;
+          border-image: initial;
+          cursor: pointer;
         }
       }
     }
@@ -74,14 +100,14 @@
       margin-top: 16px;
       font-size: 14px;
       color: #ff0021;
+      display: none;
     }
   }
 
-
+    
   &__product-name{
     height: 376px;
     padding: 40px;
-    border-bottom: 1px solid #ccc;
     background-color: white;
     &__flex{
       display: flex;
@@ -94,8 +120,11 @@
       }
     }
     &__title{
-      height: 48px;
+      height: 46px;
+      width: 100%;
       margin-top: 16px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
       input{
         height: 48px;
         width: 100%;
@@ -106,7 +135,7 @@
         background-color:  #fff;
       }
     }
-    &__Introduction{
+    &__introduction{
       height: 221px;
       margin-top: 32px;
       &__frame{
@@ -119,36 +148,34 @@
         &__label{
           @include l;
         }
-   
-        &__content{
-
-          input{
-            height: 126px;
-            width: 100%;
-            font-size: 15px;
-            padding: 0 16px;
-            outline: none;
-            margin-top: 16px;
-          }
-        }
+      &__content{
+        height: 126px;
+        width: 100%;
+        font-size: 15px;
+        padding: 0 16px;
+        outline: none;
+        margin-top: 16px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
       }
-      &__text-limit{
+      }
+      &__math{
         height: 16px;
         margin-top: 16px;
-        &__math{
-          font-size: 10px;
-          float: right;
+        p{
+        font-size: 10px;
+        float: right;
+        color: #ccc;
         }
       }
     }
   }
 
-
+  
   &__details-box{
     height: 365px;
     padding: 40px;
     background-color: white;
-    border-bottom: 1px solid #ccc;
     &__title{
       height: 19px;
       font-size: 14px;
@@ -165,14 +192,6 @@
       }
       &__label{
         @include l;
-      }
-      &__frame{
-        width: 100%;
-        height: 48px;
-        margin-top: 16px;
-        &__form{
-          height: 48px;
-        }
       }
     }
     select{
@@ -192,14 +211,6 @@
         &__label{
           @include l;
         }
-        &__frame{
-          width: 100%;
-          height: 48px;
-          margin-top: 16px;
-          &__form{
-            height: 48px;
-          }
-        }
       }
     }
   }
@@ -209,7 +220,7 @@
     height: 446px;
     padding: 40px;
     background-color: white;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #efefef;
     &__title{
       height: 19px;
       font-size: 14px;
@@ -226,14 +237,6 @@
       }
       &__label{
         @include l;
-      }
-      &__frame{
-        width: 100%;
-        height: 48px;
-        margin-top: 16px;
-        &__form{
-          height: 48px;
-        }
       }
     }
     select{
@@ -252,14 +255,6 @@
         }
         &__label{
           @include l;
-        }
-        &__frame{
-          width: 100%;
-          height: 48px;
-          margin-top: 16px;
-          &__form{
-            height: 48px;
-          }
         }
       }
     }
@@ -290,11 +285,11 @@
     height: 560px;
     padding: 40px;
     background-color: white;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #efefef;
     &__price{
-      margin-bottom: 24px;
       p{
         @include p(14px);
+        margin-bottom: 24px;
       }
     }
     &__profit{
@@ -324,12 +319,13 @@
           }
           input{
             height: 46px;
+            width: 250px;
             border-radius: 4px;
             font-size: 10px;
             outline: none;
             text-align: right;
-            padding: 0 20px;
-            border: 1px solid #ccc;
+            padding: 0 15px;
+            border: 1px solid #efefef;
           }
         }
       }
@@ -343,7 +339,7 @@
         }
       }
       &__hr{
-        border: 1px solid #efefef;;
+        border: 1px solid #efefef;
       }
       &__total{
         height: 46px;
@@ -375,7 +371,7 @@
           padding: 0 24px;
           border-radius: 4px;
           margin-bottom: 24px;
-          background-color: #ccc;
+          background-color: #efefef;
           border-color: transparent;
           color: #222;
         }

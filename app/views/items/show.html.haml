@@ -1,6 +1,4 @@
--# ヘッダ部分テンプレート
 =render "header"
--# ヘッダ部分テンプレート
 .show-main
   .show-main__content-left
   .show-main__content-right
@@ -8,30 +6,28 @@
 
       .show-main__content-top__item-box
         %h2.show-main__content-top__item-box__name
-          product2
+          #{@item.title}
         .show-main__content-top__item-box__body
           %ul.photo-line-ul
             %li.photo-line-li
-              = image_tag '/assets/a004.png', alt: '', class: 'photo-big'
+              = image_tag "#{@images[0].image}", alt: '', class: 'photo-big'
               %ul.photo-line-ul-under
                 %li.photo-line-li-under
-                  = image_tag '/assets/a004.png', alt: '', class: 'photo-small'
+                  = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
                 %li.photo-line-li-under
-                  = image_tag '/assets/a005.png', alt: '', class: 'photo-small'
+                  = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
                 %li.photo-line-li-under
-                  = image_tag '/assets/a006.png', alt: '', class: 'photo-small'
+                  = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
-            ¥20000
+            #{converting_to_jpy(@item.price)}
           .show-main__content-top__item-box__pricebox__detail
             %span
               (税込)
             %span
-              送料込み
+              #{@item.delivery_charge_i18n}
         .show-main__content-top__item-box__item-detail
-          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
-
-
+          #{@item.content}
         .show-main__content-top__item-box__table
           %table
             %tbody
@@ -39,75 +35,83 @@
                 %th
                   出品者
                 %td
-                  hoge
+                  #{@seller.nickname}
                 %tr
                   %th
                     カテゴリー
                   %td
                     =link_to "#",class:"kategori" do
-                      メンズ
-                    =link_to "#",class:"kategori"  do
-                      ジャケット/アウター
-                    =link_to "#",class:"kategori"  do
-                      ノーカラージャケット
+                      #{@item.category.root.name}
+                    %span <br>＞
+                    =link_to "#",class:"kategori" do
+                      #{@item.category.parent.name}
+                    %span <br>＞
+                    =link_to "#",class:"kategori" do
+                      #{@item.category.name}
+                -# %tr
+                -#   %th
+                -#     ブランド
+                -#   %td
+                -#     Amazon
                 %tr
                   %th
-                    ブランド
+                    発送方法
                   %td
-                    ユニクロ
-                %tr
-                  %th
-                    商品サイズ
-                  %td
-                    ｓ
+                    #{@item.delivery_method_i18n}
                 %tr
                   %th
                     商品の状態
                   %td
-                    新品/未使用
+                    #{@item.status_i18n}
                 %tr
                   %th
                     配送料の負担
                   %td
-                    着払い（購入者負担）
+                    #{@item.delivery_charge_i18n}
+                    = @item.delivery_charge == 'recipient' ? '(出品者負担)': '(購入者負担)'
                 %tr
                   %th
                     配送元の地域
                   %td
                     =link_to "#",class:"tiiki" do
-                      青森
+                      #{@item.prefecture_id}
                 %tr
                   %th
                     配送日の目安
                   %td
-                    1-2日で発送
+                    #{@item.delivery_days_i18n}
         .show-main__content-top__item-box__area
           %ul
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
               %li#linke-btn.show-main__content-top__item-box__area__btn-left__link
-                %icon.fa.fa-star
-                お気に入り 0
+                %icon.fa.fa-star 
+                お気に入り 0                
           %ul.show-main__content-top__item-box__area__optional
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-right" do
               %li.show-main__content-top__item-box__area__optional__btn-right__link
-                %icon.fa.fa-flag              
+                %icon.fa.fa-flag 
                 不適切な商品の通報
 
+      .show-main__content-top__btn-box 
+        - if user_signed_in? && current_user.id == @item.seller_id
+          = link_to '商品の編集', edit_item_path(@item), class:'show-edit btn'
+          %br or
+          = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
+        - else
+          = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
-        =form_with(class:"show-main__content-top__comment-box__coments__form") do
-          %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
-          %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
-          %textarea.show-main__content-top__comment-box__coments__textarea{reurierd:"",name:"comment"}
-          %P.show-main__content-top__comment-box__coments__p
+        =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
+          -# %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
+          -# %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
+          = f.text_area :comment, class:'show-main__content-top__comment-box__coments__textarea'
+          .show-main__content-top__comment-box__coments__p
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
             不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %br
-          %button.show-main__content-top__comment-box__coments__button{name:"button",type:"submit"}
-            %icon.fa.fa-comment
-            コメント
-      
+          = button_tag type: 'submit', class: 'show-main__content-top__comment-box__coments__button' do
+            %i.fas.fa-comment 
+            コメントする
 
     %ul.show-main__links
       %li
