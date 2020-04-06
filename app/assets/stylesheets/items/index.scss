@@ -221,14 +221,19 @@
       max-width: 1040px;
       &__content{
         width: 250px;
-        border: solid 1px;
         margin: 28px auto;
+        background-color: #ffffff;
         img{
           height: 150px;
+          width: 250px;
+          max-width: 100%;
         }
         &__body{
           &--name{}
           &--text{}
+          p{
+            font-size: 12px;
+          }
         }
       }
     }

@@ -5,8 +5,9 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
-    @item = Item.find(1)
-    @image = Image.find(@item.id).image
+    @images = Image.all
+    # @item = Item.find(params[image:][:id])
+    # @image = Image.find_by(@items_id).image
   end
 
   def show
