@@ -1,5 +1,4 @@
-.user-credit-link-header
-  部分テンプレートをしようする。
+=render "header"
 .user-credit-link
   .user-credit-link-page.clearfix
     -# 全体
@@ -13,11 +12,10 @@
             クレジットカード一覧
         .user-credit-link-page__main__box__link
           .user-credit-link-page__main__box__link__btn   
-            =link_to"#",class:"user-credit-link-page__main__box__link__btn__red" do
+            =link_to t_user_credit_detail_items_path,class:"user-credit-link-page__main__box__link__btn__red" do
               =icon('far','address-card',class: 'user-credit-link-page__main__box__link__btn__red__icon')
-              クレジットカードを追加する
+              クレジットカードを追加する(リンクあり)
 
-    =render "t-user-show-sidebar"
+    =render "t_user_show_sidebar"
 
-.user-credit-link-footer
-  部分テンプレートを使用する。
+=render "footer"

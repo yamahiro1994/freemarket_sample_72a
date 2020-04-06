@@ -5,14 +5,14 @@
       個人情報設定
     %ul.user-show-page__side__box__setting-list
       %li
-        =link_to"#",class:"user-show-page__side__box__setting-list__item" do
-          プロフィール
+        =link_to t_user_show_items_path ,class:"user-show-page__side__box__setting-list__item" do
+          プロフィール(リンクあり)
       %li
         =link_to"#",class:"user-show-page__side__box__setting-list__item" do
           発送元•お届け先住所変更
       %li
-        =link_to"#",class:"user-show-page__side__box__setting-list__item" do
-          支払い方法   
+        =link_to t_user_credit_link_items_path ,class:"user-show-page__side__box__setting-list__item" do
+          支払い方法（リンクあり）  
       %li
         =link_to"#",class:"user-show-page__side__box__setting-list__item" do
           メール/パスワード
@@ -23,5 +23,7 @@
         =link_to"#",class:"user-show-page__side__box__setting-list__item" do
           電話番号確認
       %li
-        =link_to"#",class:"user-show-page__side__box__setting-list__item" do
-          ログアウト
+        =link_to t_user_logout_items_path ,class:"user-show-page__side__box__setting-list__item" do
+          ログアウト（リンクあり）
+
+   

@@ -1,5 +1,4 @@
-.user-show-header
-  部分テンプレートをしようする。
+=render "header"
 .user-show
   .user-show-page.clearfix
     -# 全体
@@ -16,7 +15,6 @@
             -# ユーザーの名前
             ピエール
           .user-show-page__main__icon__link__situation
-            -# 評価
             %div
               評価
               %span.user-show-page__main__icon__link__situation__good
@@ -31,7 +29,5 @@
         .user-show-page__main__todo__under-tabs
           -# 追加機能用
 
-    =render "t-user-show-sidebar"
-
-.user-show-footer
-  部分テンプレートを使用する。
+    =render "t_user_show_sidebar"
+=render "footer"

@@ -5,15 +5,18 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
   }
   
-  # root 'items#index'
-  root 'items#t-user-credit-detail'
-  # root 'items#t-user-credit-link'
-  # root 'items#t-user-logout'
-  # root 'items#t-user-show'
+  root 'items#index'
+  # root 'items#t_user_credit_link'
+
   # 商品詳細画面確認用
   resources :items do
     collection do
       get 'buy'
+      # のちのちmember
+      get 't_user_credit_detail'
+      get 't_user_credit_link'
+      get 't_user_logout'
+      get 't_user_show'
     end
   end
 end

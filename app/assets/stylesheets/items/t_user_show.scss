@@ -1,5 +1,4 @@
 .user-show-header{
-  // 部分テンプレートを使用する
   width: 100%;
   height: 100px;
   background-color: red;
@@ -69,14 +68,12 @@
           .good-sukima{
             margin: 0 0 0 16px;
           }
-
         }
       }
     }
     &__todo{
       &__top-tabs{
         width: 100%;
-        // height: 10vh;
         background-color: white;
         text-align: center;
         line-height: 10vh;
@@ -85,18 +82,15 @@
       &__under-tabs{
         display: block;
         width: 100%;
-        // height: 59.5vh;
         background-color:ghostwhite;
         font-size: 14px;
       }
     }
   }
-
   &__side{
     // サイドページ
     float: left;
     width: 280px;
-    // height: 100vh;
     &__box{
       &__setting-top{
         margin:30px 0 0 30px;
@@ -130,7 +124,6 @@
 }
 
 .user-show-footer{
-  // 部分テンプレートを使用する
   width: 100%;
   height: 100px;
   background-color: red;

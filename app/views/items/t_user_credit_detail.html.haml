@@ -1,5 +1,4 @@
-.user-credit-detail-header
-  部分テンプレートをしようする。
+=render "header"
 .user-credit-detail
   .user-credit-detail-page.clearfix
     -# 全体
@@ -8,9 +7,7 @@
       %h2.user-credit-detail-page__main__top
         クレジットカード
       = form_with(class:"user-credit-detail-page__main__form") do |f|
-        -# 全体
         .user-credit-detail-page__main__form__list
-          -# 全体
           .user-credit-detail-page__main__form__list__card-box
             -# カードボックス
             .user-credit-detail-page__main__form__list__card-box__tag-name
@@ -20,19 +17,19 @@
             %input{type:"text",class:"user-credit-detail-page__main__form__list__card-box__input",placeholder:"半角数字のみ"}
             %ul.user-credit-detail-page__main__form__list__card-box__ul
               %li
-                = image_tag '/assets/credit-visa.svg', alt: '', class: ''
+                = image_tag 'credit-visa.svg', alt: '', class: ''
               %li
-                = image_tag '/assets/credit-master-card', alt: '', class: ''              
+                = image_tag 'credit-master-card', alt: '', class: ''              
               %li
-                = image_tag '/assets/credit-saison-card', alt: '', class: ''
+                = image_tag 'credit-saison-card', alt: '', class: ''
               %li
-                = image_tag '/assets/credit-jcb.svg', alt: '', class: ''
+                = image_tag 'credit-jcb.svg', alt: '', class: ''
               %li
-                = image_tag '/assets/credit-camerican_express.svg', alt: '', class: ''
+                = image_tag 'credit-camerican_express.svg', alt: '', class: ''
               %li
-                = image_tag '/assets/credit-dinersclub.svg', alt: '', class: ''
+                = image_tag 'credit-dinersclub.svg', alt: '', class: ''
               %li
-                = image_tag '/assets/credit-discover.svg', alt: '', class: ''
+                = image_tag 'credit-discover.svg', alt: '', class: ''
           .user-credit-detail-page__main__form__list__expiration-date
             -# 有効期限
             .user-credit-detail-page__main__form__list__expiration-date__tag-name
@@ -66,9 +63,7 @@
             .user-credit-detail-page__main__form__list__link__btn   
               =link_to"#",class:"user-credit-detail-page__main__form__list__link__btn__red" do
                 %icon.far.fa-address-card.user-credit-detail-page__main__form__list__link__btn__red__icon
-                クレジットカードを追加する
-
-
-    =render "t-user-show-sidebar"
-.user-credit-detail-footer
-  部分テンプレートを使用する。
+                追加する
+                
+    =render "t_user_show_sidebar"
+=render "footer"
