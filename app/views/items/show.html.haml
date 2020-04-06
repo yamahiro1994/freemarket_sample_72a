@@ -48,11 +48,11 @@
                     %span <br>＞
                     =link_to "#",class:"kategori" do
                       #{@item.category.name}
-                %tr
-                  %th
-                    ブランド
-                  %td
-                    Amazon
+                -# %tr
+                -#   %th
+                -#     ブランド
+                -#   %td
+                -#     Amazon
                 %tr
                   %th
                     発送方法
@@ -74,7 +74,7 @@
                     配送元の地域
                   %td
                     =link_to "#",class:"tiiki" do
-                      ペンシルバニア州
+                      #{@item.prefecture_id}
                 %tr
                   %th
                     配送日の目安

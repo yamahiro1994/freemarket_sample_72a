@@ -42,7 +42,7 @@
           margin:0 auto;
         }
         .photo-big{
-          object-fit: cover;
+          object-fit: contain;
           height: 346px;
           width: 100%;
           vertical-align: bottom;
