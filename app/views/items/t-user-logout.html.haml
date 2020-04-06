@@ -1,0 +1,18 @@
+.user-logout-header
+  部分テンプレートをしようする。
+.user-logout
+  .user-logout-page.clearfix
+    -# 全体
+    .user-logout-page__main
+      -# メインページ
+      .user-logout-page__main__box
+
+        .user-logout-page__main__box__link
+          .user-logout-page__main__box__link__btn   
+            =link_to"ログアウトの処理",class:"user-logout-page__main__box__link__btn__red" do
+              ログアウト
+
+    =render "t-user-show-sidebar"
+
+.user-logout-footer
+  部分テンプレートを使用する。
