@@ -43,7 +43,6 @@
                 -# =icon('far','address-card',class: 'user-credit-detail-page__main__form__list__expiration-date__days__month-box___icon')
                 %span.user-credit-detail-page__main__form__list__expiration-date__days__month-box__letter
                   月
-
               .user-credit-detail-page__main__form__list__expiration-date__days__year-box
                 -# 年の選択
                 = f.select"", [["20", 20],["21", 21],["22",22],["23", 23],["24", 24],["25",25],["26",26],["27",27],["28",28],["29",29],["30",30]],{}, { class: "user-credit-detail-page__main__form__list__expiration-date__days__year-box__years" }
@@ -64,6 +63,6 @@
               =link_to"#",class:"user-credit-detail-page__main__form__list__link__btn__red" do
                 %icon.far.fa-address-card.user-credit-detail-page__main__form__list__link__btn__red__icon
                 追加する
-                
+
     =render "t_user_show_sidebar"
 =render "footer"
