@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.all
+    @items = Item.all.order(id: :desc)
     @images = Image.all
     # @item = Item.find(params[image:][:id])
     # @image = Image.find_by(@items_id).image
