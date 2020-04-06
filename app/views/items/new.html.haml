@@ -12,10 +12,10 @@
         %p 最大10枚までアップロードできます
       .new-main__image-box__frame
         .new-main__image-box__image
-          = f.label :image, class:"new-main__image-box__new-image__icon"
-          = image_tag("icon_camera.png", width:"25")
+          %label
           = f.fields_for :images, class: "new-main__image-box__image" do |i|
             = i.file_field :image, class: "new-main__image-box__image__input"
+            = image_tag("icon_camera.png", width:"25")
             .new-main__image-box__imagebox__FileSelect
       .new-main__image-box__errer
         %p 画像がありません
@@ -33,7 +33,7 @@
             %p 商品の説明
           .new-main__product-name__introduction__frame__label
             %p 必須
-        = f.text_area :content, class: "new-main__product-name__introduction__frame__content", placeholder: '商品の説明 (1000文字以内)(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+        = f.text_area :content, class: "new-main__product-name__introduction__frame__content", placeholder: '商品の説明 (1000文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
         .new-main__product-name__introduction__math
           %p 0/1000
 
@@ -46,7 +46,8 @@
           %p カテゴリー
         .new-main__details-box__flex__label
           %p 必須   
-      = f.select :category_id, [["選択してください", 0],["レディース", 2],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]] 
+      = f.select :category_id, [["選択してください", 0],["レディース", 3]] 
+      -# カテゴリ機能は【サーバサイド】カテゴリ機能にて実装する
       .new-main__details-box__status
         .new-main__details-box__status__flex
           .new-main__details-box__status__flex__text

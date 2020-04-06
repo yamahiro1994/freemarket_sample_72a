@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2020_04_06_093847) do
     t.string "title", null: false
     t.text "content"
     t.integer "price", null: false
-    t.integer "status", null: false
-    t.integer "delivery_method", null: false
+    t.string "status", null: false
+    t.integer "delivery_method"
     t.integer "prefecture_id", null: false
     t.integer "delivery_days", null: false
     t.integer "delivery_charge", null: false
