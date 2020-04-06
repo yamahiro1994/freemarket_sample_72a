@@ -1,0 +1,116 @@
+.user-credit-link-header{
+  // 部分テンプレートを使用する
+  width: 100%;
+  height: 100px;
+  background-color: red;
+  font-size: 30px;
+  text-align: center;
+}
+
+.user-credit-link{
+  padding: 40px;
+}
+
+.user-credit-link-page{
+    margin: 0 auto ;
+    width:1020px;
+  &__main{
+    // メインページ
+    width: 700px;
+    float: right;
+    background-color: #fff;
+    &__top{
+      font-size: 24px;
+      padding: 8px 24px;
+      border-bottom: 1px solid #f5f5f5;
+      text-align: center;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+    &__box{
+      padding:64px;
+      border-top:1px solid #f5f5f5;
+      &__title{
+        max-width: 320px;
+        margin: 0 auto;
+        &__text{
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+      &__link{
+        padding:24px 0;
+        border-bottom:1px solid #eee;
+        &__btn{
+          max-width:320px;
+          margin: 0 auto;
+          &__red{
+            background: #ea352d;
+            border:1px solid #ea352d;
+            color:#fff;
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            cursor:pointer;
+            text-align: center;
+            text-decoration: none;
+            line-height: 48px;
+            font-size: 14px;
+            &__icon{
+              font-family: 'icon-font';
+              padding-right: 10px;
+              font-size: 1.3em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__side{
+    // サイドページ
+    float: left;
+    width: 280px;
+    // height: 100vh;
+    &__box{
+      &__setting-top{
+        margin:30px 0 0 30px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+      &__setting-list{
+        padding: 10px;
+        li{
+          margin: 5px 0;
+        }
+        &__item{
+          display: block;
+          width: 100%;
+          height: 60px;
+          background-color: white;
+          text-decoration: none;
+          color: black;
+          font-size: 14px;
+          padding-left: 10px;
+          line-height: 60px;
+        }
+      }
+    }
+  }
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.user-credit-link-footer{
+  // 部分テンプレートを使用する
+  width: 100%;
+  height: 100px;
+  background-color: red;
+  font-size: 30px;
+  text-align: center;
+}
