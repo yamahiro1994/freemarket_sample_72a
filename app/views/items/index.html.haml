@@ -65,21 +65,13 @@
     .main__product-list--head 商品一覧
     .main__product-list--title 投稿商品
     .main__product-list__contents
-      .main__product-list__contents__content
-        = link_to image_tag("#{@image}", class:'buy-container__item__box__img', alt: "test"), item_path(@item)
-        .main__product-list__contents__content__body
-          %h.main__product-list__contents__content__body--name #{@item.title}
-          %p.main__product-list__contents__content__body--text #{converting_to_jpy(@item.price)}<br>（税込）
-      .main__product-list__contents__content
-        %img
-        .main__product-list__contents__content__body
-          %h.main__product-list__contents__content__body--name 題名
-          %p.main__product-list__contents__content__body--text 本文1<br>本文2
-      .main__product-list__contents__content
-        %img
-        .main__product-list__contents__content__body
-          %h.main__product-list__contents__content__body--name 題名
-          %p.main__product-list__contents__content__body--text 本文1<br>本文2
+      - @items.each do |i|
+        .main__product-list__contents__content
+          = link_to image_tag(@images.find_by(item_id:[i.id]).image, class:"img" ), item_path(i)
+          .main__product-list__contents__content__body
+            .main__product-list__contents__content__body--name #{i.title}
+            .main__product-list__contents__content__body--text #{i.price} 円
+            %p.tax (税込)
 
 .app-banner
   .app-banner__box

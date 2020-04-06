@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
-    @images = Images.all
+    @images = Image.all
   end
   
   def new  
@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-    
   end
 
   def show
