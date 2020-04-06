@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except: [:index, :new, :create]
 
   def buy
+    @image = Image.find(@item.id).image
+    @seller = User.find(@item.seller_id)
   end
   
   def index
@@ -11,10 +14,17 @@ class ItemsController < ApplicationController
 
   def show
     @items = Item.all
-    @item = Item.find(params[:id])
     @images = @item.images
     @image = Image.find(@item.id).image
     @seller = User.find(@item.seller_id)
   end
 
+  def destroy
+    @item.destroy
+  end
+
+ private
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end

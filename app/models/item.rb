@@ -15,60 +15,17 @@ class Item < ApplicationRecord
   }
 
   enum delivery_method:{
-    '---':          0, #---
     large:          1, #大型配送
     normal:         2, #中型配送
     small:          3, #小型配送
   }
-
-  enum delivery_origin:{
-    '---':             0,
-    hokkaido:          1,
-    aomori:            2,
-    iwate:             3,
-    miyagi:            4,
-    akita:             5,
-    yamagata:          6,
-    fukushima:         7,
-    ibaragi:           8,
-    tochigi:           9,
-    gunma:             10,
-    saitama:           11,
-    chiba:             12,
-    tokyo:             13,
-    kanagawa:          14,
-    niigata:           15,
-    toyama:            16,
-    ishikawa:          17,
-    fukui:             18,
-    yamanashi:         19,
-    naganao:           20,
-    gifu:              21,
-    shizuoka:          22,
-    aichi:             23,
-    mie:               24,
-    shiga:             25,
-    kyoto:             26,
-    osaka:             27,
-    hyogo:             28,
-    nara:              29,
-    wakayama:          30,
-    tottori:           31,
-    shimane:           32,
-    okayama:           33,
-    hiroshima:         34,
-    yamaguchi:         35,
-    tokushima:         36,
-    kagawa:            37,
-    ehime:             38,
-    kochi:             39,
-    fukuoka:           40,
-    saga:              41,
-    nagasaki:          42,
-    kumamoto:          43,
-    ooita:             44,
-    miyazaki:          45,
-    kagoshima:         46,
-    okinawa:           47,
+  enum delivery_days:{
+    fast:          1, #1~2日で発送
+    medium:        2, #3~4日で発送
+    slow:          3, #5~7日で発送
+  }
+  enum delivery_charge:{
+    donor:          1, #着払い(購入者負担)
+    recipient:      2, #送料込み(出品者負担)
   }
 end

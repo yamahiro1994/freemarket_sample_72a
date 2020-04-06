@@ -1,5 +1,4 @@
-.buy-header
-  = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "buy-header__logo"), '#'
+=render "header"
 .show-main
   .show-main__content-left
   .show-main__content-right
@@ -11,7 +10,7 @@
         .show-main__content-top__item-box__body
           %ul.photo-line-ul
             %li.photo-line-li
-              = image_tag "#{@image}", alt: '', class: 'photo-big'
+              = image_tag "#{@images[0].image}", alt: '', class: 'photo-big'
               %ul.photo-line-ul-under
                 %li.photo-line-li-under
                   = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
@@ -26,7 +25,7 @@
             %span
               (税込)
             %span
-              送料込み
+              #{@item.delivery_charge_i18n}
         .show-main__content-top__item-box__item-detail
           #{@item.content}
         .show-main__content-top__item-box__table
@@ -56,55 +55,61 @@
                   %th
                     発送方法
                   %td
-                    らくらくフリマ便
+                    #{@item.delivery_method_i18n}
                 %tr
                   %th
                     商品の状態
                   %td
-                    新品/未使用
+                    #{@item.status_i18n}
                 %tr
                   %th
                     配送料の負担
                   %td
-                    着払い（購入者負担）
+                    #{@item.delivery_charge_i18n}
+                    = @item.delivery_charge == 'recipient' ? '(出品者負担)': '(購入者負担)'
                 %tr
                   %th
                     配送元の地域
                   %td
                     =link_to "#",class:"tiiki" do
-                      オハイオ州
+                      ペンシルバニア州
                 %tr
                   %th
                     配送日の目安
                   %td
-                    1-2日で発送
+                    #{@item.delivery_days_i18n}
         .show-main__content-top__item-box__area
           %ul
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
               %li#linke-btn.show-main__content-top__item-box__area__btn-left__link
-                %icon.fa.fa-star
-                お気に入り 0
+                %icon.fa.fa-star 
+                お気に入り 0                
           %ul.show-main__content-top__item-box__area__optional
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-right" do
               %li.show-main__content-top__item-box__area__optional__btn-right__link
-                %icon.fa.fa-flag              
+                %icon.fa.fa-flag 
                 不適切な商品の通報
 
+      .show-main__content-top__btn-box 
+        - if user_signed_in? && current_user.id == @item.seller_id
+          = link_to '商品の編集', edit_item_path(@item), class:'show-edit btn'
+          %br or
+          = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
+        - else
+          = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
-        =form_with(class:"show-main__content-top__comment-box__coments__form") do
-          %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
-          %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
-          %textarea.show-main__content-top__comment-box__coments__textarea{reurierd:"",name:"comment"}
-          %P.show-main__content-top__comment-box__coments__p
+        =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
+          -# %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
+          -# %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
+          = f.text_area :comment, class:'show-main__content-top__comment-box__coments__textarea'
+          .show-main__content-top__comment-box__coments__p
             相手のことを考え丁寧なコメントを心がけましょう。
             %br
             不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %br
-          %button.show-main__content-top__comment-box__coments__button{name:"button",type:"submit"}
-            %icon.fa.fa-comment
-            コメント
-      
+          = button_tag type: 'submit', class: 'show-main__content-top__comment-box__coments__button' do
+            %i.fas.fa-comment 
+            コメントする
 
     %ul.show-main__links
       %li
