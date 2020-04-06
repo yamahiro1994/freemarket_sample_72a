@@ -204,15 +204,17 @@
     }
   }
   &__product-list{
-    text-align: center;
     &--head{
       font-size: 28px;
       font-weight: bold;
+      text-align: center;
     }
     &--title{
       font-size: 24px;
       font-weight: bold;
       color: #3CCACE;
+      text-align: center;
+
     }
     &__contents{
       display: flex;
@@ -220,19 +222,24 @@
       width: 100%;
       max-width: 1040px;
       &__content{
-        width: 250px;
+        width: 200px;
         margin: 28px auto;
         background-color: #ffffff;
         img{
           height: 150px;
-          width: 250px;
+          width: 200px;
           max-width: 100%;
         }
         &__body{
+          margin: 10px;
           &--name{}
-          &--text{}
-          p{
-            font-size: 12px;
+          &--text{
+            span{
+              font-size: 12px;
+            }
+          }
+          &--favorite{
+            text-align: right;
           }
         }
       }
