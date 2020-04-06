@@ -15,7 +15,7 @@
           = f.label :image, class:"main__image-box__new-image__icon"
           = image_tag("icon_camera.png", width:"25")
           = f.fields_for :images, class: "main__image-box__image" do |i|
-            = i.file_field :iamge, class: "main__image-box__image__input"
+            = i.file_field :image, class: "main__image-box__image__input"
             .main__image-box__imagebox__FileSelect
       .main__image-box__errer
         %p 画像がありません
@@ -46,7 +46,7 @@
           %p カテゴリー
         .main__details-box__flex__label
           %p 必須   
-      = f.select :category_id, [["選択してください", 1],["レディース", 1],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]] 
+      = f.select :category_id, [["選択してください", 0],["レディース", 2],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]] 
       .main__details-box__status
         .main__details-box__status__flex
           .main__details-box__status__flex__text
@@ -55,15 +55,9 @@
             %p 必須
           .main__details-box__status__flex__flame
             .main__details-box__status__flex__flame__form
-        = f.select :status, [["選択してください", 1],["新品", 1],["未使用に近い", 2],["傷物",3],["状態が悪い",4]]
+        = f.select :status, [["選択してください", :'---'],["新品、未使用", :unused],["未使用に近い", :nearly_unused],["目立った傷や汚れなし", :not_injured],["やや傷や汚れあり", :bit_injured],["傷や汚れあり", :injured],["全体的に状態が悪い", :bad]]
         
-        = f.label "delivery_method発送方法"
-        = f.select :delivery_method, [["選択してください", 1],["レディース", 1],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]]
-        
-        = f.label "seller_id出品者id" 
-        = f.select :seller_id, [["選択してください", 1],["レディース", 1],["メンズ", 2],["ベビー・キッズ",3],["インテリア・住まい・小物",4]] 
-      
-    -# 配送
+
     .main__delivery-box
       .main__delivery-box__title
         %p 配送について
@@ -72,21 +66,21 @@
           %p 配送料の負担
         .main__delivery-box__flex__label
           %p 必須
-      = f.select :delivery_charge, [["選択してください", 1],["送料込み", 1],["着払い", 2]]
+      = f.select :delivery_charge, [["選択してください", 0],["送料込み", 1],["着払い", 2]]
       .main__delivery-box__price
         .main__delivery-box__price__flex
           .main__delivery-box__price__flex__text
             %p 発送元の地域
           .main__delivery-box__price__flex__label
             %p 必須
-        = f.select :delivery_origin, [["選択してください", 1],["北海道", 1],["青森", 2],["秋田",3]]
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---", class: "main__delivery-box__price__address"
       .main__delivery-box__days
         .main__delivery-box__days__flex
           .main__delivery-box__days__flex__text
             %p 発送までの日数
           .main__delivery-box__days__flex__label
             %p 必須
-        = f.select :delivery_days, [["選択してください", 1],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
+        = f.select :delivery_days, [["選択してください", 0],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
     
 
     .main__exhibition-box
