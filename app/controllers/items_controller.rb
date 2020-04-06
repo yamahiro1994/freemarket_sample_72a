@@ -1,9 +1,14 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except: [:index, :new, :create]
 
   def buy
+    @image = @item.images[0].image
+    @seller = User.find(@item.seller_id)
   end
   
   def index
+    @items = Item.all
+    @images = Image.all
   end
   
   def new  
@@ -20,18 +25,20 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-    
   end
 
   def show
     @items = Item.all
-    @item = Item.find(params[:id])
     @images = @item.images
-    @image = Image.find(@item.id).image
+    @image = @images[0].image
     @seller = User.find(@item.seller_id)
   end
 
-  private
+ private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image])

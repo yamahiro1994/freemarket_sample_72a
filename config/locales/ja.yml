@@ -1,3 +1,4 @@
+---
 ja:
   enums:
     item:
@@ -9,3 +10,15 @@ ja:
         bit_injured: "やや傷や汚れあり"
         injured: '傷や汚れあり'
         bad: '全体的に状態が悪い'
+      delivery_method:
+        '---': "---"
+        large:          "大型らくらくフリマ便"
+        normal:         "中型らくらくフリマ便"
+        small:          "小型らくらくフリマ便"
+      delivery_days:
+        fast:          "1~2日で発送"
+        medium:        "3~4日で発送"
+        slow:          "5~7日で発送"
+      delivery_charge:
+        donor:          "着払い"
+        recipient:        "送料込み"
