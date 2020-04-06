@@ -13,7 +13,6 @@
       .new-main__image-box__frame
         .new-main__image-box__image
           %label
-      
           = f.fields_for :images, class: "new-main__image-box__image" do |i|
             = i.file_field :image, class: "new-main__image-box__image__input"
             = image_tag("icon_camera.png", width:"25")
