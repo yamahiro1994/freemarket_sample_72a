@@ -64,12 +64,23 @@
     }
     &__lower-box{
       @include displayflex(space-between);
-      font-size: 13px;
-      margin-top: 10px;
-      &__right-list__btn{
-        color: black;
+      font-size: 14px;
+      margin-top: 14px;
+      
+      .left-list{
+
+        &__btn{
+          color: black;
+        }
       }
-      // &__right-list{}
+      .right-list{
+
+        &__btn{
+          color: black;
+        }
+      }
+      // &__right-list{} 
+      // ログイン、新規登録、マイページ、トップページのクラスを全て””
     }
   }
 }
