@@ -1,0 +1,102 @@
+@mixin form_padding{
+  padding: 40px 70px;
+}
+@mixin btn{
+  display: inline-block;
+  font-size: 14px;
+  width: 100%;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  letter-spacing: 4px;
+  text-decoration: none;
+  text-align: center;
+
+}
+$color-background: #eeeeee;
+.login{
+  width: 100vw;
+  font-size: 14px;
+  &__header{
+    height: 130px;
+    background-color: $color-background;
+    line-height: 130px;
+    padding: 20px 500px;
+    text-align: center;
+    .logo{
+    }
+  }
+  &__main{
+    background-color: $color-background;
+
+    .login_board{
+      margin: 0 480px;
+      background-color: rgb(245, 245, 245);
+
+      .no_account{
+        @include form_padding;
+        border-bottom: solid 3px $color-background;
+        .guidance_registrations{
+          text-align: center;
+        }
+        .create_account_btn{
+          margin-top: 10px;
+          @include btn;
+          background-color: #0099e8;
+
+        }
+      }
+      .sns_api_login{
+        @include form_padding;
+
+      
+        .facebook{
+          @include btn;
+          background-color: #385185;
+        }
+        .google{
+          @include btn;
+          background-color: darkred;
+          margin-top: 18px;
+          border: solid 1px #333333;
+        }
+      }
+      .inner{
+        padding: 25px 65px 30px;
+        .input_email{
+          @include info-form; 
+          height: 45px;
+        }
+
+        .input_password{
+          @include info-form;
+          height: 45px;
+          margin-top: 25px;
+        }
+
+        .recaptcha_box{
+          height: 80px;
+          margin: 18px 20px;
+        }
+        .login_btn{
+          display: inline-block;
+          margin-bottom: 25px;
+          font-size: 14px;
+          width: 100%;
+          background-color: #ea352d;
+          color: #fff;
+          height: 50px;
+          line-height: 50px;
+          letter-spacing: 4px;
+          text-decoration: none;
+          text-align: center;
+  
+        }
+        .password_forgot{
+          text-decoration: none;
+          color: #0099e8;
+        }
+      }
+    }
+  }
+}

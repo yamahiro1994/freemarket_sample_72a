@@ -7,19 +7,19 @@
       購入内容の確認
     .buy-container__item
       .buy-container__item__box
-        = image_tag 'https://image.itmedia.co.jp/nl/articles/1712/12/l_kutsu_171212cardboard02.jpg', class:'buy-container__item__box__img', size: "60x80", alt: "test"
+        = image_tag "#{@image}", class:'buy-container__item__box__img', size: "60x80", alt: "test"
         .buy-container__item__box__detail
           .buy-container__item__box__detail__name
-            Amazon箱
+            #{@item.title}
           .buy-container__item__box__detail__price
-            ¥5,000 (税込) 送料込み
+            #{converting_to_jpy(@item.price)} (税込) #{@item.delivery_charge_i18n}
     .buy-container__form-box
       = form_with(id: "buy-form") do |f|
         .buy-container__form-box__price
           .buy-container__form-box__price__left
             支払い金額
           .buy-container__form-box__price__right
-            ¥5,000
+            #{converting_to_jpy(@item.price)}
         .buy-container__form-box__payment
           .buy-container__form-box__payment__method
             .buy-container__form-box__payment__method__left
@@ -37,9 +37,9 @@
               配送先
             = link_to('変更', '#', {class: 'buy-container__form-box__delivery__method__right'})
           .buy-container__form-box__delivery__user-info
-            〒postal-code
-            %br adress
-            user-name
+            〒#{@seller.postal_code}
+            %br #{@seller.address}
+            #{@seller.nickname}
         = f.submit "購入する", class: "buy-btn"
 = render "footer"
 

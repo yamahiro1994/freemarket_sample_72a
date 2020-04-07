@@ -14,7 +14,7 @@
     %ul.main__introduction__list
       %li.main__introduction__list__box
         .main__introduction__list__box__pic
-          %img{ src: "/assets/pict-reason-01.jpg" }
+          = image_tag asset_path 'pict-reason-01.jpg'
           %p.main__introduction__list__box__pic--num 1
         %h.main__introduction__list__box--word
           %span 3分
@@ -22,7 +22,7 @@
         %p.main__introduction__list__box--text スマホで入力するだけで<br>簡単に出品できる！
       %li.main__introduction__list__box
         .main__introduction__list__box__pic
-          %img{ src: "/assets/pict-reason-02.jpg" }
+          = image_tag asset_path 'pict-reason-02.jpg'
           %p.main__introduction__list__box__pic--num 2
         %h.main__introduction__list__box--word
           %span シンプル
@@ -30,7 +30,7 @@
         %p.main__introduction__list__box--text めんどくさい入力は必要なく、<br>検索も購入もスムーズ！
       %li.main__introduction__list__box
         .main__introduction__list__box__pic
-          %img{ src: "/assets/pict-reason-03.jpg" }
+          = image_tag asset_path 'pict-reason-03.jpg'
           %p.main__introduction__list__box__pic--num 3
         %h.main__introduction__list__box--word
           手数料
@@ -48,17 +48,17 @@
     %ul.main__feature__list
       %li.main__feature__list__box
         .main__feature__list__box__pic
-          %img{ src: "/assets/icon-01.png" }
+          = image_tag asset_path 'icon-01.png'
         %h.main__feature__list__box--title 簡単に売り買いできる
         %p.main__feature__list__box--text スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       %li.main__feature__list__box
         .main__feature__list__box__pic
-          %img{ src: "/assets/icon-03.png" }
+          = image_tag asset_path 'icon-03.png'
         %h.main__feature__list__box--title 売上金は即日振込みに対応
         %p.main__feature__list__box--text 午前９時までに振込を以来いただければ、翌日に指定の口座に入金致します！
       %li.main__feature__list__box
         .main__feature__list__box__pic
-          %img{ src: "/assets/icon-04.png" }
+          = image_tag asset_path 'icon-04.png'
         %h.main__feature__list__box--title 様々な支払いに対応
         %p.main__feature__list__box--text お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
   .main__product-list
@@ -78,13 +78,8 @@
               %i.fas.fa-star
               0
 
-.app-banner
-  .app-banner__box
-    %p.app-banner__box--title だれでもかんたん、人生を変えるフリマアプリ
-    %p.app-banner__box--text 今すぐ無料ダウンロード!
-    .link-box
-      = link_to '', "#", class: "app-link", style: "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2012-06-28&kind=iossoftware&bubble=ios_apps)"
-      = link_to image_tag('https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png', width: '155'), "#"
+-# appバナー部分テンプレート
+=render "appBanner"
 -# フッタ部分テンプレート
 =render "footer"
 -# 出品ボタン部分テンプレート
