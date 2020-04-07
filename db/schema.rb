@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_102145) do
+ActiveRecord::Schema.define(version: 2020_04_06_093847) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -22,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_102145) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "image", null: false
+    t.text "image"
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,15 +36,15 @@ ActiveRecord::Schema.define(version: 2020_04_02_102145) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
-    t.text "content"
+    t.text "content", null: false
     t.integer "price", null: false
     t.string "status", null: false
-    t.integer "delivery_method"
+    t.string "delivery_method", null: false
     t.integer "prefecture_id", null: false
     t.integer "delivery_days", null: false
     t.integer "delivery_charge", null: false
-    t.bigint "category_id", null: false
-    t.bigint "seller_id", null: false
+    t.bigint "category_id"
+    t.bigint "seller_id"
     t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,6 +77,11 @@ ActiveRecord::Schema.define(version: 2020_04_02_102145) do
     t.integer "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
+  add_foreign_key "images", "items"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
 end

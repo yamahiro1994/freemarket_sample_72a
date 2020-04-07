@@ -27,18 +27,25 @@
 }
 
 
-.logo-box{
-  height: 120px;
-  line-height: 140px;
-  text-align: center;
-}
 
-
-.new-main{
+.edit-main{
   width: 660px;
   margin: 0 auto;
+  &__head{
+    height: 96px;
+    font-size: 22px;
+    text-align: center;
+    padding: 32px 16px;
+    background-color: white;
+    border-bottom: 1px solid #efefef;
+    h2{
+      color: #333;
+      font-weight: bold;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
   &__image-box{
-    height: 305px;
+    height: 310px;
     padding: 40px;
     border-bottom: 1px solid #efefef;
     background-color: white;
@@ -106,9 +113,10 @@
 
     
   &__product-name{
-    height: 376px;
+    height: 355px;
     padding: 40px;
     background-color: white;
+    border-bottom: 1px solid #efefef;
     &__flex{
       display: flex;
       &__text{
@@ -122,21 +130,24 @@
     &__title{
       height: 46px;
       width: 100%;
+      outline: none;
+      font-size: 16px;
       margin-top: 16px;
       border-radius: 3px;
+      padding: 10px 16px 8px;
       border: 1px solid #ccc;
+      background-color: #fff;
       input{
         height: 48px;
         width: 100%;
         overflow: visible;
         font-size: 15px;
         padding: 0 16px;
-        outline: none;
         background-color:  #fff;
       }
     }
     &__introduction{
-      height: 221px;
+      height: 200px;
       margin-top: 32px;
       &__frame{
         height: 19px;
@@ -155,54 +166,48 @@
         padding: 13px 16px;
         outline: none;
         margin-top: 16px;
-        border-radius: 3px;
         border: 1px solid #ccc;
       }
-      }
-      &__math{
-        height: 16px;
-        margin-top: 16px;
-        p{
-        font-size: 10px;
-        float: right;
-        color: #ccc;
-        }
-      }
-    }
+     }
+   }
   }
-
   
   &__details-box{
-    height: 365px;
+    height: 376px;
     padding: 40px;
     background-color: white;
+    border-bottom: 1px solid #efefef;
     &__title{
       height: 19px;
       font-size: 14px;
       font-weight: 600px;
       line-height: 1.4em;
+      float: left;
     }
-    &__flex{
-      height: 19px;
-      margin-top: 32px;
-      display: flex;
-      &__text{
-        @include p(14px);
-        height: 115px;
-      }
-      &__label{
-        @include l;
-      }
+    &__right{
+      float: right;
+      width: 365px;
     }
+      &__flex{
+        height: 19px;
+        display: flex;
+        &__text{
+          @include p(14px);
+          height: 115px;
+        }
+        &__label{
+          @include l;
+        }
+      }
     select{
       height: 48px;
-      width: 100%;
+      width: 365px;
       outline: none;
-      margin-top: 16px;
+      margin-top: 10px;
     }
     &__status{
       height: 118px;
-      margin-top: 32px;
+      margin-top: 28px;
       &__flex{
         display: flex;
         &__text{
@@ -217,39 +222,52 @@
 
 
   &__delivery-box{
-    height: 560px;
+    height: 444px;
     padding: 40px;
     background-color: white;
     border-bottom: 1px solid #efefef;
     &__title{
       height: 19px;
+      float: left;
       font-size: 14px;
       font-weight: 600px;
       line-height: 1.4em;
     }
-    &__flex{
-      height: 19px;
-      margin-top: 32px;
-      display: flex;
-      &__text{
-        @include p(14px);
-        height: 115px;
-      }
-      &__label{
-        @include l;
-      }
-    }
-    select{
-      height: 48px;
-      width: 100%;
-      outline: none;
-      margin-top: 16px;
-    }
-    &__price{
-      height: 118px;
-      margin-top: 32px;
+    &__right{
+      float: right;
+      width: 365px;
       &__flex{
+        height: 19px;
         display: flex;
+        &__text{
+          @include p(14px);
+          height: 115px;
+        }
+        &__label{
+          @include l;
+        }
+      }
+      &__flexs{
+        height: 19px;
+        display: flex;
+        margin-top: 20px;
+        &__text{
+          @include p(14px);
+          height: 115px;
+        }
+        &__label{
+          @include l;
+        }
+      }
+      select{
+        height: 48px;
+        width: 365px;
+        outline: none;
+        margin-top: 10px;
+      }
+      &__flexed{
+        display: flex;
+        margin-top: 20px;
         &__text{
           @include p(14px);
         }
@@ -257,10 +275,8 @@
           @include l;
         }
       }
-    }
-    &__days{
-      height: 118px;
-      &__flex{
+      &__flexz{
+        margin-top: 20px;
         display: flex;
         &__text{
           @include p(14px);
@@ -282,7 +298,7 @@
   
 
   &__exhibition-box{
-    height: 560px;
+    height: 430px;
     padding: 40px;
     background-color: white;
     border-bottom: 1px solid #efefef;
@@ -319,7 +335,7 @@
           }
           input{
             height: 46px;
-            width: 250px;
+            width: 126px;
             border-radius: 4px;
             font-size: 10px;
             outline: none;
@@ -351,41 +367,28 @@
       }
       &__flame{
         height: 164px;
-        margin: 0 130px 32px;
+        // margin: 0 130px 32px;
         input.submit-btn{
           height: 46px;
-          width: 100%;
+          width: 580px;
           color: #fff;
           font-size: 15px;
           padding: 0 24px;
-          border-radius: 4px;
           margin-bottom: 24px;
           background-color: #ea352d;
           border-color: transparent;
         }
         button.btn{
           height: 46px;
-          width: 100%;
+          width: 275px;
           color: #fff;
           font-size: 15px;
           padding: 0 24px;
-          border-radius: 4px;
-          margin-bottom: 24px;
+          margin: 0 153px;
           background-color: #efefef;
           border-color: transparent;
           color: #222;
         }
-        a{
-          height: 20px;
-          color: #0095ee;
-          font-size: 12px;
-          display: flex;
-          justify-content: center;
-        }
-      }
-      p{
-        font-size: 12px;
-        line-height: 1.4em;
       }
     }
   }
