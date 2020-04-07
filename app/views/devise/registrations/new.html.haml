@@ -164,7 +164,7 @@
           = link_to "利用規約", "http://www.google.com", class: "riyou-kiyaku"
           に同意したものとみなします
 
-
+        = render "devise/shared/error_messages", model: f.object
 
         = f.submit "ユーザー登録", class: "next_btn"
         = link_to "本人情報の登録について>", "http://www.google.com", class: "furima_guide"
