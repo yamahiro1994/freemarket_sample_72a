@@ -56,14 +56,17 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @images = @item.images
-    @image = @images[0].image
+    @image = @item.images[0].image
     @seller = User.find(@item.seller_id)
   end
-  
-  private
-  
+
+  def edit
+  end
+
+ private
+
   def set_item
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
   def item_params

@@ -67,7 +67,7 @@
     .main__product-list__contents
       - @items.first(3).each do |i|
         .main__product-list__contents__content
-          = link_to image_tag(@images.find_by(item_id:[i.id]).image, class:"img" ), item_path(i)
+          = link_to image_tag(@images.find(item_id:[i.id]).image, class:"img" ), item_path(i)
           .main__product-list__contents__content__body
             .main__product-list__contents__content__body--name
               #{i.title}
