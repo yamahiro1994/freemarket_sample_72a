@@ -11,7 +11,7 @@
       会員情報入力
 
     .form
-      = form_with(model: @user, url: user_registration_path, id: "new_user", class: "form__input_board", local: true)  do |f|
+      = form_with(model: @user, url: user_registration_path, id: "new_user", class: "form__input_board", local: true, onsubmit: "return formCheck()")  do |f|
         = render "devise/shared/error_messages", resource: resource
 
         .nickname
@@ -19,7 +19,7 @@
             = f.label "ニックネーム"
             .nickname__label__require
               必須
-          = f.text_field :nickname, autofocus: true, placeholder: "例) フリマ太郎", class: "nickname__form", require:""
+          = f.text_field :nickname,id: "nickname", autofocus: true, placeholder: "例) フリマ太郎", class: "nickname__form", require:""
         
         .email
           .email__label
@@ -163,6 +163,20 @@
           「次へ進む」のボタンを押すことにより、
           = link_to "利用規約", "http://www.google.com", class: "riyou-kiyaku"
           に同意したものとみなします
+
+
+
+        .notice_area
+          %p#nickname{:style => "display: none; color: red;"} 【ニックネームを入力して下さい】
+
+
+
+
+
+
+
+
+
 
         = f.submit "ユーザー登録", class: "next_btn"
         = link_to "本人情報の登録について>", "http://www.google.com", class: "furima_guide"
