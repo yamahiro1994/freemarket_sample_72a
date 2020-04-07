@@ -1,0 +1,20 @@
+=render "header"
+.user-credit-link
+  .user-credit-link-page.clearfix
+    -# 全体
+    .user-credit-link-page__main
+      -# メインページ
+      %h2.user-credit-link-page__main__top
+        支払い方法
+      .user-credit-link-page__main__box
+        .user-credit-link-page__main__box__title
+          %h3.user-credit-link-page__main__box__title__text
+            クレジットカード一覧
+        .user-credit-link-page__main__box__link
+          .user-credit-link-page__main__box__link__btn   
+            =link_to t_user_credit_detail_items_path,class:"user-credit-link-page__main__box__link__btn__red" do
+              =icon('far','address-card',class: 'user-credit-link-page__main__box__link__btn__red__icon')
+              クレジットカードを追加する(リンクあり)
+
+    =render "t_user_show_sidebar"
+=render "footer"
