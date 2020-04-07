@@ -15,13 +15,15 @@ Rails.application.routes.draw do
 
   # 商品詳細画面確認用
   resources :items do
-    member do
-      get 'buy'
-      # のちのちmember
-      get 't_user_credit_detail'
-      get 't_user_credit_link'
-      get 't_user_logout'
-      get 't_user_show'
+    collection do
+      # get 'buy'
+      # # のちのちmember
+      # get 't_user_credit_detail'
+      # get 't_user_credit_link'
+      # get 't_user_logout'
+      # get 't_user_show'
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
   end
 end
