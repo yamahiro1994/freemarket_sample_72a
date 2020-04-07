@@ -4,10 +4,8 @@ class ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.all.order(id: :desc)
-    @images = Image.all
-    # @item = Item.find(params[image:][:id])
-    # @image = Image.find_by(@items_id).image
+    @items = Item.where("buyer_id != status is null").order(id: :desc)
+    @images = Image.includes(:item)
   end
 
   def show

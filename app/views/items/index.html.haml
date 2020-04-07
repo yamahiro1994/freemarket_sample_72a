@@ -7,8 +7,8 @@
       %h.main__banner__content--title 人生を変えるフリマアプリ
       %p.main__banner__content--text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
       .link-box
-        = link_to 'App link', "#", class:"link-box--link"
-        = link_to 'google link', "#", class:"link-box--link"
+        = link_to '', "#", class: "app-link", style: "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2012-06-28&kind=iossoftware&bubble=ios_apps)"
+        = link_to image_tag('https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png', width: '155'), "#"
   .main__introduction
     %h.main__introduction--title FURIMAが選ばれる3つの理由
     %ul.main__introduction__list
@@ -41,8 +41,8 @@
       %h.main__sub-banner__contents--title 会員数日本一位
       %p.main__sub-banner__contents--text FURIMAは、フリマアプリで最も人気。<br>出品・購入回数も業界最多です！<br>ほしかったあの商品に出会えるかもしれません。
       .link-box
-        = link_to 'App link', "#", class:"link-box--link"
-        = link_to 'google link', "#", class:"link-box--link"
+        = link_to '', "#", class: "app-link", style: "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2012-06-28&kind=iossoftware&bubble=ios_apps)"
+        = link_to image_tag('https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png', width: '155'), "#"
   .main__feature
     %h.main__feature--title FURIMAの特徴
     %ul.main__feature__list
@@ -65,7 +65,7 @@
     .main__product-list--head 商品一覧
     .main__product-list--title 投稿商品
     .main__product-list__contents
-      - @items.each do |i|
+      - @items.first(3).each do |i|
         .main__product-list__contents__content
           = link_to image_tag(@images.find_by(item_id:[i.id]).image, class:"img" ), item_path(i)
           .main__product-list__contents__content__body
@@ -83,8 +83,8 @@
     %p.app-banner__box--title だれでもかんたん、人生を変えるフリマアプリ
     %p.app-banner__box--text 今すぐ無料ダウンロード!
     .link-box
-      = link_to 'App link', "#", class:"link-box--link"
-      = link_to 'google link', "#", class:"link-box--link"
+      = link_to '', "#", class: "app-link", style: "display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/ja-jp/badge-lrg.svg?releaseDate=2012-06-28&kind=iossoftware&bubble=ios_apps)"
+      = link_to image_tag('https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png', width: '155'), "#"
 -# フッタ部分テンプレート
 =render "footer"
 -# 出品ボタン部分テンプレート
