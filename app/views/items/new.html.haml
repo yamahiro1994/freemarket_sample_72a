@@ -37,7 +37,6 @@
         .new-main__product-name__introduction__math
           %p 0/1000
 
-
     .new-main__details-box
       .new-main__details-box__title
         %p 商品詳細
@@ -58,7 +57,6 @@
             .new-main__details-box__status__flex__flame__form
         = f.select :status, [["選択してください", :'---'],["新品、未使用", :unused],["未使用に近い", :nearly_unused],["目立った傷や汚れなし", :not_injured],["やや傷や汚れあり", :bit_injured],["傷や汚れあり", :injured],["全体的に状態が悪い", :bad]]
         
-
     .new-main__delivery-box
       .new-main__delivery-box__title
         %p 配送について
@@ -83,7 +81,6 @@
             %p 必須
         = f.select :delivery_days, [["選択してください", 0],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
     
-
     .new-main__exhibition-box
       .new-main__exhibition-box__price
         %p 価格（¥300〜9,999,999）
