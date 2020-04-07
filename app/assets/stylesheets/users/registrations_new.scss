@@ -108,6 +108,20 @@
         font-size: 15px;
         text-align: left;
       }
+
+      .password_confirmation{
+        &__label{
+          @include label;
+          &__require{
+            @include require;
+          }
+        }
+        &__form {
+          @include info-form; 
+        }
+      }
+
+
       .attension_safety{
         margin-top: 15px;
         h3{

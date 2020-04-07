@@ -19,14 +19,14 @@
             = f.label "ニックネーム"
             .nickname__label__require
               必須
-          = f.text_field :nickname, autofocus: true, placeholder: "例) フリマ太郎", class: "nickname__form"
+          = f.text_field :nickname, autofocus: true, placeholder: "例) フリマ太郎", class: "nickname__form", require:""
         
         .email
           .email__label
             = f.label "メールアドレス"
             .email__label__require
               必須
-          = f.email_field :email, type: "email", placeholder: "メールアドレス", autocomplete: "email", class: "email__form"
+          = f.email_field :email, type: "email", placeholder: "メールアドレス", autocomplete: "email", class: "email__form", require:""
 
         .password
           .password__label
@@ -36,11 +36,22 @@
             - if @minimum_password_length
               %em
                 (#{@minimum_password_length}文字以上の半角英数)
-          = f.password_field :password, placeholder: "パスワード", class: "password__form", autocomplete: "new-password"
-          
+          = f.password_field :password, placeholder: "パスワード", class: "password__form", id: "password", autocomplete: "new-password", require:"", minlength:7
 
         .coution_password
           ※ 英字と数字の両方を含めて設定してください
+
+        .password_confirmation
+          .password_confirmation__label
+            = f.label "パスワード"
+            .password_confirmation__label__require
+              必須
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length}文字以上の半角英数)
+          = f.password_field :password, placeholder: "パスワード(確認)", class: "password_confirmation__form", id: "password_confirmation", autocomplete: "new-password", require:"", minlength:7, oninput: "CheckPassword(this)"
+
+
 
         .attension_safety
           %h3
@@ -56,8 +67,8 @@
               必須
             %br/
           .name_kanji__form
-            = f.text_field :family_name, placeholder: "例) 山田",class: "name_kanji__form__family_name"
-            = f.text_field :user_name,   placeholder: "例) 彩",  class: "name_kanji__form__user_name"
+            = f.text_field :family_name, placeholder: "例) 山田",class: "name_kanji__form__family_name", require:""
+            = f.text_field :user_name,   placeholder: "例) 彩",  class: "name_kanji__form__user_name", require:""
 
 
         .name_kana
@@ -67,8 +78,8 @@
               必須
             %br/
           .name_kana__form
-            = f.text_field :family_name_kana, placeholder: "例) ヤマダ", class: "name_kana__form__family_name"
-            = f.text_field :user_name_kana,   placeholder: "例) アヤ",   class: "name_kana__form__user_name"
+            = f.text_field :family_name_kana, placeholder: "例) ヤマダ", class: "name_kana__form__family_name", with: "zenkana"
+            = f.text_field :user_name_kana,   placeholder: "例) アヤ",   class: "name_kana__form__user_name",   with: "zenkana"
 
         .birthdate
           .label
@@ -138,7 +149,7 @@
             = f.label "建物名、部屋番号"
             -# .apartment_room_namber__label__require
             -#   必須
-          = f.text_field :municipality, placeholder: "例)  マンションフリマ 201号室", class: "apartment_room_namber__form"
+          = f.text_field :apartment_room_namber, placeholder: "例)  マンションフリマ 201号室", class: "apartment_room_namber__form"
 
 
         .phone_number
@@ -164,12 +175,13 @@
         = link_to "Terms of Service", "http://www.google.com", class: "google_tos"
         apply.
 
-  .registration_user__footer
-    .registration_user__footer__items
-      .registration_user__footer__items__link_bar
-        = link_to "プライバシーポリシー",    "http://www.google.com", class: "registration_user__footer__items__link_bar__pp"
-        = link_to "フリマ利用規約",         "http://www.google.com", class: "registration_user__footer__items__link_bar__tos"
-        = link_to "特定商取引に関する表記",  "http://www.google.com", class: "registration_user__footer__items__link_bar__sctm"
-      = link_to image_tag('logo.png', width: '170', height: '50', class: "registration_user__footer__items__logo"), root_path
-      .registration_user__footer__items__inc
-        ©︎Furima, Inc.
+  -# .registration_user__footer
+  -#   .registration_user__footer__items
+  -#     .registration_user__footer__items__link_bar
+  -#       = link_to "プライバシーポリシー",    "http://www.google.com", class: "registration_user__footer__items__link_bar__pp"
+  -#       = link_to "フリマ利用規約",         "http://www.google.com", class: "registration_user__footer__items__link_bar__tos"
+  -#       = link_to "特定商取引に関する表記",  "http://www.google.com", class: "registration_user__footer__items__link_bar__sctm"
+  -#     = link_to image_tag('logo.png', width: '170', height: '50', class: "registration_user__footer__items__logo"), root_path
+  -#     .registration_user__footer__items__inc
+  -#       ©︎Furima, Inc.
+  = render "items/footer"

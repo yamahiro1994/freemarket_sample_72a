@@ -20,8 +20,8 @@
             = f.password_field :password, autocomplete: "current-password", class: "input_password"
           - if devise_mapping.rememberable?
             .recaptcha_box
-              □ 僕はロボットじゃないよ
-          = link_to "ログイン", "http://www.google.com", class: "login_btn"
+              = image_tag 'recaptcha.png', height: '90', width: '310'
+          = link_to "ログイン", root_path, class: "login_btn"
 
           = link_to "パスワードをお忘れの方", "http://www.google.com", class: "password_forgot"
 
