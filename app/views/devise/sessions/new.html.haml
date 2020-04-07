@@ -10,7 +10,7 @@
         = link_to "新規会員登録", new_user_registration_path, class: "create_account_btn"
       .sns_api_login
         = link_to "Facebookでログイン", "https://www.facebook.com/", class: "facebook"
-        = link_to "Googleでログイン", "https://www.google.com/", class: "google"
+        = link_to "Googleでログイン",   "https://www.google.com/",   class: "google"
 
       .inner
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -21,8 +21,7 @@
           - if devise_mapping.rememberable?
             .recaptcha_box
               = image_tag 'recaptcha.png', height: '90', width: '310'
-          = link_to "ログイン", root_path, class: "login_btn"
-
+          = f.submit "ログイン", class: 'login_btn'
           = link_to "パスワードをお忘れの方", "http://www.google.com", class: "password_forgot"
 
   = render "items/footer"

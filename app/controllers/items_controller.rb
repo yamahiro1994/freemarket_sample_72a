@@ -48,7 +48,8 @@ class ItemsController < ApplicationController
  private
 
   def set_item
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
+    # 後でコメントアウト戻す
   end
 
   def item_params

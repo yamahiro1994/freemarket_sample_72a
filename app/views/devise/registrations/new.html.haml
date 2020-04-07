@@ -43,13 +43,13 @@
 
         .password_confirmation
           .password_confirmation__label
-            = f.label "パスワード"
+            = f.label "パスワード(再入力)"
             .password_confirmation__label__require
               必須
             - if @minimum_password_length
               %em
                 (#{@minimum_password_length}文字以上の半角英数)
-          = f.password_field :password, placeholder: "パスワード(確認)", class: "password_confirmation__form", id: "password_confirmation", autocomplete: "new-password", required: true, minlength:7, oninput: "CheckPassword(this)"
+          = f.password_field :password_confirmation, placeholder: "パスワード(確認)", class: "password_confirmation__form", id: "password_confirmation", autocomplete: "new-password", required: true, minlength:7, oninput: "CheckPassword(this)"
 
 
 
@@ -117,7 +117,7 @@
             = f.label "郵便番号"
             .postal_code__label__require
               必須
-          = f.text_field :postal_code, placeholder: "例)123-4567", class: "postal_code__form", required: true
+          = f.text_field :postal_code, placeholder: "7桁半角整数(ハイフン(-)なし)", class: "postal_code__form", required: true
           
 
         .prefectures
@@ -155,9 +155,9 @@
         .buyer_phone_number
           .buyer_phone_number__label
             = f.label "電話番号"
-            .buyer_phone_number__label__require
-              必須
-          = f.text_field :phone_number, placeholder: "例) 080-1234-5678", class: "buyer_phone_number__form"
+            -# .buyer_phone_number__label__require
+            -#   必須
+          = f.text_field :phone_number, placeholder: "例) 08012345678", class: "buyer_phone_number__form"
 
         .warning_terms
           「次へ進む」のボタンを押すことにより、

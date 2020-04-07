@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :items do
     member do
       get 'buy'
+    end
+
+    collection do
       # のちのちmember
       get 't_user_credit_detail'
       get 't_user_credit_link'
