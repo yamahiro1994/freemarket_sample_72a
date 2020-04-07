@@ -66,8 +66,10 @@
       @include displayflex(space-between);
       font-size: 13px;
       margin-top: 10px;
-      &__left-list{}
-      &__right-list{}
+      &__right-list__btn{
+        color: black;
+      }
+      // &__right-list{}
     }
   }
 }
