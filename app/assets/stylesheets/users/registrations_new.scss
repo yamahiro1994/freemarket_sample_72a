@@ -7,7 +7,8 @@
   width: 99%;
   height: 30px;
   border-radius: 4px;
-  border: 1px solid #ccc
+  border: 1px solid #ccc;
+  padding: 7px 15px;
 
 }
 @mixin require {
@@ -22,6 +23,13 @@
   vertical-align: top;
   text-align: center;
 }
+@mixin name-half{
+  width: 90%;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
 .registration_user {
   width: 100vw;
   background-color: #f5f5f5;
@@ -64,45 +72,56 @@
       text-align: center;
       margin: 0 auto;
       .nickname{
-        .label{
+        &__label{
           @include label;
-          .require{
+          &__require{
             @include require;
           }
         }
-        .input-nickname {
+        &__form {
           @include info-form; 
-          padding: 7px 15px;
         }
       }
       .email{
-        .label{
+        &__label{
           @include label;
-          .require{
+          &__require{
             @include require;
           }
         }
-        .input-email{
-          @include info-form;   
-          padding: 7px 15px;
+        &__form {
+          @include info-form; 
         }
       }
       .password{
-        .label{
+        &__label{
           @include label;
-          .require{
+          &__require{
             @include require;
           }
         }
-        .input-password{
-          @include info-form;
-          padding: 7px 15px;
+        &__form {
+          @include info-form; 
         }
-      }      
+      }
       .coution_password{
         font-size: 15px;
         text-align: left;
       }
+
+      .password_confirmation{
+        &__label{
+          @include label;
+          &__require{
+            @include require;
+          }
+        }
+        &__form {
+          @include info-form; 
+        }
+      }
+
+
       .attension_safety{
         margin-top: 15px;
         h3{
@@ -114,45 +133,42 @@
           text-align: left;
         }
       } 
-      @mixin name-half{
-        width: 99%;
-        height: 30px;
-        border-radius: 4px;
-        border: 1px solid #ccc
-      }
       .name_kanji{
-        .label{
+
+        &__label{
           @include label;
-          .require{
+
+          &__require{
             @include require;
           }
         }
-        .input-name-kanji{
+        &__form{
           display: flex;
-          .input-family-name-kanji{
-            @include name-half;   
-            margin-right: 10px;  
+          &__family_name{
+            @include name-half;
+            margin-right: 10px;
           }
-          .input-user-name-kanji{
-            @include name-half;      
+          &__user_name{
+            @include name-half;
           }
         }
       }
       .name_kana{
-        .label{
+        
+        &__label{
           @include label;
 
-          .require{
+          &__require{
             @include require;
           }
         }
-        .input-name-kana{
+        &__form{
           display: flex;
-          .input-family-name-kana{
+          &__family_name{
             @include name-half;   
             margin-right: 10px;  
           }
-          .input-user-name-kana{
+          &__user_name{
             @include name-half;      
           }
         }
@@ -175,6 +191,116 @@
            }
         }
       }
+
+      .destination_name_kanji{
+        
+        &__label{
+          @include label;
+
+          &__require{
+            @include require;
+          }
+        }
+        &__form{
+          display: flex;
+          &__family_name{
+            @include name-half;   
+            margin-right: 10px;  
+          }
+          &__user_name{
+            @include name-half;      
+          }
+        }
+      }
+      .destination_name_kana{
+
+        &__label{
+          @include label;
+
+          &__require{
+            @include require;
+          }
+        }
+        &__form{
+          display: flex;
+          &__family_name{
+            @include name-half;   
+          }
+          &__user_name{
+            @include name-half;      
+          }
+        }
+      }
+      .postal_code{
+        &__label{
+          @include label;
+          &__require{
+            @include require;
+          }
+        }
+        &__form {
+          @include info-form; 
+        }
+      }
+      .prefectures{
+        &__label{
+          @include label;
+          &__require{
+            @include require;
+          }
+        }
+        &__form {
+          @include info-form; 
+        }
+      }
+
+      .municipality{
+        &__label{
+          @include label;
+          &__require{
+            @include require;
+          }
+        }
+        &__form {
+          @include info-form; 
+        }
+      }
+
+      .address{
+        &__label{
+          @include label;
+          &__require{
+            @include require;
+          }
+        }
+        &__form {
+          @include info-form; 
+        }
+      }
+
+      .apartment_room_namber{
+        &__label{
+          @include label;
+          &__require{
+          }
+        }
+        &__form {
+          @include info-form; 
+        }
+      }
+
+      .phone_number{
+        &__label{
+          @include label;
+          &__require{
+            @include require;
+          }
+        }
+        &__form {
+          @include info-form; 
+        }
+      }
+
       .attension_personal{
         font-size: 14px;
         text-align: left;
@@ -199,13 +325,17 @@
         line-height: 50px;
         letter-spacing: 4px;
         text-decoration: none;
+        cursor: pointer;
+        input{
+          display: none;
+        }
       }
       .furima_guide{
         display: block;
         text-align: right;
         text-decoration: none;
         font-size: 14px;
-        color: #0099e8
+        color: #0099e8;
       }
       .recaptcha{
         background-color: #f5f5f5;
@@ -227,41 +357,48 @@
     }
   }
   &__footer{
-    padding: 40px 200px 20px 200px;
+    padding: 40px 200px 40px 200px;
     background-color: #f5f5f5;
-    height: 230px;
+    height: 250px;
     // position: relative;
-    .footer_items{
+    &__items{
       margin: 0 auto;
       width: 600px;
-      .link_bar{
+      text-align: center;
+      position: relative;
+      height: 140px;
+      &__link_bar{
         display: block;
         text-align: center;
         font-size: 14px;
         text-decoration: none;
 
-        .furima_pp{
+        &__pp{
           margin: 0 10px;
           text-decoration: none;
           color: #333333;
         }
-        .furima_tos{
+        &__tos{
           margin: 0 10px;
           text-decoration: none;
           color: #333333;
         }
-        .furima_sctm{
+        &__sctm{
           margin: 0 10px;
           text-decoration: none;
           color: #333333;
         }
       }
-      .footer_logo{
-        text-align: center;
+      &___logo{
+        margin: 0 auto;
+
       }
-      p{
-        text-align: center;
+      &__inc{
         font-size: 10px;
+        // position: absolute;
+        bottom: 0;
+        margin: 0 auto;
+
       }
     }
   }
