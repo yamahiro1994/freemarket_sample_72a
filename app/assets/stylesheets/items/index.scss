@@ -44,6 +44,8 @@
       margin: 0 auto;
       .logo{
         display: block;
+        // width: 140px;
+        // height: 40.55px;
       }
       &__search-box{
         @include displayflex(space-between);
@@ -62,18 +64,10 @@
     }
     &__lower-box{
       @include displayflex(space-between);
-      font-size: 16px;
+      font-size: 13px;
       margin-top: 10px;
-      &__left-list{
-        .category-link{
-          margin-right: 20px;
-        }
-      }
-      .right-list{
-        &__btn{
-          color: black;
-        }
-      }
+      &__left-list{}
+      &__right-list{}
     }
   }
 }
@@ -97,10 +91,13 @@
       .link-box{
         display: flex;
         margin-top: 50px;
-        .app-link{
-          width: 135px;
-          height: 40px;
-          margin: 10px 20px 0 0;
+        &--link{
+          display: block;
+          height: 50px;
+          width: 100px;
+          margin-right: 10px;
+          border: solid 1px;
+          text-decoration: none;
         }
       }
     }
@@ -169,10 +166,13 @@
     .link-box{
       display: flex;
       margin-top: 50px;
-      .app-link{
-        width: 135px;
-        height: 40px;
-        margin: 10px 20px 0 0;
+      &--link{
+        display: block;
+        height: 50px;
+        width: 100px;
+        margin-right: 10px;
+        border: solid 1px;
+        text-decoration: none;
       }
     }
   }
@@ -207,17 +207,15 @@
     }
   }
   &__product-list{
+    text-align: center;
     &--head{
       font-size: 28px;
       font-weight: bold;
-      text-align: center;
     }
     &--title{
       font-size: 24px;
       font-weight: bold;
       color: #3CCACE;
-      text-align: center;
-
     }
     &__contents{
       display: flex;
@@ -225,25 +223,20 @@
       width: 100%;
       max-width: 1040px;
       &__content{
-        width: 200px;
+        width: 250px;
         margin: 28px auto;
         background-color: #ffffff;
         img{
-          height: 150px;
-          width: 200px;
+          height: 200px;
+          width: 250px;
           max-width: 100%;
           object-fit: cover;
         }
         &__body{
-          margin: 10px;
           &--name{}
-          &--text{
-            span{
-              font-size: 12px;
-            }
-          }
-          &--favorite{
-            text-align: right;
+          &--text{}
+          p{
+            font-size: 12px;
           }
         }
       }
@@ -267,10 +260,9 @@
     .link-box{
       margin-top: 50px;
       text-align: center;
-      .app-link{
-        width: 135px;
-        height: 40px;
-        margin: 0 20px 10px 0;
+      &--link{
+        margin-right: 10px;
+        text-decoration: none;
       }
     }
   }

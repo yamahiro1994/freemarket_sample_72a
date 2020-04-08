@@ -5,15 +5,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
+    # @user.password_confomation = user.params[:password]
     if @user.save
       redirect_to root_path
-      flash[:notice] = "新規登録が完了しました"
+      # flash[:notice] = "新規登録が完了しました"
     else
       flash[:alert] = "登録に失敗しました"
     end
