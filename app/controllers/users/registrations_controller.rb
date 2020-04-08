@@ -21,9 +21,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # @user.password_confomation = user.params[:password]
     if @user.save
       redirect_to root_path
-      flash[:notice] = "新規登録が完了しました"
     else
-      flash[:alert] = "登録に失敗しました"
+      render "new"
     end
   end  
   # POST /resource

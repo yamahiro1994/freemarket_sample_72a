@@ -21,6 +21,9 @@
           - if devise_mapping.rememberable?
             .recaptcha_box
               = image_tag 'recaptcha.png', height: '90', width: '310'
+
+          -# = render "devise/shared/error_messages", resource: resource
+
           = f.submit "ログイン", class: 'login_btn'
           = link_to "パスワードをお忘れの方", "http://www.google.com", class: "password_forgot"
 
