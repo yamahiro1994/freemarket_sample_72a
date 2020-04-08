@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get 'buy'
     end
 
-    collection do
+    collection  do
       # のちのちmember
       get 't_user_credit_detail'
       get 't_user_credit_link'

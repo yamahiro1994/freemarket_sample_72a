@@ -6,17 +6,17 @@ class ItemsController < ApplicationController
     @seller = User.find(@item.seller_id)
   end
   
-  def t_user_credit_detail
-  end
+  # def t_user_credit_detail
+  # end
 
-  def t_user_credit_link
-  end
+  # def t_user_credit_link
+  # end
 
-  def t_user_logout
-  end
+  # def t_user_logout
+  # end
   
-  def t_user_show
-  end
+  # def t_user_show
+  # end
 
   def index
     @items = Item.all
@@ -41,15 +41,15 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @images = @item.images
-    @image = @images[0].image
+    @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
+    @address = Prefecture.all
   end
 
  private
 
   def set_item
-    # @item = Item.find(params[:id])
-    # 後でコメントアウト戻す
+    @item = Item.find(params[:id])
   end
 
   def item_params

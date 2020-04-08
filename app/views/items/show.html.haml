@@ -74,7 +74,7 @@
                     配送元の地域
                   %td
                     =link_to "#",class:"tiiki" do
-                      #{@item.prefecture_id}
+                      #{@address.find(@item.prefecture_id).name}
                 %tr
                   %th
                     配送日の目安
@@ -102,8 +102,6 @@
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
-          -# %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
-          -# %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
           = f.text_area :comment, class:'show-main__content-top__comment-box__coments__textarea'
           .show-main__content-top__comment-box__coments__p
             相手のことを考え丁寧なコメントを心がけましょう。
