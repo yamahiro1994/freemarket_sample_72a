@@ -7,18 +7,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @user = User.new
-
-  #   if @user.save
-  #     redirect_to root_path
-  #     flash[:notice] = "ログインしました"
-  #   else
-  #     flash[:alert] = "ログインに失敗しました"
-    # end
   end
 
   def create
-    @user = User.create(user_params)
-    # @user.password_confomation = user.params[:password]
+    @user = User.new(user_params)
     if @user.save
       redirect_to root_path
       flash[:notice] = "新規登録が完了しました"
