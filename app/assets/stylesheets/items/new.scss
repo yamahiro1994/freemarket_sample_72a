@@ -173,7 +173,6 @@
 
   
   &__details-box{
-    height: 365px;
     padding: 40px;
     background-color: white;
     &__title{
@@ -182,16 +181,20 @@
       font-weight: 600px;
       line-height: 1.4em;
     }
-    &__flex{
-      height: 19px;
-      margin-top: 32px;
-      display: flex;
-      &__text{
-        @include p(14px);
-        height: 115px;
-      }
-      &__label{
-        @include l;
+    &__category-box{
+      .listing-product-detail__category{
+        margin-top: 32px;
+        .listing-default__label{
+          @include p(14px);
+        }
+        .listing-default--require{
+          @include l;
+          padding: 3px 3px;
+        }
+        .listing-select-wrapper{
+          &__box{}
+            &--select{}
+        }
       }
     }
     select{
