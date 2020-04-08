@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
-  # before_action :set_item, except: [:index]
-  # before_action :set_item, except: [:new]
-  # before_action :set_item, except: [:create]
+  before_action :set_product, except: [:index, :new, :create]
+
   def buy
     @image = @item.images[0].image
     @seller = User.find(@item.seller_id)
@@ -29,22 +28,30 @@ class ItemsController < ApplicationController
   
   def show
     @items = Item.all
-    @images = @item.images
-    @image = @item.images[0].image
-    @seller = User.find(@item.seller_id)
+    # @images = @item.images
+    # @image = @item.images[0].image
+    # @seller = User.find(@item.seller_id)
   end
 
   def edit
   end
 
+  def update
+    if @item.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
  private
 
   def set_item
-    # @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def item_params
-    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image])
+    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image, :_destroy, :id])
   end
 
 end
