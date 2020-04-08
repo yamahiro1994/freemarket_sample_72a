@@ -8,7 +8,7 @@
 
         .user-logout-page__main__box__link
           .user-logout-page__main__box__link__btn   
-            =link_to"ログアウトの処理",class:"user-logout-page__main__box__link__btn__red" do
+            =link_to sign_out_path, class:"user-logout-page__main__box__link__btn__red" do
               ログアウト
 
     =render "t_user_show_sidebar"

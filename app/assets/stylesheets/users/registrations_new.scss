@@ -225,6 +225,7 @@
           display: flex;
           &__family_name{
             @include name-half;   
+            margin-right: 10px;  
           }
           &__user_name{
             @include name-half;      
@@ -289,12 +290,9 @@
         }
       }
 
-      .phone_number{
+      .buyer_phone_number{
         &__label{
           @include label;
-          &__require{
-            @include require;
-          }
         }
         &__form {
           @include info-form; 

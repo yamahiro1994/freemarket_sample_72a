@@ -71,11 +71,13 @@
           margin-right: 20px;
         }
       }
-      &__right-list{
-        .user-link{
-          margin-right: 20px;
+      .right-list{
+        &__btn{
+          color: black;
         }
       }
+      // &__right-list{} 
+      // ログイン、新規登録、マイページ、トップページのクラスを全て””
     }
   }
 }
