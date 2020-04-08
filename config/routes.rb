@@ -23,8 +23,7 @@ Rails.application.routes.draw do
       get 't_user_show'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-    member do
-      get 'buy'
+      get 'buy'# # のちのちmember
     end
   end
 end
