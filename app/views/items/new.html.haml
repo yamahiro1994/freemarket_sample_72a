@@ -40,13 +40,14 @@
     .new-main__details-box
       .new-main__details-box__title
         %p 商品詳細
-      .new-main__details-box__flex
-        .new-main__details-box__flex__text
-          %p カテゴリー
-        .new-main__details-box__flex__label
-          %p 必須   
-      = f.select :category_id, [["選択してください", 0],["レディース", 3]] 
-      -# カテゴリ機能は【サーバサイド】カテゴリ機能にて実装する
+      .new-main__details-box__category-box
+        .listing-product-detail__category
+          = f.label 'カテゴリー', class: 'listing-default__label'
+          %span.listing-default--require 必須
+          .listing-select-wrapper
+            .listing-select-wrapper__box
+              = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category', name: 'item[category_id]'}
+              %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
       .new-main__details-box__status
         .new-main__details-box__status__flex
           .new-main__details-box__status__flex__text
@@ -65,21 +66,27 @@
           %p 配送料の負担
         .new-main__delivery-box__flex__label
           %p 必須
-      = f.select :delivery_charge, [["選択してください", 0],["送料込み", 1],["着払い", 2]]
+      = f.select :delivery_charge, [["選択してください"],["送料込み", 1],["着払い", 2]]
+      .new-main__delivery-box__flex
+        .new-main__delivery-box__flex__text
+          %p 配送の方法
+        .new-main__delivery-box__flex__label
+          %p 必須
+      = f.select :delivery_method, [["選択してください", :'---'],["大型配送", :large],["中型配送", :normal],["小型配送", :small]]
       .new-main__delivery-box__price
         .new-main__delivery-box__price__flex
           .new-main__delivery-box__price__flex__text
             %p 発送元の地域
           .new-main__delivery-box__price__flex__label
             %p 必須
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---", class: "new-main__delivery-box__price__address"
+        = f.collection_select :prefecture_id, Prefecture.all,:id, :name, prompt: "選択してください"
       .new-main__delivery-box__days
         .new-main__delivery-box__days__flex
           .new-main__delivery-box__days__flex__text
             %p 発送までの日数
           .new-main__delivery-box__days__flex__label
             %p 必須
-        = f.select :delivery_days, [["選択してください", 0],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
+        = f.select :delivery_days, [["選択してください"],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
     
     .new-main__exhibition-box
       .new-main__exhibition-box__price

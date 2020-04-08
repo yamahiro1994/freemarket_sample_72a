@@ -1,34 +1,34 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
-
+  
   def buy
     @image = @item.images[0].image
     @seller = User.find(@item.seller_id)
   end
   
-  def t_user_credit_detail
-  end
-
-  def t_user_credit_link
-  end
-
-  def t_user_logout
-  end
-  
-  def t_user_show
-  end
-
   def index
-    @items = Item.all
-    @images = Image.all
+    @items = Item.where("buyer_id != status is null").order(id: :desc)
+    @images = Image.includes(:item)
   end
   
   def new  
     @item = Item.new
     @item.images.new
     @address = Prefecture.all
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
   end
-
+  
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+  
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+  
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -37,12 +37,16 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  
   def show
     @items = Item.all
     @images = @item.images
-    @image = @images[0].image
+    @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
+    @address = Prefecture.all
+  end
+
+  def edit
   end
 
  private

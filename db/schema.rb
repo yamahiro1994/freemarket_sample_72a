@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_093847) do
     t.integer "price", null: false
     t.string "status", null: false
     t.integer "delivery_method"
-    t.string "prefecture_id", null: false
+    t.integer "prefecture_id", null: false
     t.integer "delivery_days", null: false
     t.integer "delivery_charge", null: false
     t.bigint "category_id"
@@ -65,16 +65,16 @@ ActiveRecord::Schema.define(version: 2020_04_06_093847) do
     t.string "user_name", null: false
     t.string "user_name_kana", null: false
     t.date "birthday", null: false
-    t.string "destination_family_name"
-    t.string "destination_family_name_kana"
-    t.string "destination_name"
-    t.string "destination_name_kana"
-    t.string "postal_code"
-    t.integer "prefectures"
-    t.string "municipality"
-    t.string "address"
+    t.string "destination_family_name", null: false
+    t.string "destination_family_name_kana", null: false
+    t.string "destination_name", null: false
+    t.string "destination_name_kana", null: false
+    t.integer "postal_code", null: false
+    t.integer "prefectures", null: false
+    t.integer "municipality", null: false
+    t.string "address", null: false
     t.string "apartment_room_namber"
-    t.string "phone_number"
+    t.integer "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
