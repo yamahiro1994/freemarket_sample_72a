@@ -18,13 +18,4 @@ class Item < ApplicationRecord
     normal:         2, #中型配送
     small:          3, #小型配送
   }
-  # enum delivery_days:{
-  #   fast:          1, #1~2日で発送
-  #   medium:        2, #3~4日で発送
-  #   slow:          3, #5~7日で発送
-  # }
-  # enum delivery_charge:{
-  #   donor:          1, #着払い(購入者負担)
-  #   recipient:      2, #送料込み(出品者負担)
-  # }
 end

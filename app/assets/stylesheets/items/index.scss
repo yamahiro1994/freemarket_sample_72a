@@ -44,8 +44,6 @@
       margin: 0 auto;
       .logo{
         display: block;
-        // width: 140px;
-        // height: 40.55px;
       }
       &__search-box{
         @include displayflex(space-between);
@@ -76,8 +74,6 @@
           color: black;
         }
       }
-      // &__right-list{} 
-      // ログイン、新規登録、マイページ、トップページのクラスを全て””
     }
   }
 }

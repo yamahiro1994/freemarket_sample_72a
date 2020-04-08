@@ -6,18 +6,6 @@ class ItemsController < ApplicationController
     @seller = User.find(@item.seller_id)
   end
   
-  # def t_user_credit_detail
-  # end
-
-  # def t_user_credit_link
-  # end
-
-  # def t_user_logout
-  # end
-  
-  # def t_user_show
-  # end
-
   def index
     @items = Item.where("buyer_id != status is null").order(id: :desc)
     @images = Image.includes(:item)
@@ -64,7 +52,7 @@ class ItemsController < ApplicationController
  private
 
   def set_item
-    # @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def item_params
