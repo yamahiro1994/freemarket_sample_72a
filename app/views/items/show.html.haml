@@ -25,7 +25,7 @@
             %span
               (税込)
             %span
-              #{@item.delivery_charge_i18n}
+              #{@item.delivery_charge}
         .show-main__content-top__item-box__item-detail
           #{@item.content}
         .show-main__content-top__item-box__table
@@ -57,17 +57,17 @@
                   %th
                     発送方法
                   %td
-                    #{@item.delivery_method_i18n}
+                    #{@item.delivery_method}
                 %tr
                   %th
                     商品の状態
                   %td
-                    #{@item.status_i18n}
+                    #{@item.status}
                 %tr
                   %th
                     配送料の負担
                   %td
-                    #{@item.delivery_charge_i18n}
+                    #{@item.delivery_charge}
                     = @item.delivery_charge == 'recipient' ? '(出品者負担)': '(購入者負担)'
                 %tr
                   %th
@@ -79,7 +79,7 @@
                   %th
                     配送日の目安
                   %td
-                    #{@item.delivery_days_i18n}
+                    #{@item.delivery_days}
         .show-main__content-top__item-box__area
           %ul
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
@@ -97,8 +97,9 @@
           = link_to '商品の編集', edit_item_path(@item), class:'show-edit btn'
           %br or
           = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
-        - else
+        - elsif user_signed_in? && current_user.id != @item.seller_id
           = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
+        - else
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
