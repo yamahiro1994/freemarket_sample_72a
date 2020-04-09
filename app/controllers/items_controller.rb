@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.where("buyer_id != status is null").order(id: :desc)
     @images = Image.includes(:item)
-    @parents = Category.all.order("id ASC").limit(13)
+    @parents = Category.where(ancestry: nil)
   end
   
   def new  
