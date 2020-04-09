@@ -12,7 +12,6 @@
 
     .form
       = form_with(model: @user, url: user_registration_path, id: "new_user", class: "form__input_board", local: true, onsubmit: "return formCheck()")  do |f|
-        -# = render "devise/shared/error_messages", resource: resource
 
         .nickname
           .nickname__label
@@ -147,16 +146,12 @@
         .apartment_room_namber
           .apartment_room_namber__label
             = f.label "建物名、部屋番号"
-            -# .apartment_room_namber__label__require
-            -#   必須
           = f.text_field :apartment_room_namber, placeholder: "例)  マンションフリマ 201号室", class: "apartment_room_namber__form"
 
 
         .buyer_phone_number
           .buyer_phone_number__label
             = f.label "電話番号"
-            -# .buyer_phone_number__label__require
-            -#   必須
           = f.text_field :phone_number, placeholder: "例) 08012345678", class: "buyer_phone_number__form"
 
         .warning_terms
