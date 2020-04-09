@@ -18,5 +18,4 @@ class Item < ApplicationRecord
     normal:         2, #中型配送
     small:          3, #小型配送
   }
-
 end

@@ -7,19 +7,18 @@ class ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.all
-    @images = Image.all
+    @items = Item.where("buyer_id != status is null").order(id: :desc)
+    @images = Image.includes(:item)
   end
   
   def new  
     @item = Item.new
     @item.images.new
-    # @address = Prefecture.all
   end
   
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
       render :new
@@ -28,9 +27,9 @@ class ItemsController < ApplicationController
   
   def show
     @items = Item.all
-    # @images = @item.images
-    # @image = @item.images[0].image
-    # @seller = User.find(@item.seller_id)
+    @images = @item.images
+    @image = @item.images[0].image
+    @seller = User.find(@item.seller_id)
   end
 
   def edit
@@ -42,6 +41,11 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @product.destroy
+    redirect_to root_path
   end
 
  private

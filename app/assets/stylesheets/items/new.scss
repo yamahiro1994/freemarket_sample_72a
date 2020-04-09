@@ -55,45 +55,44 @@
       font-size: 14px;
       margin: 16px 0;
     }
-    &__frame{
+    #new-main__image-box__frame{
       height: 155px;
-      width:100%;
-      padding: 4px;
+      width: 100%;
+      padding: 0 5px;
       background-color: rgb(245, 245, 245);
       align-content: center;
       border-style: dashed;
       border-radius: 3px;
       border-width: 1px;
       border-color: rgb(204, 204, 204);
-      &__image{
-        img{
-          flex-wrap: wrap;
-          -webkit-box-pack: center;
-          justify-content: center;
-          border-image: initial;
-          cursor: pointer;
-        }
-        &__input{
-          display: none;
-        }
-        &__FileSelect{
-          height: 155px;
-          width: 100%;
-          padding: 4px;
-          background-color: rgb(245, 245, 245);
-          border-style: dashed;
-          border-radius: 3px;
-          position: relative;
-          align-content: center;
-          border-width: 1px;
-          border-color: rgb(204, 204, 204);
-          transition: margin-right 2s;
-          flex-wrap: wrap;
-          -webkit-box-pack: center;
-          justify-content: center;
-          border-image: initial;
-          cursor: pointer;
-        }
+      img{
+        
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        justify-content: center;
+        border-image: initial;
+        cursor: pointer;
+      }
+      &__input{
+        display: flex;
+      }
+      &__FileSelect{
+        height: 155px;
+        width: 100%;
+        padding: 4px;
+        background-color: rgb(245, 245, 245);
+        border-style: dashed;
+        border-radius: 3px;
+        position: relative;
+        align-content: center;
+        border-width: 1px;
+        border-color: rgb(204, 204, 204);
+        transition: margin-right 2s;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        justify-content: center;
+        border-image: initial;
+        cursor: pointer;
       }
     }
     &__errer{
@@ -106,7 +105,7 @@
 
     
   &__product-name{
-    height: 376px;
+    height: 353px;
     padding: 40px;
     background-color: white;
     &__flex{
@@ -389,4 +388,16 @@
       }
     }
   }
+}
+
+
+
+#item_images_attributes_0_image{
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.js-file_group{
+  display: flex;
 }

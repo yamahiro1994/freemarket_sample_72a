@@ -6,28 +6,28 @@
 
       .show-main__content-top__item-box
         %h2.show-main__content-top__item-box__name
-          -# #{@item.title}
+          #{@item.title}
         .show-main__content-top__item-box__body
           %ul.photo-line-ul
             %li.photo-line-li
-              -# = image_tag "#{@images[0].image}", alt: '', class: 'photo-big'
+              = image_tag "#{@images[0].image}", alt: '', class: 'photo-big'
               %ul.photo-line-ul-under
                 %li.photo-line-li-under
-                  -# = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
+                  = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
                 %li.photo-line-li-under
-                  -# = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
+                  = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
                 %li.photo-line-li-under
-                  -# = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
+                  = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
-            -# #{converting_to_jpy(@item.price)}
+            #{converting_to_jpy(@item.price)}
           .show-main__content-top__item-box__pricebox__detail
             %span
               (税込)
             %span
-              -# #{@item.delivery_charge_i18n}
+              #{@item.delivery_charge_i18n}
         .show-main__content-top__item-box__item-detail
-          -# #{@item.content}
+          #{@item.content}
         .show-main__content-top__item-box__table
           %table
             %tbody
@@ -35,51 +35,51 @@
                 %th
                   出品者
                 %td
-                  -# #{@seller.nickname}
+                  #{@seller.nickname}
                 %tr
                   %th
                     カテゴリー
                   %td
-                    -# =link_to "#",class:"kategori" do
-                    -#   #{@item.category.root.name}
+                    =link_to "#",class:"kategori" do
+                      #{@item.category.root.name}
                     %span <br>＞
-                    -# =link_to "#",class:"kategori" do
-                    -#   #{@item.category.parent.name}
+                    =link_to "#",class:"kategori" do
+                      #{@item.category.parent.name}
                     %span <br>＞
-                    -# =link_to "#",class:"kategori" do
-                    -#   #{@item.category.name}
-                -# %tr
-                -#   %th
-                -#     ブランド
-                -#   %td
-                -#     Amazon
+                    =link_to "#",class:"kategori" do
+                      #{@item.category.name}
+                %tr
+                  %th
+                    ブランド
+                  %td
+                    Amazon
                 %tr
                   %th
                     発送方法
                   %td
-                    -# #{@item.delivery_method_i18n}
+                    #{@item.delivery_method_i18n}
                 %tr
                   %th
                     商品の状態
                   %td
-                    -# #{@item.status_i18n}
+                    #{@item.status_i18n}
                 %tr
                   %th
                     配送料の負担
                   %td
-                    -# #{@item.delivery_charge_i18n}
-                    -# = @item.delivery_charge == 'recipient' ? '(出品者負担)': '(購入者負担)'
+                    #{@item.delivery_charge_i18n}
+                    = @item.delivery_charge == 'recipient' ? '(出品者負担)': '(購入者負担)'
                 %tr
                   %th
                     配送元の地域
                   %td
-                    -# =link_to "#",class:"tiiki" do
-                    -#   #{@item.prefecture_id}
+                    =link_to "#",class:"tiiki" do
+                      #{@item.prefecture_id}
                 %tr
                   %th
                     配送日の目安
                   %td
-                    -# #{@item.delivery_days_i18n}
+                    #{@item.delivery_days_i18n}
         .show-main__content-top__item-box__area
           %ul
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
@@ -98,7 +98,7 @@
           %br or
           = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
         - else
-          -# = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
+          = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
