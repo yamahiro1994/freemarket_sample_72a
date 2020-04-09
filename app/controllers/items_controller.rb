@@ -102,7 +102,7 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @images = @item.images
-    @image = @item.images[0].image_url
+    @image = @item.images[0].image
     @seller = User.find(@item.seller_id)
     @address = Prefecture.all
   end
