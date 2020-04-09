@@ -12,12 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
-      flash[:notice] = "新規登録が完了しました"
+      redirect_to sign_in_path
     else
-      flash[:alert] = "登録に失敗しました"
+      render "new"
     end
   end  
+
   # POST /resource
   # def birthday_join
   #   year = params[:user]["birthday(1i)"]
