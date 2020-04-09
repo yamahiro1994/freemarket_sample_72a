@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions:      'users/sessions',
@@ -12,13 +12,13 @@ Rails.application.routes.draw do
 
   root 'items#index'
   # root 'items#t_user_credit_link'
+  resources :cards, only: [:new, :index, :create, :destroy]
 
-  # 商品詳細画面確認用
   resources :items do
     member do
       get 'buy'
+      post 'pay'
     end
-
     collection  do
       # のちのちmember
       get 't_user_credit_detail'
