@@ -44,8 +44,6 @@
       margin: 0 auto;
       .logo{
         display: block;
-        // width: 140px;
-        // height: 40.55px;
       }
       &__search-box{
         @include displayflex(space-between);
@@ -64,23 +62,18 @@
     }
     &__lower-box{
       @include displayflex(space-between);
-      font-size: 14px;
-      margin-top: 14px;
-      
-      .left-list{
-
-        &__btn{
-          color: black;
+      font-size: 16px;
+      margin-top: 10px;
+      &__left-list{
+        .category-link{
+          margin-right: 20px;
         }
       }
       .right-list{
-
         &__btn{
           color: black;
         }
       }
-      // &__right-list{} 
-      // ログイン、新規登録、マイページ、トップページのクラスを全て””
     }
   }
 }
@@ -104,13 +97,10 @@
       .link-box{
         display: flex;
         margin-top: 50px;
-        &--link{
-          display: block;
-          height: 50px;
-          width: 100px;
-          margin-right: 10px;
-          border: solid 1px;
-          text-decoration: none;
+        .app-link{
+          width: 135px;
+          height: 40px;
+          margin: 10px 20px 0 0;
         }
       }
     }
@@ -179,13 +169,10 @@
     .link-box{
       display: flex;
       margin-top: 50px;
-      &--link{
-        display: block;
-        height: 50px;
-        width: 100px;
-        margin-right: 10px;
-        border: solid 1px;
-        text-decoration: none;
+      .app-link{
+        width: 135px;
+        height: 40px;
+        margin: 10px 20px 0 0;
       }
     }
   }
@@ -220,15 +207,17 @@
     }
   }
   &__product-list{
-    text-align: center;
     &--head{
       font-size: 28px;
       font-weight: bold;
+      text-align: center;
     }
     &--title{
       font-size: 24px;
       font-weight: bold;
       color: #3CCACE;
+      text-align: center;
+
     }
     &__contents{
       display: flex;
@@ -236,20 +225,25 @@
       width: 100%;
       max-width: 1040px;
       &__content{
-        width: 250px;
+        width: 200px;
         margin: 28px auto;
         background-color: #ffffff;
         img{
-          height: 200px;
-          width: 250px;
+          height: 150px;
+          width: 200px;
           max-width: 100%;
           object-fit: cover;
         }
         &__body{
+          margin: 10px;
           &--name{}
-          &--text{}
-          p{
-            font-size: 12px;
+          &--text{
+            span{
+              font-size: 12px;
+            }
+          }
+          &--favorite{
+            text-align: right;
           }
         }
       }
@@ -273,9 +267,10 @@
     .link-box{
       margin-top: 50px;
       text-align: center;
-      &--link{
-        margin-right: 10px;
-        text-decoration: none;
+      .app-link{
+        width: 135px;
+        height: 40px;
+        margin: 0 20px 10px 0;
       }
     }
   }

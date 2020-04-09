@@ -48,11 +48,11 @@
                     %span <br>＞
                     =link_to "#",class:"kategori" do
                       #{@item.category.name}
-                -# %tr
-                -#   %th
-                -#     ブランド
-                -#   %td
-                -#     Amazon
+                %tr
+                  %th
+                    ブランド
+                  %td
+                    Amazon
                 %tr
                   %th
                     発送方法
@@ -85,7 +85,7 @@
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
               %li#linke-btn.show-main__content-top__item-box__area__btn-left__link
                 %icon.fa.fa-star 
-                お気に入り 0                
+                お気に入り 0
           %ul.show-main__content-top__item-box__area__optional
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-right" do
               %li.show-main__content-top__item-box__area__optional__btn-right__link
@@ -102,6 +102,9 @@
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
+          %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
+          %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
+
           = f.text_area :comment, class:'show-main__content-top__comment-box__coments__textarea'
           .show-main__content-top__comment-box__coments__p
             相手のことを考え丁寧なコメントを心がけましょう。

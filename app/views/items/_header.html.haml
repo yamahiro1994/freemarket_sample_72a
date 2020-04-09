@@ -7,9 +7,11 @@
         %input{ class: "search", placeholder: 'キーワードから探す' }
         %input{ class: "btn", type: "image", src: "/assets/icon-search 1.png" }
     .header__main__lower-box
-      .left-list
-        = link_to 'カテゴリ', "#", class:"left-list__btn"
-        = link_to 'ブランド', "#", class:"left-list__btn"
+      .header__main__lower-box__left-list
+        = image_tag 'icon_category.png', height: '16', width: '16'
+        = link_to 'カテゴリ', "#", class:"category-link"
+        = image_tag 'icon_brand.png', height: '16', width: '16'
+        = link_to 'ブランド', "#", class:"category-link"
       .right-list
         - if user_signed_in?
           = link_to "マイページ",   t_user_show_items_path,    class: "right-list__btn"

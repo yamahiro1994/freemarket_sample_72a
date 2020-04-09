@@ -1,0 +1,112 @@
+.edit-main
+  .edit-main__head
+    %h2 商品の情報を入力
+  = form_with(model: @item, local: true) do |f|
+    .edit-main__image-box
+      .edit-main__image-box__flex
+        .edit-main__image-box__flex__text
+          %p 出品画像
+        .edit-main__image-box__flex__label
+          %p 必須
+      .edit-main__image-box__maximum
+        %p 最大10枚までアップロードできます
+      .edit-main__image-box__frame
+        .edit-main__image-box__image
+          %label
+          = f.fields_for :images, class: "edit-main__image-box__image" do |i|
+            = i.file_field :image, class: "edit-main__image-box__image__input"
+            = image_tag("icon_camera.png", width:"25")
+            .edit-main__image-box__imagebox__FileSelect
+      .edit-main__image-box__errer
+        %p 画像がありません
+
+    .edit-main__product-name
+      .edit-main__product-name__flex
+        .edit-main__product-name__flex__text
+          %p 商品名
+        .edit-main__product-name__flex__label
+          %p 必須
+      = f.text_field :title, class: 'edit-main__product-name__title', placeholder: "商品名（必須40文字まで）"
+      .edit-main__product-name__introduction
+        .edit-main__product-name__introduction__frame
+          .edit-main__product-name__introduction__frame__text
+            %p 商品の説明
+          .edit-main__product-name__introduction__frame__label
+            %p 必須
+        = f.text_area :content, class: "edit-main__product-name__introduction__frame__content", placeholder: '商品の説明 (1000文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+
+    .edit-main__details-box
+      .edit-main__details-box__title
+        %p 商品詳細
+      .edit-main__details-box__right
+        .edit-main__details-box__flex
+          .edit-main__details-box__flex__text
+            %p カテゴリー
+          .edit-main__details-box__flex__label
+            %p 必須   
+        = f.select :category_id, [["選択してください", 0],["レディース", 3]] 
+        = f.select :category_id, [["選択してください", 0],["レディース", 3]]
+        = f.select :category_id, [["選択してください", 0],["レディース", 3]]
+        .edit-main__details-box__status
+          .edit-main__details-box__status__flex
+            .edit-main__details-box__status__flex__text
+              %p 商品の状態
+            .edit-main__details-box__status__flex__label
+              %p 必須
+            .edit-main__details-box__status__flex__flame
+              .edit-main__details-box__status__flex__flame__form
+          = f.select :status, [["選択してください", :'---'],["新品、未使用", :unused],["未使用に近い", :nearly_unused],["目立った傷や汚れなし", :not_injured],["やや傷や汚れあり", :bit_injured],["傷や汚れあり", :injured],["全体的に状態が悪い", :bad]]
+        
+    .edit-main__delivery-box
+      .edit-main__delivery-box__title
+        %p 配送について
+      .edit-main__delivery-box__right
+        .edit-main__delivery-box__right__flex
+          .edit-main__delivery-box__right__flex__text
+            %p 配送料の負担
+          .edit-main__delivery-box__right__flex__label
+            %p 必須
+        = f.select :delivery_charge, [["選択してください", 0],["送料込み", 1],["着払い", 2]]
+        .edit-main__delivery-box__right__flexs
+          .edit-main__delivery-box__right__flexs__text
+            %p 配送の方法
+          .edit-main__delivery-box__right__flexs__label
+            %p 必須
+        = f.select :delivery_origin, [["選択してください", 0],["未定", 1],["チャリ", 2]]
+        .edit-main__delivery-box__right__flexed
+          .edit-main__delivery-box__right__flexed__text
+            %p 発送元の地域
+          .edit-main__delivery-box__right__flexed__label
+            %p 必須
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---", class: "edit-main__delivery-box__price__address"
+        .edit-main__delivery-box__right__flexz
+          .edit-main__delivery-box__right__flexz__text
+            %p 発送までの日数
+          .edit-main__delivery-box__right__flexz__label
+            %p 必須
+        = f.select :delivery_days, [["選択してください", 0],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
+    
+    .edit-main__exhibition-box
+      .edit-main__exhibition-box__price
+        %p 価格（¥300〜9,999,999）
+      .edit-main__exhibition-box__profit
+        .edit-main__exhibition-box__profit__sale
+          .edit-main__exhibition-box__profit__sale__text
+            %p 販売価格
+          .edit-main__exhibition-box__profit__sale__label
+            %p 必須
+          .edit-main__exhibition-box__profit__sale__box
+            %span ¥
+            = f.number_field :price, placeholder: "0"
+
+        .edit-main__exhibition-box__profit__commission
+          .edit-main__exhibition-box__profit__commission__text
+            %p 販売手数料（10%）
+        .edit-main__exhibition-box__profit__hr
+        .edit-main__exhibition-box__profit__total
+          .edit-main__exhibition-box__profit__total__text
+            %p 販売利益
+          .edit-main__exhibition-box__profit__total__line
+        .edit-main__exhibition-box__profit__flame
+          = f.submit '出品する', class: 'submit-btn'
+          = f.button '下書きに保存', class: 'btn'
