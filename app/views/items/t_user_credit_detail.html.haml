@@ -1,0 +1,68 @@
+=render "header"
+.user-credit-detail
+  .user-credit-detail-page.clearfix
+    -# 全体
+    .user-credit-detail-page__main
+      -# メインページ
+      %h2.user-credit-detail-page__main__top
+        クレジットカード
+      = form_with(class:"user-credit-detail-page__main__form") do |f|
+        .user-credit-detail-page__main__form__list
+          .user-credit-detail-page__main__form__list__card-box
+            -# カードボックス
+            .user-credit-detail-page__main__form__list__card-box__tag-name
+              カード番号
+            .user-credit-detail-page__main__form__list__card-box__required
+              必須
+            %input{type:"text",class:"user-credit-detail-page__main__form__list__card-box__input",placeholder:"半角数字のみ"}
+            %ul.user-credit-detail-page__main__form__list__card-box__ul
+              %li
+                = image_tag 'credit-visa.svg', alt: '', class: ''
+              %li
+                = image_tag 'credit-master-card', alt: '', class: ''              
+              %li
+                = image_tag 'credit-saison-card', alt: '', class: ''
+              %li
+                = image_tag 'credit-jcb.svg', alt: '', class: ''
+              %li
+                = image_tag 'credit-camerican_express.svg', alt: '', class: ''
+              %li
+                = image_tag 'credit-dinersclub.svg', alt: '', class: ''
+              %li
+                = image_tag 'credit-discover.svg', alt: '', class: ''
+          .user-credit-detail-page__main__form__list__expiration-date
+            -# 有効期限
+            .user-credit-detail-page__main__form__list__expiration-date__tag-name
+              有効期限
+            .user-credit-detail-page__main__form__list__expiration-date__required
+              必須
+            .user-credit-detail-page__main__form__list__expiration-date__days         
+              .user-credit-detail-page__main__form__list__expiration-date__days__month-box
+                -# 月日の選択用
+                = f.select"", [["01", 1],["02", 2],["03",3],["04", 4],["05", 5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{}, { class: "user-credit-detail-page__main__form__list__expiration-date__days__month-box__months" }
+                -# =icon('far','address-card',class: 'user-credit-detail-page__main__form__list__expiration-date__days__month-box___icon')
+                %span.user-credit-detail-page__main__form__list__expiration-date__days__month-box__letter
+                  月
+              .user-credit-detail-page__main__form__list__expiration-date__days__year-box
+                -# 年の選択
+                = f.select"", [["20", 20],["21", 21],["22",22],["23", 23],["24", 24],["25",25],["26",26],["27",27],["28",28],["29",29],["30",30]],{}, { class: "user-credit-detail-page__main__form__list__expiration-date__days__year-box__years" }
+                -# =icon('far','address-card',class: 'user-credit-detail-page__main__form__list__expiration-date__days__year-box___icon')
+                %span.user-credit-detail-page__main__form__list__expiration-date__days__year-box__letter
+                  年
+
+          .user-credit-detail-page__main__form__list__security-codo
+            -# セキュリティコード
+            .user-credit-detail-page__main__form__list__security-codo__tag-name
+              セキュリティコード
+            .user-credit-detail-page__main__form__list__security-codo__required
+              必須
+            %input{type:"text",class:"user-credit-detail-page__main__form__list__security-codo__input",placeholder:"カード背面4桁もしくは3桁の番号"}
+
+          .user-credit-detail-page__main__form__list__link
+            .user-credit-detail-page__main__form__list__link__btn   
+              =link_to"#",class:"user-credit-detail-page__main__form__list__link__btn__red" do
+                %icon.far.fa-address-card.user-credit-detail-page__main__form__list__link__btn__red__icon
+                追加する
+
+    =render "t_user_show_sidebar"
+=render "footer"

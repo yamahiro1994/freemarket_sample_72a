@@ -1,31 +1,27 @@
 .login
   .login__header
-    = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "logo"), '#'
+    = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "logo"), root_path
 
   .login__main
     .login_board
       .no_account
         .guidance_registrations
           アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", "http://www.google.com", class: "create_account_btn"
-
+        = link_to "新規会員登録", new_user_registration_path, class: "create_account_btn"
       .sns_api_login
-        .facebook
-          Facebookでログイン
-        .google
-          Googleでログイン
+        = link_to "Facebookでログイン", "https://www.facebook.com/", class: "facebook"
+        = link_to "Googleでログイン",   "https://www.google.com/",   class: "google"
 
       .inner
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .field
-            = f.email_field :email, autocomplete: "email", class: "input_email"
+            = f.email_field :email, autocomplete: "email", class: "input_email", required: false
           .field
-            = f.password_field :password, autocomplete: "current-password", class: "input_password"
+            = f.password_field :password, autocomplete: "current-password", class: "input_password", required: false
           - if devise_mapping.rememberable?
             .recaptcha_box
-              □ 僕はロボットじゃないよ
-          = link_to "ログイン", "http://www.google.com", class: "login_btn"
-
+              = image_tag 'recaptcha.png', height: '90', width: '310'
+          = f.submit "ログイン", class: 'login_btn'
           = link_to "パスワードをお忘れの方", "http://www.google.com", class: "password_forgot"
 
   = render "items/footer"

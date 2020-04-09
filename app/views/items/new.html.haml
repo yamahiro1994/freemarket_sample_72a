@@ -52,13 +52,14 @@
     .new-main__details-box
       .new-main__details-box__title
         %p 商品詳細
-      .new-main__details-box__flex
-        .new-main__details-box__flex__text
-          %p カテゴリー
-        .new-main__details-box__flex__label
-          %p 必須   
-      = f.select :category_id, [["選択してください", 0],["レディース", 3]] 
-      -# カテゴリ機能は【サーバサイド】カテゴリ機能にて実装する
+      .new-main__details-box__category-box
+        .listing-product-detail__category
+          = f.label 'カテゴリー', class: 'listing-default__label'
+          %span.listing-default--require 必須
+          .listing-select-wrapper
+            .listing-select-wrapper__box
+              = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category', name: 'item[category_id]'}
+              %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
       .new-main__details-box__status
         .new-main__details-box__status__flex
           .new-main__details-box__status__flex__text

@@ -1,3 +1,5 @@
 class RenameDeliveryOriginColumnToItems < ActiveRecord::Migration[5.2]
-  # d++++nd
+  # def change
+  #   rename_column :items, :delivery_origin, :prefecture_id
+  # end
 end
