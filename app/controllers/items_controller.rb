@@ -43,6 +43,10 @@ class ItemsController < ApplicationController
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
     @address = Prefecture.all
+    @charge = Deliverycharge.all
+    @days = Deliverydays.all
+    @method = Deliverymethod.all
+    @status = Status.all
   end
 
   def edit
