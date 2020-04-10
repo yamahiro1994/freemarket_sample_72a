@@ -1,7 +1,7 @@
 .edit-main
-  .edit-main__head
-    %h2 商品の情報を入力
   = form_with(model: @item, local: true) do |f|
+    .edit-main__head
+      %h2 商品の情報を入力
     .edit-main__image-box
       .edit-main__image-box__flex
         .edit-main__image-box__flex__text
@@ -10,15 +10,54 @@
           %p 必須
       .edit-main__image-box__maximum
         %p 最大10枚までアップロードできます
-      .edit-main__image-box__frame
-        .edit-main__image-box__image
-          %label
-          = f.fields_for :images, class: "edit-main__image-box__image" do |i|
-            = i.file_field :image, class: "edit-main__image-box__image__input"
-            = image_tag("icon_camera.png", width:"25")
-            .edit-main__image-box__imagebox__FileSelect
-      .edit-main__image-box__errer
-        %p 画像がありません
+      .post__drop__box__container
+        .prev-content
+          //JSで挿入したhtmlと同じ形　each文でのプレビュー表示
+          - @item.images.each do |image|
+            .preview-box
+              .upper-box
+                = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+              .lower-box
+                -# 今後実装予定
+                -# .update-box
+                -#   %label.edit-btn 編集
+                .delete-box
+                  .delete-btn
+                    %span 削除
+        .label-content
+          //プレビューの数に合わせてforオプションを指定
+          = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
+            %pre.label-box__text-visible クリックしてファイルをアップロード
+        .hidden-content
+          = f.fields_for :images do |i|
+            //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
+            = i.file_field :image, class: "hidden-field"
+            = i.check_box:_destroy, class: "hidden-checkbox"
+            //5つのfile_fieldを準備するに当たって、足りない分を表示
+          - @item.images.length.upto(4) do |i|
+            %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+
+
+          -# = image_tag "#{@images[0].image}", alt: '', class: 'photo-big', width: "100", height: "100"
+          -# = image_tag "#{@images[1].image}", alt: '', class: 'photo-big', width: "100", height: "100"
+          -# = image_tag "#{@images[2].image}", alt: '', class: 'photo-big', width: "100", height: "100"
+          -# = image_tag "#{@images[3].image}", alt: '', class: 'photo-big', width: "100", height: "100"
+          -# = image_tag "#{@images[4].image}", alt: '', class: 'photo-big', width: "100", height: "100"
+        %label
+          = f.fields_for :images do |i|
+            .js-file_group{data_index: "image.index"}
+              = i.file_field :image, class: 'js-file'
+              = image_tag("icon_camera.png", width:"25")
+              .image-preview_btn_edit 編集
+              %span.js-remove 削除
+          -#   - if @item.persisted?
+          -#     -# = image.check_box :_destroy, data:{ index: image.index }, class: "hidden-destroy"
+          -# - if @item.persisted?
+          -#   .js-file_group{"data-index" => "#{@item.images.count}"}
+          -#   = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: "js-file"
+          -#   .js-remove 削除
+          -#   .new-main__image-box__imagebox__FileSelect
+
 
     .edit-main__product-name
       .edit-main__product-name__flex
@@ -44,9 +83,11 @@
             %p カテゴリー
           .edit-main__details-box__flex__label
             %p 必須   
-        = f.select :category_id, [["選択してください", 0],["レディース", 3]] 
-        = f.select :category_id, [["選択してください", 0],["レディース", 3]]
-        = f.select :category_id, [["選択してください", 0],["レディース", 3]]
+        .listing-select-wrapper
+          .listing-select-wrapper__box
+            -# = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category', name: 'item[category_id]'}
+            -# %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+
         .edit-main__details-box__status
           .edit-main__details-box__status__flex
             .edit-main__details-box__status__flex__text
@@ -110,3 +151,33 @@
         .edit-main__exhibition-box__profit__flame
           = f.submit '出品する', class: 'submit-btn'
           = f.button '下書きに保存', class: 'btn'
+
+
+
+-# .main
+-#   .head
+-#     %h2 商品の情報を入力
+-#   = form_with model: @product, class: "form", id: "product-form-edit" do |f|
+-#     .form-image
+-#       .form-image__title
+-#         %label 出品画像
+-#         %span 必須
+-#         .form-image__text 最大10枚までアップロードできます
+-#         .clearfix
+-#           %ul#previews
+-#             = f.fields_for :image do |image|
+-#               - @product.images.each_with_index do |img, i|
+-#                 %li.image-preview
+-#                   %label.upload-label{style:"display: none;"}
+-#                     .upload-label__text
+-#                       ドラッグアンドドロップ
+-#                       %br
+-#                       またはクリックしてファイルをアップロード
+-#                       .input-area
+-#                         = image.file_field :name, value: img.name ,class: "hidden image_upload"
+-#                         = image.hidden_field :id, value: img.id, name:"product[image][#{i}]"
+-#                   .image-preview__wapper
+-#                     = image_tag img.name.to_s, class:"preview"
+-#                   .image-preview_btn
+-#                     .image-preview_btn_edit 編集
+-#                     .image-preview_btn_delete 削除
