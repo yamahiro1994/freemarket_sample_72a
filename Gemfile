@@ -83,4 +83,5 @@ gem 'font-awesome-sass'
 gem 'active_hash'
 gem 'enum_help' 
 gem 'fog-aws'
+gem 'dotenv-rails'
 

@@ -19,8 +19,8 @@ class User < ApplicationRecord
   ## 一般
   validates :nickname,                     presence: true, length: { maximum: 20 }
   validates :email,                        presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX,       message: 'のフォーマットが不適切です'}
-  # validates :phone_number,                 presence: true, format: { with: /\A\d{10,11}\z/, message: 'の入力が正しくありません'}
   validates :postal_code,                  presence: true, length: { maximum: 8 }, format: { with: VALID_POSTAL_CODE, message: 'のフォーマットが不適切です' }
+
   validates :municipality,                 presence: true, length: { maximum: 50 }
   validates :address,                      presence: true, length: { maximum: 100 }
 
