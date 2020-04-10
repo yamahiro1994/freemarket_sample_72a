@@ -44,11 +44,12 @@ class ItemsController < ApplicationController
     @images = @item.images
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
-    @address = Prefecture.all
-    @charge = Deliverycharge.all
-    @days = Deliverydays.all
-    @method = Deliverymethod.all
-    @status = Status.all
+    # @address = Prefecture.all
+    # @charge = Deliverycharge.all
+    # @days = Deliverydays.all
+    # @method = Deliverymethod.all
+    # @status = Status.all
+    @parents = Category.where(ancestry: nil)
   end
 
   def edit

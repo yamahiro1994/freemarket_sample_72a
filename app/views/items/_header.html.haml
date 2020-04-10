@@ -8,9 +8,9 @@
         %input{ class: "btn", type: "image", src: "/assets/icon-search 1.png" }
     .header__main__lower-box
       .header__main__lower-box__left-list
-        = image_tag 'icon_category.png', height: '16', width: '16'
-        = link_to 'カテゴリ', "#", class:"category-link"
+        = image_tag 'icon_category.png', height: '16', width: '16', class:"category-icon"
         .category-link
+          カテゴリ
           %ul.category1
             - @parents.each do |parent|
               %li.parent__list
