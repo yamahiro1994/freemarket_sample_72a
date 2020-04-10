@@ -98,6 +98,7 @@
         - elsif user_signed_in? && current_user.id != @item.seller_id
           = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
         - else
+        
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|

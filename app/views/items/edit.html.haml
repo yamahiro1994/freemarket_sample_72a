@@ -1,7 +1,7 @@
 .edit-main
-  .edit-main__head
-    %h2 商品の情報を入力
   = form_with(model: @item, local: true) do |f|
+    .edit-main__head
+      %h2 商品の情報を入力
     .edit-main__image-box
       .edit-main__image-box__flex
         .edit-main__image-box__flex__text
@@ -9,16 +9,33 @@
         .edit-main__image-box__flex__label
           %p 必須
       .edit-main__image-box__maximum
-        %p 最大10枚までアップロードできます
-      .edit-main__image-box__frame
-        .edit-main__image-box__image
-          %label
-          = f.fields_for :images, class: "edit-main__image-box__image" do |i|
-            = i.file_field :image, class: "edit-main__image-box__image__input"
-            = image_tag("icon_camera.png", width:"25")
-            .edit-main__image-box__imagebox__FileSelect
-      .edit-main__image-box__errer
-        %p 画像がありません
+        %p 最大5枚までアップロードできます
+      .post__drop__box__container
+        .prev-content
+          //JSで挿入したhtmlと同じ形 each文でのプレビュー表示
+          - @item.images.each do |image|
+            .preview-box
+              .upper-box
+                = image_tag image.image.url, width: "112", height: "122", alt: "preview"
+              .lower-box
+                -# 今後実装予定
+                -# .update-box
+                -#   %label.edit-btn 編集
+                .delete-box
+                  .delete-btn
+                    %span 削除
+        .label-content
+          //プレビューの数に合わせてforオプションを指定
+          = f.label :"images_attributes_#{@item.images.length}_image", class: "label-box", id: "label-box--#{@item.images.length}" do
+            %pre.label-box__text-visible クリックしてファイルをアップロード
+        .hidden-content
+          = f.fields_for :images do |i|
+            //プレビューが出ている分のfile_fieldとdelete用のチェックボックスを設置
+            = i.file_field :image, class: "hidden-field"
+            = i.check_box:_destroy, class: "hidden-checkbox"
+            //5つのfile_fieldを準備するに当たって、足りない分を表示
+          - @item.images.length.upto(4) do |i|
+            %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
 
     .edit-main__product-name
       .edit-main__product-name__flex
@@ -44,9 +61,12 @@
             %p カテゴリー
           .edit-main__details-box__flex__label
             %p 必須   
-        = f.select :category_id, [["選択してください", 0],["レディース", 3]] 
-        = f.select :category_id, [["選択してください", 0],["レディース", 3]]
-        = f.select :category_id, [["選択してください", 0],["レディース", 3]]
+        .listing-select-wrapper
+          .listing-select-wrapper__box
+          = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'category-wrapper__category form-control', id: 'parent_category'}
+          = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'}
+          = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}
+
         .edit-main__details-box__status
           .edit-main__details-box__status__flex
             .edit-main__details-box__status__flex__text

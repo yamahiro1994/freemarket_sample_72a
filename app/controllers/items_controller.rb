@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
-  
+  before_action :set_item, only: [:buy, :create, :show, :edit, :update]
+
   def buy
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    if @item.save!
+    if @item.save
       redirect_to root_path
 
     else
@@ -117,29 +117,56 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @items = Item.all
+    @images = @item.images
+    @image = @item.images[0].image_url
+    @seller = User.find(@item.seller_id)
+    @address = Prefecture.all
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = []
+    
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+    @category_children_array = []
+    
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+    
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+    
   end
 
   def update
-    if @item.update(product_params)
+    if @item.update(item_update_params)
       redirect_to root_path
     else
       render :edit
     end
   end
-
+  
   def destroy
-    @product.destroy
+    @item.destroy
     redirect_to root_path
   end
 
- private
+  private
 
   def set_item
     @item = Item.find(params[:id])
   end
 
   def item_params
-    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image, :_destroy, :id])
+    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
+  end
+
+  def item_update_params
+    params.require(:item).permit(:name,[images_attributes: [:image, :_destroy, :id]])
   end
 
 end
