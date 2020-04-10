@@ -56,7 +56,7 @@
             %p 必須
           .new-main__details-box__status__flex__flame
             .new-main__details-box__status__flex__flame__form
-        = f.collection_select :status, Status.all,:id, :name, prompt: "選択してください"
+        = f.collection_select :status_id, Status.all,:id, :name, prompt: "選択してください"
         
     .new-main__delivery-box
       .new-main__delivery-box__title
@@ -66,13 +66,13 @@
           %p 配送料の負担
         .new-main__delivery-box__flex__label
           %p 必須
-      = f.collection_select :delivery_charge, Deliverycharge.all,:id, :name, prompt: "選択してください"
+      = f.collection_select :delivery_charge_id, DeliveryCharge.all,:id, :name, prompt: "選択してください"
       .new-main__delivery-box__flex
         .new-main__delivery-box__flex__text
           %p 配送の方法
         .new-main__delivery-box__flex__label
           %p 必須
-      = f.collection_select :delivery_method, Deliverymethod.all,:id, :name, prompt: "選択してください"
+      = f.collection_select :delivery_method_id, DeliveryMethod.all,:id, :name, prompt: "選択してください"
       .new-main__delivery-box__price
         .new-main__delivery-box__price__flex
           .new-main__delivery-box__price__flex__text
@@ -86,7 +86,7 @@
             %p 発送までの日数
           .new-main__delivery-box__days__flex__label
             %p 必須
-        = f.collection_select :delivery_days, Deliverydays.all,:id, :name, prompt: "選択してください"
+        = f.collection_select :delivery_days_id, DeliveryDays.all,:id, :name, prompt: "選択してください"
     
     .new-main__exhibition-box
       .new-main__exhibition-box__price

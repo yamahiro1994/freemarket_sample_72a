@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.where("buyer_id != status is null").order(id: :desc)
+    @items = Item.order(id: :desc)
     @images = Image.includes(:item)
     @parents = Category.where(ancestry: nil)
   end
@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image])
+    params.require(:item).permit(:title, :content, :price, :status_id, :prefecture_id, :delivery_days_id, :delivery_charge_id, :category_id, :delivery_method_id, :seller_id, images_attributes: [:image])
   end
 
 end
