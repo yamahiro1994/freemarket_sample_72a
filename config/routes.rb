@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   root 'items#index'
   # root 'items#t_user_credit_link'
 
-  # 商品詳細画面確認用
   resources :items do
     collection do
       # # のちのちmember

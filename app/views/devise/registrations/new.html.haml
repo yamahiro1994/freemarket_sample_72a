@@ -125,7 +125,7 @@
             = f.label "都道府県"
             .prefectures__label__require
               必須
-          = f.text_field :prefectures, placeholder: "例) 大阪府", class: "prefectures__form", required: true
+          = f.collection_select :prefectures, Prefecture.all,:id, :name, prompt: "選択してください", class: "prefectures__form", required: true
 
 
         .municipality

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, only: [:buy, :show, :edit]
+  
   
   def buy
     @image = @item.images[0].image
