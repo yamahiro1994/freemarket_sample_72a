@@ -8,8 +8,9 @@ function CheckPassword(confirm){
     confirm.setCustomValidity('');
   }
 }
+
 // 全角カナかどうかをチェックするJS
-$("input[name='hoge']").blur(function(){
-  if(!$(this).val().match(/^[ァ-ロワヲンー  \r\n\t]*$/)){
-  }
-});
+// $("input[name='hoge']").blur(function(){
+//   if(!$(this).val().match(/^[ァ-ロワヲンー  \r\n\t]*$/)){
+//   }
+// });

@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
   def new  
     @item = Item.new
     @item.images.new
-    @address = Prefecture.all
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
@@ -31,8 +30,9 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to root_path
+
     else
       render :new
     end
@@ -57,6 +57,19 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def update
+    if @item.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @product.destroy
+    redirect_to root_path
+  end
+
  private
 
   def set_item
@@ -64,7 +77,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image])
+    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image, :_destroy, :id])
   end
 
 end
