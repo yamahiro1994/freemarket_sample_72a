@@ -13,11 +13,15 @@ Rails.application.routes.draw do
 
   root 'items#index'
   # root 'items#t_user_credit_link'
+  resources :cards, only: [:new, :index, :create, :destroy]
 
-  # 商品詳細画面確認用
   resources :items do
-    collection do
-      # # のちのちmember
+    member do
+      get 'buy'
+      post 'pay'
+    end
+    collection  do
+      # のちのちmember
       get 't_user_credit_detail'
       get 't_user_credit_link'
       get 't_user_logout'

@@ -12,34 +12,37 @@
           .buy-container__item__box__detail__name
             #{@item.title}
           .buy-container__item__box__detail__price
-            #{converting_to_jpy(@item.price)} (税込) #{@item.delivery_charge_i18n}
+            #{converting_to_jpy(@item.price)} (税込) #{@item.delivery_charge}
     .buy-container__form-box
-      = form_with(id: "buy-form") do |f|
-        .buy-container__form-box__price
-          .buy-container__form-box__price__left
-            支払い金額
-          .buy-container__form-box__price__right
-            #{converting_to_jpy(@item.price)}
-        .buy-container__form-box__payment
-          .buy-container__form-box__payment__method
-            .buy-container__form-box__payment__method__left
-              支払い方法
-            = link_to('変更', '#', {class: 'buy-container__form-box__payment__method__right'})
-          .buy-container__form-box__payment__card-info
-            クレジットカード
-            %br ****************
-            有効期限 **/**
-            %p
-              = image_tag 'https://www.pay-route.co.jp/wp/wp-content/uploads/2019/08/visa300px-300x192.gif', alt: 'card-logo', height: '20', width: '34', class: 'card-img'
-        .buy-container__form-box__delivery
-          .buy-container__form-box__delivery__method
-            .buy-container__form-box__delivery__method__left
-              配送先
-            = link_to('変更', '#', {class: 'buy-container__form-box__delivery__method__right'})
-          .buy-container__form-box__delivery__user-info
-            〒#{@seller.postal_code}
-            %br #{@seller.address}
-            #{@seller.nickname}
+      .buy-container__form-box__price
+        .buy-container__form-box__price__left
+          支払い金額
+        .buy-container__form-box__price__right
+          #{converting_to_jpy(@item.price)}
+      .buy-container__form-box__payment
+        .buy-container__form-box__payment__method
+          .buy-container__form-box__payment__method__left
+            支払い方法
+          = link_to('変更', '#', {class: 'buy-container__form-box__payment__method__right'})
+        .buy-container__form-box__payment__card-info
+          クレジットカード
+          %br
+          = "**** **** **** " + @card_info.last4 
+          %br
+          有効期限
+          = @exp_month + " / " + @exp_year
+          %p
+            = image_tag "#{@card_image}",width:'34',height:'20', alt:'credit-card', class: 'card-img'
+      .buy-container__form-box__delivery
+        .buy-container__form-box__delivery__method
+          .buy-container__form-box__delivery__method__left
+            配送先
+          = link_to('変更', '#', {class: 'buy-container__form-box__delivery__method__right'})
+        .buy-container__form-box__delivery__user-info
+          〒#{@seller.postal_code}
+          %br #{@seller.address}
+          #{@seller.nickname}
+      = form_with url: pay_item_path(@item), id: "buy-form" do |f|
         = f.submit "購入する", class: "buy-btn"
 = render "footer"
 
