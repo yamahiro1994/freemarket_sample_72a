@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:buy, :new, :show]
+  before_action :set_item, only: [:buy, :create, :show, :edit, :update]
 
   def buy
     @image = @item.images[0].image
@@ -38,7 +38,6 @@ class ItemsController < ApplicationController
   end
   
   def show
-   
     @items = Item.all
     @images = @item.images
     @image = @item.images[0].image_url
@@ -52,22 +51,34 @@ class ItemsController < ApplicationController
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
     @address = Prefecture.all
-    @category_parent_array = ["---"]
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = []
+    
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+    @category_children_array = []
+    
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+    
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+    
   end
 
-  def get_category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  def update
+    if @item.update(item_update_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
   
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
-  
-  
-
   def destroy
     @item.destroy
     redirect_to root_path
@@ -80,7 +91,11 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image, :_destroy, :id])
+    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
+  end
+
+  def item_update_params
+    params.require(:item).permit(:name,[images_attributes: [:image, :_destroy, :id]])
   end
 
 end

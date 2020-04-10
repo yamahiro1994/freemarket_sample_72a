@@ -10,14 +10,16 @@
         .show-main__content-top__item-box__body
           %ul.photo-line-ul
             %li.photo-line-li
-              = image_tag "#{@images[0].image}", alt: '', class: 'photo-big'
-              %ul.photo-line-ul-under
-                %li.photo-line-li-under
-                  = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
-                %li.photo-line-li-under
-                  = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
-                %li.photo-line-li-under
-                  = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
+              - @item.images.each do |image|
+                = image_tag image.image.url
+                = image_tag "#{@images[0].image}", alt: '', class: 'photo-big'
+                  %ul.photo-line-ul-under
+                    %li.photo-line-li-under
+                      = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
+                    %li.photo-line-li-under
+                      = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
+            -#     %li.photo-line-li-under
+            -#       = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
             #{converting_to_jpy(@item.price)}
