@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:buy, :show, :edit, :update]
+  before_action :set_item, only: [:buy, :pay, :show, :edit, :update]
 
   def buy
     @image = @item.images[0].image_url
@@ -106,11 +106,6 @@ class ItemsController < ApplicationController
     @images = @item.images
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
-    # @address = Prefecture.all
-    # @charge = Deliverycharge.all
-    # @days = Deliverydays.all
-    # @method = Deliverymethod.all
-    # @status = Status.all
     @parents = Category.where(ancestry: nil)
   end
 
@@ -154,11 +149,6 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-  end
-  
-  def destroy
-    @item.destroy
-    redirect_to root_path
   end
 
   private
