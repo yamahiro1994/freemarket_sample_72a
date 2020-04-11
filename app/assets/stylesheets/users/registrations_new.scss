@@ -250,7 +250,7 @@
             @include require;
           }
         }
-        &__form {
+        select {
           @include info-form; 
         }
       }
