@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_120304) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "image", null: false
+    t.text "image"
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_120304) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
-    t.text "content"
+    t.text "content", null: false
     t.integer "price", null: false
     t.integer "status_id"
     t.integer "delivery_method_id"
@@ -73,16 +73,16 @@ ActiveRecord::Schema.define(version: 2020_04_10_120304) do
     t.string "user_name", null: false
     t.string "user_name_kana", null: false
     t.date "birthday", null: false
-    t.string "destination_family_name"
-    t.string "destination_family_name_kana"
-    t.string "destination_name"
-    t.string "destination_name_kana"
-    t.string "postal_code"
-    t.integer "prefectures"
-    t.string "municipality"
-    t.string "address"
+    t.string "destination_family_name", null: false
+    t.string "destination_family_name_kana", null: false
+    t.string "destination_name", null: false
+    t.string "destination_name_kana", null: false
+    t.integer "postal_code", null: false
+    t.integer "prefectures", null: false
+    t.integer "municipality", null: false
+    t.string "address", null: false
     t.string "apartment_room_namber"
-    t.string "phone_number"
+    t.integer "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
