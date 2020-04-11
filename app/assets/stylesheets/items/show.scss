@@ -37,13 +37,38 @@
         .photo-line-li{
           display: flex;
           flex-direction: column;
-          width:560px;
+          width: 450px;
+          height: 450px;
           align-items:center;
           margin:0 auto;
+          position: relative;
+          .photo-line-li__sold{
+            width: 0;
+            height: 0;
+            border-width: 120px 120px 0 0;
+            border-color: #ea352d transparent transparent transparent;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            border-style: solid;
+            &__inner{
+              top: -90px;
+              font-size: 30px;
+              position: absolute;
+              left: 0;
+              z-index: 2;
+              color: #fff;
+              transform: rotate(-45deg);
+              letter-spacing: 2px;
+              font-weight: 600;
+            }
+          }
         }
         .photo-big{
-          object-fit: contain;
-          height: 346px;
+          object-fit: cover;
+          height: 100%;
           width: 100%;
           vertical-align: bottom;
         }

@@ -11,13 +11,16 @@
           %ul.photo-line-ul
             %li.photo-line-li
               = image_tag "#{@images[0].image}", alt: '', class: 'photo-big'
-              %ul.photo-line-ul-under
-                %li.photo-line-li-under
-                  = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
-                %li.photo-line-li-under
-                  = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
-                %li.photo-line-li-under
-                  = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
+              -if @item.buyer_id.present?
+                .photo-line-li__sold
+                  .photo-line-li__sold__inner SOLD
+          %ul.photo-line-ul-under
+            %li.photo-line-li-under
+              = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
+            %li.photo-line-li-under
+              = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
+            %li.photo-line-li-under
+              = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
             #{converting_to_jpy(@item.price)}
@@ -25,7 +28,7 @@
             %span
               (税込)
             %span
-              #{@charge.find(@item.delivery_charge).name}
+              #{@item.delivery_charge}
         .show-main__content-top__item-box__item-detail
           #{@item.content}
         .show-main__content-top__item-box__table
@@ -48,27 +51,21 @@
                     %span <br>＞
                     =link_to "#",class:"kategori" do
                       #{@item.category.name}
-                -# %tr
-                -#   %th
-                -#     ブランド
-                -#   %td
-                -#     Amazon
                 %tr
                   %th
                     発送方法
                   %td
-                    #{@method.find(@item.delivery_method).name}
+                    #{@item.delivery_method}
                 %tr
                   %th
                     商品の状態
                   %td
-                    #{@status.find(@item.status_was).name}
-                    -# =@item.status.name
+                    #{@item.status}
                 %tr
                   %th
                     配送料の負担
                   %td
-                    #{@charge.find(@item.delivery_charge).name}
+                    #{@item.delivery_charge}
                     = @item.delivery_charge == 'recipient' ? '(出品者負担)': '(購入者負担)'
                 %tr
                   %th
@@ -80,13 +77,13 @@
                   %th
                     配送日の目安
                   %td
-                    #{@days.find(@item.delivery_days).name}
+                    #{@item.delivery_days}
         .show-main__content-top__item-box__area
           %ul
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
               %li#linke-btn.show-main__content-top__item-box__area__btn-left__link
                 %icon.fa.fa-star 
-                お気に入り 0                
+                お気に入り 0
           %ul.show-main__content-top__item-box__area__optional
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-right" do
               %li.show-main__content-top__item-box__area__optional__btn-right__link
@@ -94,15 +91,20 @@
                 不適切な商品の通報
 
       .show-main__content-top__btn-box 
-        - if user_signed_in? && current_user.id == @item.seller_id
+        - if user_signed_in? && current_user.id == @item.seller_id      
           = link_to '商品の編集', edit_item_path(@item), class:'show-edit btn'
           %br or
           = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
+        - elsif user_signed_in? && current_user.id != @item.seller_id
+          = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
         - else
-          -# = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
+        
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
+          %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
+          %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
+
           = f.text_area :comment, class:'show-main__content-top__comment-box__coments__textarea'
           .show-main__content-top__comment-box__coments__p
             相手のことを考え丁寧なコメントを心がけましょう。

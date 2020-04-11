@@ -1,5 +1,5 @@
 .logo-box
-  = link_to image_tag("logo.png", width:"130", alt:"logo")
+  = link_to image_tag("logo.png", width:"130", alt:"logo"), root_path
 .new-main
   = form_with(model: @item, local: true) do |f|
     .new-main__image-box
@@ -9,16 +9,19 @@
         .new-main__image-box__flex__label
           %p 必須
       .new-main__image-box__maximum
-        %p 最大10枚までアップロードできます
-      .new-main__image-box__frame
-        .new-main__image-box__image
-          %label
-          = f.fields_for :images, class: "new-main__image-box__image" do |i|
-            = i.file_field :image, class: "new-main__image-box__image__input"
-            = image_tag("icon_camera.png", width:"25")
-            .new-main__image-box__imagebox__FileSelect
-      .new-main__image-box__errer
-        %p 画像がありません
+        %p 最大5枚までアップロードできます
+      .post__drop__box__container
+        .prev-content
+        .label-content
+          %label{for: "item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
+            %pre.label-box__text-visible クリックしてファイルをアップロード
+        .hidden-content
+          = f.fields_for :images do |i|
+            = i.file_field :image, class: "hidden-field"
+            %input{class:"hidden-field", type: "file", name: "item[images_attributes][1][image]", id: "item_images_attributes_1_image" }
+            %input{class:"hidden-field", type: "file", name: "item[images_attributes][2][image]", id: "item_images_attributes_2_image" }
+            %input{class:"hidden-field", type: "file", name: "item[images_attributes][3][image]", id: "item_images_attributes_3_image" }
+            %input{class:"hidden-field", type: "file", name: "item[images_attributes][4][image]", id: "item_images_attributes_4_image" }
 
     .new-main__product-name
       .new-main__product-name__flex
@@ -26,7 +29,7 @@
           %p 商品名
         .new-main__product-name__flex__label
           %p 必須
-      = f.text_field :title, class: 'new-main__product-name__title'
+      = f.text_field :title, class: "new-main__product-name__title"
       .new-main__product-name__introduction
         .new-main__product-name__introduction__frame
           .new-main__product-name__introduction__frame__text
@@ -34,8 +37,7 @@
           .new-main__product-name__introduction__frame__label
             %p 必須
         = f.text_area :content, class: "new-main__product-name__introduction__frame__content", placeholder: '商品の説明 (1000文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
-        .new-main__product-name__introduction__math
-          %p 0/1000
+
 
     .new-main__details-box
       .new-main__details-box__title
@@ -110,7 +112,7 @@
             %p 販売利益
           .new-main__exhibition-box__profit__total__line
         .new-main__exhibition-box__profit__flame
-          = f.submit '出品する', class: 'submit-btn'
-          = f.button '下書きに保存', class: 'btn'
-          %a もどる
+          = f.submit "出品する", class: "submit-btn"
+          = link_to "#", class: "btn" do
+            = "下書きに保存"
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
