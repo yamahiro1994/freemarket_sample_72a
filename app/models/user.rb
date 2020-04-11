@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
@@ -6,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
-  has_many :cards
+  # has_many :cards
   
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   VALID_KATAKANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/

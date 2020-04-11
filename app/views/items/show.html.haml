@@ -14,13 +14,13 @@
               -if @item.buyer_id.present?
                 .photo-line-li__sold
                   .photo-line-li__sold__inner SOLD
-          %ul.photo-line-ul-under
-            %li.photo-line-li-under
-              = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
-            %li.photo-line-li-under
-              = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
-            %li.photo-line-li-under
-              = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
+          -# %ul.photo-line-ul-under
+          -#   %li.photo-line-li-under
+          -#     = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
+          -#   %li.photo-line-li-under
+          -#     = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
+          -#   %li.photo-line-li-under
+          -#     = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
             #{converting_to_jpy(@item.price)}
@@ -28,7 +28,7 @@
             %span
               (税込)
             %span
-              #{@item.delivery_charge}
+              #{@item.delivery_charge.name}
         .show-main__content-top__item-box__item-detail
           #{@item.content}
         .show-main__content-top__item-box__table
@@ -55,29 +55,28 @@
                   %th
                     発送方法
                   %td
-                    #{@item.delivery_method}
+                    #{@item.delivery_method.name}
                 %tr
                   %th
                     商品の状態
                   %td
-                    #{@item.status}
+                    #{@item.status.name}
                 %tr
                   %th
                     配送料の負担
                   %td
-                    #{@item.delivery_charge}
-                    = @item.delivery_charge == 'recipient' ? '(出品者負担)': '(購入者負担)'
+                    #{@item.delivery_charge.name}
                 %tr
                   %th
                     配送元の地域
                   %td
                     =link_to "#",class:"tiiki" do
-                      #{@address.find(@item.prefecture_id).name}
+                      #{@item.prefecture_id}
                 %tr
                   %th
                     配送日の目安
                   %td
-                    #{@item.delivery_days}
+                    #{@item.delivery_days.name}
         .show-main__content-top__item-box__area
           %ul
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do

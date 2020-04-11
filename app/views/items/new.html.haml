@@ -58,7 +58,7 @@
             %p 必須
           .new-main__details-box__status__flex__flame
             .new-main__details-box__status__flex__flame__form
-        = f.select :status, [["選択してください", :'---'],["新品、未使用", :unused],["未使用に近い", :nearly_unused],["目立った傷や汚れなし", :not_injured],["やや傷や汚れあり", :bit_injured],["傷や汚れあり", :injured],["全体的に状態が悪い", :bad]]
+        = f.collection_select :status_id, Status.all,:id, :name, prompt: "選択してください"
         
     .new-main__delivery-box
       .new-main__delivery-box__title
@@ -68,13 +68,13 @@
           %p 配送料の負担
         .new-main__delivery-box__flex__label
           %p 必須
-      = f.select :delivery_charge, [["選択してください"],["送料込み", 1],["着払い", 2]]
+      = f.collection_select :delivery_charge_id, DeliveryCharge.all,:id, :name, prompt: "選択してください"
       .new-main__delivery-box__flex
         .new-main__delivery-box__flex__text
           %p 配送の方法
         .new-main__delivery-box__flex__label
           %p 必須
-      = f.select :delivery_method, [["選択してください", :'---'],["大型配送", :large],["中型配送", :normal],["小型配送", :small]]
+      = f.collection_select :delivery_method_id, DeliveryMethod.all,:id, :name, prompt: "選択してください"
       .new-main__delivery-box__price
         .new-main__delivery-box__price__flex
           .new-main__delivery-box__price__flex__text
@@ -88,7 +88,7 @@
             %p 発送までの日数
           .new-main__delivery-box__days__flex__label
             %p 必須
-        = f.select :delivery_days, [["選択してください"],["１〜２日で発送", 1],["２〜３日で発送", 2],["４〜７日で発送",3]]
+        = f.collection_select :delivery_days_id, DeliveryDays.all,:id, :name, prompt: "選択してください"
     
     .new-main__exhibition-box
       .new-main__exhibition-box__price

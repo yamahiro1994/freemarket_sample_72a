@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:buy, :create, :show, :edit, :update]
+  before_action :set_item, only: [:buy, :show, :edit, :update]
 
   def buy
     @image = @item.images[0].image_url
@@ -69,8 +69,9 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.where("buyer_id != status is null").order(id: :desc)
+    @items = Item.order(id: :desc)
     @images = Image.includes(:item)
+    @parents = Category.where(ancestry: nil)
   end
   
   def new  
@@ -105,7 +106,12 @@ class ItemsController < ApplicationController
     @images = @item.images
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
-    @address = Prefecture.all
+    # @address = Prefecture.all
+    # @charge = Deliverycharge.all
+    # @days = Deliverydays.all
+    # @method = Deliverymethod.all
+    # @status = Status.all
+    @parents = Category.where(ancestry: nil)
   end
 
   def destroy
@@ -162,7 +168,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :content, :price, :status, :prefecture_id, :delivery_days, :delivery_charge, :category_id, :delivery_method, :seller_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:title, :content, :price, :status_id, :prefecture_id, :delivery_days_id, :delivery_charge_id, :category_id, :delivery_method_id, :seller_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def item_update_params
