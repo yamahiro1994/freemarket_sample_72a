@@ -9,14 +9,14 @@
         .edit-main__image-box__flex__label
           %p 必須
       .edit-main__image-box__maximum
-        %p 最大10枚までアップロードできます
+        %p 最大5枚までアップロードできます
       .post__drop__box__container
         .prev-content
-          //JSで挿入したhtmlと同じ形　each文でのプレビュー表示
+          //JSで挿入したhtmlと同じ形 each文でのプレビュー表示
           - @item.images.each do |image|
             .preview-box
               .upper-box
-                = image_tag image.image.url, width: "112", height: "112", alt: "preview"
+                = image_tag image.image.url, width: "112", height: "122", alt: "preview"
               .lower-box
                 -# 今後実装予定
                 -# .update-box
@@ -36,28 +36,6 @@
             //5つのfile_fieldを準備するに当たって、足りない分を表示
           - @item.images.length.upto(4) do |i|
             %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
-
-
-          -# = image_tag "#{@images[0].image}", alt: '', class: 'photo-big', width: "100", height: "100"
-          -# = image_tag "#{@images[1].image}", alt: '', class: 'photo-big', width: "100", height: "100"
-          -# = image_tag "#{@images[2].image}", alt: '', class: 'photo-big', width: "100", height: "100"
-          -# = image_tag "#{@images[3].image}", alt: '', class: 'photo-big', width: "100", height: "100"
-          -# = image_tag "#{@images[4].image}", alt: '', class: 'photo-big', width: "100", height: "100"
-        %label
-          = f.fields_for :images do |i|
-            .js-file_group{data_index: "image.index"}
-              = i.file_field :image, class: 'js-file'
-              = image_tag("icon_camera.png", width:"25")
-              .image-preview_btn_edit 編集
-              %span.js-remove 削除
-          -#   - if @item.persisted?
-          -#     -# = image.check_box :_destroy, data:{ index: image.index }, class: "hidden-destroy"
-          -# - if @item.persisted?
-          -#   .js-file_group{"data-index" => "#{@item.images.count}"}
-          -#   = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: "js-file"
-          -#   .js-remove 削除
-          -#   .new-main__image-box__imagebox__FileSelect
-
 
     .edit-main__product-name
       .edit-main__product-name__flex
@@ -85,8 +63,11 @@
             %p 必須   
         .listing-select-wrapper
           .listing-select-wrapper__box
-            -# = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category', name: 'item[category_id]'}
-            -# %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+          = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'category-wrapper__category form-control', id: 'parent_category'}
+          
+          = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'}
+          
+          = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}
 
         .edit-main__details-box__status
           .edit-main__details-box__status__flex
@@ -151,33 +132,3 @@
         .edit-main__exhibition-box__profit__flame
           = f.submit '出品する', class: 'submit-btn'
           = f.button '下書きに保存', class: 'btn'
-
-
-
--# .main
--#   .head
--#     %h2 商品の情報を入力
--#   = form_with model: @product, class: "form", id: "product-form-edit" do |f|
--#     .form-image
--#       .form-image__title
--#         %label 出品画像
--#         %span 必須
--#         .form-image__text 最大10枚までアップロードできます
--#         .clearfix
--#           %ul#previews
--#             = f.fields_for :image do |image|
--#               - @product.images.each_with_index do |img, i|
--#                 %li.image-preview
--#                   %label.upload-label{style:"display: none;"}
--#                     .upload-label__text
--#                       ドラッグアンドドロップ
--#                       %br
--#                       またはクリックしてファイルをアップロード
--#                       .input-area
--#                         = image.file_field :name, value: img.name ,class: "hidden image_upload"
--#                         = image.hidden_field :id, value: img.id, name:"product[image][#{i}]"
--#                   .image-preview__wapper
--#                     = image_tag img.name.to_s, class:"preview"
--#                   .image-preview_btn
--#                     .image-preview_btn_edit 編集
--#                     .image-preview_btn_delete 削除
