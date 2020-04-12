@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function(){
 
     
     // 投稿編集時
-    //items/:i/editページへリンクした際のアクション=======================================
+    //items/:i/editページへリンクした際のアクション
     if (window.location.href.match(/\/items\/\d+\/edit/)){
       //登録済み画像のプレビュー表示欄の要素を取得する
       var prevContent = $('.label-content').prev();
@@ -80,7 +80,7 @@ $(document).on('turbolinks:load', function(){
           $('.label-content').hide();
         }
 
-        //プレビュー削除したフィールドにdestroy用のチェックボックスがあった場合、チェックを外す=============
+        //プレビュー削除したフィールドにdestroy用のチェックボックスがあった場合、チェックを外す
         if ($(`#item_images_attributes_${id}__destroy`)){
           $(`#item_images_attributes_${id}__destroy`).prop('checked',false);
         } 
@@ -110,7 +110,7 @@ $(document).on('turbolinks:load', function(){
         //フォームの中身を削除 
         $(`#item_images_attributes_${id}_image`).val("");
         var count = $('.preview-box').length;
-        //5個めが消されたらラベルを表示
+        //5個目が消されたらラベルを表示
         if (count == 4) {
           $('.label-content').show();
         }
@@ -122,11 +122,11 @@ $(document).on('turbolinks:load', function(){
 
         //投稿編集時
         $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
-        //5個めが消されたらラベルを表示
+        //5個目が消されたらラベルを表示
         if (count == 4) {
           $('.label-content').show();
         }
-        
+
         //ラベルのwidth操作
         setLabel();
         //ラベルのidとforの値を変更
@@ -136,13 +136,13 @@ $(document).on('turbolinks:load', function(){
         }
       }
       
-      console.log("new")
+    
       //フォームの中身を削除 
       $(`#item_images_attributes_${id}_image`).val("");
 
       //削除時のラベル操作
       var count = $('.preview-box').length;
-      //5個めが消されたらラベルを表示
+      //5個目が消されたらラベルを表示
       if (count == 4) {
         $('.label-content').show();
       }

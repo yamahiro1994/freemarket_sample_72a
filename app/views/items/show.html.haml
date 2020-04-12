@@ -16,9 +16,9 @@
                   .photo-line-li__sold__inner SOLD
           %ul.photo-line-ul-under
             - [1,2,3].each do |i|
-            - break if @images.nil?
               %li.photo-line-li-under
-                = image_tag "#{@images[i].image}", alt: '', class: 'photo-small'
+                - break if @images[i].nil?
+                = image_tag "#{@images[i].image}", alt: 'images', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
             #{converting_to_jpy(@item.price)}
@@ -49,6 +49,11 @@
                     %span <br>＞
                     =link_to "#",class:"kategori" do
                       #{@item.category.name}
+                %tr
+                  %th
+                    ブランド
+                  %td
+                    Amazon
                 %tr
                   %th
                     発送方法
@@ -98,7 +103,6 @@
           - else
             = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
         - else
-        
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
