@@ -14,13 +14,11 @@
               -if @item.buyer_id.present?
                 .photo-line-li__sold
                   .photo-line-li__sold__inner SOLD
-          -# %ul.photo-line-ul-under
-          -#   %li.photo-line-li-under
-          -#     = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
-          -#   %li.photo-line-li-under
-          -#     = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
-          -#   %li.photo-line-li-under
-          -#     = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
+          %ul.photo-line-ul-under
+            - [1,2,3].each do |i|
+            - break if @images.nil?
+              %li.photo-line-li-under
+                = image_tag "#{@images[i].image}", alt: '', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
             #{converting_to_jpy(@item.price)}
