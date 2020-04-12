@@ -1,5 +1,4 @@
-.logo-box
-  = link_to image_tag("logo.png", width:"130", alt:"logo"), root_path
+=render "logo-header"
 .new-main
   = form_with(model: @item, local: true) do |f|
     .new-main__image-box
@@ -29,7 +28,7 @@
           %p 商品名
         .new-main__product-name__flex__label
           %p 必須
-      = f.text_field :title, class: "new-main__product-name__title"
+      = f.text_field :title, class: "new-main__product-name__title", placeholder: "40文字まで"
       .new-main__product-name__introduction
         .new-main__product-name__introduction__frame
           .new-main__product-name__introduction__frame__text
@@ -37,7 +36,6 @@
           .new-main__product-name__introduction__frame__label
             %p 必須
         = f.text_area :content, class: "new-main__product-name__introduction__frame__content", placeholder: '商品の説明 (1000文字以内)(色、素材、重さ、定価、注意点など)例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
-
 
     .new-main__details-box
       .new-main__details-box__title
@@ -113,6 +111,8 @@
           .new-main__exhibition-box__profit__total__line
         .new-main__exhibition-box__profit__flame
           = f.submit "出品する", class: "submit-btn"
-          = link_to "#", class: "btn" do
-            = "下書きに保存"
+          = f.submit "下書きに保存", class: "save-btn"
+          = link_to "/", class: "btn" do
+            = "もどる"
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+=render "footer"
