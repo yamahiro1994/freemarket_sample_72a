@@ -147,12 +147,16 @@
         .apartment_room_namber
           .apartment_room_namber__label
             = f.label "建物名、部屋番号"
+            -# .apartment_room_namber__label__require
+            -#   必須
           = f.text_field :apartment_room_namber, placeholder: "例)  マンションフリマ 201号室", class: "apartment_room_namber__form"
 
 
         .buyer_phone_number
           .buyer_phone_number__label
             = f.label "電話番号"
+            -# .buyer_phone_number__label__require
+            -#   必須
           = f.text_field :phone_number, placeholder: "例) 08012345678", class: "buyer_phone_number__form"
 
         .warning_terms
@@ -160,7 +164,7 @@
           = link_to "利用規約", "http://www.google.com", class: "riyou-kiyaku"
           に同意したものとみなします
 
-        = render "devise/shared/error_messages", resource: resource
+        = render "devise/shared/error_messages", model: f.object
 
         = f.submit "ユーザー登録", class: "next_btn"
         = link_to "本人情報の登録について>", "http://www.google.com", class: "furima_guide"

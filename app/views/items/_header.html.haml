@@ -27,8 +27,6 @@
         -# = link_to 'ブランド', "#", class:"category-link"
       .right-list
         - if user_signed_in?
-          - if flash[:notice]
-            = flash[:notice]
           = link_to "マイページ",   t_user_show_items_path,    class: "right-list__btn"
           = link_to "ログアウト", root_path,                  class: "right-list__btn"
         - else
