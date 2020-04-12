@@ -25,11 +25,14 @@
 *{
   box-sizing: border-box;
 }
+.js-file{
+  // display: none;
+}
 
 
 
 .edit-main{
-  width: 700px;
+  width: 660px;
   margin: 0 auto;
   &__head{
     height: 96px;

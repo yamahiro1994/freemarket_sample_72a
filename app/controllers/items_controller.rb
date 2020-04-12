@@ -102,6 +102,7 @@ class ItemsController < ApplicationController
   end
   
   def show
+   
     @items = Item.all
     @images = @item.images
     @image = @item.images[0].image_url
@@ -123,32 +124,14 @@ class ItemsController < ApplicationController
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
     @address = Prefecture.all
-    grandchild_category = @item.category
-    child_category = grandchild_category.parent
-    @category_parent_array = []
-    
+    @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
-    @category_children_array = []
-    
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children
-    end
-    
-    @category_grandchildren_array = []
-    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
-    end
-    
   end
 
-  def update
-    if @item.update(item_update_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
+  def get_category_children
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
 
   private
