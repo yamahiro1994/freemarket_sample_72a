@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    @user = User.new
+    @user = User.find_by!(name: params[:name], password: params[:password])
   end
 
   def create

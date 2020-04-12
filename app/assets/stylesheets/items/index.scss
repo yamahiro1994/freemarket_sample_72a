@@ -52,6 +52,7 @@
         height: 40px;
         .search{
           width: 100%;
+          padding-left: 13px;
         }
         .btn{
           padding: 5px;
@@ -67,6 +68,7 @@
       &__left-list{
         .category-link{
           margin-right: 20px;
+          color: black;
         }
       }
       .right-list{
