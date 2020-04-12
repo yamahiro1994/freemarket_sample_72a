@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create] 
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -12,23 +11,22 @@ Rails.application.routes.draw do
   end
   
   root 'items#index'
-  # root 'items#t_user_credit_link'
   resources :cards, only: [:new, :index, :create, :destroy]
-
+  resources :users, only: [:new, :show, :create] do
+    member do
+      get 't_user_credit_detail'
+      get 't_user_credit_link'
+      get 'logout'
+    end
+  end
   resources :items do
     member do
       get 'buy'
       post 'pay'
     end
     collection  do
-      # のちのちmember
-      get 't_user_credit_detail'
-      get 't_user_credit_link'
-      get 't_user_logout'
-      get 't_user_show'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
-      get 'buy'# # のちのちmember
     end
   end
 end
