@@ -1,6 +1,7 @@
-=render "header"
+=render "/items/header"
 .user-show
-  .user-show-page.clearfix
+  =render "sidebar"
+  .user-show-page
     -# 全体
     .user-show-page__main
       -# メインページ
@@ -22,12 +23,10 @@
             %div.good-sukima
               出品数
               %span.user-show-page__main__icon__link__situation__item
-                0
-      %sction.user-show-page__main__todo
+                #{@items.length}
+      %section.user-show-page__main__todo
         .user-show-page__main__todo__top-tabs
           -# 追加機能用
         .user-show-page__main__todo__under-tabs
           -# 追加機能用
-
-    =render "t_user_show_sidebar"
-=render "footer"
+=render "/items/footer"
