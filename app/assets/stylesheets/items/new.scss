@@ -59,7 +59,7 @@
 
     
   &__product-name{
-    height: 353px;
+    height: 365px;
     padding: 40px;
     background-color: white;
     &__flex{
@@ -104,7 +104,7 @@
           @include l;
         }
       &__content{
-        height: 126px;
+        height: 137px;
         width: 100%;
         font-size: 15px;
         padding: 13px 16px;
@@ -312,16 +312,17 @@
           background-color: #ea352d;
           border-color: transparent;
         }
-        button.btn{
+        input.save-btn{
           height: 46px;
           width: 100%;
           color: #fff;
+          line-height: 46px;
           font-size: 15px;
           padding: 0 24px;
           border-radius: 4px;
           margin-bottom: 24px;
-          background-color: #efefef;
-          border-color: transparent;
+          background: #aaa;
+          border: 1px solid #aaa;
           color: #222;
         }
         a{
@@ -330,6 +331,7 @@
           font-size: 12px;
           display: flex;
           justify-content: center;
+          border-color: transparent;
         }
       }
       p{
@@ -408,7 +410,6 @@
         text-align: center;
         font-size: 14px;
         line-height: 1.5;
-        font-weight: bold;
         -webkit-transform: translate(0, -50%);
         transform: translate(0, -50%);
         pointer-events: none;
