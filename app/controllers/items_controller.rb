@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:buy, :pay, :show, :edit, :update]
+  before_action :set_item, only: [:buy, :pay, :show, :edit, :update, :destroy]
 
   def buy
     @image = @item.images[0].image_url
@@ -126,7 +126,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_update_params)
+    if @item.update(item_params)
       flash[:notice] = '更新しました'
       redirect_to action: "show"
     else
@@ -143,7 +143,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def set_item
@@ -154,8 +153,8 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title, :content, :price, :status_id, :prefecture_id, :delivery_days_id, :delivery_charge_id, :category_id, :delivery_method_id, :seller_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
-  def item_update_params
-    params.require(:item).permit(:name,[images_attributes: [:image, :_destroy, :id]])
-  end
+  # def item_update_params
+  #   params.require(:item).permit(:name,[images_attributes: [:image, :_destroy, :id]])
+  # end
 
 end
