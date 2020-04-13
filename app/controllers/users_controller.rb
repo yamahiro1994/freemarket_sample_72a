@@ -1,16 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_category
 
-  def new
-  end
-
   def create
     @user = User.create(user_params)
     # @user.password_confomation = user.params[:password]
     if @user.save
       redirect_to root_path
     else
-      render "new"
+      redirect_back(fallback_location: root_path)
     end
   end  
 

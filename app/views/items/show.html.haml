@@ -16,8 +16,8 @@
                   .photo-line-li__sold__inner SOLD
           %ul.photo-line-ul-under
             - [1,2,3].each do |i|
+            - break if @images[i].nil?
               %li.photo-line-li-under
-                - break if @images[i].nil?
                 = image_tag "#{@images[i].image}", alt: 'images', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
