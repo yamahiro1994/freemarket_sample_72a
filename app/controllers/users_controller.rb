@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path
     else
+      flash[:notice] = '入力項目に不備があります'
       redirect_back(fallback_location: root_path)
     end
   end  
