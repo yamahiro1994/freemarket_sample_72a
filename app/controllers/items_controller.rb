@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
         @card_image = "credit-saison-card.svg"
       end
     else
-      flash[:notice] = 'カード情報を登録してください'
+      flash[:notice] = '購入にはクレジットカード登録が必要です'
       redirect_to new_card_path
     end
   end
@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
     elsif @card.blank?
       # カード情報がなければ、買えないから戻す
       redirect_to new_card_path
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
+      flash[:notice] = '購入にはクレジットカード登録が必要です'
     else
       # 購入者もいないし、クレジットカードもあるし、決済処理に移行
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
         flash[:notice] = '購入しました。'
         redirect_to root_path
       else
-        flash[:alert] = '購入に失敗しました。'
+        flash[:notice] = '購入に失敗しました。'
         redirect_to item_path(@item)
       end
     end
