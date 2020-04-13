@@ -17,7 +17,7 @@
           %ul.category1
             - @parents.each do |parent|
               %li.parent__list
-                = link_to parent.name
+                = link_to parent.name ,category_path(parent)
                 %ul.category2
                   - parent.children.each do |child|
                     %li.child__list

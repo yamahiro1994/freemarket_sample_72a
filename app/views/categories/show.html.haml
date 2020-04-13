@@ -1,0 +1,21 @@
+=render "/items/header"
+.category__product-list
+  .category__product-list--title 
+    %span ここに商品カテゴリ名表示
+    の商品一覧
+  .category__product-list__contents
+    - @items.each do |i|
+    - break if @items.nil?
+      .category__product-list__contents__content
+        = link_to image_tag(@images.find_by(item_id:[i.id]).image_url, class:"img" ), item_path(i)
+        .category__product-list__contents__content__body
+          .category__product-list__contents__content__body--name
+            #{i.title}
+          .category__product-list__contents__content__body--text
+            #{converting_to_jpy(i.price)}
+            %span (税込)
+          .category__product-list__contents__content__body--favorite
+            %i.fas.fa-star
+            0
+=render "/items/footer"
+=render "/items/displayBtn"

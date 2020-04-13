@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   root 'items#index'
   resources :cards, only: [:new, :index, :create, :destroy]
+  resources :categories, only: [:show]
   resources :users, only: [:new, :show, :create] do
     member do
       get 't_user_credit_detail'
