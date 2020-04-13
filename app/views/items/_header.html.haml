@@ -4,8 +4,11 @@
       = link_to image_tag('logo.png', width: '140', height: `40.55`, class: 'logo'), root_path
 
       .header__main__upper-box__search-box
-        %input{ class: "search", placeholder: 'キーワードから探す' }
-        %input{ class: "btn", type: "image", src: "/assets/icon-search 1.png" }
+        = form_with url: root_path do |f|
+          = f.text_field :name, class: "search", placeholder: 'キーワードから探す'
+          .send-btn
+            = f.submit class: "btn"
+            = image_tag 'icon-search 1.png', class: 'btn'
     .header__main__lower-box
       .header__main__lower-box__left-list
         = image_tag 'icon_category.png', height: '16', width: '16', class:"category-icon"
