@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:buy, :pay, :show, :edit, :update]
+  before_action :set_item, only: [:buy, :pay, :show, :edit, :update, :destroy]
 
   def buy
     @image = @item.images[0].image_url
