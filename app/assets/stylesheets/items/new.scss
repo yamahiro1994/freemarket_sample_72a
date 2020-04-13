@@ -362,8 +362,10 @@
           margin-bottom: 24px;
           background-color: #ea352d;
           border-color: transparent;
+          cursor: pointer;
+
         }
-        button.btn{
+        button.draft-btn{
           height: 46px;
           width: 100%;
           color: #fff;
@@ -374,13 +376,16 @@
           background-color: #efefef;
           border-color: transparent;
           color: #222;
+          cursor: pointer;
         }
-        a{
+        .back-toppage{
           height: 20px;
           color: #0095ee;
           font-size: 12px;
           display: flex;
           justify-content: center;
+          cursor: pointer;
+
         }
       }
       p{

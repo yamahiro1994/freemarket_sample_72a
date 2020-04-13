@@ -1,5 +1,5 @@
 .logo-box
-  = link_to image_tag("logo.png", width:"130", alt:"logo")
+  = image_tag("logo.png", width:"130", alt:"logo")
 .new-main
   = form_with(model: @item, local: true) do |f|
     .new-main__image-box
@@ -104,6 +104,7 @@
           .new-main__exhibition-box__profit__total__line
         .new-main__exhibition-box__profit__flame
           = f.submit '出品する', class: 'submit-btn'
-          = f.button '下書きに保存', class: 'btn'
-          %a もどる
+          = f.button '下書きに保存', class: 'draft-btn', id: "draft-btn"
+          = link_to "もどる", root_path, class: "back-toppage", id: "back-toppage"
+
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
