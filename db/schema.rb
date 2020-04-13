@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_120304) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "image"
+    t.text "image", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,15 +44,15 @@ ActiveRecord::Schema.define(version: 2020_04_10_120304) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
-    t.text "content", null: false
+    t.text "content"
     t.integer "price", null: false
-    t.integer "status_id"
+    t.integer "status_id", null: false
     t.integer "delivery_method_id"
     t.integer "prefecture_id", null: false
     t.integer "delivery_days_id", null: false
     t.integer "delivery_charge_id", null: false
-    t.bigint "category_id"
-    t.bigint "seller_id"
+    t.bigint "category_id", null: false
+    t.bigint "seller_id", null: false
     t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_120304) do
     t.string "destination_family_name", null: false
     t.string "destination_family_name_kana", null: false
     t.string "destination_name", null: false
-    t.string "destination_name_kana", null: false
+    t.string "destination_name_kana", default: "", null: false
     t.integer "postal_code", null: false
     t.integer "prefectures", null: false
     t.integer "municipality", null: false

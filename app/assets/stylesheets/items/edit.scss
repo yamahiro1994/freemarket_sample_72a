@@ -22,12 +22,6 @@
   }
 }
 
-*{
-  box-sizing: border-box;
-}
-
-
-
 .edit-main{
   width: 700px;
   margin: 0 auto;
@@ -367,10 +361,9 @@
       }
       &__flame{
         height: 164px;
-        // margin: 0 130px 32px;
         input.submit-btn{
           height: 46px;
-          width: 580px;
+          width: 620px;
           color: #fff;
           font-size: 15px;
           padding: 0 24px;
@@ -378,16 +371,18 @@
           background-color: #ea352d;
           border-color: transparent;
         }
-        button.btn{
+        a.btn {
           height: 46px;
           width: 275px;
           color: #fff;
           font-size: 15px;
           padding: 0 24px;
-          margin: 0 153px;
-          background-color: #efefef;
-          border-color: transparent;
-          color: #222;
+          margin: 0 auto;
+          line-height: 46px;
+          display: flex;
+          justify-content: center;
+          background: #aaa;
+          border: 1px solid #aaa;
         }
       }
     }

@@ -1,0 +1,8 @@
+=render "/items/header"
+.user-logout
+  =render "sidebar"
+  .user-logout__btn
+    =link_to sign_out_path, class:"user-logout__btn__red" do
+      ログアウト
+=render "/items/footer"
+

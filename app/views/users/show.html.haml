@@ -1,0 +1,32 @@
+=render "/items/header"
+.user-show
+  =render "sidebar"
+  .user-show-page
+    -# 全体
+    .user-show-page__main
+      -# メインページ
+      %section.user-show-page__main__icon
+        -# ユーザーアイコン
+        =link_to"#",class:"user-show-page__main__icon__link" do
+          -# ユーザーボックス
+          %figure
+            = image_tag "/assets/yu-za-.jpg", alt: "", height: "60", width: "60", class: "user-show-page__main__icon__link__photo"
+            -# ユーザーの写真
+          %h2.user-show-page__main__icon__link__name
+            -# ユーザーの名前
+            ピエール
+          .user-show-page__main__icon__link__situation
+            %div
+              評価
+              %span.user-show-page__main__icon__link__situation__good
+                0
+            %div.good-sukima
+              出品数
+              %span.user-show-page__main__icon__link__situation__item
+                #{@items.length}
+      %section.user-show-page__main__todo
+        .user-show-page__main__todo__top-tabs
+          -# 追加機能用
+        .user-show-page__main__todo__under-tabs
+          -# 追加機能用
+=render "/items/footer"

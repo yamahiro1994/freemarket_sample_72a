@@ -1,0 +1,50 @@
+.mypage-main {
+  padding: 30px;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  &__right {
+    margin: 43px 40px;
+    width: 70%;
+    background-color: white;
+    &__title {
+      text-align: center;
+      font-weight: bold;
+      font-size: x-large;
+      border-bottom: 3px solid #f8f8f8;
+      padding: 8px;
+    }
+    &__content {
+      padding: 40px 0;
+      &__credit-card {
+        width: 300px;
+        margin: 0 auto;
+        text-align: left;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #f8f8f8;
+        &__title {
+          font-weight: bold;
+        }
+        &__content {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+          &__delete-btn {
+            color: red;
+            border-color: red;
+            border-radius: 3px;
+            font-size: smaller;
+            padding: 0 5px;
+          }
+        }
+      }
+      &__explain {
+        text-align: right;
+        padding: 20px;
+      }
+      .new-card-btn {
+        color: black;
+      }
+    }
+  }
+}

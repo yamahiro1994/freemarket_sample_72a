@@ -66,6 +66,7 @@
     .main__product-list--title 新規投稿商品
     .main__product-list__contents
       - @items.first(3).each do |i|
+      - break if @items.nil?
         .main__product-list__contents__content
           = link_to image_tag(@images.find_by(item_id:[i.id]).image_url, class:"img" ), item_path(i)
           .main__product-list__contents__content__body

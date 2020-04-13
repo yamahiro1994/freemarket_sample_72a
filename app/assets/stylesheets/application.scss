@@ -6,11 +6,10 @@
 @import "items/show";
 @import "items/edit";
 @import "items/buy";
-@import "items/t_user_show";
-@import "items/t_user_logout";
-@import "items/t_user_credit_link";
-@import "items/t_user_credit_detail";
-@import "cards/card";
+@import "users/show";
+@import "users/logout";
+@import "cards/form";
+@import "cards/cards";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 * {
@@ -21,4 +20,9 @@ a {
 }
 body {
   background-color: #f8f8f8;
+}
+.notification{
+  background-color: yellow;
+  font-family: serif;
+  text-align: center;
 }

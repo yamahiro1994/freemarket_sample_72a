@@ -14,13 +14,11 @@
               -if @item.buyer_id.present?
                 .photo-line-li__sold
                   .photo-line-li__sold__inner SOLD
-          -# %ul.photo-line-ul-under
-          -#   %li.photo-line-li-under
-          -#     = image_tag "#{@images[1].image}", alt: '', class: 'photo-small'
-          -#   %li.photo-line-li-under
-          -#     = image_tag "#{@images[2].image}", alt: '', class: 'photo-small'
-          -#   %li.photo-line-li-under
-          -#     = image_tag "#{@images[3].image}", alt: '', class: 'photo-small'
+          %ul.photo-line-ul-under
+            - [1,2,3].each do |i|
+              %li.photo-line-li-under
+                - break if @images[i].nil?
+                = image_tag "#{@images[i].image}", alt: 'images', class: 'photo-small'
         .show-main__content-top__item-box__pricebox
           %span.show-main__content-top__item-box__pricebox__price
             #{converting_to_jpy(@item.price)}
@@ -51,6 +49,11 @@
                     %span <br>＞
                     =link_to "#",class:"kategori" do
                       #{@item.category.name}
+                %tr
+                  %th
+                    ブランド
+                  %td
+                    Amazon
                 %tr
                   %th
                     発送方法
@@ -95,9 +98,11 @@
           %br or
           = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
         - elsif user_signed_in? && current_user.id != @item.seller_id
-          = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
+          - if @item.buyer_id
+            %buttun{type: "button", class: 'show-buy btn--gray'} 売り切れです
+          - else
+            = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
         - else
-        
       .show-main__content-top__comment-box
         %ul.show-main__content-top__comment-box__coments
         =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|

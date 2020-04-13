@@ -94,9 +94,10 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      flash[:notice] = '出品しました'
       redirect_to root_path
-
     else
+      flash[:notice] = '必須項目を入力してください'
       render :new
     end
   end
@@ -109,6 +110,31 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
 
+  def edit
+    @items = Item.all
+    @images = @item.images
+    @image = @item.images[0].image_url
+    @seller = User.find(@item.seller_id)
+    grandchild_category = @item.category
+    child_category = grandchild_category.parent
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+    @category_children_array = Category.where(ancestry: child_category.ancestry)
+    @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry) 
+  end
+
+  def update
+    if @item.update(item_update_params)
+      flash[:notice] = '更新しました'
+      redirect_to action: "show"
+    else
+      flash[:notice] = '必須項目を入力してください'
+      redirect_to action: "edit"
+    end
+  end
+
   def destroy
     if @item.destroy
       redirect_to root_path
@@ -117,39 +143,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
-    @items = Item.all
-    @images = @item.images
-    @image = @item.images[0].image_url
-    @seller = User.find(@item.seller_id)
-    @address = Prefecture.all
-    grandchild_category = @item.category
-    child_category = grandchild_category.parent
-    @category_parent_array = []
-    
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-    @category_children_array = []
-    
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children
-    end
-    
-    @category_grandchildren_array = []
-    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
-    end
-    
-  end
-
-  def update
-    if @item.update(item_update_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
 
   private
 

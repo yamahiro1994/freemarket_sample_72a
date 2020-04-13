@@ -1,7 +1,8 @@
+=render "logo-header"
 .edit-main
   = form_with(model: @item, local: true) do |f|
     .edit-main__head
-      %h2 商品の情報を入力
+      %h2 商品の情報を編集
     .edit-main__image-box
       .edit-main__image-box__flex
         .edit-main__image-box__flex__text
@@ -18,7 +19,7 @@
               .upper-box
                 = image_tag image.image.url, width: "112", height: "122", alt: "preview"
               .lower-box
-                -# 今後実装予定
+                -# 余裕あれば編集ボタン実装
                 -# .update-box
                 -#   %label.edit-btn 編集
                 .delete-box
@@ -64,7 +65,9 @@
         .listing-select-wrapper
           .listing-select-wrapper__box
           = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'category-wrapper__category form-control', id: 'parent_category'}
+          
           = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'}
+          
           = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}
 
         .edit-main__details-box__status
@@ -128,5 +131,7 @@
             %p 販売利益
           .edit-main__exhibition-box__profit__total__line
         .edit-main__exhibition-box__profit__flame
-          = f.submit '出品する', class: 'submit-btn'
-          = f.button '下書きに保存', class: 'btn'
+          = f.submit '変更する', class: 'submit-btn'
+          = link_to "#", class: "btn" do
+            = "キャンセル"
+=render "footer"
