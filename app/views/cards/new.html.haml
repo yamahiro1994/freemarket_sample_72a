@@ -1,14 +1,12 @@
 = render 'items/header'
-.container-fluid
-  .row.py-5.w-100
-    -# ユーザーマイページ
-    .mypage-main.col-9
-      %h2.header_title
-        支払い方法
-      .single-container
-        .rgs-main__section
-          = render "cards/form"
-        .payment-explain
-          %i.fas.fa-chevron-right
-          = link_to '支払い方法について', '#'
+.mypage-main
+  =render "users/sidebar"
+  .mypage-main__right
+    .mypage-main__right__title
+      支払い方法
+    .mypage-main__right__content
+      = render 'form'
+      .mypage-main__right__content__explain
+        %i.fas.fa-chevron-right
+        = link_to '支払い方法について', '#'
 = render 'items/footer'
