@@ -37,6 +37,9 @@ class ItemsController < ApplicationController
       when "Saison"
         @card_image = "credit-saison-card.svg"
       end
+    else
+      flash[:notice] = 'カード情報を登録してください'
+      redirect_to new_card_path
     end
   end
 
