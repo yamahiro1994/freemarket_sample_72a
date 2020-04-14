@@ -4,6 +4,15 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   validates :images, presence: true
   accepts_nested_attributes_for :images, allow_destroy: true
+
+  has_many :bookmarks
+  has_many :users, through: :bookmarks
+  # いいね用
+
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user.id).exists?
+  end
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :delivery_charge
   belongs_to_active_hash :delivery_days

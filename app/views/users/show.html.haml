@@ -13,8 +13,8 @@
             = image_tag "/assets/yu-za-.jpg", alt: "", height: "60", width: "60", class: "user-show-page__main__icon__link__photo"
             -# ユーザーの写真
           %h2.user-show-page__main__icon__link__name
+            #{current_user.nickname}
             -# ユーザーの名前
-            ピエール
           .user-show-page__main__icon__link__situation
             %div
               評価
