@@ -17,6 +17,11 @@
     margin: 50px auto;
     text-align: center;
     max-width: 1040px;
+    .empty-message{
+      color: red;
+      font-size: 26px;
+      margin: 150px auto;
+    }
     &__content{
       display: inline-block;
       background-color: #ffffff;
