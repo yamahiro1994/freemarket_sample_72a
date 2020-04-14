@@ -34,7 +34,7 @@ class CardsController < ApplicationController
 
   def new
     @card = Card.where(user_id: current_user.id).first
-    redirect_to action: "index" if @card.present?    
+    redirect_to action: "index" if @card.present?
   end
 
   def create
