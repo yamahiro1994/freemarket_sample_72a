@@ -12,7 +12,7 @@
           .buy-container__item__box__detail__name
             #{@item.title}
           .buy-container__item__box__detail__price
-            #{converting_to_jpy(@item.price)} (税込) #{@item.delivery_charge}
+            #{converting_to_jpy(@item.price)} (税込) #{@item.delivery_charge.name}
     .buy-container__form-box
       .buy-container__form-box__price
         .buy-container__form-box__price__left
