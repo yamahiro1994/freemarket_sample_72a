@@ -101,7 +101,7 @@
         }
         &__detail{
           font-size: 16px;
-        }  
+        }
       }
       &__item-detail{
         line-height: 1.5;
@@ -159,7 +159,7 @@
         }
         &__btn-left{
           &__link{
-            display: inline-block;    
+            display: inline-block;
             margin-right: auto;
             padding: 6px 10px;
             border-radius: 40px;
@@ -184,12 +184,13 @@
       }
     }
     &__btn-box {
-      padding: 24px 40px;
+      padding-top: 48px;
       background-color: #fff;
-      margin:10px 0;
-      text-align: center; 
+      margin: 10px 0;
+      text-align: center;
       .btn {
         @include showBtn(#3CCACE)
+        
       }
       .btn--gray {
         @include showBtn(gray)
@@ -197,13 +198,12 @@
 
     }
     &__comment-box{
-      padding: 24px;
+      padding: 40px;
       background-color: #fff;
-      margin:10px 0;
+      margin: 10px 0;
       text-align: center; 
       &__coments{
         list-style: none;
-
         &__input{
           font-family: inherit;
           font-size: inherit;
@@ -218,11 +218,11 @@
           padding: 8px;
           font-size: 14px;
           background-color: #f8f8f8;
-          margin: 10px 0;
+          margin: 0 0 15px;
           text-align:left;
         }
         &__button{
-          margin-top: 10px;
+          margin: 20px 0 0;
           line-height: 48px;
           background: #3CCACE;
           border: 1px solid #3CCACE;
@@ -230,6 +230,9 @@
           width: 60%;
           font-size: 18px;
           border-radius: 100px;
+        }
+        h4{
+          margin-top: 20px;
         }
       }
     }
@@ -259,3 +262,156 @@
     }
   }
 }
+
+.show-main__content-top__message{
+  :after,:before {
+    clear: both;
+    content: "";
+    display: block;
+  }
+  &__box{
+    height: 150px;
+    margin-bottom: 30px;
+    &__kaiwa {
+      &__clearfix-messages{
+        height: 150px;
+        &__img-right{
+          margin: 0;
+          float: right;
+          width: 40px;
+          height: -90px;
+          margin-left: -70px;
+          &__description{
+            font-size: 10px;
+            text-align: center;
+            position: relative;
+            bottom: 15px;
+            img {
+              width: 100%;
+              height: 100%;
+              border: 1px solid #aaa;
+              border-radius: 50%;
+              margin: 0;
+            }
+            a{
+              color: rgb(42,204,209);
+              width: 580px;
+              display: flex;
+            }
+          }
+        }
+        &__text{
+          height: 70px;
+          width: 550px;
+          position: relative;
+          margin-right: 60px;
+          padding: 15px;
+          border-radius: 20px;
+          background-color: rgb(251,240,230);
+          margin-left: 10%;
+          float: right;
+          &__right{
+            float: left;
+            margin: 0;
+            padding: 0;
+            &__:last-child {
+              margin-bottom: 0;
+            }
+          }
+          :before {
+            position: absolute;
+            content: '';
+            border: 10px solid transparent;
+            top: 10px;
+            right: -20px;
+            line-height: 60px;
+            align-items: center;
+          }
+          :after {
+            position: absolute;
+            content: '';
+            border: 10px solid transparent;
+            border-left: 10px solid rgb(251,240,230);
+            top: 12px;
+            right: -19px;
+          }
+        }
+      }
+    }
+  }
+}
+.show-main__content-top__message{
+  :after,:before {
+    clear: both;
+    content: "";
+    display: block;
+  }
+  &__box{
+    height: 100px;
+    margin-bottom: 30px;
+    &__kaiwa {
+      height: 20px;
+      &__clearfix-messages{
+
+        &__img-left{
+          margin: 0;
+          float: left;
+          width: 40px;
+          height: 40px;
+          margin-right: -70px;
+          &__description{
+            font-size: 10px;
+            text-align: center;
+            position: relative;
+            bottom: 15px;
+            img {
+              width: 100%;
+              height: 100%;
+              border: 1px solid #aaa;
+              border-radius: 50%;
+              margin: 0;
+            }
+            a{
+              color: rgb(42,204,209);
+              width: 580px;
+              display: flex;
+            }
+          }
+          &__text{
+            position: relative;
+            width: 550px;
+            margin-left: 60px;
+            padding: 10px;
+            border-radius: 20px;
+            background: #eee;
+            margin-right: 12%;
+            float: left;
+            &__left{
+              margin: 0 0 20px;
+              padding: 0 20px;
+              &__:last-child {
+                margin-bottom: 0;
+              }
+            }
+            :before {
+              position: absolute;
+              content: '';
+              border: 10px solid transparent;
+              top: 15px;
+              left: -20px;
+            }
+            :after {
+              position: absolute;
+              content: '';
+              border: 10px solid transparent;
+              border-right: 10px solid #eee;
+              top: 12px;
+              left: -19px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
