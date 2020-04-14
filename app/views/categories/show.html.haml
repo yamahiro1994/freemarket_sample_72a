@@ -1,4 +1,6 @@
 =render "/items/header"
+- breadcrumb :category
+= render "layouts/breadcrumbs"
 .category__product-list
   .category__product-list--title 
     %span #{@category.name}
