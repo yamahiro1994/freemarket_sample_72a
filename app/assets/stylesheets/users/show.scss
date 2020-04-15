@@ -79,11 +79,10 @@
           }
           span{
             margin-left: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
           }
           .good-sukima{
-            margin: 0 0 0 16px;
           }
         }
       }
@@ -107,16 +106,18 @@
             font-weight: bold;
             color: black;
             text-align: center;
-            padding-top: 24px;
+            padding: 24px 0 0 10px;
           }
           &__contents{
             display: flex;
+            flex-wrap:wrap;
+            justify-content: flex-start;
             margin: 50px auto;
             width: 100%;
             max-width: 1040px;
             &__content{
               width: 200px;
-              margin: 28px auto;
+              padding: 5px 10px; 
               background-color: #ffffff;
               img{
                 height: 150px;
@@ -126,7 +127,9 @@
               }
               &__body{
                 margin: 10px;
-                &__name{}
+                &__name{
+
+                }
                 &__text{
                   span{
                     font-size: 12px;

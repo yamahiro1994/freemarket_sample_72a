@@ -142,6 +142,7 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
+      flash[:notice] = 'うまく削除出来ませんでした'
       redirect_to item_path
     end
   end
