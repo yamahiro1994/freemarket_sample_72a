@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to :category, optional: true
   has_many :images, dependent: :destroy
   validates :images, presence: true
+  has_many :comments
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :bookmarks
   has_many :users, through: :bookmarks
