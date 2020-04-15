@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :items do
+    resources :comments, only: :create
     member do
       get 'buy'
       post 'pay'
