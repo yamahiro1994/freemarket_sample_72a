@@ -294,7 +294,7 @@
               margin: 0;
             }
             a{
-              color: rgb(42,204,209);
+              color: black;
               width: 580px;
               display: flex;
             }
@@ -310,6 +310,7 @@
           background-color: rgb(251,240,230);
           margin-left: 10%;
           float: right;
+          box-shadow: 0.5px 0.5px 0px 0px darkorange;
           &__right{
             float: left;
             margin: 0;
@@ -336,23 +337,6 @@
             right: -19px;
           }
         }
-      }
-    }
-  }
-}
-.show-main__content-top__message{
-  :after,:before {
-    clear: both;
-    content: "";
-    display: block;
-  }
-  &__box{
-    height: 100px;
-    margin-bottom: 30px;
-    &__kaiwa {
-      height: 20px;
-      &__clearfix-messages{
-
         &__img-left{
           margin: 0;
           float: left;
@@ -372,7 +356,7 @@
               margin: 0;
             }
             a{
-              color: rgb(42,204,209);
+              color: black;
               width: 580px;
               display: flex;
             }
@@ -383,9 +367,10 @@
             margin-left: 60px;
             padding: 10px;
             border-radius: 20px;
-            background: #eee;
+            background: rgb(238,238,238);
             margin-right: 12%;
             float: left;
+            box-shadow: 0.5px 0.5px 0px 0px gray;
             &__left{
               margin: 0 0 20px;
               padding: 0 20px;

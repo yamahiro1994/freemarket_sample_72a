@@ -122,7 +122,7 @@
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__description
                               %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
                                 = link_to comment.user.nickname, "/users/#{comment.user_id}"
-                                -# = link_to comment.user.image, "/users/#{comment.user_id}"
+                                -# = link_to comment.user.image, "/users/#{comment.user.id}"
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__text
                             %p.show-main__content-top__message__box__kaiwa__clearfix-messages__text__right
                               = comment.message
