@@ -110,6 +110,7 @@
           }
           .category1{//親カテゴリー
             @include category();
+            z-index: 5;
             .parent__list{
               position: relative;
               @include hover();
