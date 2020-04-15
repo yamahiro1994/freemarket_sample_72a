@@ -19,6 +19,11 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
+
+  namespace :items do
+    resources :searches, only: :index
+  end
+
   resources :items do
     resources :comments, only: :create
     member do

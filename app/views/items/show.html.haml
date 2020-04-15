@@ -102,7 +102,6 @@
               %buttun{type: "button", class: 'show-buy btn--gray'} 売り切れです
             - else
               = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
-          - else
       .show-main__content-top__comment-box
         - if current_user
           %ul.show-main__content-top__comment-box__coments

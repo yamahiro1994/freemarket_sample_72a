@@ -10,4 +10,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_days
   belongs_to_active_hash :delivery_method
   belongs_to_active_hash :status
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where('title LIKE(?)', "%#{search}%")
+  end
 end
