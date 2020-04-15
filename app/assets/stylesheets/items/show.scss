@@ -271,7 +271,6 @@
   }
   &__box{
     height: 150px;
-    margin-bottom: 30px;
     &__kaiwa {
       &__clearfix-messages{
         height: 150px;
@@ -310,7 +309,7 @@
           background-color: rgb(251,240,230);
           margin-left: 10%;
           float: right;
-          box-shadow: 0.5px 0.5px 0px 0px darkorange;
+          box-shadow: 0.3px 0.5px 0px 0px #FFA8B6;
           font-size: 8px;
           &__right{
             float: left;
@@ -370,7 +369,7 @@
             background: rgb(238,238,238);
             margin-right: 12%;
             float: left;
-            box-shadow: 0.5px 0.5px 0px 0px gray;
+            box-shadow: 0.5px 0.3px 0px 0px gray;
             text-align: left;
             font-size: 8px;
             &__left{
