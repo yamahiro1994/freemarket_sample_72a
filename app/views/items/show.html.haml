@@ -115,21 +115,24 @@
                 - @comments.each do |comment|
                   .show-main__content-top__message__box
                     %ul.show-main__content-top__message__box__kaiwa
-                      
                       %li.show-main__content-top__message__box__kaiwa__clearfix-messages
-                        - if comment.user.id == current_user.id
+                      - if comment.user.id == current_user.id
+                        .show-main__content-top__message__box__kaiwa__clearfix-messages__name
+                          = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           %figure.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__name
+                              
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__description
                               %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
-                                = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__text
                             %p.show-main__content-top__message__box__kaiwa__clearfix-messages__text__right
                               = comment.message
-                        - else
+                      - else
+                        .show-main__content-top__message__box__kaiwa__clearfix-messages__user
+                          = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__description
                               %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
-                                = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text
                             %p.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left
                               = comment.message
