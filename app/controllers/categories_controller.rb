@@ -1,5 +1,8 @@
 class CategoriesController < ApplicationController
+  before_action :set_categories
+  
   def index
+    @parents = Category.where(ancestry: nil)
   end
 
   def show
@@ -14,6 +17,12 @@ class CategoriesController < ApplicationController
     end
     @items = Item.order(id: :desc).where(category_id: grandchild_array)
     @images = Image.includes(:item)
+    @parents = Category.where(ancestry: nil)
+  end
+
+  private
+
+  def set_categories
     @parents = Category.where(ancestry: nil)
   end
 

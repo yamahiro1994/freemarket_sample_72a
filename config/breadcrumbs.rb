@@ -13,6 +13,11 @@ crumb :logout do
   parent :mypage
 end
 
+# カテゴリ一覧ページ
+crumb :categories do
+  link "カテゴリ一覧", categories_path
+end
+
 # カテゴリページ
 crumb :category do
   @category = Category.find(params[:id])
@@ -27,6 +32,7 @@ crumb :category do
     link "#{Category.find(params[:id]).root.name}", category_path
     link "#{Category.find(params[:id]).name}", category_path
   end
+  parent :categories
 end
 
 # crumb :root do
