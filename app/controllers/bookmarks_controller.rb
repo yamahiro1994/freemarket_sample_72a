@@ -3,7 +3,6 @@ class BookmarksController < ApplicationController
   def create
     bookmark = current_user.bookmarks.build(item_id: params[:item_id])
     bookmark.save
-    # redirect_to item_path
     redirect_to items_path
   end
 

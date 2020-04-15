@@ -82,10 +82,31 @@
                     #{@item.delivery_days.name}
         .show-main__content-top__item-box__area
           %ul
-            =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
+            -# =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
+            .show-main__content-top__item-box__area__optional__btn-left
               %li#linke-btn.show-main__content-top__item-box__area__btn-left__link
-                %icon.fa.fa-star 
-                お気に入り 0
+
+                - if user_signed_in? && current_user.id == @item.seller_id 
+                  %span
+                    %icon.far.fa-star 
+                    お気に入り数：
+                    #{@item.bookmarks.count}
+                -elsif user_signed_in?
+                  -if @item.bookmarked_by?(current_user)
+                    %span
+                      %icon.fas.fa-star 
+                      お気に入り解除:
+                      = link_to @item.bookmarks.count, item_bookmarks_path(@item.id) ,method: :delete
+                  -else 
+                    %span
+                      %icon.far.fa-star 
+                      お気に入り登録：
+                      = link_to @item.bookmarks.count, item_bookmarks_path(@item.id), method: :post
+                - else
+                  %span
+                    %icon.far.fa-star                    
+                    お気に入り数：
+                    #{@item.bookmarks.length}
           %ul.show-main__content-top__item-box__area__optional
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-right" do
               %li.show-main__content-top__item-box__area__optional__btn-right__link
@@ -126,7 +147,6 @@
             前の商品
       %li
         =link_to "#",class:"show-main__links__right-btn" do
-          
           %span
             次の商品
           %icon.fa.fa-angle-right
