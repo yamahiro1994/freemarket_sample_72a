@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.order(id: :desc)
+    @items = Item.order(id: :desc).where(buyer_id:nil)
     @images = Image.includes(:item)
     @parents = Category.where(ancestry: nil)
   end
