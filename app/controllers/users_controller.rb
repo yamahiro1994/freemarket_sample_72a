@@ -15,11 +15,8 @@ class UsersController < ApplicationController
   def show
     @items = Item.where(seller_id: current_user.id)
     @images = Image.includes(:item)
-    # 写真情報
     @user = User.find(params[:id])
-    # 特定のユーザーが登録したお気に入り機能を全て取得する
     @bookmark_items = @user.bookmark_items.order("created_at DESC")
-    # ユーザーがブックマークされた情報全て
   end
 
   private
