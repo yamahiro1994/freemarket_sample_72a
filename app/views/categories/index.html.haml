@@ -1,6 +1,23 @@
 =render "/items/header"
 - breadcrumb :categories
 = render "layouts/breadcrumbs"
-カテゴリ一覧ページ作成中
+.category-title
+  カテゴリ一覧
+.parents-box
+  -@parents.each do |parent|
+    = link_to parent.name, category_path(parent), class:"parents"
+.nav
+  %ul.nav-parents
+    - @parents.each do |parent|
+      %li.nav-parent__list
+        = link_to parent.name ,category_path(parent), class:"nav-title"
+        %ul.nav-children
+          - parent.children.each do |child|
+            %li.nav-child__list
+              =link_to child.name ,category_path(child), class:"nav-sub-title"
+              %ul.nav-grandchildren
+                - child.children.each do |grandchild|
+                  %li.nav-grandchild__list
+                    = link_to grandchild.name ,category_path(grandchild), class:"nav-content"
 =render "/items/footer"
 =render "/items/displayBtn"
