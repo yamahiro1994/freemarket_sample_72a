@@ -1,15 +1,17 @@
-.category-title{
-  font-size: 32px;
+@mixin center() {
+  margin: 0 auto;
   width: 100%;
   max-width: 1040px;
-  margin: 0 auto;
+}
+
+.category-title{
+  @include center();
+  font-size: 32px;
   padding-left: 50px;
 }
 .parents-box{
+  @include center();
   padding: 0 50px;
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
   text-align: center;
   .parents{
     font-size: 21px;
@@ -21,11 +23,8 @@
     border-radius: 50% 0;
   }
 }
-
 .nav{
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
+  @include center();
   .nav-parents{
     .nav-parent__list{
       border-radius: 5% 0;
