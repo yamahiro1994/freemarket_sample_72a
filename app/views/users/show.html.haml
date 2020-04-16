@@ -8,14 +8,14 @@
           %figure
             = image_tag "/assets/yu-za-.jpg", alt: "", height: "60", width: "60", class: "user-show-page__main__icon__link__photo"
           %h2.user-show-page__main__icon__link__name
-            #{current_user.nickname}
+            = current_user.nickname
           .user-show-page__main__icon__link__situation
             %div
               %span.user-show-page__main__icon__link__situation__good
             %div.good-sukima
               出品数
               %span.user-show-page__main__icon__link__situation__item
-                #{@items.length}
+                = @items.length
       %section.user-show-page__main__todo
         .user-show-page__main__todo__top-tabs
         .user-show-page__main__todo__under-tabs
@@ -29,11 +29,11 @@
                   = link_to image_tag(@images.find_by(item_id:[b.id]).image_url, class:"img" ), item_path(b)
                   .user-show-page__main__todo__under-tabs__product-list__contents__content__body
                     .user-show-page__main__todo__under-tabs__product-list__contents__content__body__name
-                      #{b.title}
+                      = b.title
                     .user-show-page__main__todo__under-tabs__product-list__contents__content__body__text
-                      #{converting_to_jpy(b.price)}
+                      = converting_to_jpy(b.price)
                       %span (税込)
                     .user-show-page__main__todo__under-tabs__product-list__contents__content__body__favorite
                       %i.fas.fa-star
-                      #{b.bookmarks.length}
+                      = b.bookmarks.length
 =render "/items/footer"

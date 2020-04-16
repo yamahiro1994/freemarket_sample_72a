@@ -20,9 +20,9 @@
 /yarn-error.log
 /public/assets
 .byebug_history
-public/uploads/*
- /.env
- .DS_Store
+/.env
+.DS_Store
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+public/uploads/*

@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   validates :images, presence: true
   has_many :comments
   accepts_nested_attributes_for :images, allow_destroy: true
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many :users, through: :bookmarks
 
   def bookmarked_by?(user)
