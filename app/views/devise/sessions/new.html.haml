@@ -15,9 +15,9 @@
       .inner
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .field
-            = f.email_field :email, autocomplete: "email", class: "input_email", required: false
+            = f.email_field :email, autocomplete: "email", class: "input_email", required: false,placeholder: "メールアドレス"
           .field
-            = f.password_field :password, autocomplete: "current-password", class: "input_password", required: false
+            = f.password_field :password, autocomplete: "current-password", class: "input_password", required: false,placeholder: "パスワード"
           - if devise_mapping.rememberable?
             .recaptcha_box
               = image_tag 'recaptcha.png', height: '90', width: '310'

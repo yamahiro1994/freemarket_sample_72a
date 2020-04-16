@@ -2,31 +2,38 @@
 .user-show
   =render "sidebar"
   .user-show-page
-    -# 全体
     .user-show-page__main
-      -# メインページ
       %section.user-show-page__main__icon
-        -# ユーザーアイコン
         =link_to"#",class:"user-show-page__main__icon__link" do
-          -# ユーザーボックス
           %figure
             = image_tag "/assets/yu-za-.jpg", alt: "", height: "60", width: "60", class: "user-show-page__main__icon__link__photo"
-            -# ユーザーの写真
           %h2.user-show-page__main__icon__link__name
-            -# ユーザーの名前
-            ピエール
+            = current_user.nickname
           .user-show-page__main__icon__link__situation
             %div
-              評価
               %span.user-show-page__main__icon__link__situation__good
-                0
             %div.good-sukima
               出品数
               %span.user-show-page__main__icon__link__situation__item
-                #{@items.length}
+                = @items.length
       %section.user-show-page__main__todo
         .user-show-page__main__todo__top-tabs
-          -# 追加機能用
         .user-show-page__main__todo__under-tabs
-          -# 追加機能用
+          .user-show-page__main__todo__under-tabs__product-list
+            .user-show-page__main__todo__under-tabs__product-list__title 
+              お気に入り一覧
+            .user-show-page__main__todo__under-tabs__product-list__contents
+              - @bookmark_items.each do |b|
+              - break if @items.nil?
+                .user-show-page__main__todo__under-tabs__product-list__contents__content
+                  = link_to image_tag(@images.find_by(item_id:[b.id]).image_url, class:"img" ), item_path(b)
+                  .user-show-page__main__todo__under-tabs__product-list__contents__content__body
+                    .user-show-page__main__todo__under-tabs__product-list__contents__content__body__name
+                      = b.title
+                    .user-show-page__main__todo__under-tabs__product-list__contents__content__body__text
+                      = converting_to_jpy(b.price)
+                      %span (税込)
+                    .user-show-page__main__todo__under-tabs__product-list__contents__content__body__favorite
+                      %i.fas.fa-star
+                      = b.bookmarks.length
 =render "/items/footer"
