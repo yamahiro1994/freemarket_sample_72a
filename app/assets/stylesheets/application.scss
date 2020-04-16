@@ -11,8 +11,11 @@
 @import "users/logout";
 @import "cards/form";
 @import "cards/cards";
+@import "categories/index";
+@import "categories/show";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "breadcrumbs/breadcrumbs";
 * {
   box-sizing: border-box;
 }
