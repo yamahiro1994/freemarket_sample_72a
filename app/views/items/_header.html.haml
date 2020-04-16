@@ -10,23 +10,23 @@
             = image_submit_tag 'icon-search 1.png', class: "btn"
     .header__main__lower-box
       .header__main__lower-box__left-list
-        = image_tag 'icon_category.png', height: '16', width: '16', class:"category-icon"
+        = image_tag 'icon_category.png', height: '16', width: '16', class:"icon"
         .category-link
-          カテゴリ
+          = link_to 'カテゴリ一覧', categories_path, class: "link"
           %ul.category1
             - @parents.each do |parent|
               %li.parent__list
-                = link_to parent.name
+                = link_to parent.name ,category_path(parent)
                 %ul.category2
                   - parent.children.each do |child|
                     %li.child__list
-                      =link_to child.name
+                      =link_to child.name ,category_path(child)
                       %ul.category3
                         - child.children.each do |grandchild|
                           %li.grandchild__list
-                            = link_to grandchild.name
-        = image_tag 'icon_brand.png', height: '16', width: '16'
-        = link_to 'ブランド', "#", class:"category-link"
+                            = link_to grandchild.name ,category_path(grandchild)
+        = image_tag 'icon_brand.png', height: '16', width: '16', class:"icon"
+        = link_to 'ブランド', "#", class:"brand-link"
       .right-list
         - if user_signed_in?
           = link_to "マイページ", user_path(current_user), class: "right-list__btn"

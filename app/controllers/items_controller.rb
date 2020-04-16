@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.order(id: :desc)
+    @items = Item.order(id: :desc).where(buyer_id:nil)
     @images = Image.includes(:item)
     @parents = Category.where(ancestry: nil)
   end
@@ -144,6 +144,7 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
+      flash[:notice] = 'うまく削除出来ませんでした'
       redirect_to item_path
     end
   end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   root 'items#index'
   resources :cards, only: [:new, :index, :create, :destroy]
+  resources :categories, only: [:index, :show]
   resources :users, only: [:new, :show, :create] do
     member do
       get 't_user_credit_detail'
@@ -25,7 +26,9 @@ Rails.application.routes.draw do
   end
 
   resources :items do
+    resource :bookmarks, only:[:create, :destroy]
     resources :comments, only: :create
+
     member do
       get 'buy'
       post 'pay'

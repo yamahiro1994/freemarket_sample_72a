@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    # @user.password_confomation = user.params[:password]
     if @user.save
       redirect_to root_path
     else
@@ -14,6 +13,9 @@ class UsersController < ApplicationController
 
   def show
     @items = Item.where(seller_id: current_user.id)
+    @images = Image.includes(:item)
+    @user = User.find(params[:id])
+    @bookmark_items = @user.bookmark_items.order("created_at DESC")
   end
 
   private

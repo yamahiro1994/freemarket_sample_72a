@@ -46,6 +46,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :production do
@@ -84,4 +86,5 @@ gem 'active_hash'
 gem 'enum_help' 
 gem 'fog-aws'
 gem 'dotenv-rails'
+gem 'gretel'
 gem 'kaminari'

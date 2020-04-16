@@ -8,7 +8,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :bookmarks
+  has_many :bookmark_items, through: :bookmarks, source: :item
+
   has_many :comments
+
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   VALID_KATAKANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
