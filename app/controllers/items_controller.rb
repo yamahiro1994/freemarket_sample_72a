@@ -111,6 +111,8 @@ class ItemsController < ApplicationController
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
     @parents = Category.where(ancestry: nil)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def edit
@@ -142,6 +144,7 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
+      flash[:notice] = 'うまく削除出来ませんでした'
       redirect_to item_path
     end
   end

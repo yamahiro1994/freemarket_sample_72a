@@ -69,6 +69,9 @@
       - break if @items.nil?
         .main__product-list__contents__content
           = link_to image_tag(@images.find_by(item_id:[i.id]).image_url, class:"img" ), item_path(i)
+          -if i.buyer_id.present?
+            .photo-line-li__sold
+              .photo-line-li__sold__inner SOLD
           .main__product-list__contents__content__body
             .main__product-list__contents__content__body--name
               #{i.title}
@@ -76,8 +79,6 @@
               #{converting_to_jpy(i.price)}
               %span (税込)
             .main__product-list__contents__content__body--favorite
-              %i.fas.fa-star
-              0
 
 -# appバナー部分テンプレート
 =render "appBanner"

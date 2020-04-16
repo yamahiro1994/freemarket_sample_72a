@@ -79,11 +79,10 @@
           }
           span{
             margin-left: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
           }
           .good-sukima{
-            margin: 0 0 0 16px;
           }
         }
       }
@@ -101,6 +100,48 @@
         width: 100%;
         background-color:ghostwhite;
         font-size: 14px;
+        &__product-list{
+          &__title{
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+            padding: 24px 0 0 10px;
+          }
+          &__contents{
+            display: flex;
+            flex-wrap:wrap;
+            justify-content: flex-start;
+            margin: 50px auto;
+            width: 100%;
+            max-width: 1040px;
+            &__content{
+              width: 200px;
+              padding: 5px 10px; 
+              background-color: #ffffff;
+              img{
+                height: 150px;
+                width: 200px;
+                max-width: 100%;
+                object-fit: cover;
+              }
+              &__body{
+                margin: 10px;
+                &__name{
+
+                }
+                &__text{
+                  span{
+                    font-size: 12px;
+                  }
+                }
+                &__favorite{
+                  text-align: right;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

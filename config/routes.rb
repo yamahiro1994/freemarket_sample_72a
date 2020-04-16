@@ -20,7 +20,15 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
+
+  namespace :items do
+    resources :searches, only: :index
+  end
+
   resources :items do
+    resource :bookmarks, only:[:create, :destroy]
+    resources :comments, only: :create
+
     member do
       get 'buy'
       post 'pay'

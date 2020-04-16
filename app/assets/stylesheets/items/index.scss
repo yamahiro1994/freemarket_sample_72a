@@ -53,6 +53,7 @@
   height: 100px;
   padding: 0 50px;
   background-color: white;
+  box-shadow: 0 1px 3px 1px gray;
   &__main{
     @include center(0);
     &__upper-box{
@@ -67,20 +68,21 @@
         margin-left: 50px;
         width: 100%;
         height: 40px;
+        display: flex;
         form{
           width: 100%;
           height: 100%;
           display: flex;
           .search{
-            width: 100%;;
+            width: 100%;
+            font-size: larger;
           }
           .send-btn{
-            position: relative;
+            background-color: #3CCACE;
             .btn{
-              position: absolute;
               background-color: #3CCACE;
               width: 40px;
-              padding: 5px;
+              height: 40px;
             }
           }
         }
@@ -295,11 +297,35 @@
         width: 200px;
         margin: 28px auto;
         background-color: #ffffff;
+        position: relative;
         img{
           height: 150px;
           width: 200px;
           max-width: 100%;
           object-fit: cover;
+        }
+        .photo-line-li__sold{
+          width: 0;
+          height: 0;
+          border-width: 85px 85px 0 0;
+          border-color: #ea352d transparent transparent transparent;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          border-style: solid;
+          &__inner{
+            top: -70px;
+            font-size: 15px;
+            position: absolute;
+            left: 0;
+            z-index: 2;
+            color: #fff;
+            transform: rotate(-45deg);
+            letter-spacing: 2px;
+            font-weight: bold;
+          }
         }
         &__body{
           margin: 10px;
