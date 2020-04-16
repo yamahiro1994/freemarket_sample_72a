@@ -321,9 +321,35 @@
           &__right{
             margin: 0;
             padding: 0;
-            float: left;
+            width: 100%;
+            height: 15px;
+            text-align: left;
+            display: inline-block;
             &__:last-child {
               margin-bottom: 0;
+            }
+          }
+          &__day{
+            color: #aaa;
+            display: block;
+            margin-top: 13px;
+            text-align: left;
+            padding-left: 13px;
+            position: relative;
+            i::before{
+              top: -30px;
+              left: -12px;
+              font-size: 17px;
+              display: block;
+              text-align: left;
+              position: absolute;
+            }
+            i:before{
+              right: -30px;
+              font-size: 17px;
+              display: block;
+              text-align: left;
+              position: absolute;
             }
           }
           :before {

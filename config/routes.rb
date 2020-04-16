@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :items do
     resource :bookmarks, only:[:create, :destroy]
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
 
     member do
       get 'buy'
