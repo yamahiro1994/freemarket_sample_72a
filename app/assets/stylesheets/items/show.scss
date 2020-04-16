@@ -198,7 +198,7 @@
 
     }
     &__comment-box{
-      padding: 40px;
+      padding: 10px 40px 40px;
       background-color: #fff;
       margin: 10px 0;
       text-align: center; 
@@ -227,10 +227,11 @@
           background: #3CCACE;
           border: 1px solid #3CCACE;
           color:#fff;
+          outline: none;
           width: 60%;
           font-size: 18px;
           border-radius: 100px;
-          outline: none;
+          vertical-align: middle;
         }
         h4{
           margin-top: 20px;
@@ -265,7 +266,7 @@
 }
 
 .show-main__content-top__message{
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   :after,:before {
     clear: both;
     content: "";
