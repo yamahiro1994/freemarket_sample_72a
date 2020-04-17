@@ -3,7 +3,6 @@
   .registration_user__header
     .header_items
       = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "head_logo"), root_path
-      .signup_bar
 
   .registration_user__main
     .head
@@ -27,30 +26,29 @@
               必須
           = f.email_field :email, type: "email", placeholder: "メールアドレス", autocomplete: "email", class: "email__form", required: true
 
-        .password
-          .password__label
-            = f.label "パスワード"
-            .password__label__require
-              必須
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length}文字以上の半角英数)
-          = f.password_field :password, placeholder: "パスワード", class: "password__form", id: "password", autocomplete: "new-password", required: true, minlength:7
-
-        .coution_password
-          ※ 英字と数字の両方を含めて設定してください
-
-        .password_confirmation
-          .password_confirmation__label
-            = f.label "パスワード(再入力)"
-            .password_confirmation__label__require
-              必須
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length}文字以上の半角英数)
-          = f.password_field :password_confirmation, placeholder: "パスワード(確認)", class: "password_confirmation__form", id: "password_confirmation", autocomplete: "new-password", required: true, minlength:7, oninput: "CheckPassword(this)"
-
-
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
+          .password
+            .password__label
+              = f.label "パスワード"
+              .password__label__require
+                必須
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length}文字以上の半角英数)
+            = f.password_field :password, placeholder: "パスワード", class: "password__form", id: "password", autocomplete: "new-password", required: true, minlength:7
+          .coution_password
+            ※ 英字と数字の両方を含めて設定してください
+          .password_confirmation
+            .password_confirmation__label
+              = f.label "パスワード(再入力)"
+              .password_confirmation__label__require
+                必須
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length}文字以上の半角英数)
+            = f.password_field :password_confirmation, placeholder: "パスワード(確認)", class: "password_confirmation__form", id: "password_confirmation", autocomplete: "new-password", required: true, minlength:7, oninput: "CheckPassword(this)"
 
         .attension_safety
           %h3
