@@ -102,7 +102,7 @@
                       = link_to @item.bookmarks.count, item_bookmarks_path(@item.id), method: :post
                 - else
                   %span
-                    %icon.far.fa-star                    
+                    %icon.far.fa-star
                     お気に入り数：
                     #{@item.bookmarks.length}
           %ul.show-main__content-top__item-box__area__optional
@@ -149,8 +149,8 @@
                               = icon('far', 'clock', class: 'icon')
                               %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
                               - if user_signed_in? && comment.user_id == current_user.id
-                                -# = link_to item_comment_path, method: :delete, class: "btn btn-danger", data: { confirm: "削除してもいいですか？" } do
-                                -# =icon('fas', 'trash-alt', class: 'trash')
+                                = link_to item_comment_path(comment), method: :delete, class: "btn", data: { confirm: "本当にコメントを削除してもよろしいですか？" } do
+                                  =icon('fas', 'trash-alt', class: 'trash')
                                   
                               
                       - else

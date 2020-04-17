@@ -12,10 +12,10 @@ class CommentsController < ApplicationController
   def destroy
     if @comment.destroy
       flash[:notice] = 'コメントを削除しました'
-      redirect_back(fallback_location: item_comments_path)
+      redirect_back(fallback_location: root_path)
     else
       flash[:notice] = '削除できません'
-      redirect_to item_path
+      redirect_to item_path(comment)
     end
   end
 end
