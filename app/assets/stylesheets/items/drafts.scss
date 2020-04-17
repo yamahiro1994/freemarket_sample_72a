@@ -1,0 +1,25 @@
+.drafts{
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  &__box{
+    margin: 0 auto ;
+    padding: 43px 40px;
+    width: 70%;
+    margin: 43px auto;
+    background-color: white;
+    // &__red{
+    //   background: #ea352d;
+    //   color:#fff;
+    //   display: block;
+    //   cursor: pointer;
+    //   text-align: center;
+    //   margin: 0 auto;
+    //   max-width: 320px;
+    //   height: 50px;
+    //   line-height: 50px;
+    //   font-size: 14px;
+    // }
+  }
+}

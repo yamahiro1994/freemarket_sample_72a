@@ -1,0 +1,7 @@
+=render "/items/header"
+.drafts
+  =render "users/sidebar"
+  - @drafts.each do |title, created_at|
+    = link_to new_items_path, "#{title}, #{created_at}"
+
+=render "/items/footer"

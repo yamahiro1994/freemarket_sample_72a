@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_064100) do
+ActiveRecord::Schema.define(version: 2020_04_17_071308) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 2020_04_13_064100) do
     t.index ["name"], name: "index_categories_on_name"
   end
 
+  create_table "drafts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "image"
     t.bigint "item_id", null: false
@@ -46,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_064100) do
     t.string "title", null: false
     t.text "content", null: false
     t.integer "price", null: false
-    t.integer "status_id"
+    t.integer "status_id", null: false
     t.integer "delivery_method_id"
     t.integer "prefecture_id", null: false
     t.integer "delivery_days_id", null: false
@@ -56,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_064100) do
     t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "published", default: false, null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
@@ -73,16 +79,16 @@ ActiveRecord::Schema.define(version: 2020_04_13_064100) do
     t.string "user_name", null: false
     t.string "user_name_kana", null: false
     t.date "birthday", null: false
-    t.string "destination_family_name", null: false
-    t.string "destination_family_name_kana", null: false
-    t.string "destination_name", null: false
-    t.string "destination_name_kana", null: false
-    t.integer "postal_code", null: false
-    t.integer "prefectures", null: false
-    t.string "municipality", null: false
-    t.string "address", null: false
+    t.string "destination_family_name"
+    t.string "destination_family_name_kana"
+    t.string "destination_name"
+    t.string "destination_name_kana"
+    t.string "postal_code"
+    t.integer "prefectures"
+    t.string "municipality"
+    t.string "address"
     t.string "apartment_room_namber"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"

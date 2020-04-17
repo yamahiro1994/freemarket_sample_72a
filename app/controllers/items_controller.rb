@@ -77,7 +77,7 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
   
-  def new  
+  def new
     @item = Item.new
     @item.images.new
     @category_parent_array = ["---"]
@@ -101,7 +101,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       flash[:notice] = '必須項目を入力してください'
-      render :new
+      redirect_to new_item_path
     end
   end
   

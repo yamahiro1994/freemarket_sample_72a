@@ -9,10 +9,11 @@ Rails.application.routes.draw do
     get "sign_in", to: "users/sessions#new"
     get "sign_out", to: "users/sessions#destroy" 
   end
-  
+
   root 'items#index'
-  resources :cards, only: [:new, :index, :create, :destroy]
-  resources :users, only: [:new, :show, :create] do
+  resources :cards,  only: [:new, :create, :index, :destroy]
+  resources :drafts, only: [:new, :index, :create]
+  resources :users,  only: [:new, :create, :show] do
     member do
       get 't_user_credit_detail'
       get 't_user_credit_link'
@@ -30,3 +31,4 @@ Rails.application.routes.draw do
     end
   end
 end
+
