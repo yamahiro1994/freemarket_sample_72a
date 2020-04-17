@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :users, only: [:index, :new, :show, :create] do
     member do
-      get 't_user_credit_detail'
-      get 't_user_credit_link'
       get 'logout'
     end
   end

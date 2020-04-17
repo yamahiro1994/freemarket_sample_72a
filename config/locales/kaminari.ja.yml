@@ -5,8 +5,8 @@ ja:
         display_entries: "%{first} - %{last}件表示"
       one_page:
         display_entries:
-          one: "<b>%{count}</b>件表示中"
-          other: "<b>%{count}</b>件表示中"
+          one: "<b>%{count}</b>件表示中です"
+          other: "<b>%{count}</b>件表示中です"
           zero: "レコードが見つかりませんでした"
   views:
     pagination:
