@@ -1,0 +1,20 @@
+=render "items/header"
+.search-main
+  .search-main__left
+    -# 商品検索lv2にて使用
+  .search-main__right
+    .search-main__right__title
+      - if @keyword.present?
+        %span.huge #{@keyword}
+        の検索結果
+      - else
+        %span.huge 検索結果
+    .search-main__right__number
+      = page_entries_info @items, entry_name: 'item'
+    .search-main__right__result
+      = render partial: 'item', collection: @items
+    .search-main__right__pagenate
+      = paginate(@items)
+=render "items/appBanner"
+=render "items/footer"
+=render "items/displayBtn"

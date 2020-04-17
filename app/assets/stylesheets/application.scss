@@ -7,12 +7,16 @@
 @import "items/edit";
 @import "items/buy";
 @import "items/search";
+@import "users/index";
 @import "users/show";
 @import "users/logout";
 @import "cards/form";
 @import "cards/cards";
+@import "categories/index";
+@import "categories/show";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "breadcrumbs/breadcrumbs";
 * {
   box-sizing: border-box;
 }

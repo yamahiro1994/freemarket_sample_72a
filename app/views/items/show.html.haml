@@ -82,42 +82,101 @@
                     #{@item.delivery_days.name}
         .show-main__content-top__item-box__area
           %ul
-            =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-left" do
+            .show-main__content-top__item-box__area__optional__btn-left
               %li#linke-btn.show-main__content-top__item-box__area__btn-left__link
-                %icon.fa.fa-star 
-                お気に入り 0
+                - if user_signed_in? && current_user.id == @item.seller_id 
+                  %span
+                    %icon.far.fa-star 
+                    お気に入り数：
+                    #{@item.bookmarks.count}
+                -elsif user_signed_in?
+                  -if @item.bookmarked_by?(current_user)
+                    %span
+                      %icon.fas.fa-star 
+                      お気に入り解除:
+                      = link_to @item.bookmarks.count, item_bookmarks_path(@item.id) ,method: :delete
+                  -else 
+                    %span
+                      %icon.far.fa-star 
+                      お気に入り登録：
+                      = link_to @item.bookmarks.count, item_bookmarks_path(@item.id), method: :post
+                - else
+                  %span
+                    %icon.far.fa-star
+                    お気に入り数：
+                    #{@item.bookmarks.length}
           %ul.show-main__content-top__item-box__area__optional
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-right" do
               %li.show-main__content-top__item-box__area__optional__btn-right__link
                 %icon.fa.fa-flag 
                 不適切な商品の通報
 
-      .show-main__content-top__btn-box 
-        - if @item.buyer_id
-          %buttun{type: "button", class: 'show-buy btn--gray'} 売り切れです
-        - else
-          - if user_signed_in? && current_user.id == @item.seller_id      
+        .show-main__content-top__btn-box 
+          - if user_signed_in? && current_user.id == @item.seller_id
             = link_to '商品の編集', edit_item_path(@item), class:'show-edit btn'
             %br or
             = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
           - elsif user_signed_in? && current_user.id != @item.seller_id
-            = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
-          - else
+            - if @item.buyer_id
+              %buttun{type: "button", class: 'show-buy btn--gray'} 売り切れです
+            - else
+              = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
       .show-main__content-top__comment-box
-        %ul.show-main__content-top__comment-box__coments
-        =form_with(class:"show-main__content-top__comment-box__coments__form") do |f|
-          %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
-          %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
+        - if current_user
+          %ul.show-main__content-top__comment-box__coments
+          = form_with(model: [@item, @comment], local: true) do |f|
+            %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
+            %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
+            
+            .show-main__content-top__message
+              - if @comments
+                - @comments.each do |comment|
+                  .show-main__content-top__message__box
+                    %ul.show-main__content-top__message__box__kaiwa
+                      %li.show-main__content-top__message__box__kaiwa__clearfix-messages
+                      - if comment.user.id == current_user.id
+                        .show-main__content-top__message__box__kaiwa__clearfix-messages__name
+                          = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                          %figure.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__name
+                              
+                            %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__description
+                              %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
+                          .show-main__content-top__message__box__kaiwa__clearfix-messages__text
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__text__right
+                              = comment.message
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__text__day
+                              = icon('far', 'clock', class: 'icon')
+                              %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
+                              - if user_signed_in? && comment.user_id == current_user.id
+                                = link_to item_comment_path(comment), method: :delete, class: "btn", data: { confirm: "本当にコメントを削除してもよろしいですか？" } do
+                                  =icon('fas', 'trash-alt', class: 'trash')
+                                  
+                              
+                      - else
+                        .show-main__content-top__message__box__kaiwa__clearfix-messages__user
+                          = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                          .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left
+                            %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__description
+                              %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
+                          .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text
+                            %p.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left
+                              = comment.message
+                              .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left__day
+                                %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
+            .show-main__content-top__comment-box__coments__p
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            = f.text_area :message, class:'show-main__content-top__comment-box__coments__textarea'
+            = f.submit "コメントする", class: "show-main__content-top__comment-box__coments__button" do
+              %i.fas.fa-comment
+        - else
+          %strong
+            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
 
-          = f.text_area :comment, class:'show-main__content-top__comment-box__coments__textarea'
-          .show-main__content-top__comment-box__coments__p
-            相手のことを考え丁寧なコメントを心がけましょう。
-            %br
-            不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          = button_tag type: 'submit', class: 'show-main__content-top__comment-box__coments__button' do
-            %i.fas.fa-comment 
-            コメントする
-
+        
+                      
     %ul.show-main__links
       %li
         =link_to "#",class:"show-main__links__left-btn" do
@@ -126,13 +185,12 @@
             前の商品
       %li
         =link_to "#",class:"show-main__links__right-btn" do
-          
           %span
             次の商品
           %icon.fa.fa-angle-right
     .show-main__related-items
       =link_to "#",class:"show-main__related-items__link" do
-        メンズをもっと見る
+        -# メンズをもっと見る<=カテゴリ呼び出してください
       .product-lists
 -# appバナー部分テンプレート
 =render "appBanner"

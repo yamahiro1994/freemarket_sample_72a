@@ -182,12 +182,14 @@
             @include require;
           }
         }
-        .birthdate--selecter{
+        .selecter{
           width: 100%;
           .year,.month,.day{
-            width: 23%;
+            width: 28%;
             height: 35px;
-            background-color: #f5f5f5;
+            background-color: #ffffff;
+            border: solid 1px #cccccc;
+            color: #808080;
            }
         }
       }
@@ -251,7 +253,10 @@
           }
         }
         select {
-          @include info-form; 
+          @include info-form;
+          background-color: #ffffff;
+          border: solid 1px #cccccc;
+          color: #808080;
         }
       }
 
