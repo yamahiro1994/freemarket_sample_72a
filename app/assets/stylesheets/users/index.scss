@@ -1,0 +1,41 @@
+@mixin nav-btn($background,$color){
+  background-color: $background;
+  display: inline-block;
+  font-size: 14px;
+  width: 100%;
+  color: $color;
+  height: 50px;
+  line-height: 50px;
+  letter-spacing: 4px;
+  text-decoration: none;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.registration__wrap{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 520px;
+  background-color: #ffffff;
+  padding: 30px 100px;
+  p{
+    font-size: 24px;
+  }
+  text-align: center;
+  .registration__box{
+    background-color: #ffffff;
+    height: 300px;
+    margin: 30px auto;
+    .facebook{
+      @include nav-btn(#385185,#ffffff);
+    }
+    .google{
+      @include nav-btn(#8B0000,#ffffff);
+    }
+
+    .email{
+      @include nav-btn(#ffffff,#000000);
+      border: solid 1px;
+    }
+  }
+}

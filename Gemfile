@@ -88,3 +88,6 @@ gem 'fog-aws'
 gem 'dotenv-rails'
 gem 'gretel'
 gem 'kaminari'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"

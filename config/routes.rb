@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions:      'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
   }
-  
+
   devise_scope :user do
     get "sign_in", to: "users/sessions#new"
     get "sign_out", to: "users/sessions#destroy" 
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :cards, only: [:new, :index, :create, :destroy]
   resources :categories, only: [:index, :show]
-  resources :users, only: [:new, :show, :create] do
+  resources :users, only: [:index, :new, :show, :create] do
     member do
       get 't_user_credit_detail'
       get 't_user_credit_link'
