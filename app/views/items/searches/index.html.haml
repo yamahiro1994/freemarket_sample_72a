@@ -1,7 +1,58 @@
 =render "items/header"
 .search-main
   .search-main__left
-    -# 商品検索lv2にて使用
+    詳細検索
+    = search_form_for @q, url: items_searches_path do |f|
+      = f.label :title_cont, "商品名"
+      = f.search_field :title_cont
+
+      = f.label :price_gteq, '値段'
+      = f.number_field :price_gteq
+      円以上〜
+      = f.number_field :price_lt
+      円以下
+      = f.label :status_id_eq, '商品の状態'
+      = f.radio_button :status_id_eq, '', {:checked => true}
+      指定なし
+      = f.radio_button :status_id_eq, 1
+      新品、未使用
+      = f.radio_button :status_id_eq, 2
+      未使用に近い
+      = f.radio_button :status_id_eq, 3
+      目立った傷や汚れなし
+      = f.radio_button :status_id_eq, 4
+      やや傷や汚れあり
+      = f.radio_button :status_id_eq, 5
+      傷や汚れあり
+      = f.radio_button :status_id_eq, 6
+      全体的に状態が悪い
+
+      = f.label :delivery_method_id_eq, '配送方法'
+      = f.collection_check_boxes :delivery_method_id_eq, DeliveryMethod.all, :id, :name, include_blank: '指定なし'
+      -# = f.radio_button :delivery_method_id_eq, '', {:checked => true}
+      -# 指定なし
+      -# = f.radio_button :delivery_method_id_eq, 1
+      -# 大型らくらくフリマ便
+      -# = f.radio_button :delivery_method_id_eq, 2
+      -# 中型らくらくフリマ便
+      -# = f.radio_button :delivery_method_id_eq, 3
+      -# 小型らくらくフリマ便
+
+      -# = f.label :buyer_id_eq, '販売状況'
+      -# = f.radio_button :buyer_id_eq, '', {:checked => true}
+      -# 指定なし
+      -# = f.radio_button :buyer_id_eq, nil
+      -# 販売中
+      -# = f.radio_button :buyer_id_eq, [0-9]
+      -# 売り切れ
+
+      .listing-product-detail__category
+        = f.label 'カテゴリー', class: 'listing-default__label'
+        .listing-select-wrapper
+          .listing-select-wrapper__box
+            = f.select :category_id_eq, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category', name: 'item[category_id]'}
+            %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+      = f.submit "検索"
   .search-main__right
     .search-main__right__title
       - if @keyword.present?
