@@ -201,10 +201,14 @@
 
     }
     &__comment-box{
-      padding: 10px 40px 40px;
+      padding: 0.1px 40px 25px;
       background-color: #fff;
       margin: 10px 0;
       text-align: center; 
+      p{
+        font-weight: normal;
+        font-size: xx-small;
+      }
       &__coments{
         list-style: none;
         &__input{
@@ -271,7 +275,7 @@
   margin-bottom: 35px;
   &__box{
     height: 100px;
-    margin-bottom: 25px;
+    margin: 10px 0 25px;
     &__kaiwa {
       height: 10px;
       &__clearfix-messages{
@@ -279,11 +283,11 @@
           text-align: right;
           a{
             height: 10px;
-            color: green;
+            color: rgb(165,230,165);
             display: block;
             font-size: 10px;
             font-weight: bold;
-            padding-right: 9px;
+            // padding-right: 8.8px;
             margin-bottom: 10px;
           }
         }
@@ -298,7 +302,7 @@
               margin: 0;
               width: 100%;
               height: 100%;
-              margin-top: 4px;
+              margin-top: 5px;
               border-radius: 50%;
               border: 1px solid #aaa;
             }
@@ -339,9 +343,8 @@
               font-size: 17px;
             }
             .btn{
-              right: -7px;
-              top: 0.0rem;
-              right: -7.5px;
+              right: 1px;
+              top: 0.1rem;
               font-size: 16px;
               text-align: right;
               position: absolute;
@@ -356,7 +359,7 @@
           :after {
             content: '';
             top: 12px;
-            right: -17px;
+            right: -20px;
             position: absolute;
             border: 10px solid transparent;
             border-left: 10px solid rgb(165,230,165);
@@ -371,7 +374,7 @@
             font-size: 10px;
             font-weight: bold;
             padding-left: 9px;
-            color: steelblue;
+            color: #3CCACE;
           }
         }
         &__img-left{
