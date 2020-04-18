@@ -269,27 +269,22 @@
 
 .show-main__content-top__message{
   margin-bottom: 35px;
-  // :after,:before {
-  //   clear: both;
-  //   content: "";
-  //   display: block;
-  // }
   &__box{
     height: 100px;
     margin-bottom: 25px;
     &__kaiwa {
+      height: 10px;
       &__clearfix-messages{
         &__name{
           text-align: right;
           a{
-            font-size: 10px;
-            color: #3CCACE;
-            font-weight: bold;
             height: 10px;
-            margin-bottom: 10px;
-            padding-right: 9px;
+            color: green;
             display: block;
-            
+            font-size: 10px;
+            font-weight: bold;
+            padding-right: 9px;
+            margin-bottom: 10px;
           }
         }
         &__img-right{
@@ -297,11 +292,8 @@
           width: 40px;
           float: right;
           margin-left: -70px;
-          // position: relative;
           &__description{
-            // bottom: 15px;
             margin-top: -5px;
-            // text-align: center;
             img {
               margin: 0;
               width: 100%;
@@ -313,14 +305,14 @@
           }
         }
         &__text{
-          width: 560px;
           float: right;
+          width: 560px;
           padding: 15px;
           font-size: 8px;
-          margin: 0 60px 25px 0;
           position: relative;
           border-radius: 15px;
           word-break: break-all;
+          margin: 0 60px 0 0;
           background-color: rgb(165,230,165);
           &__right{
             margin: 0;
@@ -343,33 +335,23 @@
             #i:before{
               top: -30px;
               left: -12px;
-              font-size: 17px;
               display: block;
-              // text-align: left;
-              // position: absolute;
+              font-size: 17px;
             }
             .btn{
+              right: -7px;
+              top: 0.0rem;
               right: -30px;
               font-size: 16px;
               text-align: right;
+              position: absolute;
               padding-bottom: 20px;
               color: rgb(51, 51, 51);
-              position: absolute;
-              right: -7px;
-              top: 0.0rem;
-              // display: block;
-              // text-align: left;
-              // position: absolute;
             }
           }
           :before {
             content: '';
-            // top: 10px;
             right: -20px;
-            // line-height: 60px;
-            // position: absolute;
-            // align-items: center;
-            // border: 10px solid transparent;
           }
           :after {
             content: '';
@@ -380,70 +362,85 @@
             border-left: 10px solid rgb(165,230,165);
           }
         }
+
         &__user{
+          height: 10px;
           text-align: left;
           a{
-            height: 10px;
             display: block;
             font-size: 10px;
-            color: #3CCACE;
             font-weight: bold;
-            padding-left: 8px;
-            margin-bottom: 10px;
+            padding-left: 9px;
+            color: steelblue;
           }
         }
         &__img-left{
           margin: 0;
           float: left;
           width: 40px;
-          height: 40px;
           margin-right: -70px;
           &__description{
-            bottom: 35px;
-            font-size: 10px;
-            margin-top: 10px;
-            text-align: center;
-            position: relative;
+            margin-top: -1px;
             img {
               margin: 0;
               width: 100%;
               height: 100%;
-              margin-top: 25px;
+              margin-top: 4px;
               border-radius: 50%;
               border: 1px solid #aaa;
             }
           }
           &__text{
-            float: left;
-            height: 80px;
             width: 560px;
             padding: 15px;
             font-size: 8px;
-            text-align: left;
-            margin-left: 60px;
+            margin: 0 0 0 60px;
             position: relative;
             border-radius: 15px;
-            background: rgb(238,238,238);
+            word-break: break-all;
+            background-color: rgb(223,242,252);
             &__left{
-              margin: 0 0 20px;
+              margin: 0;
+              padding: 0;
+              height: 15px;
+              display: inline-block;
               &__:last-child {
                 margin-bottom: 0;
               }
             }
+            &__time{
+              display: block;
+              margin-top: 13px;
+              position: relative;
+              color: rgb(51, 51, 51);
+              .i {
+                content: '';
+                top: -30px;
+                left: -12px;
+                display: block;
+                font-size: 17px;
+              }
+              .alt{
+                right: 0px;
+                top: 0.2rem;
+                font-size: 16px;
+                text-align: right;
+                position: absolute;
+                padding-bottom: 20px;
+                color: rgb(51, 51, 51);
+              }
+            }
             :before {
               content: '';
-              top: 15px;
               left: -20px;
-              position: absolute;
-              border: 10px solid transparent;
             }
             :after {
               content: '';
               top: 12px;
-              left: -19px;
+              left: -20px;
               position: absolute;
               border: 10px solid transparent;
-              border-right: 10px solid #eee;
+              border-right: 10px solid rgb(223,242,252);
             }
           }
         }
