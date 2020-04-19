@@ -6,10 +6,12 @@ class Items::SearchesController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
-    @q = Item.ransack(params[:q])
-    if @q.present?
+    if params[:q].present?
+      @q = Item.ransack(params[:q])
       @items = @q.result(distinct: true).page(params[:page]).per(12).order("created_at DESC")
     else
+      params[:q] = { sorts: 'id desc' }
+      @q = Item.ransack(params[:q])
       @items = Item.search(params[:keyword]).page(params[:page]).per(12).order("created_at DESC")
     end
   end

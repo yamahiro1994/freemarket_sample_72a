@@ -5,7 +5,7 @@
 
       .header__main__upper-box__search-box
         = form_with(url: items_searches_path, local: true, method: :get) do |f|
-          = f.text_field :keyword, class: "search", placeholder: 'キーワードから探す'
+          = f.text_field :keyword, class: "search", placeholder: 'キーワードから探す', value: params[:keyword]
           .send-btn
             = image_submit_tag 'icon-search 1.png', class: "btn"
     .header__main__lower-box
