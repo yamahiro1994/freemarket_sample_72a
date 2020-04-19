@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :bookmarks, dependent: :destroy
   has_many :users, through: :bookmarks
-
+  has_many :users, through: :comments
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end

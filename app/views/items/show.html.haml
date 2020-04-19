@@ -148,9 +148,8 @@
                             .show-main__content-top__message__box__kaiwa__clearfix-messages__text__day
                               = icon('far', 'clock', class: 'icon')
                               %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
-                              - if user_signed_in? && comment.user_id == current_user.id
-                                = link_to item_comment_path(comment), method: :delete, class: "btn", data: { confirm: "本当にコメントを削除してもよろしいですか？" } do
-                                  =icon('fas', 'trash-alt', class: 'trash')
+                              = link_to item_comment_path(params[:id],comment), method: :delete, class: "btn", data: { confirm: "本当にコメントを削除してもよろしいですか？" } do
+                                = icon('fas', 'trash-alt', class: 'trash')
                                   
                               
                       - else
@@ -160,10 +159,14 @@
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__description
                               %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text
-                            %p.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left
                               = comment.message
-                              .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left__day
-                                %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__time
+                              %id= icon('far', 'clock', class: 'c')
+                              %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
+                              = link_to item_comment_path(params[:id],comment), method: :delete, class: "btn-d", data: { confirm: "本当にコメントを削除してもよろしいですか？" } do
+                                = icon('fas', 'trash-alt', class: 'alt')
+
             .show-main__content-top__comment-box__coments__p
               相手のことを考え丁寧なコメントを心がけましょう。
               %br
@@ -173,7 +176,7 @@
               %i.fas.fa-comment
         - else
           %strong
-            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+            %p ※ コメントの投稿には新規登録/ログインが必要です ※
 
         
                       

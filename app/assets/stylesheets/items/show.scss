@@ -201,10 +201,14 @@
 
     }
     &__comment-box{
-      padding: 10px 40px 40px;
+      padding: 0.1px 40px 25px;
       background-color: #fff;
       margin: 10px 0;
       text-align: center; 
+      p{
+        font-weight: normal;
+        font-size: xx-small;
+      }
       &__coments{
         list-style: none;
         &__input{
@@ -268,23 +272,22 @@
 }
 
 .show-main__content-top__message{
-  margin-bottom: 30px;
-  :after,:before {
-    clear: both;
-    content: "";
-    display: block;
-  }
+  margin-bottom: 35px;
   &__box{
     height: 100px;
-    margin-bottom: 30px;
+    margin: 10px 0 25px;
     &__kaiwa {
+      height: 10px;
       &__clearfix-messages{
         &__name{
           text-align: right;
           a{
-            font-size: 10px;
+            height: 10px;
+            display: block;
+            font-size: 16px;
             color: #3CCACE;
             font-weight: bold;
+            margin-bottom: 11px;
           }
         }
         &__img-right{
@@ -293,11 +296,7 @@
           float: right;
           margin-left: -70px;
           &__description{
-            bottom: 15px;
-            font-size: 10px;
-            margin-top: 10px;
-            text-align: center;
-            position: relative;
+            margin-top: -5px;
             img {
               margin: 0;
               width: 100%;
@@ -309,15 +308,15 @@
           }
         }
         &__text{
-          height: 80px;
-          width: 560px;
           float: right;
+          width: 560px;
           padding: 15px;
           font-size: 8px;
-          margin-right: 60px;
           position: relative;
           border-radius: 15px;
-          background-color: rgb(251,240,230);
+          word-break: break-all;
+          margin: 0 60px 0 0;
+          background-color: rgb(165,230,165);
           &__right{
             margin: 0;
             padding: 0;
@@ -330,106 +329,119 @@
             }
           }
           &__day{
-            color: #aaa;
+            display: flex;
             display: block;
             margin-top: 13px;
             text-align: left;
-            padding-left: 13px;
             position: relative;
-            i::before{
+            color: rgb(51, 51, 51);
+            #i:before{
               top: -30px;
               left: -12px;
-              font-size: 17px;
               display: block;
-              text-align: left;
-              position: absolute;
+              font-size: 17px;
             }
-            i:before{
-              right: -30px;
-              font-size: 17px;
-              display: block;
-              text-align: left;
+            .btn{
+              right: 1px;
+              top: 0.1rem;
+              font-size: 16px;
+              text-align: right;
               position: absolute;
+              padding-bottom: 20px;
+              color: rgb(51, 51, 51);
             }
           }
           :before {
             content: '';
-            top: 10px;
             right: -20px;
-            line-height: 60px;
-            position: absolute;
-            align-items: center;
-            border: 10px solid transparent;
           }
           :after {
             content: '';
             top: 12px;
-            right: -19px;
+            right: -20px;
             position: absolute;
             border: 10px solid transparent;
-            border-left: 10px solid rgb(251,240,230);
+            border-left: 10px solid rgb(165,230,165);
           }
         }
+
         &__user{
+          height: 10px;
           text-align: left;
           a{
-            font-size: 10px;
+            display: block;
+            font-size: 16px;
             color: #3CCACE;
             font-weight: bold;
+            padding-left: 9px;
           }
         }
         &__img-left{
           margin: 0;
           float: left;
           width: 40px;
-          height: 40px;
           margin-right: -70px;
           &__description{
-            bottom: 15px;
-            font-size: 10px;
-            margin-top: 10px;
-            text-align: center;
-            position: relative;
+            margin-top: -1px;
             img {
               margin: 0;
               width: 100%;
               height: 100%;
-              margin-top: 5px;
               border-radius: 50%;
               border: 1px solid #aaa;
             }
           }
           &__text{
-            float: left;
-            height: 80px;
             width: 560px;
             padding: 15px;
             font-size: 8px;
-            text-align: left;
-            margin-left: 60px;
+            margin: 0 0 0 60px;
             position: relative;
             border-radius: 15px;
-            background: rgb(238,238,238);
+            word-break: break-all;
+            background-color: rgb(223,242,252);
             &__left{
-              margin: 0 0 20px;
+              margin: 0;
+              padding: 0;
+              height: 15px;
+              display: inline-block;
               &__:last-child {
                 margin-bottom: 0;
               }
             }
+            &__time{
+              display: block;
+              margin-top: 13px;
+              position: relative;
+              color: rgb(51, 51, 51);
+              .i {
+                content: '';
+                top: -30px;
+                left: -12px;
+                display: block;
+                font-size: 17px;
+              }
+              .alt{
+                right: 0px;
+                top: 0.2rem;
+                font-size: 16px;
+                text-align: right;
+                position: absolute;
+                padding-bottom: 20px;
+                color: rgb(51, 51, 51);
+              }
+            }
             :before {
               content: '';
-              top: 15px;
               left: -20px;
-              position: absolute;
-              border: 10px solid transparent;
             }
             :after {
               content: '';
               top: 12px;
-              left: -19px;
+              left: -20px;
               position: absolute;
               border: 10px solid transparent;
-              border-right: 10px solid #eee;
+              border-right: 10px solid rgb(223,242,252);
             }
           }
         }
