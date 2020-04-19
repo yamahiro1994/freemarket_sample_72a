@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:buy, :pay, :show, :edit, :update, :destroy]
+  before_action :set_category, only: [:index, :new, :show, :edit]
 
   def buy
     @image = @item.images[0].image_url
@@ -74,16 +75,13 @@ class ItemsController < ApplicationController
   def index
     @items = Item.order(id: :desc).where(buyer_id:nil)
     @images = Image.includes(:item)
-    @parents = Category.where(ancestry: nil)
   end
   
   def new  
     @item = Item.new
     @item.images.new
     @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    @category_parent_array << @parents.pluck(:name)
   end
   
   def get_category_children
@@ -110,7 +108,6 @@ class ItemsController < ApplicationController
     @images = @item.images
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
-    @parents = Category.where(ancestry: nil)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end
@@ -123,9 +120,7 @@ class ItemsController < ApplicationController
     grandchild_category = @item.category
     child_category = grandchild_category.parent
     @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    @category_parent_array << @parents.pluck(:name)
     @category_children_array = Category.where(ancestry: child_category.ancestry)
     @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry) 
   end
@@ -153,6 +148,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category
+    @parents = Category.where(ancestry: nil)
   end
 
   def item_params

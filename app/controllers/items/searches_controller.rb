@@ -3,9 +3,7 @@ class Items::SearchesController < ApplicationController
   def index
     @keyword = params[:keyword]
     @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    @category_parent_array << @parents.pluck(:name)
     if params[:q].present?
       @q = Item.ransack(params[:q])
       @items = @q.result(distinct: true).page(params[:page]).per(12).order("created_at DESC")
