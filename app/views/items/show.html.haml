@@ -141,7 +141,7 @@
                             .show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__name
                               
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__description
-                              %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
+                              = image_tag 'yu-za-.jpg', width: '50'
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__text
                             .show-main__content-top__message__box__kaiwa__clearfix-messages__text__right
                               = comment.message
@@ -157,7 +157,7 @@
                           = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__description
-                              %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
+                              = image_tag 'yu-za-.jpg', width: '50'
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text
                             .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left
                               = comment.message
