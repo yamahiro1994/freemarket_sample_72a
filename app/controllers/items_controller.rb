@@ -81,7 +81,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @category_parent_array = ["---"]
-    @category_parent_array << @parents.pluck(:name)
+    @category_parent_array.concat(@parents.pluck(:name))
   end
   
   def get_category_children
@@ -120,9 +120,9 @@ class ItemsController < ApplicationController
     grandchild_category = @item.category
     child_category = grandchild_category.parent
     @category_parent_array = ["---"]
-    @category_parent_array << @parents.pluck(:name)
+    @category_parent_array.concat(@parents.pluck(:name))
     @category_children_array = Category.where(ancestry: child_category.ancestry)
-    @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry) 
+    @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
   end
 
   def update
