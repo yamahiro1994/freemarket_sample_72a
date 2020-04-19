@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :bookmarks
   has_many :bookmark_items, through: :bookmarks, source: :item
+  has_many :users, through: :items
 
   has_many :comments
 
