@@ -93,16 +93,16 @@
                   -if @item.bookmarked_by?(current_user)
                     %span
                       %icon.fas.fa-star 
-                      お気に入り解除:
-                      = link_to @item.bookmarks.count, item_bookmarks_path(@item.id) ,method: :delete
+                      = link_to 'お気に入り解除:', item_bookmarks_path(@item.id) ,method: :delete
+                      #{@item.bookmarks.count}
                   -else 
                     %span
                       %icon.far.fa-star 
-                      お気に入り登録：
-                      = link_to @item.bookmarks.count, item_bookmarks_path(@item.id), method: :post
+                      = link_to 'お気に入り登録：', item_bookmarks_path(@item.id), method: :post
+                      #{@item.bookmarks.count}
                 - else
                   %span
-                    %icon.far.fa-star                    
+                    %icon.far.fa-star
                     お気に入り数：
                     #{@item.bookmarks.length}
           %ul.show-main__content-top__item-box__area__optional
@@ -134,28 +134,39 @@
                   .show-main__content-top__message__box
                     %ul.show-main__content-top__message__box__kaiwa
                       %li.show-main__content-top__message__box__kaiwa__clearfix-messages
-                      - if comment.user.id == current_user.id
+                      - if @item.seller_id != current_user.id
                         .show-main__content-top__message__box__kaiwa__clearfix-messages__name
                           = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           %figure.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right
                             .show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__name
                               
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__description
-                              %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
+                              = image_tag 'yu-za-.jpg', width: '50'
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__text
-                            %p.show-main__content-top__message__box__kaiwa__clearfix-messages__text__right
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__text__right
                               = comment.message
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__text__day
+                              = icon('far', 'clock', class: 'icon')
+                              %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
+                              = link_to item_comment_path(params[:id],comment), method: :delete, class: "btn", data: { confirm: "本当にコメントを削除してもよろしいですか？" } do
+                                = icon('fas', 'trash-alt', class: 'trash')
+                                  
+                              
                       - else
                         .show-main__content-top__message__box__kaiwa__clearfix-messages__user
                           = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__description
-                              %img{alt: "#", src: "/assets/yu-za-.jpg", width: "50"}
+                              = image_tag 'yu-za-.jpg', width: '50'
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text
-                            %p.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left
                               = comment.message
-                              .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__left__day
-                                -# =time_ago_in_words(created_at)+"前"
+                            .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__text__time
+                              %id= icon('far', 'clock', class: 'c')
+                              %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
+                              = link_to item_comment_path(params[:id],comment), method: :delete, class: "btn-d", data: { confirm: "本当にコメントを削除してもよろしいですか？" } do
+                                = icon('fas', 'trash-alt', class: 'alt')
+
             .show-main__content-top__comment-box__coments__p
               相手のことを考え丁寧なコメントを心がけましょう。
               %br
@@ -165,7 +176,7 @@
               %i.fas.fa-comment
         - else
           %strong
-            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+            %p ※ コメントの投稿には新規登録/ログインが必要です ※
 
         
                       
@@ -182,7 +193,7 @@
           %icon.fa.fa-angle-right
     .show-main__related-items
       =link_to "#",class:"show-main__related-items__link" do
-        -# メンズをもっと見る
+        -# メンズをもっと見る<=カテゴリ呼び出してください
       .product-lists
 -# appバナー部分テンプレート
 =render "appBanner"

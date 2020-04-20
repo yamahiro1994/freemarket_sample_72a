@@ -8,7 +8,7 @@
       %section.user-show-page__main__icon
         =link_to"#",class:"user-show-page__main__icon__link" do
           %figure
-            = image_tag "/assets/yu-za-.jpg", alt: "", height: "60", width: "60", class: "user-show-page__main__icon__link__photo"
+            = image_tag asset_path 'yu-za-.jpg', alt: "", height: "60", width: "60", class: "user-show-page__main__icon__link__photo"
           %h2.user-show-page__main__icon__link__name
             = current_user.nickname
           .user-show-page__main__icon__link__situation
@@ -19,7 +19,6 @@
               %span.user-show-page__main__icon__link__situation__item
                 = @items.length
       %section.user-show-page__main__todo
-        .user-show-page__main__todo__top-tabs
         .user-show-page__main__todo__under-tabs
           .user-show-page__main__todo__under-tabs__product-list
             .user-show-page__main__todo__under-tabs__product-list__title 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_025338) do
+ActiveRecord::Schema.define(version: 2020_04_16_151438) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -48,6 +48,10 @@ ActiveRecord::Schema.define(version: 2020_04_14_025338) do
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,6 +81,15 @@ ActiveRecord::Schema.define(version: 2020_04_14_025338) do
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
@@ -89,16 +102,16 @@ ActiveRecord::Schema.define(version: 2020_04_14_025338) do
     t.string "user_name", null: false
     t.string "user_name_kana", null: false
     t.date "birthday", null: false
-    t.string "destination_family_name", null: false
-    t.string "destination_family_name_kana", null: false
-    t.string "destination_name", null: false
-    t.string "destination_name_kana", null: false
-    t.integer "postal_code", null: false
-    t.integer "prefectures", null: false
-    t.string "municipality", null: false
-    t.string "address", null: false
+    t.string "destination_family_name"
+    t.string "destination_family_name_kana"
+    t.string "destination_name"
+    t.string "destination_name_kana"
+    t.string "postal_code"
+    t.integer "prefectures"
+    t.string "municipality"
+    t.string "address"
     t.string "apartment_room_namber"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
@@ -107,8 +120,11 @@ ActiveRecord::Schema.define(version: 2020_04_14_025338) do
   add_foreign_key "bookmarks", "items"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
+  add_foreign_key "sns_credentials", "users"
 end

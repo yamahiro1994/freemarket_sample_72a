@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to :category, optional: true
   has_many :images, dependent: :destroy
   has_many :comments
+  has_many :users, through: :comments
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :bookmarks, dependent: :destroy
   has_many :users, through: :bookmarks
@@ -19,6 +20,7 @@ class Item < ApplicationRecord
   validates :delivery_charge_id, numericality: {only_interger: true}           # 配達料の負担。
   validates :images,             presence: true                                # 写真。
   validates :category_id,        numericality: {only_interger: true}           # カテゴリー。
+
 
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?

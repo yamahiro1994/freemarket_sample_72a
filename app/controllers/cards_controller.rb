@@ -3,10 +3,9 @@ class CardsController < ApplicationController
   before_action :set_card
   before_action :set_category
 
-
   def index
     if @card.present?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_info = customer.cards.retrieve(customer.default_card)
       @card_brand = @card_info.brand
@@ -38,7 +37,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     if params['payjpToken'].blank?
       flash[:notice] = 'クレジットカード登録ができません'
       render "new"
@@ -65,7 +64,7 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy

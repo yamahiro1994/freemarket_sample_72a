@@ -6,40 +6,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   # def new
-  #   @user = User.new
+  #   super
   # end
 
-  # def create
-  #   @user = User.new(user_params)
-  #   if @user.save
-  #     redirect_to root_path
-  #   #   flash[:notice] = "新規登録が完了しました"
-  #   # else
-  #   #   flash[:alert] = "登録に失敗しました"
-  #   end
-  # end  
   # POST /resource
-  # def birthday_join
-  #   year = params[:user]["birthday(1i)"]
-  #   month = params[:user]["birthday(2i)"]
-  #   day = params[:user]["birthday(3i)"]
-  #   birthday = year.to_s + "-" + month.to_s + "-" + day.to_s
-  #   return birthday
-  # end
-  
-  # private
-
-  # def user_params
-  #   params.require(:user).permit(:nickname,:email,:password,:password_confirmation,:family_name,:family_name_kana,:user_name,:user_name_kana,:birthday, :destination_family_name, :destination_family_name_kana, :destination_name, :destination_name_kana, :postal_code, :prefectures, :municipality, :address, :apartment_room_namber, :phone_number)
-  # end
-
-  # def birthday_join
-
-  #   date = params[:user][:birthday]
-
-  #   Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
-  # end  
-  # end
+  def create
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super
+  end
 
   # GET /resource/edit
   # def edit

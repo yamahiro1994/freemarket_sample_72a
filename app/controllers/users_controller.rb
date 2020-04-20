@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_category
+  before_action :set_category, except: [:index]
+
+  def index
+  end
 
   def create
     @user = User.create(user_params)
