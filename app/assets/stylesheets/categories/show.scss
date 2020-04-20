@@ -17,6 +17,10 @@
     margin: 50px auto;
     text-align: center;
     max-width: 1040px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: flex-start;
+    width: 100%;
     .empty-message{
       color: red;
       font-size: 26px;
