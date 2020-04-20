@@ -193,7 +193,10 @@
       text-align: center;
       .btn {
         @include showBtn(#3CCACE)
-        
+      }
+      .btn:hover{
+        text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+        6px 0px 15px rgba(255, 255, 240, 0.83);
       }
       .btn--gray {
         @include showBtn(gray)
@@ -229,15 +232,11 @@
           text-align:left;
         }
         &__button{
-          margin: 20px 0 0;
-          line-height: 48px;
-          background: #3CCACE;
-          border: 1px solid #3CCACE;
-          color:#fff;
-          width: 60%;
-          font-size: 18px;
-          border-radius: 100px;
-          vertical-align: middle;
+          @include showBtn(#3CCACE)
+        }
+        &__button:hover{
+          text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+          6px 0px 15px rgba(255, 255, 240, 0.83);
         }
         h4{
           margin-top: 20px;
