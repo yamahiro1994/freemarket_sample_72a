@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
     case params[:id]
     when @category.root.id.to_s
       grandchild_array = @category.indirect_ids
-    when @category.id
+    when @category.id.to_s
       grandchild_array = params[:id]
     else
       grandchild_array = @category.children.ids
