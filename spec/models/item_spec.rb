@@ -70,14 +70,7 @@ describe Item do
     item = build(:item, delivery_charge_id: nil)
     item.valid?
     expect(item.errors[:delivery_charge_id]).to include("translation missing: ja.activerecord.errors.models.item.attributes.delivery_charge_id.not_a_number")
-  end      
-
-  #imagesについて
-  it "imagesにデータが無いと登録出来ないこと" do
-    item = build(:item, images: nil)
-    item.valid?
-    expect(item.errors[:images]).to include("を入力してください")
-  end      
+  end       
 
   #category_idについて
   it "category_idに数値が無いと登録出来ないこと" do

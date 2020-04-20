@@ -18,6 +18,7 @@ class Item < ApplicationRecord
   validates :prefecture_id,      numericality: {only_interger: true}           # 配達元の地域。
   validates :delivery_days_id,   numericality: {only_interger: true}           # 配達までの日数。
   validates :delivery_charge_id, numericality: {only_interger: true}           # 配達料の負担。
+  validates_associated :images
   validates :images,             presence: true                                # 写真。
   validates :category_id,        numericality: {only_interger: true}           # カテゴリー。
 
