@@ -93,13 +93,13 @@
                   -if @item.bookmarked_by?(current_user)
                     %span
                       %icon.fas.fa-star 
-                      お気に入り解除:
-                      = link_to @item.bookmarks.count, item_bookmarks_path(@item.id) ,method: :delete
+                      = link_to 'お気に入り解除:', item_bookmarks_path(@item.id) ,method: :delete
+                      #{@item.bookmarks.count}
                   -else 
                     %span
                       %icon.far.fa-star 
-                      お気に入り登録：
-                      = link_to @item.bookmarks.count, item_bookmarks_path(@item.id), method: :post
+                      = link_to 'お気に入り登録：', item_bookmarks_path(@item.id), method: :post
+                      #{@item.bookmarks.count}
                 - else
                   %span
                     %icon.far.fa-star
