@@ -135,7 +135,7 @@
                   .show-main__content-top__message__box
                     %ul.show-main__content-top__message__box__kaiwa
                       %li.show-main__content-top__message__box__kaiwa__clearfix-messages
-                      - if @item.seller_id != current_user.id
+                      - if @item.seller_id != comment.user_id
                         .show-main__content-top__message__box__kaiwa__clearfix-messages__name
                           = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           %figure.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right
