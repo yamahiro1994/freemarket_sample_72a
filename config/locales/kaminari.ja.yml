@@ -7,7 +7,7 @@ ja:
         display_entries:
           one: "<b>%{count}</b>件表示中です"
           other: "<b>%{count}</b>件表示中です"
-          zero: "レコードが見つかりませんでした"
+          zero: "商品が見つかりませんでした"
   views:
     pagination:
       first: "&laquo; 最初"
