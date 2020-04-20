@@ -8,7 +8,7 @@
       %section.user-show-page__main__icon
         =link_to"#",class:"user-show-page__main__icon__link" do
           %figure
-            = image_tag "/assets/yu-za-.jpg", alt: "", height: "60", width: "60", class: "user-show-page__main__icon__link__photo"
+            = image_tag asset_path 'yu-za-.jpg', alt: "", height: "60", width: "60", class: "user-show-page__main__icon__link__photo"
           %h2.user-show-page__main__icon__link__name
             = current_user.nickname
           .user-show-page__main__icon__link__situation
