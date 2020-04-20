@@ -11,7 +11,7 @@
   margin-left: 8px;
   line-height: 1.8em;
   border-radius: 2px;
-  background-color: rgb(255, 2, 17);
+  background-color: #3CCACE;
 }
 
 @mixin clearfix() {
@@ -319,7 +319,7 @@
         }
         &__label{
           @include l;
-          background-color: rgb(255, 2, 17);
+          background-color: #3CCACE;
         }
         &__box{
           position: absolute;
@@ -368,7 +368,7 @@
           font-size: 15px;
           padding: 0 24px;
           margin-bottom: 24px;
-          background-color: #ea352d;
+          background-color: #3CCACE;
           border-color: transparent;
         }
         a.btn {

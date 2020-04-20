@@ -3,7 +3,6 @@ class CardsController < ApplicationController
   before_action :set_card
   before_action :set_category
 
-
   def index
     if @card.present?
       Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
