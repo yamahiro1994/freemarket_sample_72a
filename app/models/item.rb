@@ -9,7 +9,7 @@ class Item < ApplicationRecord
 
 # アイテム出品、編集のバリデーション
   validates :title,              presence: true, length: { maximum: 40 }       # 商品名。文字あるか。文字数40以下。
-  validates :content,            presence: true, length: { maximum: 1000 }     # 商品の説明。文字かるか。文字数1000以下。
+  validates :content,            presence: true, length: { maximum: 1000 }     # 商品の説明。文字あるか。文字数1000以下。
   validates :price,              numericality: {greater_than_or_equal_to: 300} # 値段。300円以上。
   validates :price,              numericality: {less_than_or_equal_to: 9999999}# 値段。9999999以上。
   validates :status_id,          numericality: {only_interger: true}           # 商品状態。数値のあるか。
@@ -19,23 +19,6 @@ class Item < ApplicationRecord
   validates :delivery_charge_id, numericality: {only_interger: true}           # 配達料の負担。
   validates :images,             presence: true                                # 写真。
   validates :category_id,        numericality: {only_interger: true}           # カテゴリー。
-
-  # t.string "title", null: false
-  # t.text "content", null: false
-  # t.integer "price", null: false
-  # t.integer "status_id"
-  # t.integer "delivery_method_id"
-  # t.integer "prefecture_id", null: false
-  # t.integer "delivery_days_id", null: false
-  # t.integer "delivery_charge_id", null: false
-  # t.bigint "category_id"
-  # t.bigint "seller_id"
-  # t.bigint "buyer_id"
-  # t.datetime "created_at", null: false
-  # t.datetime "updated_at", null: false
-  # t.index ["buyer_id"], name: "index_items_on_buyer_id"
-  # t.index ["category_id"], name: "index_items_on_category_id"
-  # t.index ["seller_id"], name: "index_items_on_seller_id"
 
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
