@@ -112,15 +112,16 @@
                 不適切な商品の通報
 
         .show-main__content-top__btn-box 
-          - if user_signed_in? && current_user.id == @item.seller_id
-            = link_to '商品の編集', edit_item_path(@item), class:'show-edit btn'
-            %br or
-            = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
-          - elsif user_signed_in? && current_user.id != @item.seller_id
-            - if @item.buyer_id
-              %buttun{type: "button", class: 'show-buy btn--gray'} 売り切れです
-            - else
+          - if @item.buyer_id.present?
+            %buttun{type: "button", class: 'show-buy btn--gray'} 売り切れです
+          - else
+            - if user_signed_in? && current_user.id == @item.seller_id
+              = link_to '商品の編集', edit_item_path(@item), class:'show-edit btn'
+              %br or
+              = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
+            - elsif user_signed_in? && current_user.id != @item.seller_id
               = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
+            - else
       .show-main__content-top__comment-box
         - if current_user
           %ul.show-main__content-top__comment-box__coments
@@ -134,12 +135,12 @@
                   .show-main__content-top__message__box
                     %ul.show-main__content-top__message__box__kaiwa
                       %li.show-main__content-top__message__box__kaiwa__clearfix-messages
-                      - if @item.seller_id != current_user.id
+
+                      - if @item.seller_id != comment.user_id
                         .show-main__content-top__message__box__kaiwa__clearfix-messages__name
                           = link_to comment.user.nickname, "/users/#{comment.user_id}"
                           %figure.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right
                             .show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__name
-                              
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__description
                               = image_tag 'yu-za-.jpg', width: '50'
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__text
@@ -150,8 +151,8 @@
                               %time(datetime="#{comment.created_at}")= time_ago_in_words(comment.created_at)+"前"
                               = link_to item_comment_path(params[:id],comment), method: :delete, class: "btn", data: { confirm: "本当にコメントを削除してもよろしいですか？" } do
                                 = icon('fas', 'trash-alt', class: 'trash')
-                                  
-                              
+
+
                       - else
                         .show-main__content-top__message__box__kaiwa__clearfix-messages__user
                           = link_to comment.user.nickname, "/users/#{comment.user_id}"
@@ -178,8 +179,8 @@
           %strong
             %p ※ コメントの投稿には新規登録/ログインが必要です ※
 
-        
-                      
+
+
     %ul.show-main__links
       %li
         =link_to "#",class:"show-main__links__left-btn" do
