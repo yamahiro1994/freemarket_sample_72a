@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:buy, :pay, :show, :edit, :update, :destroy]
   before_action :set_category, only: [:index, :new, :show, :edit]
+  before_action :my_item_check, only: [:buy]
+  before_action :buy_item_check, only: [:buy]
 
   def buy
     @image = @item.images[0].image_url
@@ -160,6 +162,20 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:title, :content, :price, :status_id, :prefecture_id, :delivery_days_id, :delivery_charge_id, :category_id, :delivery_method_id, :seller_id, images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
+  end
+
+  def my_item_check
+    if user_signed_in? && current_user.id == @item.seller_id
+      flash[:alert] = "本人が出品した商品は購入出来ません。"
+      redirect_to root_url
+    end
+  end
+
+  def buy_item_check
+    if @item.buyer_id.present?
+      flash[:alert] = "購入済みの商品です。"
+      redirect_to root_url
+    end
   end
 
 end
