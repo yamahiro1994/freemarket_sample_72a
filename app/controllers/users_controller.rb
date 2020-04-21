@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end  
 
   def show
-    @items = Item.where(seller_id: current_user.id)
+    @items = Item.where(seller_id: current_user.id).order("created_at DESC")
     @images = Image.includes(:item)
     @user = User.find(params[:id])
     @bookmark_items = @user.bookmark_items.order("created_at DESC")

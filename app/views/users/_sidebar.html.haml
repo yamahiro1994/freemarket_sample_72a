@@ -4,24 +4,12 @@
   %ul.user-show-page__side__setting-list
     %li
       =link_to user_path(current_user) ,class:"user-show-page__side__setting-list__item" do
-        プロフィール(リンクあり)
-    %li
-      =link_to"#",class:"user-show-page__side__setting-list__item" do
-        発送元•お届け先住所変更
+        プロフィール
     %li
       =link_to cards_path ,class:"user-show-page__side__setting-list__item" do
-        支払い方法（リンクあり）  
-    %li
-      =link_to"#",class:"user-show-page__side__setting-list__item" do
-        メール/パスワード
-    %li
-      =link_to"#",class:"user-show-page__side__setting-list__item" do
-        本人情報
-    %li
-      =link_to"#",class:"user-show-page__side__setting-list__item" do
-        電話番号確認
+        支払い方法
     %li
       =link_to logout_user_path(current_user) ,class:"user-show-page__side__setting-list__item" do
-        ログアウト（リンクあり）
+        ログアウト
 
    
