@@ -44,6 +44,8 @@ class User < ApplicationRecord
   validates :password,                     presence: true, length: { in: 7..128 }, format: { with: VALID_PASSWORD_REGEX, message: 'は英字と数字両方を含むパスワードを設定してください'}
   # validates :password_confirmation,        presence: true, length: { in: 7..128 }, format: { with: VALID_PASSWORD_REGEX, message: 'は英字と数字両方を含むパスワードを設定してください'}
 
+  validates :phone_number,                 length: { maximum: 15,message: "電話番号に誤りがあります"}
+
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
     # sns認証したことがあればアソシエーションで取得
