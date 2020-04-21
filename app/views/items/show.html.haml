@@ -73,8 +73,7 @@
                   %th
                     配送元の地域
                   %td
-                    =link_to "#",class:"tiiki" do
-                      #{Prefecture.find(@item.prefecture_id).name}
+                    #{Prefecture.find(@item.prefecture_id).name}
                 %tr
                   %th
                     配送日の目安
@@ -178,24 +177,6 @@
         - else
           %strong
             %p ※ コメントの投稿には新規登録/ログインが必要です ※
-
-
-
-    %ul.show-main__links
-      %li
-        =link_to "#",class:"show-main__links__left-btn" do
-          %icon.fa.fa-angle-left
-          %span
-            前の商品
-      %li
-        =link_to "#",class:"show-main__links__right-btn" do
-          %span
-            次の商品
-          %icon.fa.fa-angle-right
-    .show-main__related-items
-      =link_to "#",class:"show-main__related-items__link" do
-        -# メンズをもっと見る<=カテゴリ呼び出してください
-      .product-lists
 -# appバナー部分テンプレート
 =render "appBanner"
 -# フッタ部分テンプレート
