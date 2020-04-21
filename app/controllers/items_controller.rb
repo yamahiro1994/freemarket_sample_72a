@@ -126,21 +126,25 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
-      flash[:notice] = '更新しました'
-      redirect_to action: "show"
-    else
-      flash[:notice] = '必須項目を入力してください'
-      redirect_to action: "edit"
+    if user_signed_in? && current_user.id == @item.seller_id
+      if @item.update(item_params)
+        flash[:notice] = '更新しました'
+        redirect_to action: "show"
+      else
+        flash[:notice] = '必須項目を入力してください'
+        redirect_to action: "edit"
+      end
     end
   end
 
   def destroy
-    if @item.destroy
-      redirect_to root_path
-    else
-      flash[:notice] = 'うまく削除出来ませんでした'
-      redirect_to item_path
+    if user_signed_in? && current_user.id == @item.seller_id
+      if @item.destroy
+        redirect_to root_path
+      else
+        flash[:notice] = 'うまく削除出来ませんでした'
+        redirect_to item_path
+      end
     end
   end
 

@@ -18,8 +18,9 @@
               = @exp_month + " / " + @exp_year
             = button_to "削除する", card_path(@card), method: :delete, class:"mypage-main__right__content__credit-card__content__delete-btn"
         - else
-          .mypage-main__right__content__credit-card__content
+          .mypage-main__right__content__credit-card__addbtn
             = link_to new_card_path, class:"new-card-btn" do
-              %i.far.fa-credit-card 
+              %i.far.fa-credit-card
+              %span
                 クレジットカードを追加する
 =render "items/footer"
