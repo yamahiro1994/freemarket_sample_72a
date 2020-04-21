@@ -1,8 +1,11 @@
 .mypage-main {
-  padding: 30px;
   display: flex;
   align-items: flex-start;
   width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  height: 100vh;
+  padding-top:91px;
   .user-show-page__side{
     width: 30%;
     &__setting-top{
@@ -28,7 +31,7 @@
     }
   }
   &__right {
-    margin: 43px 40px;
+    margin-top: 43px;
     width: 70%;
     background-color: white;
     &__title {
