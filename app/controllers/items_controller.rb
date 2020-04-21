@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:buy, :pay, :show, :edit, :update, :destroy]
   before_action :set_category, only: [:index, :new, :show, :edit]
+  before_action :login_check, only: [:new, :edit, :update, :destroy]
 
   def buy
     @image = @item.images[0].image_url
@@ -113,6 +114,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+
     @items = Item.all
     @images = @item.images
     @image = @item.images[0].image_url
@@ -152,6 +154,13 @@ class ItemsController < ApplicationController
 
   def set_category
     @parents = Category.where(ancestry: nil)
+  end
+
+  def login_check
+    unless user_signed_in?
+      flash[:alert] = "ログインしてください"
+      redirect_to root_path
+    end
   end
 
   def item_params
