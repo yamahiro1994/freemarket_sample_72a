@@ -265,30 +265,6 @@
       }
     }
   }
-  &__links{
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    &__left-btn{
-      text-decoration: none;
-      color: #3CCACE;
-    }
-    &__right-btn{
-      text-decoration: none;
-      color: #3CCACE;
-    }
-  }
-  &__related-items{
-    &__link{
-      display: block;
-      margin:24px 0 8px;
-      text-decoration: none;
-      font-weight:bold;
-      position:relative;
-      font-size: 22px;
-      color: #3CCACE;
-    }
-  }
 }
 
 .show-main__content-top__message{

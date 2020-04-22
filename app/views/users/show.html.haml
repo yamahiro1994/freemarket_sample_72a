@@ -37,4 +37,20 @@
                     .user-show-page__main__todo__under-tabs__product-list__contents__content__body__favorite
                       %i.fas.fa-star
                       = b.bookmarks.length
+            .user-show-page__main__todo__under-tabs__product-list__title 
+              出品商品一覧
+            .user-show-page__main__todo__under-tabs__product-list__contents
+              - @items.each do |b|
+              - break if @items.nil?
+                .user-show-page__main__todo__under-tabs__product-list__contents__content
+                  = link_to image_tag(@images.find_by(item_id:[b.id]).image_url, class:"img" ), item_path(b)
+                  .user-show-page__main__todo__under-tabs__product-list__contents__content__body
+                    .user-show-page__main__todo__under-tabs__product-list__contents__content__body__name
+                      = b.title
+                    .user-show-page__main__todo__under-tabs__product-list__contents__content__body__text
+                      = converting_to_jpy(b.price)
+                      %span (税込)
+                    .user-show-page__main__todo__under-tabs__product-list__contents__content__body__favorite
+                      %i.fas.fa-star
+                      = b.bookmarks.count
 =render "/items/footer"

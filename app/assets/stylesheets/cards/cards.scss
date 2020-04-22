@@ -1,8 +1,11 @@
 .mypage-main {
-  padding: 30px;
   display: flex;
   align-items: flex-start;
   width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  height: 100vh;
+  padding-top:91px;
   .user-show-page__side{
     width: 30%;
     &__setting-top{
@@ -28,7 +31,7 @@
     }
   }
   &__right {
-    margin: 43px 40px;
+    margin-top: 43px;
     width: 70%;
     background-color: white;
     &__title {
@@ -53,6 +56,7 @@
           display: flex;
           justify-content: space-between;
           margin-top: 20px;
+          text-align: center;
           &__delete-btn {
             color: red;
             border-color: red;
@@ -61,6 +65,10 @@
             padding: 0 5px;
           }
         }
+        &__addbtn {
+          margin: 0 auto;
+          padding-top: 20px;
+        }
       }
       &__explain {
         text-align: right;
@@ -68,6 +76,19 @@
       }
       .new-card-btn {
         color: black;
+        background-color: #3CCACE;
+        border: 1px solid #3CCACE;
+        display: block;
+        color: #fff;
+        cursor: pointer;
+        max-width: 320px;
+        line-height: 50px;
+        font-size: 14px;
+        text-align: center;
+        height: 50px;
+        span{
+          padding-left: 5px;
+        }
       }
     }
   }
