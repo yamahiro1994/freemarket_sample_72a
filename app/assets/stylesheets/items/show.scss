@@ -24,7 +24,7 @@
 
 .show-main{
   padding: 0 40px;
-  margin: 20px auto;
+  margin: 20px auto 0;
   font-family:"Source Sane Pro",Helvetica,Arial,"遊ゴシック体","YuGothic","メイリオ","Meiryo",sans-serif;
 
   &__content-right{
@@ -228,14 +228,14 @@
     &__comment-box{
       padding: 0.1px 40px 25px;
       background-color: #fff;
-      margin: 10px 0;
+      margin: 10px 0 0;
       text-align: center;
       p{
         padding-top: 20px;
         font-weight: normal;
         font-size: xx-small;
       }
-      &__comments{
+      &__coments{
         list-style: none;
         &__input{
           font-family: inherit;
