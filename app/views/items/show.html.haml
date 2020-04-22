@@ -83,20 +83,20 @@
           %ul
             .show-main__content-top__item-box__area__optional__btn-left
               %li#linke-btn.show-main__content-top__item-box__area__btn-left__link
-                - if user_signed_in? && current_user.id == @item.seller_id 
+                - if user_signed_in? && current_user.id == @item.seller_id
                   %span
-                    %icon.far.fa-star 
+                    %icon.far.fa-star
                     お気に入り数：
                     #{@item.bookmarks.count}
                 -elsif user_signed_in?
                   -if @item.bookmarked_by?(current_user)
                     %span
-                      %icon.fas.fa-star 
+                      %icon.fas.fa-star
                       = link_to 'お気に入り解除:', item_bookmarks_path(@item.id) ,method: :delete
                       #{@item.bookmarks.count}
-                  -else 
+                  -else
                     %span
-                      %icon.far.fa-star 
+                      %icon.far.fa-star
                       = link_to 'お気に入り登録：', item_bookmarks_path(@item.id), method: :post
                       #{@item.bookmarks.count}
                 - else
@@ -107,10 +107,10 @@
           %ul.show-main__content-top__item-box__area__optional
             =link_to "#",class:"show-main__content-top__item-box__area__optional__btn-right" do
               %li.show-main__content-top__item-box__area__optional__btn-right__link
-                %icon.fa.fa-flag 
+                %icon.fa.fa-flag
                 不適切な商品の通報
 
-        .show-main__content-top__btn-box 
+        .show-main__content-top__btn-box
           - if @item.buyer_id.present?
             %buttun{type: "button", class: 'show-buy btn--gray'} 売り切れです
           - else
@@ -127,7 +127,7 @@
           = form_with(model: [@item, @comment], local: true) do |f|
             %input.show-main__content-top__comment-box__coments__input{name:"utf8",type:"hidden",value:""}
             %input.show-main__content-top__comment-box__coments__input{name:"authenticity",type:"hidden",value:""}
-            
+
             .show-main__content-top__message
               - if @comments
                 - @comments.each do |comment|
@@ -137,7 +137,7 @@
 
                       - if @item.seller_id != comment.user_id
                         .show-main__content-top__message__box__kaiwa__clearfix-messages__name
-                          = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                          = link_to comment.user.nickname, user_path
                           %figure.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right
                             .show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__name
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-right__description
@@ -154,7 +154,7 @@
 
                       - else
                         .show-main__content-top__message__box__kaiwa__clearfix-messages__user
-                          = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                          = link_to comment.user.nickname
                           .show-main__content-top__message__box__kaiwa__clearfix-messages__img-left
                             %figcaption.show-main__content-top__message__box__kaiwa__clearfix-messages__img-left__description
                               = image_tag 'yu-za-.jpg', width: '50'

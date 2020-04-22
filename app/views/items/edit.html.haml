@@ -19,9 +19,6 @@
               .upper-box
                 = image_tag image.image.url, width: "112", height: "122", alt: "preview"
               .lower-box
-                -# 余裕あれば編集ボタン実装
-                -# .update-box
-                -#   %label.edit-btn 編集
                 .delete-box
                   .delete-btn
                     %span 削除
@@ -74,6 +71,7 @@
           .listing-select-wrapper__added#grandchildren_wrapper
             .listing-select-wrapper__box
             = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'listing-select-wrapper__box--select', id: 'grandchild_category', name: 'item[category_id]'}
+
         .edit-main__details-box__status
           .edit-main__details-box__status__flex
             .edit-main__details-box__status__flex__text
@@ -112,7 +110,7 @@
           .edit-main__delivery-box__right__flexz__label
             %p 必須
         = f.collection_select :delivery_days_id, DeliveryDays.all, :id, :name, prompt: "---"
-    
+
     .edit-main__exhibition-box
       .edit-main__exhibition-box__price
         %p 価格（¥300〜9,999,999）

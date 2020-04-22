@@ -56,8 +56,8 @@
             %p 必須
           .new-main__details-box__status__flex__flame
             .new-main__details-box__status__flex__flame__form
-        = f.collection_select :status_id, Status.all,:id, :name, prompt: "選択してください"
-        
+        = f.collection_select :status_id, Status.all,:id, :name, prompt: "---"
+
     .new-main__delivery-box
       .new-main__delivery-box__title
         %p 配送について
@@ -66,28 +66,28 @@
           %p 配送料の負担
         .new-main__delivery-box__flex__label
           %p 必須
-      = f.collection_select :delivery_charge_id, DeliveryCharge.all,:id, :name, prompt: "選択してください"
+      = f.collection_select :delivery_charge_id, DeliveryCharge.all,:id, :name, prompt: "---"
       .new-main__delivery-box__flex
         .new-main__delivery-box__flex__text
           %p 配送の方法
         .new-main__delivery-box__flex__label
           %p 必須
-      = f.collection_select :delivery_method_id, DeliveryMethod.all,:id, :name, prompt: "選択してください"
+      = f.collection_select :delivery_method_id, DeliveryMethod.all,:id, :name, prompt: "---"
       .new-main__delivery-box__price
         .new-main__delivery-box__price__flex
           .new-main__delivery-box__price__flex__text
             %p 発送元の地域
           .new-main__delivery-box__price__flex__label
             %p 必須
-        = f.collection_select :prefecture_id, Prefecture.all,:id, :name, prompt: "選択してください"
+        = f.collection_select :prefecture_id, Prefecture.all,:id, :name, prompt: "---"
       .new-main__delivery-box__days
         .new-main__delivery-box__days__flex
           .new-main__delivery-box__days__flex__text
             %p 発送までの日数
           .new-main__delivery-box__days__flex__label
             %p 必須
-        = f.collection_select :delivery_days_id, DeliveryDays.all,:id, :name, prompt: "選択してください"
-    
+        = f.collection_select :delivery_days_id, DeliveryDays.all,:id, :name, prompt: "---"
+
     .new-main__exhibition-box
       .new-main__exhibition-box__price
         %p 価格（¥300〜9,999,999）
@@ -111,9 +111,7 @@
           .new-main__exhibition-box__profit__total__line
         .new-main__exhibition-box__profit__flame
           = f.submit "出品する", class: "submit-btn"
-          = f.submit "下書きに保存", class: "save-btn"
           = link_to "/", class: "btn" do
             = "もどる"
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
-=render "appBanner"
 =render "footer"
