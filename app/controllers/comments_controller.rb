@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       flash[:notice] = '入力してください'
-      redirect_to item_path(@comment.item.id)
+      redirect_to item_url(@comment.item.id)
     end
   end
 
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       flash[:notice] = '他人のコメントは削除できません'
-      redirect_to item_path(@comment.item.id)
+      redirect_to item_url(@comment.item.id)
     end
   end
 

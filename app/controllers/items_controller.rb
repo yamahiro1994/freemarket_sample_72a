@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   before_action :set_category, only: [:index, :new, :show, :edit]
   before_action :login_in_user,  except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :my_item_check, only: [:buy]
-  before_action :buy_item_check, only: [:buy]
+  before_action :my_item_check, only: [:buy, :pay]
+  before_action :buy_item_check, only: [:buy, :pay]
 
   def buy
     @image = @item.images[0].image_url
@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
     if @card.blank?
       flash[:notice] = '購入にはクレジットカード登録が必要です'
-      redirect_to new_card_path
+      redirect_to new_card_url
     else
       Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
       customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -42,30 +42,22 @@ class ItemsController < ApplicationController
 
   def pay
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-    if @item.seller_id = current_user.id
-      redirect_to root_path
-      flash[:notice] = '自分で出品した商品は購入できません'
+    if @card.blank?
+      redirect_to new_card_url
+      flash[:notice] = '購入にはクレジットカード登録が必要です'
     else
-      if @item.buyer_id.present?
-        redirect_to root_path
-        flash[:notice] = 'この商品は売り切れました'
-      elsif @card.blank?
-        redirect_to new_card_path
-        flash[:notice] = '購入にはクレジットカード登録が必要です'
+      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+      Payjp::Charge.create(
+      amount: @item.price,
+      customer: @card.customer_id,
+      currency: 'jpy',
+      )
+      if @item.update(buyer_id: current_user.id)
+        flash[:notice] = '購入しました'
+        redirect_to root_url
       else
-        Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
-        Payjp::Charge.create(
-        amount: @item.price,
-        customer: @card.customer_id,
-        currency: 'jpy',
-        )
-        if @item.update(buyer_id: current_user.id)
-          flash[:notice] = '購入しました'
-          redirect_to root_path
-        else
-          flash[:notice] = '購入に失敗しました'
-          redirect_to item_path(@item)
-        end
+        flash[:notice] = '購入に失敗しました'
+        redirect_to item_url(@item)
       end
     end
   end
@@ -94,10 +86,10 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       flash[:notice] = '出品しました'
-      redirect_to root_path
+      redirect_to root_url
     else
       flash[:notice] = '必須項目を入力してください'
-      redirect_to new_item_path
+      redirect_to new_item_url
     end
   end
 
@@ -138,10 +130,10 @@ class ItemsController < ApplicationController
   def destroy
     if user_signed_in? && current_user.id == @item.seller_id
       if @item.destroy
-        redirect_to root_path
+        redirect_to root_url
       else
-        flash[:notice] = 'うまく削除出来ませんでした'
-        redirect_to item_path
+        flash[:notice] = '削除出来ませんでした'
+        redirect_to item_url
       end
     end
   end
@@ -159,14 +151,14 @@ class ItemsController < ApplicationController
   def login_in_user
     unless user_signed_in?
       flash[:alert] = "ログインしてください"
-      redirect_to root_path
+      redirect_to sign_in_url
     end
   end
 
   def correct_user
     unless current_user.id == @item.seller_id
     flash[:alert] = "アクセスできません"
-    redirect_to root_path
+    redirect_to root_url
     end
   end
 
@@ -176,7 +168,7 @@ class ItemsController < ApplicationController
 
   def my_item_check
     if user_signed_in? && current_user.id == @item.seller_id
-      flash[:alert] = "本人が出品した商品は購入出来ません。"
+      flash[:alert] = "自分で出品した商品は購入出来ません。"
       redirect_to root_url
     end
   end
