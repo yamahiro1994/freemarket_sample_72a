@@ -4,7 +4,7 @@
   align-items: flex-start;
   max-width: 1040px;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 50vh;
   .user-show-page__side{
     width: 30%;
     &__setting-top{
