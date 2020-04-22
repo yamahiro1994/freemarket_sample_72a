@@ -97,15 +97,9 @@
         }
       }
     }
-    &__errer{
-      margin-top: 16px;
-      font-size: 14px;
-      color: #ff0021;
-      display: none;
-    }
   }
 
-    
+
   &__product-name{
     height: 355px;
     padding: 40px;
@@ -153,21 +147,21 @@
         &__label{
           @include l;
         }
-      &__content{
-        height: 126px;
-        width: 100%;
-        font-size: 15px;
-        padding: 13px 16px;
-        outline: none;
-        margin-top: 16px;
-        border: 1px solid #ccc;
+        &__content{
+          height: 126px;
+          width: 100%;
+          font-size: 15px;
+          padding: 13px 16px;
+          outline: none;
+          margin-top: 16px;
+          border: 1px solid #ccc;
+        }
       }
-     }
-   }
+    }
   }
-  
+
   &__details-box{
-    height: 376px;
+    height: 420px;
     padding: 40px;
     background-color: white;
     border-bottom: 1px solid #efefef;
@@ -371,6 +365,10 @@
           background-color: #3CCACE;
           border-color: transparent;
         }
+        input:hover{
+          text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+          6px 0px 15px rgba(255, 255, 240, 0.83);
+        }
         a.btn {
           height: 46px;
           width: 275px;
@@ -384,7 +382,16 @@
           background: #aaa;
           border: 1px solid #aaa;
         }
+        a:hover{
+          text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+          6px 0px 15px rgba(255, 255, 240, 0.83);
+        }
       }
     }
   }
+}
+
+.prev-content:hover{
+  opacity: 0.8;
+  color: rgb(60,202,206);
 }

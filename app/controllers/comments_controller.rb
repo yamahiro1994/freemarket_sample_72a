@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+
   def create
     if ＠comment = Comment.create(comment_params)
       flash[:notice] = 'コメントしました'
@@ -17,11 +17,11 @@ class CommentsController < ApplicationController
       flash[:notice] = 'コメントを削除しました'
       redirect_back(fallback_location: root_path)
     else
-      flash[:notice] = '削除できません'
+      flash[:notice] = '他人のコメントは削除できません'
       redirect_to item_path(@comment.item.id)
     end
   end
-  
+
 
   private
 
