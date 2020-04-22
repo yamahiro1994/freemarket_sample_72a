@@ -33,7 +33,7 @@ class CardsController < ApplicationController
 
   def new
     @card = Card.where(user_id: current_user.id).first
-    redirect_to action: "index" if @card.present?
+    redirect_to cards_url if @card.present?
   end
 
   def create
@@ -53,8 +53,8 @@ class CardsController < ApplicationController
         if request.referer&.include?("/registrations/step5")
           redirect_to controller: 'registrations', action: "step6"
         else
-          flash[:notice] = "支払い情報の登録が完了しました"
-          redirect_to action: "index"
+          flash[:notice] = '支払い情報の登録が完了しました'
+          redirect_to cards_url
         end
       else
         flash[:notice] = 'クレジットカード登録ができません'
@@ -68,11 +68,11 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy
-      flash[:notice] = "削除しました"
-      redirect_to action: "index"
+      flash[:notice] = '削除しました'
+      redirect_to cards_url
     else
-      flash[:notice] = "削除できませんでした"
-      redirect_to action: "index"
+      flash[:notice] = '削除できませんでした'
+      redirect_to cards_url
     end
   end
 
