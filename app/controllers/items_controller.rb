@@ -165,7 +165,7 @@ class ItemsController < ApplicationController
   def login_in_user
     unless user_signed_in?
       flash[:alert] = "ログインしてください"
-      redirect_to root_url
+      redirect_to sign_in_url
     end
   end
 

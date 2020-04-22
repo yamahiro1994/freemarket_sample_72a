@@ -98,16 +98,16 @@
         &__label{
           @include l;
         }
-      &__content{
-        height: 137px;
-        width: 100%;
-        font-size: 15px;
-        padding: 13px 16px;
-        outline: none;
-        margin-top: 16px;
-        border-radius: 3px;
-        border: 1px solid #ccc;
-      }
+        &__content{
+          height: 137px;
+          width: 100%;
+          font-size: 15px;
+          padding: 13px 16px;
+          outline: none;
+          margin-top: 16px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+        }
       }
     }
   }
