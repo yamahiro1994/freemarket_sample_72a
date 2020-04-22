@@ -1,8 +1,10 @@
 .user-logout{
-  padding: 30px;
   width: 100%;
   display: flex;
   align-items: flex-start;
+  max-width: 1040px;
+  margin: 0 auto;
+  height: 100vh;
   .user-show-page__side{
     width: 30%;
     &__setting-top{

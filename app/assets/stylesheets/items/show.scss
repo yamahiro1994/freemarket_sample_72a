@@ -141,13 +141,9 @@
           border:1px solid #dedede;
           font-size:14px;
         }
-        .kategori{
-          text-decoration:none;
-          color: #3CCACE;
-        }
-        .tiiki{
-          text-decoration: none;
-          color:#3CCACE;
+        .kategori{	
+          text-decoration:none;	
+          color: #3CCACE;	
         }
       }
       &__area{
@@ -201,6 +197,11 @@
       .btn--gray {
         @include showBtn(gray)
       }
+      .btn--gray:hover{
+        text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+        6px 0px 15px rgba(255, 255, 240, 0.83);
+      }
+
 
     }
     &__comment-box{
@@ -242,30 +243,6 @@
           margin-top: 20px;
         }
       }
-    }
-  }
-  &__links{
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    &__left-btn{
-      text-decoration: none;
-      color: #3CCACE;
-    }
-    &__right-btn{
-      text-decoration: none;
-      color: #3CCACE;
-    }
-  }
-  &__related-items{
-    &__link{
-      display: block;
-      margin:24px 0 8px;
-      text-decoration: none;
-      font-weight:bold;
-      position:relative;
-      font-size: 22px;
-      color: #3CCACE;
     }
   }
 }
