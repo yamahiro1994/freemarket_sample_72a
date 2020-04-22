@@ -143,6 +143,10 @@
         &__btn{
           color: black;
         }
+        &__btn:hover{
+          opacity: 0.8;
+          color: rgb(60,202,206);
+        }
       }
     }
   }
@@ -339,6 +343,10 @@
             text-align: right;
           }
         }
+      }
+      &__content:hover {
+        opacity: 0.8;
+        color: rgb(60,202,206);
       }
     }
   }

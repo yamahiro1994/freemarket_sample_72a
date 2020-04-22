@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:buy, :pay, :show, :edit, :update, :destroy]
   before_action :set_category, only: [:index, :new, :show, :edit]
-  before_action :login_check, only: [:new, :edit, :update, :destroy]
+  before_action :login_in_user,  except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def buy
     @image = @item.images[0].image_url
@@ -20,7 +21,7 @@ class ItemsController < ApplicationController
       @card_brand = @card_info.brand
       # クレジットカードの有効期限を取得
       @exp_month = @card_info.exp_month.to_s
-      @exp_year = @card_info.exp_year.to_s.slice(2,3) 
+      @exp_year = @card_info.exp_year.to_s.slice(2,3)
 
       # クレジットカード会社を取得したので、カード会社の画像をviewに表示させるため、ファイルを指定する。
       case @card_brand
@@ -47,8 +48,8 @@ class ItemsController < ApplicationController
 
   def pay
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-    if @item.buyer_id.present? 
-      redirect_back(fallback_location: root_path) 
+    if @item.buyer_id.present?
+      redirect_back(fallback_location: root_path)
     elsif @card.blank?
       # カード情報がなければ、買えないから戻す
       redirect_to new_card_path
@@ -77,22 +78,22 @@ class ItemsController < ApplicationController
     @items = Item.order(id: :desc).where(buyer_id:nil)
     @images = Image.includes(:item)
   end
-  
-  def new  
+
+  def new
     @item = Item.new
     @item.images.new
     @category_parent_array = ["---"]
     @category_parent_array.concat(@parents.pluck(:name))
   end
-  
+
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
-  
+
   def get_category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
-  
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -103,7 +104,7 @@ class ItemsController < ApplicationController
       redirect_to new_item_path
     end
   end
-  
+
   def show
     @items = Item.all
     @images = @item.images
@@ -114,7 +115,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
     @items = Item.all
     @images = @item.images
     @image = @item.images[0].image_url
@@ -156,10 +156,17 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
 
-  def login_check
+  def login_in_user
     unless user_signed_in?
       flash[:alert] = "ログインしてください"
       redirect_to root_path
+    end
+  end
+
+  def correct_user
+    unless current_user.id == @item.seller_id
+    flash[:alert] = "アクセスできません"
+    redirect_to root_path
     end
   end
 

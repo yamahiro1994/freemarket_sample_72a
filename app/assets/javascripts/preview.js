@@ -8,7 +8,6 @@ $(document).on('turbolinks:load', function(){
                       <img src="" alt="preview">
                     </div>
                     <div class="lower-box">
-                     
                       <div class="delete-box" id="delete_btn_${count}">
                         <span>削除</span>
                       </div>
@@ -17,7 +16,7 @@ $(document).on('turbolinks:load', function(){
       return html;
     }
 
-    
+
     // 投稿編集時
     //items/:i/editページへリンクした際のアクション
     if (window.location.href.match(/\/items\/\d+\/edit/)){
@@ -75,15 +74,15 @@ $(document).on('turbolinks:load', function(){
         //イメージを追加
         $(`#preview-box__${id} img`).attr('src', `${image}`);
         var count = $('.preview-box').length;
-        //プレビューが5個あったらラベルを隠す 
-        if (count == 5) { 
+        //プレビューが5個あったらラベルを隠す
+        if (count == 5) {
           $('.label-content').hide();
         }
 
         //プレビュー削除したフィールドにdestroy用のチェックボックスがあった場合、チェックを外す
         if ($(`#item_images_attributes_${id}__destroy`)){
           $(`#item_images_attributes_${id}__destroy`).prop('checked',false);
-        } 
+        }
 
         //ラベルのwidth操作
         setLabel();
@@ -103,11 +102,11 @@ $(document).on('turbolinks:load', function(){
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //取得したidに該当するプレビューを削除
       $(`#preview-box__${id}`).remove();
-      
+
       //新規投稿時
       //削除用チェックボックスの有無で判定
       if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
-        //フォームの中身を削除 
+        //フォームの中身を削除
         $(`#item_images_attributes_${id}_image`).val("");
         var count = $('.preview-box').length;
         //5個目が消されたらラベルを表示
@@ -135,9 +134,8 @@ $(document).on('turbolinks:load', function(){
           $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
         }
       }
-      
-    
-      //フォームの中身を削除 
+
+      //フォームの中身を削除
       $(`#item_images_attributes_${id}_image`).val("");
 
       //削除時のラベル操作

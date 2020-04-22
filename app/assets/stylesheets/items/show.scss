@@ -11,6 +11,17 @@
   cursor: pointer;
 }
 
+@mixin btn-hov{
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+  6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+@mixin a-hov{
+  opacity: 0.8;
+  color: rgb(60,202,206);
+}
+
+
 .show-main{
   padding: 0 40px;
   margin: 20px auto;
@@ -145,9 +156,15 @@
           text-decoration:none;
           color: #3CCACE;
         }
+        .kategori:hover{
+          @include a-hov
+        }
         .tiiki{
           text-decoration: none;
           color:#3CCACE;
+        }
+        .tiiki:hover{
+          @include a-hov
         }
       }
       &__area{
@@ -168,6 +185,9 @@
             font-size: 14px;
             a{
               color: #3CCACE
+            }
+            a:hover{
+              @include a-hov
             }
           }
         }
@@ -195,11 +215,13 @@
         @include showBtn(#3CCACE)
       }
       .btn:hover{
-        text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
-        6px 0px 15px rgba(255, 255, 240, 0.83);
+        @include btn-hov
       }
       .btn--gray {
         @include showBtn(gray)
+      }
+      .btn--gray:hover{
+        @include btn-hov
       }
 
     }
@@ -207,7 +229,7 @@
       padding: 0.1px 40px 25px;
       background-color: #fff;
       margin: 10px 0;
-      text-align: center; 
+      text-align: center;
       p{
         font-weight: normal;
         font-size: xx-small;
@@ -235,8 +257,7 @@
           @include showBtn(#3CCACE)
         }
         &__button:hover{
-          text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
-          6px 0px 15px rgba(255, 255, 240, 0.83);
+          @include btn-hov
         }
         h4{
           margin-top: 20px;
@@ -288,9 +309,7 @@
             padding-bottom: 5px;
           }
           a:hover{
-            filter: alpha(opacity=70);
-            -moz-opacity: 0.7;
-            opacity: 0.7;
+            @include a-hov
           }
         }
         &__img-right{
@@ -379,9 +398,7 @@
             padding-bottom: 2px;
           }
           a:hover{
-            filter: alpha(opacity=70);
-            -moz-opacity: 0.7;
-            opacity: 0.7;
+            @include a-hov
           }
         }
         &__img-left{
