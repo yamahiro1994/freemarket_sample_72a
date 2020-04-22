@@ -53,7 +53,7 @@ class CardsController < ApplicationController
         if request.referer&.include?("/registrations/step5")
           redirect_to controller: 'registrations', action: "step6"
         else
-          flash[:notice] = "支払い情報の登録が完了しました"
+          flash[:notice] = '支払い情報の登録が完了しました'
           redirect_to action: "index"
         end
       else
@@ -68,10 +68,10 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy
-      flash[:notice] = "削除しました"
+      flash[:notice] = '削除しました'
       redirect_to action: "index"
     else
-      flash[:notice] = "削除できませんでした"
+      flash[:notice] = '削除できませんでした'
       redirect_to action: "index"
     end
   end

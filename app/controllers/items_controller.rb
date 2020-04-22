@@ -6,22 +6,17 @@ class ItemsController < ApplicationController
     @image = @item.images[0].image_url
     @seller = User.find(@item.seller_id)
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-    if @card.present?
-      # 登録している場合,PAY.JPからカード情報を取得する
-      # PAY.JPの秘密鍵をセットする。
+    if @card.blank?
+      flash[:notice] = '購入にはクレジットカード登録が必要です'
+      redirect_to new_card_path
+    else
       Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
-      # PAY.JPから顧客情報を取得する。
       customer = Payjp::Customer.retrieve(@card.customer_id)
-      # PAY.JPの顧客情報から、デフォルトで使うクレジットカードを取得する。
       @card_info = customer.cards.retrieve(customer.default_card)
-      # クレジットカード情報から表示させたい情報を定義する。
-      # クレジットカードの画像を表示するために、カード会社を取得
       @card_brand = @card_info.brand
-      # クレジットカードの有効期限を取得
       @exp_month = @card_info.exp_month.to_s
       @exp_year = @card_info.exp_year.to_s.slice(2,3) 
 
-      # クレジットカード会社を取得したので、カード会社の画像をviewに表示させるため、ファイルを指定する。
       case @card_brand
       when "Visa"
         @card_image = "credit-visa.svg"
@@ -38,9 +33,6 @@ class ItemsController < ApplicationController
       when "Saison"
         @card_image = "credit-saison-card.svg"
       end
-    else
-      flash[:notice] = '購入にはクレジットカード登録が必要です'
-      redirect_to new_card_path
     end
   end
 
@@ -54,19 +46,15 @@ class ItemsController < ApplicationController
         redirect_to root_path
         flash[:notice] = 'この商品は売り切れました'
       elsif @card.blank?
-        # カード情報がなければ、買えないから戻す
         redirect_to new_card_path
         flash[:notice] = '購入にはクレジットカード登録が必要です'
       else
-        # 購入者もいないし、クレジットカードもあるし、決済処理に移行
         Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
-        # 請求を発行
         Payjp::Charge.create(
         amount: @item.price,
         customer: @card.customer_id,
         currency: 'jpy',
         )
-        # 売り切れなので、productの情報をアップデートして売り切れにします。
         if @item.update(buyer_id: current_user.id)
           flash[:notice] = '購入しました'
           redirect_to root_path
