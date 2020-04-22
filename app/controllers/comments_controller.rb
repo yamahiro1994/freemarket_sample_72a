@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
 
   def create
-    if ＠comment = Comment.create(comment_params)
+    comment = Comment.new(comment_params)
+    if comment.save
       flash[:notice] = 'コメントしました'
       redirect_back(fallback_location: root_path)
     else
       flash[:notice] = '入力してください'
-      redirect_to item_path(@comment.item.id)
+      redirect_to item_path(comment.item.id)
     end
   end
 

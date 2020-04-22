@@ -133,10 +133,10 @@ class ItemsController < ApplicationController
     if user_signed_in? && current_user.id == @item.seller_id
       if @item.update(item_params)
         flash[:notice] = '更新しました'
-        redirect_to action: "show"
+        redirect_to item_path
       else
         flash[:notice] = '必須項目を入力してください'
-        redirect_to action: "edit"
+        redirect_to edit_item_path
       end
     end
   end
@@ -165,14 +165,14 @@ class ItemsController < ApplicationController
   def login_in_user
     unless user_signed_in?
       flash[:alert] = "ログインしてください"
-      redirect_to root_path
+      redirect_to root_url
     end
   end
 
   def correct_user
     unless current_user.id == @item.seller_id
     flash[:alert] = "アクセスできません"
-    redirect_to root_path
+    redirect_to root_url
     end
   end
 
