@@ -1,6 +1,5 @@
 .buy-header
   = link_to image_tag('logo.png', width: '185', alt: 'logo', class: "buy-header__logo"),root_path
--# ヘッダーは後に部分テンプレートで共有する
 .buy-main
   .buy-container
     .buy-container__title
@@ -23,7 +22,7 @@
         .buy-container__form-box__payment__method
           .buy-container__form-box__payment__method__left
             支払い方法
-          = link_to('変更', '#', {class: 'buy-container__form-box__payment__method__right'})
+          = link_to('変更', cards_path, {class: 'buy-container__form-box__payment__method__right'})
         .buy-container__form-box__payment__card-info
           クレジットカード
           %br
