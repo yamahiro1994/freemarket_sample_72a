@@ -132,10 +132,6 @@
           @include l;
           padding: 3px 3px;
         }
-        .listing-select-wrapper{
-          &__box{}
-            &--select{}
-        }
       }
     }
     select{
@@ -143,6 +139,7 @@
       width: 100%;
       outline: none;
       margin-top: 16px;
+      position: relative;
     }
     &__status{
       height: 118px;
