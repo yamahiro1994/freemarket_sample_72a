@@ -231,10 +231,11 @@
       margin: 10px 0;
       text-align: center;
       p{
+        padding-top: 20px;
         font-weight: normal;
         font-size: xx-small;
       }
-      &__coments{
+      &__comments{
         list-style: none;
         &__input{
           font-family: inherit;
@@ -451,4 +452,3 @@
     }
   }
 }
-
