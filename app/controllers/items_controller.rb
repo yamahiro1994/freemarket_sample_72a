@@ -46,28 +46,34 @@ class ItemsController < ApplicationController
 
   def pay
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
-    if @item.buyer_id.present? 
-      redirect_back(fallback_location: root_path) 
-    elsif @card.blank?
-      # カード情報がなければ、買えないから戻す
-      redirect_to new_card_path
-      flash[:notice] = '購入にはクレジットカード登録が必要です'
+    if @item.seller_id = current_user.id
+      redirect_to root_path
+      flash[:notice] = '自分で出品した商品は購入できません'
     else
-      # 購入者もいないし、クレジットカードもあるし、決済処理に移行
-      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
-      # 請求を発行
-      Payjp::Charge.create(
-      amount: @item.price,
-      customer: @card.customer_id,
-      currency: 'jpy',
-      )
-      # 売り切れなので、productの情報をアップデートして売り切れにします。
-      if @item.update(buyer_id: current_user.id)
-        flash[:notice] = '購入しました。'
+      if @item.buyer_id.present?
         redirect_to root_path
+        flash[:notice] = 'この商品は売り切れました'
+      elsif @card.blank?
+        # カード情報がなければ、買えないから戻す
+        redirect_to new_card_path
+        flash[:notice] = '購入にはクレジットカード登録が必要です'
       else
-        flash[:notice] = '購入に失敗しました。'
-        redirect_to item_path(@item)
+        # 購入者もいないし、クレジットカードもあるし、決済処理に移行
+        Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+        # 請求を発行
+        Payjp::Charge.create(
+        amount: @item.price,
+        customer: @card.customer_id,
+        currency: 'jpy',
+        )
+        # 売り切れなので、productの情報をアップデートして売り切れにします。
+        if @item.update(buyer_id: current_user.id)
+          flash[:notice] = '購入しました'
+          redirect_to root_path
+        else
+          flash[:notice] = '購入に失敗しました'
+          redirect_to item_path(@item)
+        end
       end
     end
   end
