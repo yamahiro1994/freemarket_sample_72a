@@ -28,6 +28,9 @@
               - break if @items.nil?
                 .user-show-page__main__todo__under-tabs__product-list__contents__content
                   = link_to image_tag(@images.find_by(item_id:[b.id]).image_url, class:"img" ), item_path(b)
+                  -if b.buyer_id.present?
+                    .photo-line-li__sold
+                      .photo-line-li__sold__inner SOLD
                   .user-show-page__main__todo__under-tabs__product-list__contents__content__body
                     .user-show-page__main__todo__under-tabs__product-list__contents__content__body__name
                       = b.title
@@ -44,6 +47,9 @@
               - break if @items.nil?
                 .user-show-page__main__todo__under-tabs__product-list__contents__content
                   = link_to image_tag(@images.find_by(item_id:[b.id]).image_url, class:"img" ), item_path(b)
+                  -if b.buyer_id.present?
+                    .photo-line-li__sold
+                      .photo-line-li__sold__inner SOLD
                   .user-show-page__main__todo__under-tabs__product-list__contents__content__body
                     .user-show-page__main__todo__under-tabs__product-list__contents__content__body__name
                       = b.title
