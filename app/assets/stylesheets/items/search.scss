@@ -73,6 +73,9 @@
           text-align: center;
           color: white;
         }
+        &--gray:hover{
+          opacity: 0.8;
+        }
         &--red{
           width: 45%;
           height: 50px;
@@ -82,6 +85,9 @@
           background: #3CCACE;
           border: 1px solid #3CCACE;
           color: #fff;
+        }
+        &--red:hover{
+          opacity: 0.8;
         }
       }
     }
