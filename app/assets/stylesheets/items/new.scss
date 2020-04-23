@@ -223,7 +223,7 @@
 
 
   &__exhibition-box{
-    height: 485px;
+    height: 510px;
     padding: 40px;
     background-color: white;
     border-bottom: 1px solid #efefef;
@@ -306,19 +306,26 @@
         input:hover{
           opacity: 0.9;
           text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
-  6px 0px 15px rgba(255, 255, 240, 0.83);
+          6px 0px 15px rgba(255, 255, 240, 0.83);
         }
         a{
-          height: 20px;
-          color: rgb(42,204,209);
-          font-size: 12px;
+          width: 100%;
+          height: 46px;
           display: flex;
+          color: #fff;
+          line-height: 46px;
+          font-size: 15px;
+          padding: 0 24px;
+          border-radius: 4px;
+          margin-bottom: 24px;
           justify-content: center;
           border-color: transparent;
+          background-color: #aaa;
         }
         a:hover{
-          opacity: 0.5;
-          color: rgb(60,202,206);
+          opacity: 0.9;
+          text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+          6px 0px 15px rgba(255, 255, 240, 0.83);
         }
       }
       p{
