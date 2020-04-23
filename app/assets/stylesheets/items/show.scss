@@ -17,7 +17,7 @@
 }
 
 @mixin a-hov{
-  opacity: 0.8;
+  opacity: 0.7;
   color: rgb(60,202,206);
 }
 
@@ -271,8 +271,10 @@
 .show-main__content-top__message{
   margin-bottom: 35px;
   &__box{
-    height: 100px;
+    max-height: 100vh;
+    min-height: 100px;
     margin: 10px 0 25px;
+    overflow: scroll;
     &__kaiwa {
       height: 10px;
       &__clearfix-messages{

@@ -118,7 +118,7 @@ class ItemsController < ApplicationController
   def update
     if user_signed_in? && current_user.id == @item.seller_id
       if @item.update(item_params)
-        flash[:notice] = '更新しました'
+        flash[:notice] = '商品の情報を編集しました'
         redirect_to item_path
       else
         flash[:notice] = '必須項目を入力してください'

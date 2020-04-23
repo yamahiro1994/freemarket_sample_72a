@@ -185,7 +185,7 @@
     &--title{
       @include titlebar();
     }
-    &__list{ 
+    &__list{
       @include displayflex(space-between);
       @include center(50px);
       &__box{

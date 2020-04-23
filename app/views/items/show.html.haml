@@ -117,7 +117,7 @@
             - if user_signed_in? && current_user.id == @item.seller_id
               = link_to '商品の編集', edit_item_path(@item), class:'show-edit btn'
               %br or
-              = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray'
+              = link_to '商品の削除', item_path, method: :delete, class:'show-destroy btn--gray', data: { confirm: "本当に商品を削除してもよろしいですか？" }
             - elsif user_signed_in? && current_user.id != @item.seller_id
               = link_to '商品を購入する', buy_item_path(@item), class:'show-buy btn'
             - else
