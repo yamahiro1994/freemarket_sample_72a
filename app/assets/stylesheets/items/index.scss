@@ -86,6 +86,9 @@
               height: 40px;
             }
           }
+          .send-btn:hover{
+            opacity: 0.7;
+          }
         }
       }
     }
@@ -107,6 +110,10 @@
             color: #000000;
             text-decoration: none;
             font-size: 12px;
+          }
+          a:hover{
+            opacity: 0.8;
+            color: rgb(60,202,206);
           }
           .link{
             font-size: 16px;
@@ -420,15 +427,16 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
+  font-weight: bold;
   border:1px solid #888888;
   padding:20px 30px;
   background-color: #3CCACE;
   color: #ffffff;
   text-decoration: none;
   filter:alpha(opacity=85);
-  text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
 }
 #display-btn:hover{
-  opacity: 0.8;
+  text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa,
+  6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
