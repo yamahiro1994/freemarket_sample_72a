@@ -1,7 +1,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  
+
   #リサイズ、画像形式を変更に必要
   include CarrierWave::MiniMagick
   #上限変更
@@ -18,7 +18,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   #ファイル名を変更し拡張子を同じにする
   def filename
-    super.chomp(File.extname(super)) + '.jpg' 
+    super.chomp(File.extname(super)) + '.jpg'
   end
   #日付で保存
   def filename
@@ -40,7 +40,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  
+
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
